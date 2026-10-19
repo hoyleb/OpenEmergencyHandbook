@@ -18,7 +18,7 @@ Preview builds normally reuse a cached development signing key. If that cache is
 
 - All six disaster scenarios, first-aid overview, adult CPR/AED, safe water, food, sanitation, shelter, preparedness and communications.
 - Native category navigation/reader with adjustable text and related guides, bilingual offline search with one-edit fallback, local checklist/notes, local text export and water estimate with assumptions.
-- Source dates and explicit draft status; offline HTML, source archive, coverage report and checksums in successful releases.
+- Source dates and explicit draft status; offline HTML, printable English/German PDFs, source archive, coverage report and checksums in successful releases.
 
 No live alerts, radiation measurement, verified shelter directory or personalised diagnosis. Dedicated child/infant CPR, choking and other first-aid drafts are included, alongside accessibility, pets, combined-hazard and recovery pages. Reviewed diagrams, further detailed protocols and professional/translation review remain outstanding. The inherited wiki is excluded from preview assets pending its own review.
 
@@ -44,3 +44,7 @@ Coverage mapping: `content/coverage.json`. Run `python3 tools/build_handbook.py 
 Feedback: [pull request #1](https://github.com/hoyleb/OpenEmergencyHandbook/pull/1). See [roadmap](docs/ROADMAP.md). Do not post private medical details, contacts or credentials. Preserve sources and real review status.
 
 Application and newly authored summaries/translations use GPLv3 under [COPYING](COPYING). Third-party libraries retain their licences. Linked publications retain their own rights. No agency endorsement, logos or copied illustrations are claimed. Preserve upstream attribution/history.
+
+## Printable editions
+
+`python3 -m pip install -r tools/requirements-pdf.txt` and install `fonts-dejavu-core`, then run `python3 tools/build_pdf.py`. This creates one English and one German PDF in `dist/` from the same canonical source. The current editions contain 33 pages each, clickable contents, bookmarks, related guides and source URLs. They carry the same unreviewed-preview status as the app.

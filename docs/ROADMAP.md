@@ -30,7 +30,8 @@ Validation results are attached to the actual workflow/release. A feature listed
 - [ ] Test declared minimum Android 5/API 21 and more OEMs. CI API 23/36 is useful but does not establish all supported versions.
 - [ ] Test low storage, corrupt bundled data and failure paths; introduce an independently readable fallback if the main content file is damaged.
 - [ ] Improve HTML/Android search parity (HTML lacks Android's fuzzy fallback); test the HTML interactively and without JavaScript on supported browsers.
-- [ ] Produce and visually inspect a printable PDF from the same content; printed quick cards for loss of phone power.
+- [x] Produce and visually inspect printable English/German PDFs from the same content (33 pages each).
+- [ ] Produce compact printed quick cards for loss of phone power.
 - [ ] Optional encrypted/structured plan backup and restore. Plain-text export is implemented; restore is not. No cloud account should become necessary.
 
 ## P1 — Distribution and maintenance

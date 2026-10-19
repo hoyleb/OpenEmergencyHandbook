@@ -37,6 +37,12 @@ jobs:
         run: |
           python3 tools/build_handbook.py --check
           python3 -m unittest discover -s tools -p 'test_*.py' -v
+      - name: Generate printable bilingual handbooks
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-dejavu-core
+          python3 -m pip install -r tools/requirements-pdf.txt
+          python3 tools/build_pdf.py
       - name: Build and lint Android
         run: ./gradlew :android:assembleDebug :android:assembleDebugAndroidTest :android:lintDebug --console=plain
       - name: Enable emulator acceleration
@@ -71,7 +77,7 @@ jobs:
           git archive --format=tar.gz HEAD > dist/OpenEmergencyHandbook-source.tar.gz
           printf '%s\n' "$GITHUB_SHA" > dist/BUILD_COMMIT.txt
           cd dist
-          sha256sum OpenEmergencyHandbook-preview.apk OpenEmergencyHandbook-offline.html OpenEmergencyHandbook-source.tar.gz Android-preview.png coverage-report.json BUILD_COMMIT.txt APK-SIGNATURE.txt APK-MANIFEST.txt dependency-tree.txt > SHA256SUMS.txt
+          sha256sum OpenEmergencyHandbook-preview.apk OpenEmergencyHandbook-en.pdf OpenEmergencyHandbook-de.pdf OpenEmergencyHandbook-offline.html OpenEmergencyHandbook-source.tar.gz Android-preview.png coverage-report.json BUILD_COMMIT.txt APK-SIGNATURE.txt APK-MANIFEST.txt dependency-tree.txt > SHA256SUMS.txt
           rm emergency-window.xml
       - uses: actions/upload-artifact@v4
         with:
@@ -115,7 +121,7 @@ jobs:
 
           Checks: content validation, 13 Python tests, Android compilation/lint, and seven emulator tests on Android 6/API 23 and Android 16/API 36 with Wi-Fi/mobile data disabled. Scope: bundled EN/DE articles, search, reader/language switching/recreation, checklist persistence and no INTERNET permission. These checks do not establish medical accuracy or real-world disaster readiness.
 
-          Also included: standalone offline HTML handbook, matching source archive, build commit, checksums, APK identity/signature, dependency tree and emulator screenshot. GPLv3 source and upstream attribution are preserved.
+          Also included: standalone offline HTML handbook, printable English/German PDF handbooks, matching source archive, build commit, checksums, APK identity/signature, dependency tree and emulator screenshot. GPLv3 source and upstream attribution are preserved.
 
           Please test offline reading, search, language switching, large text and saved household data. Give feedback in pull request #1 without posting personal information.
           NOTES
