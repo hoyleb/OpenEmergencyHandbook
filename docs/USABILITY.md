@@ -17,7 +17,7 @@ The 0.3 preview prioritises finding the right guide and reading the first action
 
 The Android test suite covers first-screen urgent-action visibility, required bundled guides, bilingual ranked/approximate search, first-aid findability, related-guide Back restoration after recreation, bookmarks, section jumps, reader text/language persistence, screen-on opt-in/clearing, 200% system font navigation, dark palette, household persistence/export/cancellation and no internet permission.
 
-CI tests offline on APIs 23 and 36 and publishes screenshots of normal home, a reader section, 200% home/reader and dark home. Screenshots and passing assertions establish these specific conditions; they are not a substitute for real user sessions or TalkBack testing. See the linked workflow/release for the actual pass/fail result.
+CI tests offline on APIs 23 and 36 and publishes screenshots of normal home, a reader section, 200% English/German home/reader and dark home. The 200% test changes the system setting on API 36 and uses an in-process resource-configuration fixture on API 23, where the settings shell command does not notify the running app. It asserts the effective activity font scale on both, plus scaled density on API 23. This tests the actual large-text layout without claiming the old OS settings integration was exercised. Screenshots and passing assertions establish these specific conditions; they are not a substitute for real user sessions or TalkBack testing. See the linked workflow/release for the actual pass/fail result.
 
 ## Still needed before claiming high usability
 

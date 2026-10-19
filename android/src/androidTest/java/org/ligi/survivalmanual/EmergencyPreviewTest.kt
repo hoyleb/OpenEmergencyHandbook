@@ -3,8 +3,10 @@ package org.ligi.survivalmanual
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.ParcelFileDescriptor
+import android.os.Build
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -39,7 +41,12 @@ class EmergencyPreviewTest {
         onView(withContentDescription("Search all offline guides")).perform(replaceText(value), closeSoftKeyboard())
     }
     private fun shell(command: String): String = ParcelFileDescriptor.AutoCloseInputStream(instrumentation.uiAutomation.executeShellCommand(command)).bufferedReader().use { it.readText().trim() }
-    private fun capture(name: String) { shell("screencap -p /sdcard/Download/open-emergency-$name.png") }
+    private fun capture(name: String) {
+        // Toasts are system windows and can outlive the previous test/activity.
+        Thread.sleep(3500)
+        instrumentation.waitForIdleSync()
+        shell("screencap -p /sdcard/Download/open-emergency-$name.png")
+    }
 
     @Before fun resetPlan() { prefs.edit().clear().putString("language", "en").commit() }
 
@@ -77,7 +84,7 @@ class EmergencyPreviewTest {
         ActivityScenario.launch(EmergencyActivity::class.java).use { scenario ->
             search("nuclear")
             guide("fallout").perform(scrollTo(), click())
-            onView(withText("OFFLINE GUIDE · UNREVIEWED PREVIEW")).check(matches(isDisplayed()))
+            onView(withText("Unreviewed draft")).check(matches(isDisplayed()))
             onView(withText("Immediate protection")).check(matches(isDisplayed()))
             onView(withContentDescription("Switch to German")).perform(click())
             onView(withText("Nuklearer Fallout & Strahlung")).check(matches(isDisplayed()))
@@ -99,7 +106,7 @@ class EmergencyPreviewTest {
         ActivityScenario.launch(EmergencyActivity::class.java).use {
             onView(withContentDescription("Show first-aid guides")).perform(click())
             guide("child-choking").perform(scrollTo(), click())
-            onView(withText("OFFLINE GUIDE · UNREVIEWED PREVIEW")).check(matches(isDisplayed()))
+            onView(withText("Unreviewed draft")).check(matches(isDisplayed()))
             onView(withTagValue(equalTo("related-child-cpr"))).perform(scrollTo(), click())
             onView(withText("CPR: babies & children")).check(matches(isDisplayed()))
         }
@@ -187,22 +194,37 @@ class EmergencyPreviewTest {
     @Test fun guideSectionsCanBeReachedWithoutScrollingThroughWholeArticle() {
         ActivityScenario.launch(EmergencyActivity::class.java).use {
             onView(withContentDescription("Open safe water guide")).perform(click())
-            onView(withText("On this page · jump to section")).perform(click())
+            onView(withText("Jump to section")).perform(click())
             onView(withText("Chemicals and fallout")).perform(click())
             onView(withText("Chemicals and fallout")).check(matches(isDisplayed()))
             capture("reader-section")
         }
     }
 
-    /** Changes emulator system text size, then always restores the previous setting. */
-    @Test fun systemTextAtTwoHundredPercentKeepsNavigationUsable() {
+    @Suppress("DEPRECATION")
+    private fun legacyFontConfiguration(scale: Float) {
+        instrumentation.runOnMainSync {
+            val config = Configuration(context.resources.configuration).apply { fontScale = scale }
+            context.resources.updateConfiguration(config, context.resources.displayMetrics)
+        }
+    }
+
+    /** API 23 needs an in-process resource fixture; its settings command does not
+     * notify the running app. API 36 uses the actual system setting. Both assert
+     * the activity's effective configuration; no font assertion is skipped. */
+    @Test fun twoHundredPercentFontKeepsNavigationUsable() {
         val previous = shell("settings get system font_scale")
+        val previousScale = context.resources.configuration.fontScale
         try {
-            shell("settings put system font_scale 2.0")
+            if (Build.VERSION.SDK_INT < 24) legacyFontConfiguration(2f)
+            else shell("settings put system font_scale 2.0")
             val deadline = System.currentTimeMillis() + 5000
             while (context.resources.configuration.fontScale < 1.9f && System.currentTimeMillis() < deadline) Thread.sleep(100)
             ActivityScenario.launch(EmergencyActivity::class.java).use { scenario ->
-                scenario.onActivity { assertTrue(it.resources.configuration.fontScale >= 1.9f) }
+                scenario.onActivity {
+                    assertTrue(it.resources.configuration.fontScale >= 1.9f)
+                    if (Build.VERSION.SDK_INT < 24) assertEquals(2f, it.resources.displayMetrics.scaledDensity / it.resources.displayMetrics.density, 0.05f)
+                }
                 capture("large-text-home")
                 onView(withContentDescription("Show first-aid guides")).check(matches(isCompletelyDisplayed()))
                 tab("search").check(matches(isCompletelyDisplayed()))
@@ -211,9 +233,19 @@ class EmergencyPreviewTest {
                 onView(withText("Safe drinking water")).check(matches(isDisplayed()))
                 tab("home").check(matches(isCompletelyDisplayed()))
                 capture("large-text-reader")
+                onView(withContentDescription("Switch to German")).perform(click())
+                onView(withText("Sicheres Trinkwasser")).check(matches(isDisplayed()))
+                onView(withContentDescription("Leseoptionen")).check(matches(isCompletelyDisplayed()))
+                onView(withContentDescription("Notruf-Wählfeld 112 öffnen")).check(matches(isCompletelyDisplayed()))
+                capture("large-text-reader-de")
+                tab("home").perform(click())
+                onView(withContentDescription("Erste-Hilfe-Anleitungen anzeigen")).check(matches(isCompletelyDisplayed()))
+                tab("saved").check(matches(isCompletelyDisplayed()))
+                capture("large-text-home-de")
             }
         } finally {
-            if (previous == "null" || previous.isBlank()) shell("settings delete system font_scale")
+            if (Build.VERSION.SDK_INT < 24) legacyFontConfiguration(previousScale)
+            else if (previous == "null" || previous.isBlank()) shell("settings delete system font_scale")
             else shell("settings put system font_scale $previous")
             val deadline = System.currentTimeMillis() + 5000
             while (context.resources.configuration.fontScale >= 1.9f && System.currentTimeMillis() < deadline) Thread.sleep(100)

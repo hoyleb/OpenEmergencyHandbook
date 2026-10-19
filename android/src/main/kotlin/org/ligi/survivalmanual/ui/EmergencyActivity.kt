@@ -447,10 +447,10 @@ class EmergencyActivity : BaseActivity() {
         val recents = (listOf(article.id) + recentIds().filterNot { it == article.id }).take(6)
         preferences.edit().putString("recent-guides", JSONArray(recents).toString()).apply()
         page.addView(heading(article.title, 25f))
-        page.addView(text(tr("OFFLINE GUIDE · UNREVIEWED PREVIEW", "OFFLINE-ANLEITUNG · UNGEPRÜFTER ENTWURF"), 12f, true).apply { setTextColor(accent) })
+        page.addView(text(tr("Unreviewed draft", "Ungeprüfter Entwurf"), 12f, true).apply { setTextColor(accent) })
         page.addView(text(article.summary, 18f * readerScale))
         readerSections.clear()
-        page.addView(button(tr("On this page · jump to section", "Auf dieser Seite · zum Abschnitt")) { showSections() }.apply { textSize = 14f })
+        page.addView(button(tr("Jump to section", "Zum Abschnitt")) { showSections() }.apply { textSize = 14f })
         article.body.split(Regex("(?m)(?=^## )")).filter { it.isNotBlank() }.forEach { block ->
             val trimmed = block.trim()
             val body: String
