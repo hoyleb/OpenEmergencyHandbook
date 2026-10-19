@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "note": "Mappings show where draft text exists, not adequate or approved coverage. Remaining gaps block public release.",
+  "requirements": [
+    {
+      "requirement": "Adult resuscitation and AED",
+      "article_ids": [
+        "adult-cpr"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Child and infant resuscitation",
+      "article_ids": [
+        "child-cpr"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Adult choking",
+      "article_ids": [
+        "adult-choking"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Child and infant choking",
+      "article_ids": [
+        "child-choking"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Severe external bleeding and wound care",
+      "article_ids": [
+        "bleeding"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Thermal and chemical burns",
+      "article_ids": [
+        "burns"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Anaphylaxis",
+      "article_ids": [
+        "anaphylaxis"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Seizures",
+      "article_ids": [
+        "seizures"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Diabetes emergencies",
+      "article_ids": [
+        "diabetes"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Poisoning and carbon monoxide",
+      "article_ids": [
+        "poisoning"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Stroke and cardiac warning signs",
+      "article_ids": [
+        "stroke-heart"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Safe water: storage, boiling and filter limitations",
+      "article_ids": [
+        "water"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Boil-water, do-not-drink and do-not-use advisories",
+      "article_ids": [
+        "water-advisories"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Power outage: generators, heating and backfeeding",
+      "article_ids": [
+        "power"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Power outage: medication and equipment continuity",
+      "article_ids": [
+        "accessibility",
+        "power"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Cyberattack: personal accounts and incident containment",
+      "article_ids": [
+        "cyber"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Cyberattack: infrastructure loss",
+      "article_ids": [
+        "cyber",
+        "communications"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Earthquake: protection, aftershocks and entrapment",
+      "article_ids": [
+        "earthquake"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Flood: evacuation, electricity and return",
+      "article_ids": [
+        "flood",
+        "recovery"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Fallout: shelter, contamination and iodine limits",
+      "article_ids": [
+        "fallout"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Pandemic: transmission routes, caregiving and continuity",
+      "article_ids": [
+        "pandemic"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Food storage, outage and contamination",
+      "article_ids": [
+        "food"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Emergency toilets, hygiene and waste",
+      "article_ids": [
+        "hygiene"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Shelter, cold and heat overview",
+      "article_ids": [
+        "shelter"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Written communications, emergency numbers and battery",
+      "article_ids": [
+        "communications"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Household reserves and evacuation bag",
+      "article_ids": [
+        "prepare"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Disability, equipment and support needs",
+      "article_ids": [
+        "accessibility"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Pets and evacuation",
+      "article_ids": [
+        "pets"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Flood and sewage contamination",
+      "article_ids": [
+        "combined-hazards",
+        "hygiene"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Earthquake and cold/power loss",
+      "article_ids": [
+        "combined-hazards"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Pandemic and supply interruption",
+      "article_ids": [
+        "combined-hazards"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Cyberattack and unavailable mobile networks",
+      "article_ids": [
+        "cyber",
+        "communications"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Fallout and damaged shelter",
+      "article_ids": [
+        "combined-hazards"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Recovery and service restoration",
+      "article_ids": [
+        "recovery"
+      ],
+      "remaining": ""
+    },
+    {
+      "requirement": "Fractures and spinal/head injury protocols",
+      "article_ids": [
+        "first-aid"
+      ],
+      "remaining": "Dedicated detailed protocols missing"
+    },
+    {
+      "requirement": "Hypothermia, frostbite and heatstroke protocols",
+      "article_ids": [
+        "shelter"
+      ],
+      "remaining": "Only introductory recognition and prevention"
+    },
+    {
+      "requirement": "Drowning and water rescue",
+      "article_ids": [],
+      "remaining": "Dedicated safe-rescue and drowning protocol missing"
+    },
+    {
+      "requirement": "Asthma and breathing difficulty",
+      "article_ids": [],
+      "remaining": "Dedicated protocol missing"
+    },
+    {
+      "requirement": "Dehydration and oral rehydration",
+      "article_ids": [],
+      "remaining": "Dedicated adult/child instructions missing"
+    },
+    {
+      "requirement": "Infant feeding and vulnerable-person water needs",
+      "article_ids": [
+        "water-advisories",
+        "food"
+      ],
+      "remaining": "Needs dedicated reviewed preparation guidance"
+    },
+    {
+      "requirement": "Radiation incident types and extended sheltering",
+      "article_ids": [
+        "fallout"
+      ],
+      "remaining": "Needs deeper blast/reactor distinctions and shelter logistics"
+    },
+    {
+      "requirement": "Detailed water-product disinfection",
+      "article_ids": [
+        "water"
+      ],
+      "remaining": "Product-specific coverage and review missing"
+    },
+    {
+      "requirement": "Detailed flood cleanup and mould",
+      "article_ids": [
+        "recovery"
+      ],
+      "remaining": "Specialist review and detailed cleanup guidance missing"
+    },
+    {
+      "requirement": "Detailed cyber recovery and backup restoration",
+      "article_ids": [
+        "cyber"
+      ],
+      "remaining": "Provider-specific and restore-testing workflows missing"
+    },
+    {
+      "requirement": "Source-to-claim mapping",
+      "article_ids": [
+        "about"
+      ],
+      "remaining": "Detailed claim/section source mapping outstanding"
+    },
+    {
+      "requirement": "Reviewed offline diagrams",
+      "article_ids": [],
+      "remaining": "No professionally reviewed diagrams bundled"
+    },
+    {
+      "requirement": "Verified regional poison contacts",
+      "article_ids": [
+        "poisoning"
+      ],
+      "remaining": "Directory missing; household plan can store a checked number"
+    }
+  ]
+}

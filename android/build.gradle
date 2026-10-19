@@ -8,16 +8,16 @@ repositories {
 }
 
 android {
-    compileSdk 34
+    compileSdk 36
 
     namespace "org.ligi.survivalmanual"
 
     defaultConfig {
         applicationId "com.hoyleb.openemergency"
         minSdkVersion 21
-        targetSdkVersion 34
-        versionCode 1
-        versionName "0.1.0-preview"
+        targetSdkVersion 36
+        versionCode 2
+        versionName "0.2.0-preview"
 
         vectorDrawables.useSupportLibrary = true
         archivesBaseName = "OpenEmergencyHandbook-$versionName"
@@ -80,6 +80,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.6.1'
     androidTestImplementation "androidx.test:core:1.6.1"
     androidTestImplementation "androidx.test:rules:1.6.1"
-    androidTestImplementation 'com.linkedin.testbutler:test-butler-library:2.2.1'
-        androidTestUtil 'com.linkedin.testbutler:test-butler-app:2.2.1'
 }

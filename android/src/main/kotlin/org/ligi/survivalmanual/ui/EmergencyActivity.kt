@@ -15,11 +15,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.text.HtmlCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import org.ligi.survivalmanual.BuildConfig
 import org.ligi.survivalmanual.functions.convertMarkdownToHtml
 import org.ligi.survivalmanual.model.EmergencyArticle
 import org.ligi.survivalmanual.model.EmergencyHandbook
+import org.ligi.survivalmanual.model.HouseholdPlan
 
 /** Offline dashboard and reader. No network, location or account permissions. */
 class EmergencyActivity : BaseActivity() {
@@ -28,6 +33,8 @@ class EmergencyActivity : BaseActivity() {
     private var route = "home"
     private var query = ""
     private var articleScroll = 0
+    private var category = "now"
+    private var readerScale = 1f
     private lateinit var handbook: EmergencyHandbook
     private lateinit var page: LinearLayout
     private lateinit var scroll: ScrollView
@@ -36,6 +43,20 @@ class EmergencyActivity : BaseActivity() {
     private var muted = 0
     private var surface = 0
     private var accent = 0
+    private var pendingExport: String? = null
+    private val exportPlan = registerForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
+        val snapshot = pendingExport
+        pendingExport = null
+        if (uri != null && snapshot != null) {
+            try {
+                val output = contentResolver.openOutputStream(uri) ?: throw java.io.IOException("No output stream")
+                output.bufferedWriter(Charsets.UTF_8).use { it.write(snapshot) }
+                Toast.makeText(this, tr("Plan saved. Keep a printed copy too.", "Plan gespeichert. Auch auf Papier aufbewahren."), Toast.LENGTH_LONG).show()
+            } catch (_: Exception) {
+                Toast.makeText(this, tr("Could not save. Try another local folder.", "Speichern fehlgeschlagen. Anderen lokalen Ordner versuchen."), Toast.LENGTH_LONG).show()
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +64,10 @@ class EmergencyActivity : BaseActivity() {
         route = savedInstanceState?.getString("route") ?: "home"
         query = savedInstanceState?.getString("query") ?: ""
         articleScroll = savedInstanceState?.getInt("scroll") ?: 0
+        category = savedInstanceState?.getString("category") ?: "now"
+        readerScale = preferences.getFloat("reader-scale", 1f).coerceIn(1f, 1.8f)
+        pendingExport = savedInstanceState?.getString("pending-export")
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         val dark = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES
         pageBackground = Color.parseColor(if (dark) "#101E22" else "#F2F6F4")
         textColour = Color.parseColor(if (dark) "#F1F8F5" else "#152D2A")
@@ -64,6 +89,8 @@ class EmergencyActivity : BaseActivity() {
         outState.putString("route", route)
         outState.putString("query", query)
         outState.putInt("scroll", scroll.scrollY)
+        outState.putString("category", category)
+        outState.putString("pending-export", pendingExport)
         super.onSaveInstanceState(outState)
     }
 
@@ -94,7 +121,15 @@ class EmergencyActivity : BaseActivity() {
     private fun render() {
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL; setBackgroundColor(pageBackground)
-            fitsSystemWindows = true
+        }
+        ViewCompat.setOnApplyWindowInsetsListener(root) { view, insets ->
+            val safe = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout() or WindowInsetsCompat.Type.ime())
+            view.setPadding(safe.left, safe.top, safe.right, safe.bottom)
+            insets
+        }
+        WindowCompat.getInsetsController(window, root).apply {
+            val light = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK != Configuration.UI_MODE_NIGHT_YES
+            isAppearanceLightStatusBars = light; isAppearanceLightNavigationBars = light
         }
         val bar = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL; gravity = android.view.Gravity.CENTER_VERTICAL
@@ -103,6 +138,9 @@ class EmergencyActivity : BaseActivity() {
         val home = button(tr("Home", "Start")) { query = ""; navigate("home") }
         home.layoutParams = LinearLayout.LayoutParams(0, -2, 1f)
         bar.addView(home)
+        val plan = button(tr("Household", "Haushalt")) { navigate("plan") }
+        plan.layoutParams = LinearLayout.LayoutParams(0, -2, 1f)
+        bar.addView(plan)
         val lang = button(if (language == "en") "Deutsch" else "English") {
             language = if (language == "en") "de" else "en"
             preferences.edit().putString("language", language).apply()
@@ -115,6 +153,7 @@ class EmergencyActivity : BaseActivity() {
             orientation = LinearLayout.VERTICAL; setPadding(dp(20), 0, dp(20), dp(32))
         }
         scroll.addView(page); root.addView(scroll, LinearLayout.LayoutParams(-1, 0, 1f)); setContentView(root)
+        ViewCompat.requestApplyInsets(root)
         when (route) {
             "home" -> dashboard()
             "plan" -> household()
@@ -133,6 +172,14 @@ class EmergencyActivity : BaseActivity() {
         page.addView(notice)
         page.addView(button(tr("112 · Open emergency dialler", "112 · Notruf-Wählfeld öffnen")) { dialEmergency() })
         page.addView(text(tr("Help now", "Jetzt Hilfe finden"), 23f, true))
+        val filters = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL }
+        val choices = listOf("now" to tr("Help now", "Soforthilfe"), "aid" to tr("First aid", "Erste Hilfe"), "prepare" to tr("Prepare", "Vorsorge"), "all" to tr("All guides", "Alle Anleitungen"))
+        choices.forEach { (key, label) ->
+            filters.addView(button(if (category == key) "✓ $label" else label) {
+                category = key; query = ""; articleScroll = scroll.scrollY; render()
+            }.apply { layoutParams = LinearLayout.LayoutParams(-2, -2) })
+        }
+        page.addView(HorizontalScrollView(this).apply { addView(filters) })
         val search = EditText(this).apply {
             id = View.generateViewId(); hint = tr("Search: water, blackout, bleeding…", "Suchen: Wasser, Stromausfall, Blutung…")
             textSize = 16f; setTextColor(textColour); setHintTextColor(muted); setSingleLine(true)
@@ -140,12 +187,22 @@ class EmergencyActivity : BaseActivity() {
             contentDescription = tr("Search all offline guides", "Alle Offline-Anleitungen durchsuchen")
             setText(query)
         }
-        page.addView(search, LinearLayout.LayoutParams(-1, dp(58)))
+        page.addView(search, LinearLayout.LayoutParams(-1, -2).apply { search.minHeight = dp(58) })
+        val count = text("", 14f).apply { accessibilityLiveRegion = View.ACCESSIBILITY_LIVE_REGION_POLITE }
+        page.addView(count)
         val results = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
         page.addView(results)
         fun updateResults() {
             results.removeAllViews()
-            val matches = handbook.search(query)
+            val matches = if (query.isNotBlank()) handbook.search(query) else handbook.articles.filter {
+                when (category) {
+                    "now" -> it.id in EmergencyHandbook.helpNowIds
+                    "aid" -> it.group == "urgent"
+                    "prepare" -> it.group == "essentials"
+                    else -> true
+                }
+            }
+            count.text = tr("${matches.size} guides · search checks the whole handbook", "${matches.size} Anleitungen · Suche im gesamten Handbuch")
             if (matches.isEmpty()) results.addView(text(tr("No matches. Try a simpler word or another language.", "Keine Treffer. Ein einfacheres Wort oder die andere Sprache versuchen.")))
             matches.forEach { article -> results.addView(card(article)) }
         }
@@ -175,13 +232,29 @@ class EmergencyActivity : BaseActivity() {
     private fun read(article: EmergencyArticle) {
         page.addView(text(article.title, 30f, true))
         page.addView(text(tr("OFFLINE GUIDE · UNREVIEWED PREVIEW", "OFFLINE-ANLEITUNG · UNGEPRÜFTER ENTWURF"), 12f, true).apply { setTextColor(accent) })
-        page.addView(text(article.summary, 18f))
+        val sizeControls = LinearLayout(this).apply { orientation = LinearLayout.HORIZONTAL }
+        listOf(-0.2f to tr("A− Smaller", "A− Kleiner"), 0.2f to tr("A+ Larger", "A+ Größer")).forEach { (delta, label) ->
+            sizeControls.addView(button(label) {
+                readerScale = (readerScale + delta).coerceIn(1f, 1.8f)
+                preferences.edit().putFloat("reader-scale", readerScale).apply()
+                articleScroll = scroll.scrollY; render()
+            }.apply { layoutParams = LinearLayout.LayoutParams(0, -2, 1f) })
+        }
+        page.addView(sizeControls)
+        page.addView(text(article.summary, 18f * readerScale))
         page.addView(text("").apply {
             text = HtmlCompat.fromHtml(convertMarkdownToHtml(article.body), HtmlCompat.FROM_HTML_MODE_LEGACY)
-            textSize = 18f; setTextIsSelectable(true); movementMethod = LinkMovementMethod.getInstance()
+            textSize = 18f * readerScale; setTextIsSelectable(true); movementMethod = LinkMovementMethod.getInstance()
+            contentDescription = null
         })
+        if (article.related.isNotEmpty()) {
+            page.addView(text(tr("Related offline guides", "Weitere Offline-Anleitungen"), 21f, true))
+            article.related.mapNotNull { handbook.find(it) }.forEach { link ->
+                page.addView(button(link.title) { navigate(link.id) })
+            }
+        }
         page.addView(text(tr("Sources & limitations", "Quellen & Grenzen"), 21f, true))
-        page.addView(text(tr("Original summary and translation. Sources checked ${handbook.edition}; no professional review recorded. Source links open outside this app and require internet. This app is not affiliated with the cited organisations.", "Eigene Zusammenfassung und Übersetzung. Quellen geprüft am ${handbook.edition}; keine fachliche Prüfung dokumentiert. Quellenlinks öffnen außerhalb der App und benötigen Internet. Keine Verbindung zu den genannten Organisationen."), 13f))
+        page.addView(text(tr("Original summary and translation. Sources checked ${article.checkedAt}; no professional review recorded. Source links open outside this app and require internet. This app is not affiliated with the cited organisations.", "Eigene Zusammenfassung und Übersetzung. Quellen geprüft am ${article.checkedAt}; keine fachliche Prüfung dokumentiert. Quellenlinks öffnen außerhalb der App und benötigen Internet. Keine Verbindung zu den genannten Organisationen."), 13f))
         article.sources.forEachIndexed { index, url ->
             page.addView(button(tr("Source ${index + 1} · ${Uri.parse(url).host}", "Quelle ${index + 1} · ${Uri.parse(url).host}")) {
                 try { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
@@ -240,12 +313,25 @@ class EmergencyActivity : BaseActivity() {
                 override fun afterTextChanged(s: Editable?) = Unit
             })
         })
+        page.addView(button(tr("Export household plan…", "Haushaltsplan exportieren…")) {
+            androidx.appcompat.app.AlertDialog.Builder(this)
+                .setMessage(tr("This creates an unencrypted text file containing your checklist and personal notes. Choose a local folder for offline storage; cloud providers may upload it. Keep exported copies private.", "Erstellt eine unverschlüsselte Textdatei mit Checkliste und persönlichen Notizen. Für Offline-Speicherung einen lokalen Ordner wählen; Cloud-Anbieter können die Datei hochladen. Kopien vertraulich aufbewahren."))
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(tr("Choose file", "Datei wählen")) { _, _ ->
+                    pendingExport = HouseholdPlan.export(preferences, language, handbook.edition)
+                    try { exportPlan.launch("OpenEmergency-Household.txt") }
+                    catch (_: ActivityNotFoundException) {
+                        pendingExport = null
+                        Toast.makeText(this, tr("No file picker available", "Keine Dateiauswahl verfügbar"), Toast.LENGTH_LONG).show()
+                    }
+                }.show()
+        })
         page.addView(button(tr("Clear household data…", "Haushaltsdaten löschen…")) {
             androidx.appcompat.app.AlertDialog.Builder(this)
                 .setMessage(tr("Clear your checklist, estimate and personal notes? This cannot be undone.", "Checkliste, Berechnung und persönliche Notizen löschen? Dies kann nicht rückgängig gemacht werden."))
                 .setNegativeButton(android.R.string.cancel, null)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
-                    preferences.edit().clear().putString("language", language).apply(); render()
+                    HouseholdPlan.clear(preferences); articleScroll = 0; render()
                 }.show()
         })
     }

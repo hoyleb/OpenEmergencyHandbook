@@ -8,7 +8,7 @@ Free, open-source, downloadable Android emergency handbook. Fork of [ligi/Surviv
 
 Successful builds appear in [GitHub Releases](https://github.com/hoyleb/OpenEmergencyHandbook/releases). Download `OpenEmergencyHandbook-preview.apk` on an Android phone (Android 5.0+). Allow installation from the browser/file manager when Android asks. Open **Open Emergency Preview**. This is debug-signed for testing, not a Play Store production release.
 
-Separate package: `com.hoyleb.openemergency.preview`. No account, subscription, advertising or network/location permission. All 15 English and German guides ship in the APK. External source links require internet through your browser.
+Separate package: `com.hoyleb.openemergency.preview`. No account, subscription, advertising or network/location permission. All 30 English and German guides ship in the APK. External source links require internet through your browser.
 
 Test airplane mode with Wi-Fi off and restart the app. Check search in both languages, language switching while reading, large text, and saving/reopening the household plan. Keep paper emergency contacts too.
 
@@ -17,14 +17,14 @@ Preview builds normally reuse a cached development signing key. If that cache is
 ## Included
 
 - All six disaster scenarios, first-aid overview, adult CPR/AED, safe water, food, sanitation, shelter, preparedness and communications.
-- Native dashboard/reader, bilingual offline search, local checklist/notes and water estimate with assumptions.
+- Native category navigation/reader with adjustable text and related guides, bilingual offline search with one-edit fallback, local checklist/notes, local text export and water estimate with assumptions.
 - Source dates and explicit draft status; offline HTML, source archive, coverage report and checksums in successful releases.
 
-No live alerts, radiation measurement, verified shelter directory or personalised diagnosis. Dedicated child/infant medical protocols, diagrams, extended content and professional/translation review remain outstanding. The inherited wiki is excluded from preview assets pending its own review.
+No live alerts, radiation measurement, verified shelter directory or personalised diagnosis. Dedicated child/infant CPR, choking and other first-aid drafts are included, alongside accessibility, pets, combined-hazard and recovery pages. Reviewed diagrams, further detailed protocols and professional/translation review remain outstanding. The inherited wiki is excluded from preview assets pending its own review.
 
 ## Build
 
-Requires JDK 17 and Android SDK. Initial preview targets SDK 34; update tooling/target SDK to current requirements before Google Play submission.
+Requires JDK 17 and Android SDK. The 0.2 preview compiles/targets SDK 36, supports system-bar/display-cutout/keyboard insets, and retains Android 5.0 as its declared minimum. CI exercises Android 6 and 16; physical-device/minimum-OS evidence and store requirements remain separate open items.
 
 ```sh
 git clone https://github.com/hoyleb/OpenEmergencyHandbook.git
@@ -35,7 +35,9 @@ python3 -m unittest discover -s tools -p 'test_*.py' -v
 ./gradlew :android:assembleDebug :android:lintDebug
 ```
 
-Canonical content: `content/handbook.json`. Generated assets: `android/src/main/offlineAssets/handbook/articles.json`. The build script uses Python's standard library. Android smoke tests: `EmergencyPreviewTest.kt`.
+Canonical content: `content/handbook.json`. Generated assets: `android/src/main/offlineAssets/handbook/articles.json`. The build script uses Python's standard library. Android instrumentation tests: `EmergencyPreviewTest.kt`.
+
+Coverage mapping: `content/coverage.json`. Run `python3 tools/build_handbook.py --public-release` to exercise the content-release gate; this intentionally fails while requirements remain missing, partial or unreviewed. Review records must identify a reviewer, scope and evidence and match the exact content hash. Passing this gate alone would not establish licensing, clinical accuracy, accessibility or store approval. See [review process](docs/CONTENT_REVIEW.md).
 
 ## Contribute and licence
 

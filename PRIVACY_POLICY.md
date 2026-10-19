@@ -1,6 +1,6 @@
 # Privacy — Open Emergency Handbook preview
 
-No internet/location permission, account, analytics, advertising or subscription service. Reading, search, notes and checklist run locally. Household data stays in app-private preferences. Android backup is disabled; device security and OS behaviour still matter.
+No internet/location permission, account, analytics, advertising or subscription service. Reading, search, notes and checklist run locally. Household data stays in app-private preferences unless you explicitly export a plan. Export uses Android’s file picker and creates an unencrypted text file; choose a local folder for offline storage. Cloud file providers may upload it under their own policies. Exported copies remain after clearing app data. Android backup is disabled; device security and OS behaviour still matter.
 
 The household screen can clear its data. Uninstalling/clearing app storage also removes it. The 112 action opens the dialler; it does not call automatically. External links open your browser, whose own privacy rules apply.
 
