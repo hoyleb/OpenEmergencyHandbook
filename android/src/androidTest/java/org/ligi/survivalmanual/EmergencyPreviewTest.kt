@@ -69,7 +69,7 @@ class EmergencyPreviewTest {
 
     @Test fun firstAidIsReachableInTwoTapsAndRelatedGuidesWork() {
         ActivityScenario.launch(EmergencyActivity::class.java).use {
-            onView(withText("First aid")).perform(scrollTo(), click())
+            onView(withContentDescription("Show first-aid guides")).perform(scrollTo(), click())
             onView(withText("Choking: babies & children")).perform(scrollTo(), click())
             onView(withText("OFFLINE GUIDE · UNREVIEWED PREVIEW")).check(matches(isDisplayed()))
             onView(withText("CPR: babies & children")).perform(scrollTo(), click())

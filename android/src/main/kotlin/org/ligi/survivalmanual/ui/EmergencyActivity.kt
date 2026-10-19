@@ -121,15 +121,14 @@ class EmergencyActivity : BaseActivity() {
     private fun render() {
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL; setBackgroundColor(pageBackground)
+            // Selectable article text must not steal initial focus and scroll
+            // past the action summary when an older Android recreates the view.
+            isFocusableInTouchMode = true; requestFocus()
         }
         ViewCompat.setOnApplyWindowInsetsListener(root) { view, insets ->
             val safe = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout() or WindowInsetsCompat.Type.ime())
             view.setPadding(safe.left, safe.top, safe.right, safe.bottom)
             insets
-        }
-        WindowCompat.getInsetsController(window, root).apply {
-            val light = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK != Configuration.UI_MODE_NIGHT_YES
-            isAppearanceLightStatusBars = light; isAppearanceLightNavigationBars = light
         }
         val bar = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL; gravity = android.view.Gravity.CENTER_VERTICAL
@@ -142,6 +141,7 @@ class EmergencyActivity : BaseActivity() {
         plan.layoutParams = LinearLayout.LayoutParams(0, -2, 1f)
         bar.addView(plan)
         val lang = button(if (language == "en") "Deutsch" else "English") {
+            articleScroll = scroll.scrollY
             language = if (language == "en") "de" else "en"
             preferences.edit().putString("language", language).apply()
             handbook = EmergencyHandbook(assets, language); render()
@@ -153,13 +153,19 @@ class EmergencyActivity : BaseActivity() {
             orientation = LinearLayout.VERTICAL; setPadding(dp(20), 0, dp(20), dp(32))
         }
         scroll.addView(page); root.addView(scroll, LinearLayout.LayoutParams(-1, 0, 1f)); setContentView(root)
+        // Android 16's controller needs a real DecorView, created by setContentView.
+        WindowCompat.getInsetsController(window, window.decorView).apply {
+            val light = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK != Configuration.UI_MODE_NIGHT_YES
+            isAppearanceLightStatusBars = light; isAppearanceLightNavigationBars = light
+        }
         ViewCompat.requestApplyInsets(root)
         when (route) {
             "home" -> dashboard()
             "plan" -> household()
             else -> handbook.find(route)?.let { read(it) } ?: run { route = "home"; dashboard() }
         }
-        if (articleScroll > 0) scroll.post { scroll.scrollTo(0, articleScroll) }
+        val restoreY = articleScroll
+        scroll.post { scroll.scrollTo(0, restoreY) }
     }
 
     private fun dashboard() {
@@ -177,7 +183,15 @@ class EmergencyActivity : BaseActivity() {
         choices.forEach { (key, label) ->
             filters.addView(button(if (category == key) "✓ $label" else label) {
                 category = key; query = ""; articleScroll = scroll.scrollY; render()
-            }.apply { layoutParams = LinearLayout.LayoutParams(-2, -2) })
+            }.apply {
+                contentDescription = when (key) {
+                    "aid" -> tr("Show first-aid guides", "Erste-Hilfe-Anleitungen anzeigen")
+                    "prepare" -> tr("Show preparation guides", "Vorsorge-Anleitungen anzeigen")
+                    "all" -> tr("Show all guides", "Alle Anleitungen anzeigen")
+                    else -> tr("Show immediate help", "Soforthilfe anzeigen")
+                }
+                layoutParams = LinearLayout.LayoutParams(-2, -2)
+            })
         }
         page.addView(HorizontalScrollView(this).apply { addView(filters) })
         val search = EditText(this).apply {
