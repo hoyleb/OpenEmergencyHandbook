@@ -100,7 +100,7 @@ class EmergencyPreviewTest {
         val prefs = context.getSharedPreferences("emergency-handbook", Context.MODE_PRIVATE)
         prefs.edit().putString("notes", "Keep this note").commit()
         ActivityScenario.launch(EmergencyActivity::class.java).use {
-            onView(withText("Household")).perform(click())
+            onView(withContentDescription("Open household plan")).perform(click())
             onView(withText("Export household plan…")).perform(scrollTo(), click())
             onView(withText(android.R.string.cancel)).perform(click())
             assertEquals("Keep this note", prefs.getString("notes", ""))

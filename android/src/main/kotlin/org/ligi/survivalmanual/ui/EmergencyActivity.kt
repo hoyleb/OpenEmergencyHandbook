@@ -137,7 +137,9 @@ class EmergencyActivity : BaseActivity() {
         val home = button(tr("Home", "Start")) { query = ""; navigate("home") }
         home.layoutParams = LinearLayout.LayoutParams(0, -2, 1f)
         bar.addView(home)
-        val plan = button(tr("Household", "Haushalt")) { navigate("plan") }
+        val plan = button("Plan") { navigate("plan") }.apply {
+            contentDescription = tr("Open household plan", "Haushaltsplan öffnen")
+        }
         plan.layoutParams = LinearLayout.LayoutParams(0, -2, 1f)
         bar.addView(plan)
         val lang = button(if (language == "en") "Deutsch" else "English") {
