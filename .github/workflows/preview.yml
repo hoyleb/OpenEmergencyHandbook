@@ -50,8 +50,11 @@ jobs:
             adb shell svc wifi disable
             adb shell svc data disable
             ./gradlew :android:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=org.ligi.survivalmanual.EmergencyPreviewTest --console=plain
-            adb shell am force-stop com.hoyleb.openemergency.preview
+            adb install -r android/build/outputs/apk/debug/*.apk
             adb shell am start -W -n com.hoyleb.openemergency.preview/org.ligi.survivalmanual.ui.EmergencyActivity
+            adb shell uiautomator dump /sdcard/emergency-window.xml
+            adb pull /sdcard/emergency-window.xml dist/emergency-window.xml
+            grep -q 'OPEN EMERGENCY' dist/emergency-window.xml
             adb exec-out screencap -p > dist/Android-preview.png
       - name: Package preview downloads
         run: |
@@ -60,6 +63,7 @@ jobs:
           printf '%s\n' "$GITHUB_SHA" > dist/BUILD_COMMIT.txt
           cd dist
           sha256sum OpenEmergencyHandbook-preview.apk OpenEmergencyHandbook-offline.html OpenEmergencyHandbook-source.tar.gz > SHA256SUMS.txt
+          rm emergency-window.xml
       - uses: actions/upload-artifact@v4
         with:
           name: OpenEmergencyHandbook-preview
