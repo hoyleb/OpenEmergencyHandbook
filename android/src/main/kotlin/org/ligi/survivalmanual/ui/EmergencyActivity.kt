@@ -323,7 +323,7 @@ class EmergencyActivity : BaseActivity() {
             setSelection(filters.indexOf(category).coerceAtLeast(0))
         }
         page.addView(filter)
-        val count = text("", 14f).apply { ViewCompat.setAccessibilityLiveRegion(this, View.ACCESSIBILITY_LIVE_REGION_POLITE) }
+        val count = text("", 14f).apply { ViewCompat.setAccessibilityLiveRegion(this, ViewCompat.ACCESSIBILITY_LIVE_REGION_POLITE) }
         page.addView(count)
         val results = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
         page.addView(results)
