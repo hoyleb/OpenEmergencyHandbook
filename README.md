@@ -14,6 +14,10 @@ Test airplane mode with Wi-Fi off and restart the app. Check search in both lang
 
 Preview builds normally reuse a cached development signing key. If that cache is lost, uninstall/reinstall may be needed, removing local notes. Production signing is still outstanding.
 
+## Usability in the 0.3 preview
+
+Urgent actions are on the home screen; Help, Search, Saved and Plan stay available. Back restores the previous guide or search position. Search ranks bilingual terms and labels typo suggestions. Reader sections support jumping; More holds bookmarks, text size and an explicit screen-on option. Bookmarks and recent reading stay local. See [usability goals and evidence](docs/USABILITY.md).
+
 ## Included
 
 - All six disaster scenarios, first-aid overview, adult CPR/AED, safe water, food, sanitation, shelter, preparedness and communications.

@@ -13,6 +13,15 @@ Updated 19 October 2026. `content/coverage.json` maps 47 requirements to drafts 
 
 Validation results are attached to the actual workflow/release. A feature listed here is not a claim that every device, aid procedure or store requirement has been approved.
 
+## Implemented in the 0.3 usability preview
+
+- Direct urgent home actions and persistent Help/Search/Saved/Plan navigation, without a horizontally hidden category control.
+- Back stack with query/filter/position restoration, including related guides and activity recreation.
+- Ranked bilingual search with explicitly labelled approximate matches and category reset for empty results.
+- Bookmarks, six recently opened guides, reader section jumps and More menu for text size and opt-in screen-on.
+- Accessible headings/card roles and responsive layouts for larger system fonts. CI includes 200% font/dark-mode scenarios and screenshots.
+- See [USABILITY.md](USABILITY.md) for exact flows, automated coverage and the user/device/TalkBack evidence still needed.
+
 ## P0 — Content needed before public reliance
 
 - [ ] Qualified medical/first-aid review of every procedure, age distinction and escalation trigger; qualified water, electrical, radiation, structural and infection review. Process: [CONTENT_REVIEW.md](CONTENT_REVIEW.md).

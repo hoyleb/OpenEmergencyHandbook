@@ -58,16 +58,7 @@ jobs:
           arch: x86_64
           api-level: ${{ matrix.api }}
           disable-animations: true
-          script: |
-            adb shell svc wifi disable
-            adb shell svc data disable
-            ./gradlew :android:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=org.ligi.survivalmanual.EmergencyPreviewTest --console=plain
-            adb install -r android/build/outputs/apk/debug/*.apk
-            adb shell am start -W -n com.hoyleb.openemergency.preview/org.ligi.survivalmanual.ui.EmergencyActivity
-            adb shell uiautomator dump /sdcard/emergency-window.xml
-            adb pull /sdcard/emergency-window.xml dist/emergency-window.xml
-            grep -q 'OPEN EMERGENCY' dist/emergency-window.xml
-            adb exec-out screencap -p > dist/Android-preview.png
+          script: bash tools/run_offline_checks.sh
       - name: Record APK identity and dependency inventory
         run: |
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs android/build/outputs/apk/debug/*.apk > dist/APK-SIGNATURE.txt
@@ -79,7 +70,7 @@ jobs:
           git archive --format=tar.gz HEAD > dist/OpenEmergencyHandbook-source.tar.gz
           printf '%s\n' "$GITHUB_SHA" > dist/BUILD_COMMIT.txt
           cd dist
-          sha256sum OpenEmergencyHandbook-preview.apk OpenEmergencyHandbook-en.pdf OpenEmergencyHandbook-de.pdf OpenEmergencyHandbook-offline.html OpenEmergencyHandbook-source.tar.gz Android-preview.png coverage-report.json BUILD_COMMIT.txt APK-SIGNATURE.txt APK-MANIFEST.txt dependency-tree.txt > SHA256SUMS.txt
+          sha256sum OpenEmergencyHandbook-preview.apk OpenEmergencyHandbook-en.pdf OpenEmergencyHandbook-de.pdf OpenEmergencyHandbook-offline.html OpenEmergencyHandbook-source.tar.gz Android-preview.png Usability-*.png coverage-report.json BUILD_COMMIT.txt APK-SIGNATURE.txt APK-MANIFEST.txt dependency-tree.txt > SHA256SUMS.txt
           rm emergency-window.xml
       - uses: actions/upload-artifact@v4
         with:
@@ -109,7 +100,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-          PREVIEW_TAG: preview-0.2.${{ github.run_number }}
+          PREVIEW_TAG: preview-0.3.${{ github.run_number }}
           PREVIEW_COMMIT: ${{ github.sha }}
         run: |
           cat > release-notes.md <<'NOTES'
@@ -117,11 +108,11 @@ jobs:
 
           Download OpenEmergencyHandbook-preview.apk on an Android phone (Android 5.0+). Allow installation from the browser/file manager when Android asks, then open **Open Emergency Preview**. This APK is debug-signed for testing, not a Play Store production release. If a later build has a different signing identity, uninstalling the old preview may be necessary; that removes local notes.
 
-          Included: 30 English and 30 German offline guides, all six disaster scenarios, first-aid/safe-water summaries, category navigation, adjustable reader text, related guides, local search with typo fallback, household checklist, water estimate, notes and explicit text export. No account, subscription, advertising or network permission.
+          Included: 30 English and 30 German offline guides, all six disaster scenarios, first-aid/safe-water summaries, direct help actions, persistent Help/Search/Saved/Plan navigation, reader section jumps/bookmarks, adjustable text, optional screen-on mode, related guides and ranked bilingual search with labelled typo fallback, household checklist, water estimate, notes and explicit text export. No account, subscription, advertising or network permission.
 
           **All summaries and translations are unreviewed drafts. Coverage is incomplete. Test the app; do not treat this as a complete or professionally approved survival reference.** See About and coverage-report.json for gaps. Follow emergency services and current official instructions.
 
-          Checks: content validation, 13 Python tests, Android compilation/lint, and seven emulator tests on Android 6/API 23 and Android 16/API 36 with Wi-Fi/mobile data disabled. Scope: bundled EN/DE articles, search, reader/language switching/recreation, checklist persistence and no INTERNET permission. These checks do not establish medical accuracy or real-world disaster readiness.
+          Checks: content validation, 13 Python tests, Android compilation/lint, and 14 emulator tests on Android 6/API 23 and Android 16/API 36 with Wi-Fi/mobile data disabled. Scope: bundled EN/DE articles, visible urgent home actions, bilingual ranked/approximate search, Back-stack restoration, section jumps, bookmarks, reader/language recreation, 200% system text, dark palette, opt-in screen-on, household persistence/export and no INTERNET permission. These checks do not establish medical accuracy or real-world disaster readiness.
 
           Also included: standalone offline HTML handbook, printable English/German PDF handbooks, matching source archive, build commit, checksums, APK identity/signature, dependency tree and emulator screenshot. GPLv3 source and upstream attribution are preserved.
 
