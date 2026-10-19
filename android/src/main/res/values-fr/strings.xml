@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Manuel de Survie</string>
+    <string name="app_name">Open Emergency Preview</string>
     <string name="drawer_open">ouvrir</string>
     <string name="drawer_close">fermer</string>
     <string name="introduction">Introduction</string>

@@ -5,3 +5,6 @@ local.properties
 .DS_Store
 build/
 captures/
+dist/
+__pycache__/
+*.pyc

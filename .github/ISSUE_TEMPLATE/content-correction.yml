@@ -1,0 +1,31 @@
+name: Content correction or missing guidance
+description: Report a confusing or potentially unsafe step without private information.
+title: '[Content] '
+body:
+  - type: markdown
+    attributes:
+      value: 'For an emergency, contact emergency services. Do not post patient details, personal notes or credentials. This is a public issue.'
+  - type: input
+    id: edition
+    attributes:
+      label: App/content edition and language
+    validations:
+      required: true
+  - type: input
+    id: guide
+    attributes:
+      label: Article title or ID
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Which step is wrong, missing or confusing?
+      description: Quote the relevant step and describe its conditions; omit personal details.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Proposed correction and primary source
+      description: If available, link the official guideline/edition. Do not imply a clinical review you have not performed.

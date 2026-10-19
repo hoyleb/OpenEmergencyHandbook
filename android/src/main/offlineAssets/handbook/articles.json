@@ -1,0 +1,1161 @@
+{
+  "schema_version": 1,
+  "edition": "2026-10-19",
+  "status": "development-preview",
+  "content_license": "GPL-3.0",
+  "articles": [
+    {
+      "id": "first-aid",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "First aid",
+        "summary": "Scene safety, calling for help, severe bleeding and burns.",
+        "keywords": "injury bleeding burn wound unconscious Erste Hilfe Blutung Verbrennung",
+        "body": "## Protect yourself first\nCheck for traffic, electricity, fire, floodwater and unstable structures. Do not become another casualty. Call **112** in Germany/EU for a life-threatening emergency. Give the location, what happened and the number of people affected; follow the dispatcher.\n\n## Unresponsive person\nCheck responsiveness and normal breathing. Gasping is not normal breathing. If breathing is absent or abnormal, use the **Adult CPR & AED** guide and follow the dispatcher. If breathing normally, maintain an open airway, monitor continuously and follow instructions; a suspected spinal injury needs particular care.\n\n## Severe external bleeding\nUse gloves if available. Press firmly and continuously on the wound with a clean dressing. Get emergency help. Do not pull out an embedded object; press around it. Life-threatening bleeding may require a commercial tourniquet when indicated and according to training/instructions. Never loosen one casually.\n\n## Burns\nStop the burning safely. Cool a thermal burn with cool running water, avoid chilling the rest of the person, and cover loosely with a clean non-stick dressing. No ice, butter or creams. Major, chemical, electrical, facial or breathing-related burns need urgent assessment.\n\n## Preview limits\nThis is an introductory summary, not a complete first-aid course. Dedicated child/infant CPR, choking and other drafts are linked below; none has yet received professional review. Do not delay calling for help while searching this app."
+      },
+      "de": {
+        "title": "Erste Hilfe",
+        "summary": "Eigenschutz, Hilfe rufen, starke Blutungen und Verbrennungen.",
+        "keywords": "Verletzung Blutung Brandwunde bewusstlos first aid bleeding",
+        "body": "## Zuerst Eigenschutz\nAuf Verkehr, Strom, Feuer, Hochwasser und instabile Gebäude achten. Nicht selbst zum weiteren Opfer werden. Bei Lebensgefahr in Deutschland/EU **112** anrufen: Ort, Ereignis und Zahl der Betroffenen nennen; der Leitstelle folgen.\n\n## Bewusstlose Person\nReaktion und normale Atmung prüfen. Schnappatmung ist keine normale Atmung. Bei fehlender oder nicht normaler Atmung die Anleitung **Wiederbelebung & AED (Erwachsene)** nutzen und der Leitstelle folgen. Bei normaler Atmung Atemwege freihalten, fortlaufend überwachen und Anweisungen befolgen; bei möglicher Wirbelsäulenverletzung besonders vorsichtig sein.\n\n## Starke äußere Blutung\nWenn vorhanden Handschuhe tragen. Mit sauberem Verband kräftig und anhaltend direkt auf die Wunde drücken. Notruf veranlassen. Eingedrungene Gegenstände nicht herausziehen; daneben Druck ausüben. Bei lebensbedrohlicher Blutung kann ein handelsübliches Tourniquet entsprechend Schulung/Anleitung erforderlich sein. Ein angelegtes Tourniquet nicht eigenmächtig lockern.\n\n## Verbrennungen\nHitzeeinwirkung sicher beenden. Thermische Verbrennung mit kühlem fließendem Wasser kühlen; übrigen Körper vor Auskühlung schützen. Locker mit sauberer, nicht haftender Auflage bedecken. Kein Eis, Butter oder Cremes. Schwere, chemische, elektrische sowie Gesichts- oder Atemwegsverletzungen dringend abklären lassen.\n\n## Grenzen des Entwurfs\nKeine vollständige Erste-Hilfe-Ausbildung. Verlinkte Entwürfe für Säuglinge/Kinder, Verschlucken und weitere Notfälle sind enthalten; eine fachliche Prüfung steht aus. Den Notruf nicht durch die App-Suche verzögern."
+      },
+      "sources": [
+        "https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025",
+        "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/adult-basic-life-support-guidelines"
+      ],
+      "related": [
+        "adult-cpr",
+        "child-cpr",
+        "adult-choking",
+        "child-choking",
+        "bleeding",
+        "burns",
+        "anaphylaxis",
+        "seizures",
+        "diabetes",
+        "poisoning",
+        "stroke-heart"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "adult-cpr",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Adult CPR & AED",
+        "summary": "For an unresponsive ADULT who is not breathing normally.",
+        "keywords": "CPR AED resuscitation cardiac arrest heart attack Wiederbelebung",
+        "body": "## Adult emergency sequence\nCall **112**, use speakerphone and follow the dispatcher. Send someone for an AED. Gasping is abnormal breathing.\n\nStart compressions in the centre of the chest: **100–120 per minute**, **5–6 cm** deep, with full recoil and minimal pauses. If trained and able, use **30 compressions then 2 breaths**; otherwise give continuous compressions.\n\nSwitch on the AED and follow its spoken instructions. Nobody touches the person during analysis or shock. Resume CPR when instructed.\n\nContinue until professionals take over, normal breathing/signs of life return, you cannot continue, or the scene becomes unsafe.\n\n**Children, infants and drowning need additional guidance.** This page covers adults only; follow the dispatcher."
+      },
+      "de": {
+        "title": "Wiederbelebung & AED (Erwachsene)",
+        "summary": "Für BEWUSSTLOSE ERWACHSENE ohne normale Atmung.",
+        "keywords": "Reanimation Herzdruckmassage Herzstillstand CPR AED",
+        "body": "## Ablauf für Erwachsene\n**112** anrufen, Freisprechen einschalten und der Leitstelle folgen. Jemanden nach einem AED schicken. Schnappatmung ist keine normale Atmung.\n\nIn der Brustkorbmitte drücken: **100–120-mal pro Minute**, **5–6 cm** tief; vollständig entlasten und Pausen minimieren. Wenn geschult und möglich: **30 Kompressionen, dann 2 Beatmungen**. Sonst durchgehend drücken.\n\nAED einschalten und Sprachanweisungen befolgen. Bei Analyse und Schock berührt niemand die Person. Danach gemäß Gerät weiterdrücken.\n\nFortsetzen, bis Fachkräfte übernehmen, normale Atmung/Lebenszeichen zurückkehren, Fortsetzung unmöglich oder der Ort unsicher wird.\n\n**Kinder, Säuglinge und Ertrinken benötigen zusätzliche Anleitung.** Diese Seite betrifft Erwachsene; der Leitstelle folgen."
+      },
+      "sources": [
+        "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/adult-basic-life-support-guidelines"
+      ],
+      "related": [
+        "child-cpr",
+        "adult-choking"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "water",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Safe drinking water",
+        "summary": "Choose a safer source; treatment depends on the contamination.",
+        "keywords": "water purification boil filter clean water Wasser Trinkwasser abkochen",
+        "body": "## Choose the source first\nPrefer a protected supply of drinking water. Clear-looking stream water is not necessarily safe. Do not drink floodwater, heating-system water or water suspected of fuel, toxic chemical or radioactive contamination.\n\n## Germs: boiling\nFor water without suspected chemical/radioactive contamination: settle or prefilter cloudy water, then bring clear water to a rolling boil for **1 minute**; above approximately **2,000 m**, use **3 minutes**. Cool and keep covered in a clean container. Prefiltering through cloth alone does not disinfect it.\n\n## Filters and tablets\nFollow the specific product instructions, including water volume, temperature, contact time and supported organisms. Many hiking filters do not remove viruses. Disinfection methods differ against parasites. Avoid iodine-treated water in pregnancy or with thyroid conditions unless medically advised.\n\n## Chemicals and fallout\n**Boiling or disinfection does not make chemically or radioactively contaminated water safe.** Use a verified alternative supply. Ordinary filters are not universal contaminant removers. Follow the actual local drinking-water advisory.\n\n## Storage\nKeep treated water in clean, food-safe covered containers. Avoid dirty hands/cups touching the contents. Separate drinking water from washing water."
+      },
+      "de": {
+        "title": "Sicheres Trinkwasser",
+        "summary": "Eine sichere Quelle wählen; die Behandlung hängt von der Verunreinigung ab.",
+        "keywords": "Wasser aufbereiten filtern abkochen Trinkwasser sauber water purification",
+        "body": "## Zuerst die Quelle wählen\nGeschütztes Trinkwasser bevorzugen. Klar aussehendes Bachwasser ist nicht automatisch sicher. Kein Hochwasser, Heizungswasser oder vermutlich mit Treibstoff, Giftstoffen oder radioaktivem Material belastetes Wasser trinken.\n\n## Keime: Abkochen\nOhne Verdacht auf chemische/radioaktive Belastung: Trübes Wasser absetzen lassen oder vorfiltern. Klares Wasser **1 Minute sprudelnd kochen**; oberhalb von ungefähr **2.000 m: 3 Minuten**. Abkühlen und sauber verschlossen lagern. Ein Tuch allein desinfiziert nicht.\n\n## Filter und Tabletten\nProduktanleitung beachten: Wassermenge, Temperatur, Einwirkzeit und erfasste Erreger. Viele Outdoorfilter entfernen keine Viren. Verfahren wirken unterschiedlich gegen Parasiten. Bei Schwangerschaft oder Schilddrüsenerkrankung jodbehandeltes Wasser ohne ärztlichen Rat meiden.\n\n## Chemikalien und Fallout\n**Abkochen oder Desinfizieren macht chemisch oder radioaktiv belastetes Wasser nicht sicher.** Eine überprüfte Ersatzversorgung verwenden. Gewöhnliche Filter entfernen nicht beliebige Schadstoffe. Die konkrete örtliche Trinkwasserwarnung beachten.\n\n## Aufbewahrung\nBehandeltes Wasser in sauberen, lebensmittelechten geschlossenen Behältern lagern. Keine verschmutzten Hände/Becher hineintauchen. Trink- und Waschwasser getrennt halten."
+      },
+      "sources": [
+        "https://www.cdc.gov/water-emergency/about/",
+        "https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/environmental-health-in-emergencies/technical-notes-on-wash-in-emergencies",
+        "https://www.cdc.gov/radiation-emergencies/safety/food-drinking-water-medicine-safety.html"
+      ],
+      "related": [
+        "water-advisories",
+        "hygiene"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "power",
+      "group": "disaster",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Power outage",
+        "summary": "Light, warmth, medical needs, food and communication without mains power.",
+        "keywords": "blackout electricity Stromausfall Heizung Strom power outage",
+        "body": "## First actions\nUse a torch. Check for fire, damaged wiring, floodwater or a gas smell before investigating the outage. Avoid fallen cables. Check whether neighbours are affected and contact the utility when communications work. Keep one light on to notice restoration; disconnect sensitive equipment if safe.\n\n## Prevent a second emergency\nNever use charcoal grills, outdoor camping stoves or petrol engines indoors or in garages. Portable generators belong outside, at least approximately **6 m** from openings, with exhaust directed away. Use CO alarms. Never feed power into a wall socket; a building connection requires suitable equipment and a qualified electrician.\n\n## Prioritise\nArrange help early for powered medical equipment and refrigerated medicines. Keep fridge/freezer doors closed; see Food safety. Use warm layers and one suitable room rather than improvised indoor combustion. Move to safe help if indoor conditions become dangerous.\n\n## Information and supplies\nUse a battery radio, preserve phone charge and check neighbours who may need assistance. Water, sewage, ATMs and mobile service may also fail. Your offline notes and supplies remain useful when banking and internet stop."
+      },
+      "de": {
+        "title": "Stromausfall",
+        "summary": "Licht, Wärme, medizinische Bedürfnisse, Essen und Kommunikation ohne Netzstrom.",
+        "keywords": "Blackout Strom Heizung Ausfall electricity power outage",
+        "body": "## Erste Schritte\nTaschenlampe verwenden. Vor der Fehlersuche auf Feuer, beschädigte Kabel, Wasser und Gasgeruch achten. Herabgefallenen Leitungen fernbleiben. Prüfen, ob Nachbarn betroffen sind; Netzbetreiber kontaktieren, sofern möglich. Eine Lampe eingeschaltet lassen; empfindliche Geräte sicher vom Netz trennen.\n\n## Weitere Notfälle vermeiden\nKeine Holzkohlegrills, Outdoor-Campingkocher oder Benzinmotoren in Innenräumen oder Garagen betreiben. Mobile Generatoren gehören nach draußen, ungefähr **6 m** oder weiter von Öffnungen entfernt, Abgas wegführen. CO-Melder nutzen. Niemals über eine Steckdose einspeisen: Hausanschlüsse erfordern geeignete Technik und eine Elektrofachkraft.\n\n## Prioritäten\nFrühzeitig Unterstützung für stromabhängige Medizingeräte und kühlpflichtige Medikamente organisieren. Kühlgeräte geschlossen halten; Lebensmittelsicherheit beachten. Warme Kleidung und einen geeigneten Raum nutzen statt improvisierter Verbrennung im Haus. Bei gefährlichen Temperaturen sichere Hilfe aufsuchen.\n\n## Informationen und Vorräte\nBatterieradio verwenden, Handyakku schonen, hilfsbedürftige Nachbarn beachten. Auch Wasser, Abwasser, Geldautomaten und Mobilfunk können ausfallen. Offline-Notizen und Vorräte helfen ohne Banking und Internet."
+      },
+      "sources": [
+        "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html",
+        "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Stromausfall/stromausfall_node.html",
+        "https://www.cdc.gov/natural-disasters/psa-toolkit/use-a-generator-safely.html"
+      ],
+      "related": [
+        "food",
+        "poisoning",
+        "accessibility",
+        "recovery"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "cyber",
+      "group": "disaster",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Cyberattack & digital outage",
+        "summary": "Separate a hacked device/account from a wider infrastructure failure.",
+        "keywords": "ransomware hacked phishing account bank cyberattack internet Cyberangriff",
+        "body": "## Personal account or device attack\nUse a separate trusted device to contact the affected provider through a known address. For a stolen account: recover access, change compromised/reused passwords, revoke unknown sessions and enable multifactor authentication. Secure the email account used for password resets. Contact your bank promptly if payments or credentials may be compromised.\n\nDisconnect a suspected infected device from networks to limit spread. Preserve messages, timestamps and evidence. Avoid random cleanup tools, paying a supposed support agent, or wiping everything before considering evidence and backups. Recovery steps depend on the incident; use the provider or qualified support.\n\n## Infrastructure failure\nCyberattacks can disrupt power, water, payments, hospitals, deliveries and communications without infecting your own phone. Use the outage, water, food and household guides. Keep written contacts and some accessible cash. Do not assume an unexplained outage proves an attack.\n\n## Prepare and recover\nKeep protected offline backups and recovery codes, test restores, update devices and verify urgent messages through an independent channel. Never enter passwords or recovery codes into an unexpected message link. This app does not scan your device or determine whether infrastructure is operational."
+      },
+      "de": {
+        "title": "Cyberangriff & Digitalausfall",
+        "summary": "Ein gehacktes Gerät/Konto von einer Störung der Infrastruktur unterscheiden.",
+        "keywords": "Ransomware Phishing Konto gehackt Bank Internet Cyberangriff",
+        "body": "## Eigenes Konto oder Gerät betroffen\nAuf einem anderen vertrauenswürdigen Gerät den Anbieter über eine bekannte Adresse kontaktieren. Konto wiederherstellen, kompromittierte/mehrfach verwendete Passwörter ändern, unbekannte Sitzungen beenden und Mehrfaktoranmeldung aktivieren. Das E-Mail-Konto für Passwortzurücksetzungen absichern. Bei möglichen Zahlungs- oder Zugangsdatenverlusten umgehend die Bank kontaktieren.\n\nEin vermutlich infiziertes Gerät vom Netzwerk trennen, um Ausbreitung zu begrenzen. Nachrichten, Zeitpunkte und Beweise sichern. Keine beliebigen Bereinigungstools, angeblichen Supportzahlungen oder vorschnelle Komplettlöschung. Wiederherstellung hängt vom Vorfall ab; Anbieter oder Fachhilfe einbeziehen.\n\n## Infrastruktur ausgefallen\nAngriffe können Strom, Wasser, Zahlungen, Krankenhäuser, Lieferungen und Kommunikation stören, ohne das eigene Handy zu infizieren. Anleitungen zu Strom, Wasser, Essen und Haushaltsvorsorge nutzen. Papierkontakte und etwas verfügbares Bargeld vorhalten. Ein unbekannter Ausfall beweist keinen Angriff.\n\n## Vorsorgen und wiederherstellen\nGeschützte Offline-Backups und Wiederherstellungscodes bereithalten, Rücksicherung testen und Geräte aktualisieren. Dringende Nachrichten unabhängig überprüfen. Passwörter/Codes niemals über unerwartete Nachrichtenlinks eingeben. Die App erkennt keine Infektionen oder funktionierende Infrastruktur."
+      },
+      "sources": [
+        "https://www.bsi.bund.de/DE/IT-Sicherheitsvorfall/Buergerinnen-und-Buerger/buergerinnen-und-buerger.html?pos=4",
+        "https://www.polizei-beratung.de/medienangebot/detail/350-checkliste-gehackter-account/",
+        "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/vorsorge_node.html"
+      ],
+      "related": [
+        "communications",
+        "prepare",
+        "recovery"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "earthquake",
+      "group": "disaster",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Earthquake",
+        "summary": "Protect yourself during shaking; watch for aftershocks and damaged buildings.",
+        "keywords": "earthquake shaking tremor Erdbeben Nachbeben",
+        "body": "## During shaking\nGet down, protect your head/neck and hold onto shelter. Indoors, use a sturdy nearby table; stay away from glass and falling objects. Do not rush outside or use lifts while shaking continues. A doorway is not universal protection.\n\nOutside, stay in an open area away from buildings, trees and power lines. Driving: stop safely away from bridges, cables and structures; stay in the vehicle until shaking stops. If using a wheelchair, lock wheels where possible and protect head/neck.\n\n## Afterwards\nExpect aftershocks and repeat protection. Check injuries and leave an unsafe building cautiously when possible. Avoid damaged structures and fallen cables. If you smell gas, avoid flames and electrical switching; leave and seek help from a safe location. Do not re-enter until competent authorities say it is safe.\n\n## Trapped or near the coast\nUse a whistle or tap to signal; protect against dust. Text if service is available. After strong or prolonged coastal shaking, follow tsunami evacuation guidance toward high ground/inland without waiting for an app alert.\n\n## Prepare\nSecure heavy furniture, identify safer spots and practise with your household. Keep shoes, a torch and essential supplies accessible."
+      },
+      "de": {
+        "title": "Erdbeben",
+        "summary": "Während des Bebens schützen; Nachbeben und Gebäudeschäden beachten.",
+        "keywords": "Beben Nachbeben Erschütterung earthquake",
+        "body": "## Während des Bebens\nHinuntergehen, Kopf/Nacken schützen und am Schutz festhalten. Im Gebäude einen nahen stabilen Tisch nutzen; Abstand zu Glas und fallenden Gegenständen. Während des Bebens nicht nach draußen rennen oder Aufzüge nutzen. Türrahmen bieten keinen universellen Schutz.\n\nDraußen auf freier Fläche von Gebäuden, Bäumen und Stromleitungen fernbleiben. Im Auto sicher entfernt von Brücken, Leitungen und Bauwerken halten; bis zum Ende im Fahrzeug bleiben. Im Rollstuhl möglichst Bremsen feststellen und Kopf/Nacken schützen.\n\n## Danach\nMit Nachbeben rechnen und erneut schützen. Verletzungen prüfen; ein unsicheres Gebäude vorsichtig verlassen, sobald möglich. Beschädigte Bauwerke und Stromleitungen meiden. Bei Gasgeruch keine Flammen oder elektrischen Schalter betätigen; hinausgehen und aus sicherer Entfernung Hilfe holen. Erst nach fachlicher Freigabe zurückkehren.\n\n## Eingeschlossen oder an der Küste\nPfeife oder Klopfzeichen nutzen, vor Staub schützen; bei Netzverfügbarkeit Textnachricht senden. Nach starkem/langem Küstenbeben gemäß Tsunami-Regeln ins Landesinnere/auf höheres Gelände gehen, ohne auf eine App-Warnung zu warten.\n\n## Vorbereitung\nSchwere Möbel sichern, sichere Stellen bestimmen, gemeinsam üben. Schuhe, Lampe und Vorräte griffbereit halten."
+      },
+      "sources": [
+        "https://www.cdc.gov/earthquakes/safety/stay-safe-during-an-earthquake.html",
+        "https://www.cdc.gov/earthquakes/safety/stay-safe-after-an-earthquake.html",
+        "https://www.bbk.bund.de/DE/Themen/Risikomanagement/Baulicher-Bevoelkerungsschutz/Schutz-vor-geologischen-Gefahren/Erdbeben/erdbeben_node.html"
+      ],
+      "related": [
+        "first-aid",
+        "shelter",
+        "combined-hazards"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "fallout",
+      "group": "disaster",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Nuclear fallout & radiation",
+        "summary": "Shelter, reduce contamination, use protected supplies and seek official instructions.",
+        "keywords": "nuclear fallout radiation bomb atom radioaktiv Strahlung",
+        "body": "## Immediate protection\nAn explosion can cause blast, heat and falling debris before fallout arrives. Take immediate cover; do not look toward a flash. Once able to move safely, get inside a substantial building. Prefer a basement or central interior area away from windows and exterior walls, provided it is not threatened by collapse, fire or flooding.\n\n## Reduce exposure\nStay inside and obtain official instructions by radio or other working channels. Close windows/doors and stop systems bringing in outside air when instructed/appropriate. Do not run combustion equipment in a sealed space. There is no universal timer that proves it is safe to leave.\n\n## If contaminated outside\nRemove outer clothing carefully without shaking it, bag it and keep it away from people/pets. Gently wash exposed skin and hair with soap and water; avoid scrubbing or damaging skin. Attend to life-threatening injuries first.\n\n## Food, water and medicine\nUse protected packaged supplies. Boiling does not remove radioactive contamination. Potassium iodide protects only the thyroid against radioactive iodine, not general radiation; use only when authorities instruct, with appropriate medical guidance.\n\n## Limits\nA phone cannot measure radiation. The app has no live plume model or verified shelter locations. Leaving an immediately unsafe building may be necessary even when sheltering is otherwise advised."
+      },
+      "de": {
+        "title": "Nuklearer Fallout & Strahlung",
+        "summary": "Schutz suchen, Kontamination verringern und amtliche Informationen beachten.",
+        "keywords": "Atombombe radioaktiv Fallout Strahlung Kernunfall nuclear",
+        "body": "## Sofort schützen\nEine Explosion kann Druck, Hitze und Trümmer verursachen, bevor Fallout eintrifft. Sofort Deckung suchen; nicht in einen Lichtblitz schauen. Sobald sichere Bewegung möglich ist, in ein massives Gebäude gehen. Keller oder innenliegende Bereiche fern von Fenstern/Außenwänden bevorzugen, sofern kein Einsturz, Brand oder Hochwasser droht.\n\n## Belastung verringern\nDrinnen bleiben und amtliche Hinweise über Radio oder andere funktionierende Kanäle verfolgen. Fenster/Türen schließen und Außenluftzufuhr situationsgerecht/auf Anweisung stoppen. Keine Verbrennungsgeräte in abgedichteten Räumen betreiben. Kein allgemeiner Zeitablauf beweist, dass Verlassen sicher ist.\n\n## Nach Aufenthalt draußen\nOberkleidung vorsichtig ohne Ausschütteln ausziehen, eintüten und von Menschen/Tieren fernhalten. Freie Haut und Haare sanft mit Wasser und Seife waschen; nicht scheuern oder Haut verletzen. Lebensbedrohliche Verletzungen zuerst versorgen.\n\n## Versorgung\nGeschützt verpackte Vorräte nutzen. Abkochen entfernt keine radioaktive Belastung. Kaliumjodid schützt nur die Schilddrüse vor radioaktivem Jod, nicht allgemein vor Strahlung; nur auf behördliche Anweisung mit geeigneter medizinischer Beratung einnehmen.\n\n## Grenzen\nHandys messen keine Strahlung. Keine Live-Ausbreitungsberechnung oder geprüften Schutzräume enthalten. Ein unmittelbar gefährliches Gebäude muss gegebenenfalls trotz allgemeiner Schutzempfehlung verlassen werden."
+      },
+      "sources": [
+        "https://www.cdc.gov/radiation-emergencies/about/what-to-do.html",
+        "https://www.cdc.gov/radiation-emergencies/response/stay-inside.html",
+        "https://www.cdc.gov/radiation-emergencies/prevention/self-decontaminate.html",
+        "https://www.cdc.gov/radiation-emergencies/safety/food-drinking-water-medicine-safety.html"
+      ],
+      "related": [
+        "water",
+        "combined-hazards"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "flood",
+      "group": "disaster",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Flood & flash flooding",
+        "summary": "Move away from rising water; electricity and contaminated water are major hazards.",
+        "keywords": "flood flash flood water rising Hochwasser Sturzflut Überschwemmung",
+        "body": "## Move to safety early\nFollow evacuation instructions. If water rises quickly, reach higher safe ground; do not go down into a basement to rescue belongings. Do not walk, swim or drive through floodwater. A road may be washed out beneath it. Never bypass a road barrier.\n\n## Electricity and entrapment\nDo not touch electrical equipment or enter water that may be energised. Switch off utilities only from a safe dry place if you know how; otherwise leave it to professionals. Avoid lifts. Call for help if trapped; move upward to a place from which you can signal, avoiding a closed attic without an exit.\n\n## Water and health\nFloodwater can contain sewage, chemicals, debris and other hazards. Keep children away, protect wounds and use a verified drinking-water supply. Discard food touched by floodwater; clean containers and avoid cross-contamination.\n\n## Return cautiously\nWait for permission; structural, electrical and gas hazards may remain. Photograph damage when safe. Use appropriate protective equipment, ventilate when safe, and obtain help for significant contamination/mould. Have damaged electrical systems checked before restoring power.\n\n## Prepare\nKnow local escape routes, move essential documents and medicines above expected water levels, and plan for those needing assistance."
+      },
+      "de": {
+        "title": "Hochwasser & Sturzflut",
+        "summary": "Früh vor steigendem Wasser fliehen; Strom und Verunreinigung sind große Gefahren.",
+        "keywords": "Überflutung Flut Keller Hochwasser Sturzflut flood Überschwemmung",
+        "body": "## Früh in Sicherheit\nEvakuierungsanweisungen folgen. Bei rasch steigendem Wasser höheres sicheres Gelände erreichen; keine Gegenstände aus dem Keller retten. Nicht durch Hochwasser gehen, schwimmen oder fahren. Straßen können darunter weggespült sein. Absperrungen niemals umgehen.\n\n## Strom und Einschluss\nKeine elektrischen Geräte berühren oder möglicherweise unter Spannung stehendes Wasser betreten. Versorgung nur von einem trockenen sicheren Ort abschalten, wenn bekannt wie; sonst Fachkräften überlassen. Aufzüge meiden. Bei Einschluss Hilfe rufen und nach oben zu einer Stelle mit Signalmöglichkeit gehen; keinen geschlossenen Dachraum ohne Ausgang wählen.\n\n## Wasser und Gesundheit\nFlutwasser kann Abwasser, Chemikalien und Trümmer enthalten. Kinder fernhalten, Wunden schützen und überprüftes Trinkwasser verwenden. Von Hochwasser berührtes Essen entsorgen. Behälter sauber halten und Verschleppung vermeiden.\n\n## Vorsichtig zurückkehren\nFreigabe abwarten; Bau-, Strom- und Gasgefahren können bleiben. Schäden nur gefahrlos dokumentieren. Geeignete Schutzausrüstung nutzen, sicher lüften und bei starker Verschmutzung/Schimmel Hilfe holen. Beschädigte Elektrik vor Wiedereinschalten prüfen lassen.\n\n## Vorsorgen\nÖrtliche Fluchtwege kennen, wichtige Dokumente/Medikamente erhöht lagern und Unterstützung für Hilfsbedürftige planen."
+      },
+      "sources": [
+        "https://www.cdc.gov/floods/safety/reentering-your-flooded-home-safety.html",
+        "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Mit-Naturgefahren-umgehen/mit-naturgefahren-umgehen_node.html",
+        "https://wwwnc.cdc.gov/travel/page/natural-disasters"
+      ],
+      "related": [
+        "water-advisories",
+        "hygiene",
+        "recovery"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "pandemic",
+      "group": "disaster",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Pandemic & infectious disease",
+        "summary": "Reduce transmission and maintain care; the pathogen determines the details.",
+        "keywords": "pandemic epidemic infection virus flu mask Pandemie Infektion",
+        "body": "## Identify the type of guidance\nNot every outbreak spreads the same way. Respiratory, food/water-borne and contact-transmitted infections require different precautions. Seek current local public-health advice when communications work. This offline edition cannot identify a new pathogen or provide current treatment/vaccination rules.\n\n## Respiratory infections\nReduce close contact when ill. Improve indoor air when safe and consider a well-fitting protective mask, especially around vulnerable people. Cleaner air, hygiene and appropriate vaccination are complementary measures. Outdoor contamination, extreme weather or fallout may make opening windows unsafe: do not apply ventilation advice blindly.\n\n## Care at home\nPlan a separate space where feasible, minimise exposed caregivers, wash hands and clean commonly touched surfaces appropriately. Avoid sharing personal items. Maintain fluids and prescribed medicines; seek early professional advice for people at risk of severe illness. Never mix cleaning chemicals.\n\n## Urgent help\nSevere breathing difficulty, collapse, new confusion, severe dehydration or other rapidly worsening symptoms need urgent medical assessment; call 112 for life-threatening illness.\n\n## Continuity\nStore practical supplies and contact information, arrange support for dependants and medication needs, and verify alarming claims through reliable sources. Do not self-prescribe antibiotics or unproven treatments."
+      },
+      "de": {
+        "title": "Pandemie & Infektionskrankheit",
+        "summary": "Übertragung reduzieren und Versorgung erhalten; Details hängen vom Erreger ab.",
+        "keywords": "Epidemie Virus Grippe Maske Pandemie Infektion pandemic",
+        "body": "## Passende Hinweise wählen\nAusbrüche verbreiten sich unterschiedlich. Atemwegs-, Lebensmittel-/Wasser- und Kontaktinfektionen brauchen unterschiedliche Maßnahmen. Bei Verbindung aktuelle örtliche Gesundheitsinformationen suchen. Diese Offline-Ausgabe erkennt keinen neuen Erreger und kennt keine aktuellen Therapie-/Impfregeln.\n\n## Atemwegsinfektionen\nBei Krankheit enge Kontakte reduzieren. Raumluft verbessern, sofern sicher; besonders bei gefährdeten Personen eine gut sitzende Schutzmaske erwägen. Saubere Luft, Hygiene und passende Impfungen ergänzen sich. Außenluftbelastung, Extremwetter oder Fallout können Fensteröffnen gefährlich machen: Lüftungsregeln nicht blind anwenden.\n\n## Zu Hause versorgen\nWenn möglich getrennten Bereich planen, Zahl exponierter Pflegender begrenzen, Hände waschen und häufig berührte Flächen passend reinigen. Persönliche Gegenstände nicht teilen. Flüssigkeit und verordnete Medikamente sichern; bei erhöhtem Risiko früh ärztlichen Rat suchen. Reinigungsmittel niemals mischen.\n\n## Dringend Hilfe\nSchwere Atemnot, Kollaps, neue Verwirrtheit, starke Austrocknung oder rasche Verschlechterung benötigen dringend medizinische Beurteilung; bei Lebensgefahr 112.\n\n## Versorgung erhalten\nPraktische Vorräte und Kontakte bereithalten; Unterstützung für Angehörige und Medikamente planen. Alarmmeldungen zuverlässig gegenprüfen. Keine selbst verordneten Antibiotika oder unbelegten Therapien."
+      },
+      "sources": [
+        "https://www.cdc.gov/respiratory-viruses/prevention/index.html",
+        "https://www.cdc.gov/respiratory-viruses/prevention/precautions-when-sick.html",
+        "https://www.cdc.gov/respiratory-viruses/prevention/masks.html",
+        "https://www.who.int/emergencies/operations/ipc-wash"
+      ],
+      "related": [
+        "hygiene",
+        "combined-hazards",
+        "accessibility"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "group": "essentials",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Food safety",
+        "summary": "No-cook supplies, refrigeration failures and contamination.",
+        "keywords": "food fridge freezer eating canned Lebensmittel Kühlschrank Essen",
+        "body": "## Before trouble\nChoose shelf-stable foods you actually eat, including no-cook options and a manual can opener. Account for allergies, infants and medical diets. Rotate supplies and keep clean drinking water for preparation.\n\n## During an outage\nKeep cold appliances closed and use a thermometer. Without power, an unopened refrigerator generally keeps food cold for about **4 hours**; a full freezer about **48 hours**, or **24 hours** if half full. These estimates depend on conditions and door opening. Use current food-safety guidance and temperature history when deciding what to keep.\n\n## Do not taste-test\nSmell or appearance cannot establish safety. Discard unsafe perishables and food touched by floodwater. Do not use damaged, swollen or leaking containers. Wipe contamination off protected packaging before opening it when advised; food from a garden after fallout needs official clearance.\n\n## Cooking\nNever improvise indoor use of an outdoor combustion appliance. Use a verified safe cooking method or foods needing no heat. Keep raw and ready-to-eat foods separate. If electricity returns, do not assume it makes previously spoiled food safe."
+      },
+      "de": {
+        "title": "Lebensmittelsicherheit",
+        "summary": "Essen ohne Kochen, Kühlungsausfall und Verunreinigung.",
+        "keywords": "Essen Kühltruhe Kühlschrank Vorrat Lebensmittel food",
+        "body": "## Vorher\nHaltbare Lebensmittel wählen, die tatsächlich gegessen werden; auch ohne Kochen essbare Produkte und Hand-Dosenöffner. Allergien, Säuglinge und medizinische Ernährung berücksichtigen. Vorräte rotieren und Trinkwasser zur Zubereitung vorhalten.\n\n## Bei Stromausfall\nKühlgeräte geschlossen halten und Thermometer nutzen. Ungeöffnet bleibt ein Kühlschrank meist etwa **4 Stunden** kalt, eine volle Gefriertruhe etwa **48 Stunden**, halbvoll etwa **24 Stunden**. Bedingungen und Türöffnung verändern dies. Temperaturverlauf und aktuelle Lebensmittelregeln berücksichtigen.\n\n## Nicht probieren\nGeruch oder Aussehen beweisen keine Sicherheit. Unsichere verderbliche Lebensmittel und von Hochwasser berührtes Essen entsorgen. Beschädigte, aufgeblähte oder undichte Verpackungen nicht nutzen. Bei entsprechenden Hinweisen geschützte Verpackungen vor Öffnung reinigen. Gartenernte nach Fallout braucht amtliche Freigabe.\n\n## Zubereitung\nKeine improvisierte Innenraumnutzung von Outdoor-Verbrennungsgeräten. Geprüfte sichere Methode oder Essen ohne Erhitzen verwenden. Rohes und verzehrfertiges Essen trennen. Wiederkehrender Strom macht verdorbenes Essen nicht sicher."
+      },
+      "sources": [
+        "https://www.cdc.gov/food-safety/foods/keep-food-safe-after-emergency.html",
+        "https://www.cdc.gov/floods/safety/reentering-your-flooded-home-safety.html",
+        "https://www.cdc.gov/radiation-emergencies/safety/food-drinking-water-medicine-safety.html"
+      ],
+      "related": [
+        "water",
+        "power"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "hygiene",
+      "group": "essentials",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Hygiene & sanitation",
+        "summary": "Handwashing, waste and toilets when water or sewage systems fail.",
+        "keywords": "toilet sewage waste hygiene hand wash Toilette Abwasser Hygiene",
+        "body": "## Keep clean and dirty separate\nProtect drinking-water containers and food preparation areas. Wash hands using safe water and soap, especially after toilet use and before handling food. Alcohol hand sanitiser is a fallback where suitable, but is less effective for some pathogens and visibly dirty hands.\n\n## If toilets or sewers fail\nStop flushing when the system is not functioning or authorities advise against it. Prepare a stable temporary toilet with appropriate liners and absorbent material; keep waste securely contained away from food, water and children. Follow local waste-collection instructions. Do not empty human waste into streams or storm drains.\n\n## Limited water\nPrioritise drinking, essential food preparation and hygiene. Use a controlled-flow container for handwashing and collect wastewater safely. Include menstrual products, nappies, rubbish bags and gloves in supplies. Clean high-touch surfaces appropriately without mixing products.\n\n## Illness and floodwater\nProtect wounds and avoid unnecessary contact with contaminated water. Persistent vomiting/diarrhoea, inability to keep fluids down or signs of dehydration need medical advice, urgently for severe symptoms or vulnerable people. Sanitation needs change with the outbreak and setting; seek local public-health guidance."
+      },
+      "de": {
+        "title": "Hygiene & Abwasser",
+        "summary": "Hände, Abfall und Toiletten bei Ausfall von Wasser oder Kanalisation.",
+        "keywords": "Toilette Abwasser Abfall Hände waschen Hygiene sanitation",
+        "body": "## Sauber und verschmutzt trennen\nTrinkwasserbehälter und Küchenflächen schützen. Hände mit sicherem Wasser und Seife waschen, besonders nach Toilettennutzung und vor Essen. Geeignetes Händedesinfektionsmittel ist eine Ausweichmöglichkeit, wirkt aber gegen manche Erreger und auf sichtbar schmutzigen Händen schlechter.\n\n## Toilette/Kanalisation ausgefallen\nBei Funktionsausfall oder entsprechender Anweisung nicht weiter spülen. Stabile Nottoilette mit passenden Beuteln und saugendem Material vorbereiten; Abfälle sicher von Essen, Wasser und Kindern getrennt aufbewahren. Örtliche Entsorgungshinweise beachten. Keine Fäkalien in Bäche oder Regenwasserabläufe geben.\n\n## Wenig Wasser\nTrinken, notwendige Zubereitung und Hygiene priorisieren. Behälter mit kontrolliertem Auslauf zum Händewaschen nutzen; Abwasser sicher auffangen. Menstruationsprodukte, Windeln, Müllbeutel und Handschuhe bevorraten. Häufig berührte Flächen passend reinigen, keine Produkte mischen.\n\n## Krankheit und Hochwasser\nWunden schützen und Kontakt mit belastetem Wasser vermeiden. Anhaltendes Erbrechen/Durchfall, fehlende Flüssigkeitsaufnahme oder Austrocknung medizinisch abklären; bei schweren Beschwerden und gefährdeten Personen dringend. Maßnahmen hängen von Erreger und Umgebung ab."
+      },
+      "sources": [
+        "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Hygiene/hygiene.html",
+        "https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/environmental-health-in-emergencies/technical-notes-on-wash-in-emergencies"
+      ],
+      "related": [
+        "water-advisories",
+        "flood"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "shelter",
+      "group": "essentials",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Shelter, cold & heat",
+        "summary": "A safe building matters more than staying put at any cost.",
+        "keywords": "shelter hypothermia heat cold evacuation Schutz Kälte Hitze",
+        "body": "## Choose safety for the actual hazard\nSheltering may reduce radiation exposure, but rising water, fire, structural damage or dangerous indoor temperature may require leaving. Know two exits and a household meeting point. Avoid lifts after damage or power failure.\n\n## Cold without heating\nUse dry layered clothing, hats, blankets and an insulated sleeping surface. Stay together in a suitable room while maintaining safe ventilation. Do not use an oven, grill or outdoor stove for indoor heat. Confusion, severe drowsiness or impaired coordination in the cold may indicate serious hypothermia; seek urgent help and warm gently.\n\n## Heat\nReduce exertion, use a cooler safe location and drink appropriate fluids. Check older adults and people with medical vulnerabilities. Confusion, collapse or severe illness in heat is an emergency: call 112 and begin cooling while following instructions.\n\n## Evacuating\nTake essentials only when doing so does not delay escape: medicines, water, documents, phone, torch and appropriate clothing. Plan help for mobility limitations, children and pets. A map marker is not proof that a shelter is open or a route is safe."
+      },
+      "de": {
+        "title": "Schutz, Kälte & Hitze",
+        "summary": "Ein sicherer Ort ist wichtiger als unter allen Umständen zu bleiben.",
+        "keywords": "Unterkunft Evakuierung Unterkühlung Schutz Kälte Hitze shelter",
+        "body": "## Zur Gefahr passenden Schutz wählen\nDrinnenbleiben kann Strahlung reduzieren; steigendes Wasser, Feuer, Bauschäden oder gefährliche Temperaturen können Weggehen erfordern. Zwei Ausgänge und gemeinsamen Treffpunkt kennen. Nach Schäden/Stromausfall Aufzüge meiden.\n\n## Kälte ohne Heizung\nTrockene Kleidung in Schichten, Mütze, Decken und isolierende Schlafunterlage verwenden. In geeignetem Raum zusammenbleiben, sichere Lüftung erhalten. Kein Backofen, Grill oder Outdoor-Kocher als Innenraumheizung. Verwirrtheit, starke Schläfrigkeit und Koordinationsstörungen können ernste Unterkühlung anzeigen; dringend Hilfe holen und schonend wärmen.\n\n## Hitze\nAnstrengung reduzieren, kühleren sicheren Ort aufsuchen und passend trinken. Ältere und gesundheitlich gefährdete Menschen kontrollieren. Verwirrtheit, Kollaps oder schwere Krankheit bei Hitze sind Notfälle: 112 und gemäß Anleitung kühlen.\n\n## Evakuieren\nNur ohne Fluchtverzögerung Wesentliches mitnehmen: Medikamente, Wasser, Dokumente, Handy, Lampe, passende Kleidung. Mobilitätseinschränkungen, Kinder und Tiere einplanen. Ein Kartensymbol beweist weder geöffnete Unterkunft noch sichere Strecke."
+      },
+      "sources": [
+        "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/vorsorge_node.html",
+        "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html"
+      ],
+      "related": [
+        "combined-hazards",
+        "prepare"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "prepare",
+      "group": "essentials",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Prepare your household",
+        "summary": "Supplies, medicines, dependants and a plan you can use without a phone.",
+        "keywords": "prepare kit checklist supplies Vorrat Vorsorge Notgepäck",
+        "body": "## Build practical reserves\nAim toward the BBK household recommendation of **10 days**; even **3 days** is a useful start. Its drinking/cooking-water starting point is **2 L per person per day**, including 0.5 L for cooking. This is not total water for every need: add hygiene, heat, exertion, illness and pets.\n\n## Essential categories\nStore suitable food, required medicines and prescription details, a first-aid kit, torch/batteries, charged power banks, battery radio, warm layers, hygiene supplies and accessible cash. Rotate supplies and respect storage requirements. Discuss medicine continuity and powered medical equipment with your care provider before an outage.\n\n## Make the plan\nWrite contacts and a meeting point on paper. Agree how to assist dependants and neighbours and where to go if home is unsafe. Keep key documents accessible and backed up securely. Prepare a manageable evacuation bag.\n\n## Test it\nOpen the app in airplane mode with Wi-Fi off, then restart it. Check every guide and practise finding first aid and water. Keep printed information: no app works when its device has no power. The household screen stores a simple checklist and notes locally."
+      },
+      "de": {
+        "title": "Haushalt vorbereiten",
+        "summary": "Vorräte, Medikamente, Angehörige und ein Plan ohne Handy.",
+        "keywords": "Notvorrat Checkliste Vorsorge Notgepäck Vorbereitung prepare",
+        "body": "## Sinnvolle Vorräte\nMöglichst **10 Tage** gemäß BBK anstreben; schon **3 Tage** helfen. Ausgangspunkt für Trinken/Kochen: **2 L pro Person und Tag**, davon 0,5 L zum Kochen. Kein Gesamtbedarf für alle Zwecke: Hygiene, Hitze, Anstrengung, Krankheit und Tiere zusätzlich einplanen.\n\n## Wesentliche Bereiche\nPassendes Essen, nötige Medikamente und Verordnungsdetails, Verbandkasten, Taschenlampe/Batterien, geladene Powerbanks, Batterieradio, warme Kleidung, Hygieneartikel und verfügbares Bargeld lagern. Vorräte rotieren, Lagerbedingungen beachten. Medikamentenversorgung und stromabhängige Medizingeräte vorher mit Behandelnden planen.\n\n## Plan festhalten\nKontakte und Treffpunkt auf Papier notieren. Hilfe für Angehörige/Nachbarn und Ausweichort vereinbaren. Wichtige Dokumente zugänglich halten und geschützt sichern. Tragbares Notgepäck vorbereiten.\n\n## Ausprobieren\nApp im Flugmodus mit ausgeschaltetem WLAN öffnen und neu starten. Jede Anleitung und das Finden von Erster Hilfe/Wasser testen. Papierkopien vorhalten: Ohne Geräteakku funktioniert keine App. Der Haushaltsbereich speichert einfache Checkliste und Notizen lokal."
+      },
+      "sources": [
+        "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/Buergerinformationen/Ratgeber/BBK-Vorsorgen-fuer-Krisen-und-Katastrophen.pdf?__blob=publicationFile&v=42"
+      ],
+      "related": [
+        "accessibility",
+        "pets",
+        "communications",
+        "recovery"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "communications",
+      "group": "essentials",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Communication & getting help",
+        "summary": "Emergency numbers, radio, meeting plans and battery conservation.",
+        "keywords": "radio emergency call phone 112 contact Funk Notruf Kommunikation",
+        "body": "## Immediate help in Germany\n**112**: fire/rescue and life-threatening medical emergencies. **110**: police emergencies. **116117**: urgent non-life-threatening medical advice when normal services are unavailable. Do not use emergency numbers just to ask why power is out. Outside Germany, confirm the local numbers in advance.\n\n## When networks fail\nTry another available phone/network, but do not assume a failed call proves every network is down. Use official radio broadcasts and known local assistance points when safe. Agree on an out-of-area contact and meeting places before trouble. Written addresses and paper maps do not need batteries.\n\n## Preserve power\nDim the screen, reduce nonessential use and keep a charged power bank. Airplane mode saves searching for a missing signal but prevents normal calls/messages and alerts; deliberately check connectivity when needed. Check on vulnerable neighbours safely.\n\n## Verify information\nUse official warnings and more than one reliable channel. Cached information may be stale. This app provides no live warnings, emergency messaging or verified shelter directory. The 112 button opens the phone dialler; it does not place a call automatically or guarantee service."
+      },
+      "de": {
+        "title": "Kommunikation & Hilfe",
+        "summary": "Notruf, Radio, Treffpunkte und Akkuschonung.",
+        "keywords": "Radio Handy Telefon Notruf Kontakt Kommunikation 112",
+        "body": "## Schnelle Hilfe in Deutschland\n**112**: Feuerwehr/Rettungsdienst und lebensbedrohliche medizinische Notfälle. **110**: Polizeinotfälle. **116117**: dringende, nicht lebensbedrohliche medizinische Hilfe außerhalb normaler Versorgung. Notrufnummern nicht für Fragen zum Stromausfall nutzen. Im Ausland vorher örtliche Nummern prüfen.\n\n## Bei Netzausfall\nAnderes verfügbares Telefon/Netz versuchen; ein fehlgeschlagener Anruf beweist keinen vollständigen Ausfall. Amtliches Radio und bekannte örtliche Anlaufstellen nutzen, wenn gefahrlos. Vorher Kontakt außerhalb der Region und Treffpunkte vereinbaren. Papieradressen und Karten brauchen keinen Akku.\n\n## Strom sparen\nDisplay dimmen, unnötige Nutzung reduzieren und Powerbank laden. Flugmodus spart Netzsuche, verhindert aber normale Anrufe/Nachrichten und Warnungen; Verbindung bei Bedarf gezielt prüfen. Hilfsbedürftige Nachbarn sicher unterstützen.\n\n## Angaben prüfen\nAmtliche Warnungen und mehrere zuverlässige Kanäle nutzen. Gespeicherte Hinweise können veraltet sein. Die App bietet keine Live-Warnung, Notfallnachrichten oder geprüfte Schutzraumliste. Der 112-Knopf öffnet nur das Wählfeld; er ruft nicht automatisch an und garantiert keine Verbindung."
+      },
+      "sources": [
+        "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/In-der-Krise-informiert-sein/Warnungen-erhalten-verstehen/warnungen-erhalten-und-verstehen_node.html",
+        "https://www.116117.de/de/index.php"
+      ],
+      "related": [
+        "prepare",
+        "cyber"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "about",
+      "group": "about",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "About, sources & known gaps",
+        "summary": "What this preview does, what remains to be reviewed, and how to report problems.",
+        "keywords": "about licence source review gaps license Quellen Lücken",
+        "body": "## Free and open source\nOpen Emergency Handbook is a fork of ligi/SurvivalManual, under GPLv3. New summaries and translations are provided under the repository licence. Source organisations retain rights to their own publications and do not endorse this app. No agency logos or illustrations have been copied.\n\n## Preview status\nAll included summaries are **drafts without professional review**. English and German are bundled. Search, reading, the checklist and notes work without an account or internet. No advertising, subscription or tracking service is included.\n\n## Known gaps\nThis is not the complete survival library yet. Dedicated medical, accessibility, pets, combined-hazard and recovery drafts are included. Still missing: qualified medical/technical/translation review, reviewed diagrams, detailed fractures/head-injury/temperature-illness protocols, oral rehydration and broader scenario depth. No offline app can supply current evacuation orders, open shelters, radiation measurements, pathogen identification or current medical treatment rules.\n\n## Privacy and testing\nNotes and checklist stay in app-private storage unless you explicitly export an unencrypted text plan; Android backup is disabled. Choose local storage for offline export. Device security still matters. Clearing household data/uninstalling removes the in-app plan, not exported copies. Test offline mode and large text, search for your needs, and report missing or confusing steps.\n\n## Project\nhttps://github.com/hoyleb/OpenEmergencyHandbook\n\nUse the repository pull request/discussion for feedback. Never post personal medical details, passwords or recovery codes publicly. Keep a printed handbook and official alerts as complementary resources."
+      },
+      "de": {
+        "title": "Über die App, Quellen & Lücken",
+        "summary": "Was der Entwurf kann, was ungeprüft ist und wie Probleme gemeldet werden.",
+        "keywords": "Lizenz Quelle Prüfung Lücken Datenschutz about",
+        "body": "## Kostenlos und quelloffen\nOpen Emergency Handbook ist ein GPLv3-Fork von ligi/SurvivalManual. Neue Zusammenfassungen und Übersetzungen stehen unter der Repository-Lizenz. Quellenorganisationen behalten ihre Veröffentlichungsrechte und unterstützen die App nicht offiziell. Keine Behördenlogos oder Abbildungen wurden kopiert.\n\n## Entwicklungsstand\nAlle Zusammenfassungen sind **Entwürfe ohne fachliche Prüfung**. Englisch und Deutsch sind enthalten. Suche, Lesen, Checkliste und Notizen funktionieren ohne Konto/Internet. Keine Werbung, Abos oder Trackingdienste enthalten.\n\n## Bekannte Lücken\nNoch keine vollständige Überlebensbibliothek. Medizinische Entwürfe sowie Seiten zu Barrierefreiheit, Tieren, Mehrfachgefahren und Rückkehr sind enthalten. Weiter offen: Fach-/Übersetzungsprüfung, geprüfte Abbildungen, detaillierte Fraktur-/Kopfverletzungs-/Temperaturprotokolle, orale Rehydratation und vertiefte Szenarien. Keine Offline-App liefert aktuelle Evakuierungsbefehle, offene Schutzräume, Strahlungsmessung, Erregerbestimmung oder aktuelle Therapieregeln.\n\n## Datenschutz und Test\nNotizen/Checkliste liegen im privaten App-Speicher, außer beim ausdrücklich gewählten Export als unverschlüsselte Textdatei; Android-Backup ist deaktiviert. Für Offline-Export lokalen Speicher wählen. Gerätesicherheit bleibt wichtig. Haushaltsdaten löschen/Deinstallation entfernt den App-Plan, nicht exportierte Kopien. Offline-Modus, große Schrift und Suche testen; fehlende oder unklare Schritte melden.\n\n## Projekt\nhttps://github.com/hoyleb/OpenEmergencyHandbook\n\nFeedback im Pull Request/Projekt abgeben. Keine persönlichen Gesundheitsdaten, Passwörter oder Wiederherstellungscodes öffentlich posten. Papierhandbuch und amtliche Warnungen ergänzend bereithalten."
+      },
+      "sources": [
+        "https://github.com/hoyleb/OpenEmergencyHandbook",
+        "https://github.com/ligi/SurvivalManual/blob/master/COPYING"
+      ],
+      "related": [
+        "prepare"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "adult-choking",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Choking: adults",
+        "summary": "Effective cough: encourage coughing. Unable to breathe or speak: act immediately.",
+        "keywords": "choking choke obstruction airway Heimlich strangling",
+        "body": "## Coughing or silent obstruction?\nIf the person coughs effectively, encourage coughing and stay nearby. If they cannot speak, breathe or cough effectively, call **112** on speakerphone or send a helper.\n\n## While conscious\nLean them forward, support their chest and give up to **5 sharp blows between the shoulder blades**, checking after each. If unsuccessful, stand behind them, place a fist between navel and breastbone, grasp it and pull sharply inward/upward up to **5 times**. Alternate these sets until cleared. Stop as soon as the obstruction clears.\n\n## Important exceptions\nFor pregnancy or when you cannot encircle the abdomen, use chest thrusts instead and follow the dispatcher. Never sweep blindly inside the mouth.\n\n## If they collapse\nLower them safely; if unresponsive and not breathing normally, start adult CPR/AED. Have medical assessment after abdominal/chest thrusts or if coughing, pain or swallowing difficulty persists."
+      },
+      "de": {
+        "title": "Verschlucken: Erwachsene",
+        "summary": "Wirksam husten lassen. Bei fehlender Atmung oder Sprache sofort handeln.",
+        "keywords": "Verschlucken Ersticken Fremdkörper Atemweg Heimlich",
+        "body": "## Husten oder stummer Verschluss?\nBei wirksamem Husten zum Weiterhusten ermuntern und dabeibleiben. Bei fehlender Sprache, Atmung oder wirksamem Husten **112** über Lautsprecher rufen oder jemanden beauftragen.\n\n## Bei Bewusstsein\nNach vorn beugen, Brustkorb stützen und bis zu **5 kräftige Schläge zwischen die Schulterblätter** geben. Nach jedem prüfen. Ohne Erfolg: von hinten eine Faust zwischen Nabel und Brustbein platzieren, umfassen und bis zu **5-mal kräftig nach innen/oben ziehen**. Beide Serien abwechseln, bis der Atemweg frei ist. Bei Erfolg sofort aufhören.\n\n## Wichtige Ausnahmen\nBei Schwangerschaft oder wenn der Bauch nicht umfasst werden kann, stattdessen Brustkorbstöße geben und der Leitstelle folgen. Niemals blind im Mund suchen.\n\n## Bei Kollaps\nSicher ablegen; bei Bewusstlosigkeit ohne normale Atmung Erwachsenen-Wiederbelebung/AED beginnen. Nach Bauch-/Brustkorbstößen oder bei weiterem Husten, Schmerz oder Schluckproblemen ärztlich untersuchen lassen."
+      },
+      "sources": [
+        "https://www.sja.org.uk/first-aid-advice/choking/",
+        "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/first-aid-guidelines"
+      ],
+      "related": [
+        "adult-cpr",
+        "child-choking"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "child-choking",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Choking: babies & children",
+        "summary": "Infants need chest thrusts, not abdominal thrusts.",
+        "keywords": "baby infant child choking airway obstruction",
+        "body": "## Act immediately\nAn effective loud cough: let them cough and watch closely. If unable to breathe, cry or cough effectively, call **112**/send a helper and begin treatment. Remove only an easily reached, clearly visible object; never sweep blindly.\n\n## Baby under 1 year\nSupport head/neck, lay face down along your forearm resting on your thigh, head lower than chest. Give up to **5 back blows**, checking between blows. If not cleared, turn face up on your lap. Encircle the chest with both hands, thumbs on the lower half of the breastbone; give up to **5 sharp chest thrusts**. Alternate sets until cleared. **No abdominal thrusts in infants.**\n\n## Child from 1 year\nLean forward; give up to **5 back blows**. If unsuccessful, give up to **5 abdominal thrusts** as on the adult page, adapted to size. Alternate sets; stop when cleared.\n\n## Unresponsive or after relief\nStart child/infant CPR with five initial breaths if unresponsive and not breathing normally. After chest/abdominal thrusts, or persistent symptoms, obtain urgent medical assessment."
+      },
+      "de": {
+        "title": "Verschlucken: Säuglinge & Kinder",
+        "summary": "Säuglinge brauchen Brustkorbstöße, keine Bauchstöße.",
+        "keywords": "Baby Säugling Kind Verschlucken Ersticken Fremdkörper Atemweg",
+        "body": "## Sofort handeln\nBei lautem, wirksamem Husten husten lassen und beobachten. Ohne wirksames Husten, Atmen oder Schreien **112** rufen/jemanden schicken und handeln. Nur einen gut erreichbaren, klar sichtbaren Gegenstand entfernen; nie blind im Mund suchen.\n\n## Säugling unter 1 Jahr\nKopf/Hals stützen, bäuchlings auf den Unterarm über dem Oberschenkel legen, Kopf tiefer als Brust. Bis zu **5 Rückenschläge**, nach jedem prüfen. Ohne Erfolg auf dem Schoß auf den Rücken drehen. Brustkorb mit beiden Händen umfassen, Daumen auf die untere Brustbeinhälfte legen; bis zu **5 kräftige Brustkorbstöße** geben. Serien abwechseln, bis der Atemweg frei ist. **Keine Bauchstöße bei Säuglingen.**\n\n## Kind ab 1 Jahr\nNach vorn beugen; bis zu **5 Rückenschläge** geben. Ohne Erfolg bis zu **5 Bauchstöße** wie auf der Erwachsenenseite, der Größe angepasst. Serien abwechseln; bei Erfolg stoppen.\n\n## Bewusstlos oder nach Befreiung\nBei Bewusstlosigkeit ohne normale Atmung Kinder-/Säuglings-Wiederbelebung mit fünf anfänglichen Beatmungen beginnen. Nach Brustkorb-/Bauchstößen oder anhaltenden Beschwerden dringend ärztlich untersuchen lassen."
+      },
+      "sources": [
+        "https://www.sja.org.uk/first-aid-advice/baby-choking/",
+        "https://www.nhs.uk/baby/first-aid-and-safety/first-aid/how-to-stop-a-child-from-choking/",
+        "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/paediatric-basic-life-support-guidelines"
+      ],
+      "related": [
+        "child-cpr",
+        "adult-choking"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "child-cpr",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "CPR: babies & children",
+        "summary": "Unresponsive and not breathing normally: 112, five initial breaths, CPR.",
+        "keywords": "baby infant child resuscitation CPR AED breathing",
+        "body": "## Check and call\nEnsure safety. If unresponsive, call **112** on speakerphone/send a helper. Open the airway and check breathing for no longer than **10 seconds**. Gasping is not normal. This is not a newborn-at-birth protocol.\n\n## Breaths and compressions\nIf not breathing normally, give **5 initial rescue breaths**, each about 1 second, enough for visible chest rise. Infant: head nearly neutral, seal over mouth and nose. Older child: tilt head/lift chin, pinch nose, seal over mouth. If no rise, reposition; do not repeatedly delay compressions.\n\nCompress the lower half of the breastbone at **100–120/min**, at least one third of chest depth, never beyond 6 cm; adolescents: 5–6 cm. Allow full recoil. Infant: encircle chest with fingers supporting the back and press with both thumbs. Older child: one or two hands according to size. Continue **30 compressions:2 breaths**; those specifically trained in paediatric basic life support use **15:2**. If breaths are impossible, give compressions.\n\n## AED and help\nUse an AED promptly, follow its instructions; select child mode if indicated. Do not let pads touch; follow its placement diagram. Continue until normal breathing/signs of life, professionals take over or danger/exhaustion prevents you. Alone without a phone: give about 1 minute of CPR before seeking help."
+      },
+      "de": {
+        "title": "Wiederbelebung: Säuglinge & Kinder",
+        "summary": "Bewusstlos ohne normale Atmung: 112, fünf Beatmungen, Wiederbelebung.",
+        "keywords": "Baby Kind Säugling Wiederbelebung Reanimation Beatmung AED",
+        "body": "## Prüfen und rufen\nSicherheit prüfen. Bei Bewusstlosigkeit **112** über Lautsprecher rufen/jemanden beauftragen. Atemweg öffnen, Atmung höchstens **10 Sekunden** prüfen. Schnappatmung ist nicht normal. Dies gilt nicht für die Versorgung direkt nach der Geburt.\n\n## Beatmen und drücken\nOhne normale Atmung **5 anfängliche Beatmungen**, jeweils etwa 1 Sekunde bis sich die Brust sichtbar hebt. Säugling: Kopf nahezu neutral, Mund und Nase umschließen. Größeres Kind: Kopf neigen/Kinn heben, Nase zuhalten, Mund umschließen. Hebt sich die Brust nicht, Position verbessern; Herzdruckmassage nicht wiederholt verzögern.\n\nUntere Brustbeinhälfte mit **100–120/min** mindestens ein Drittel der Brustkorbtiefe eindrücken, nie über 6 cm; Jugendliche: 5–6 cm. Vollständig entlasten. Säugling: Brustkorb umfassen, Rücken mit Fingern stützen und mit beiden Daumen drücken. Größeres Kind: je nach Größe eine oder zwei Hände. **30-mal drücken:2-mal beatmen**; speziell in Kinder-Basisreanimation Geschulte nutzen **15:2**. Ist Beatmen unmöglich, drücken.\n\n## AED und Hilfe\nAED früh einsetzen, Anweisungen befolgen; bei entsprechender Anzeige Kindermodus wählen. Elektroden dürfen sich nicht berühren; Platzierungsbild beachten. Bis zu normaler Atmung/Lebenszeichen, Übernahme durch Fachkräfte oder Gefahr/Erschöpfung fortsetzen. Allein ohne Telefon: vor der Hilfesuche etwa 1 Minute wiederbeleben."
+      },
+      "sources": [
+        "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/paediatric-basic-life-support-guidelines",
+        "https://www.sja.org.uk/first-aid-advice/child-cpr/",
+        "https://www.sja.org.uk/first-aid-advice/baby-cpr/"
+      ],
+      "related": [
+        "child-choking",
+        "adult-cpr",
+        "first-aid"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "bleeding",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Bleeding & wound care",
+        "summary": "Firm direct pressure first; uncontrolled bleeding needs 112.",
+        "keywords": "bleeding wound cut blood tourniquet dressing injury",
+        "body": "## Major bleeding\nCall **112**. Use gloves if available; press firmly on the wound with a dressing/clean cloth and keep pressure on. Do not remove embedded objects; press around them. Keep the person warm and monitor breathing. Do not give food or drink during a serious injury.\n\n## Limb bleeding that will not stop\nFor life-threatening limb bleeding uncontrolled by pressure, a commercial tourniquet may be necessary. Follow training, device instructions and dispatcher advice; note the time and leave it visible. Do not loosen it. Do not put a limb tourniquet around the neck or trunk. Improvised devices can fail.\n\n## Small wounds only\nAfter bleeding stops, rinse a minor wound with safe clean water, clean surrounding skin and apply a sterile dressing. Change when wet/dirty. Deep, gaping, puncture or bite wounds, retained material, numbness or impaired movement need medical assessment. Increasing redness, swelling, pus or fever may mean infection. Check tetanus protection with a clinician, especially after contaminated wounds."
+      },
+      "de": {
+        "title": "Blutungen & Wundversorgung",
+        "summary": "Direkt und fest drücken; unstillbare Blutung braucht 112.",
+        "keywords": "Blutung Blut Wunde Schnitt Verletzung Tourniquet Verband",
+        "body": "## Starke Blutung\n**112** rufen. Wenn vorhanden Handschuhe nutzen; mit Verband/sauberem Tuch fest auf die Wunde drücken und Druck halten. Eingedrungene Gegenstände nicht entfernen; darum herum drücken. Warmhalten und Atmung beobachten. Bei schwerer Verletzung nichts essen/trinken lassen.\n\n## Unstillbare Blutung an Arm oder Bein\nBei lebensbedrohlicher, durch Druck nicht beherrschbarer Extremitätenblutung kann ein kommerzielles Tourniquet nötig sein. Schulung, Produktanweisung und Leitstelle beachten; Uhrzeit notieren und sichtbar lassen. Nicht lockern. Ein Extremitäten-Tourniquet gehört nicht um Hals oder Rumpf. Improvisierte Hilfsmittel können versagen.\n\n## Nur kleine Wunden\nNach Blutstillung eine kleine Wunde mit sauberem, sicherem Wasser spülen, Umgebung reinigen und steril abdecken. Nassen/schmutzigen Verband wechseln. Tiefe, klaffende, Stich- und Bisswunden, Fremdkörper, Taubheit oder Bewegungseinschränkung ärztlich beurteilen lassen. Zunehmende Rötung, Schwellung, Eiter oder Fieber können Infektion bedeuten. Besonders nach verschmutzten Wunden Tetanusschutz ärztlich klären."
+      },
+      "sources": [
+        "https://www.sja.org.uk/first-aid-advice/severe-bleeding/",
+        "https://www.nhs.uk/conditions/cuts-and-grazes/",
+        "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/first-aid-guidelines"
+      ],
+      "related": [
+        "first-aid",
+        "burns"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "burns",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Burns & scalds",
+        "summary": "Cool thermal burns; protect the rest of the person from chilling.",
+        "keywords": "burn burns scald fire hot chemical electrical",
+        "body": "## Thermal burn\nStop the heat source safely. Cool the affected area under cool running water for **20 minutes**. Remove nearby jewellery/clothing unless stuck. Keep the rest of the person warm, especially children. Once cooled, cover loosely with a clean non-stick dressing or lay clean cling film over it; never wrap tightly around a limb or put film on the face.\n\n## Avoid\nNo ice, butter, oil or creams on a fresh burn. Do not pop blisters or pull off stuck fabric.\n\n## Escalate\nCall **112** for breathing problems, collapse or severe burns. Large/deep burns, electrical/chemical burns, and burns affecting the face/genitals need urgent assessment. Seek advice early for children or uncertainty.\n\n## Chemical and electrical hazards\nDo not touch someone still connected to electricity. Avoid exposing yourself to chemicals; remove contaminated clothing when safe, brush off dry powder before irrigating, and follow emergency/product instructions. Do not try to neutralise a chemical with another chemical."
+      },
+      "de": {
+        "title": "Verbrennungen & Verbrühungen",
+        "summary": "Hitzeverbrennungen kühlen; übrigen Körper vor Auskühlung schützen.",
+        "keywords": "Verbrennung Verbrühung Feuer Hitze Chemikalie Strom",
+        "body": "## Hitzeverbrennung\nHitzequelle sicher stoppen. Betroffene Stelle **20 Minuten** unter kühlem fließendem Wasser kühlen. Nahe Kleidung/Schmuck entfernen, soweit nicht festgeklebt. Übrigen Körper warmhalten, besonders Kinder. Danach locker mit sauberer, nicht haftender Auflage abdecken oder saubere Frischhaltefolie auflegen; nie eng um Gliedmaßen wickeln oder aufs Gesicht legen.\n\n## Vermeiden\nKein Eis, Butter, Öl oder Creme auf frische Verbrennungen. Blasen nicht öffnen, festgeklebten Stoff nicht abziehen.\n\n## Hilfe holen\nBei Atemproblemen, Kollaps oder schweren Verbrennungen **112**. Große/tiefe, elektrische/chemische Verletzungen sowie Verbrennungen an Gesicht/Genitalien dringend beurteilen lassen. Bei Kindern oder Unsicherheit früh Rat einholen.\n\n## Chemikalien und Strom\nNiemanden berühren, der noch mit Strom verbunden ist. Eigenen Chemikalienkontakt vermeiden; belastete Kleidung sicher entfernen, trockenes Pulver vor dem Spülen abbürsten und Notfall-/Produktanweisung beachten. Nicht mit einer anderen Chemikalie neutralisieren."
+      },
+      "sources": [
+        "https://www.nhs.uk/conditions/burns-and-scalds/",
+        "https://www.nhs.uk/conditions/acid-and-chemical-burns/"
+      ],
+      "related": [
+        "first-aid",
+        "bleeding",
+        "poisoning"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "anaphylaxis",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Severe allergy: anaphylaxis",
+        "summary": "Sudden throat swelling, breathing difficulty or collapse: use the prescribed injector and call 112.",
+        "keywords": "allergy allergic anaphylaxis adrenaline epinephrine EpiPen sting",
+        "body": "## Recognise and act\nSudden throat/tongue swelling, severe breathing difficulty or collapse after an allergen may be anaphylaxis. A rash may be absent. Use the person's prescribed adrenaline auto-injector promptly according to its instructions; call **112** and say suspected anaphylaxis.\n\n## Position and second injector\nLie them down; do not let them stand or walk, even if better. If breathing is difficult, allow a supported sitting position with legs outstretched; pregnancy: left side. If symptoms have not improved after **5 minutes**, use a second prescribed auto-injector if available, following instructions.\n\n## Keep watching\nAntihistamines do not replace adrenaline for life-threatening reactions. If unresponsive and not breathing normally, start CPR/AED. Medical assessment is needed even after improvement. Learn the exact device before an emergency; storage and use differ between brands."
+      },
+      "de": {
+        "title": "Schwere Allergie: Anaphylaxie",
+        "summary": "Plötzliche Halsschwellung, Atemnot oder Kollaps: verordneten Pen nutzen und 112 rufen.",
+        "keywords": "Allergie Anaphylaxie Adrenalin Autoinjektor EpiPen Insektenstich",
+        "body": "## Erkennen und handeln\nPlötzliche Zungen-/Halsschwellung, schwere Atemnot oder Kollaps nach Allergenkontakt können Anaphylaxie bedeuten. Ausschlag kann fehlen. Den verordneten Adrenalin-Autoinjektor unverzüglich nach Produktanweisung nutzen; **112** rufen und Verdacht auf Anaphylaxie nennen.\n\n## Lagerung und zweiter Pen\nHinlegen; auch bei Besserung nicht aufstehen oder gehen lassen. Bei Atemnot gestütztes Sitzen mit ausgestreckten Beinen ermöglichen; Schwangere auf die linke Seite legen. Nach **5 Minuten** ohne Besserung einen zweiten verordneten Pen nach Anweisung einsetzen, falls vorhanden.\n\n## Weiter beobachten\nAntihistaminika ersetzen bei lebensbedrohlichen Reaktionen kein Adrenalin. Bei Bewusstlosigkeit ohne normale Atmung Wiederbelebung/AED beginnen. Auch nach Besserung ärztliche Versorgung nötig. Das eigene Gerät vorher kennenlernen; Lagerung und Anwendung unterscheiden sich je nach Marke."
+      },
+      "sources": [
+        "https://www.nhs.uk/conditions/anaphylaxis/",
+        "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/first-aid-guidelines"
+      ],
+      "related": [
+        "adult-cpr",
+        "child-cpr"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "seizures",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Seizures",
+        "summary": "Protect from injury, time the seizure, keep the mouth clear of objects.",
+        "keywords": "seizure fit epilepsy convulsion shaking",
+        "body": "## During a seizure\nMove hazards away, cushion the head and time the event. Do not restrain movements or put anything in the mouth. Move the person only to escape immediate danger. In a wheelchair, apply brakes, keep the harness in place and support gently.\n\n## After shaking stops\nCheck breathing. If breathing normally, place on the side when appropriate and keep watching; trauma needs special care. If not breathing normally, call **112** and start CPR. Do not give food/drink until fully recovered.\n\n## Call 112\nFor a first seizure, one lasting **5 minutes or longer** or longer than usual, repeated seizures without recovery, serious injury, breathing difficulty or failure to recover. A known epilepsy care plan may guide trained carers; use rescue medicine only according to that plan and training. Stay with the person, reassure them and tell responders the duration."
+      },
+      "de": {
+        "title": "Krampfanfälle",
+        "summary": "Vor Verletzung schützen, Zeit messen, nichts in den Mund stecken.",
+        "keywords": "Krampfanfall Epilepsie Anfall Krämpfe Zucken",
+        "body": "## Während des Anfalls\nGefahren entfernen, Kopf weich polstern, Zeit messen. Bewegungen nicht festhalten und nichts in den Mund stecken. Nur aus unmittelbarer Gefahr bewegen. Im Rollstuhl Bremsen feststellen, Gurt belassen und sanft stützen.\n\n## Wenn das Krampfen endet\nAtmung prüfen. Bei normaler Atmung gegebenenfalls auf die Seite lagern und beobachten; bei Trauma besonders vorsichtig. Ohne normale Atmung **112** rufen und wiederbeleben. Erst nach vollständiger Erholung essen/trinken lassen.\n\n## 112 rufen\nBeim ersten Anfall, **5 Minuten oder länger** beziehungsweise länger als üblich, mehreren Anfällen ohne Erholung, schwerer Verletzung, Atemproblemen oder fehlender Erholung. Ein bekannter Epilepsie-Notfallplan kann geschulte Betreuungspersonen anleiten; Notfallmedikamente nur gemäß Plan und Schulung. Dabeibleiben, beruhigen und Dauer an den Rettungsdienst weitergeben."
+      },
+      "sources": [
+        "https://www.nhs.uk/symptoms/what-to-do-if-someone-has-a-seizure-fit/"
+      ],
+      "related": [
+        "first-aid",
+        "adult-cpr",
+        "diabetes"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "diabetes",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Diabetes & low blood sugar",
+        "summary": "Only give oral sugar if awake and able to swallow safely.",
+        "keywords": "diabetes hypo hypoglycaemia hypoglycemia sugar insulin glucose",
+        "body": "## Suspected low blood sugar\nIn someone with diabetes, sweating, shaking, confusion or weakness may indicate a hypo. Check glucose if possible and follow their care plan. If awake and swallowing safely, give their planned rapid sugar treatment, such as glucose tablets or a sugary drink; use the product/plan quantity, not a universal tablet count.\n\n## Recheck\nCheck again after **10–15 minutes**; repeat rapid sugar if still low according to the plan. Once recovered, a longer-acting carbohydrate snack or due meal may be needed.\n\n## Unsafe swallowing or collapse\nCall **112** for reduced consciousness, seizures or inability to swallow safely. Give **nothing by mouth**, including gel. If breathing normally maintain the airway; otherwise start CPR. A trained carer can give prescribed glucagon per instructions.\n\n## During disruption\nKeep insulin, supplies and storage instructions accessible; do not improvise doses or stop prescribed insulin without clinical advice. High glucose with vomiting, abdominal pain or abnormal breathing also needs urgent help."
+      },
+      "de": {
+        "title": "Diabetes & Unterzuckerung",
+        "summary": "Zucker über den Mund nur bei Bewusstsein und sicherem Schlucken.",
+        "keywords": "Diabetes Unterzuckerung Hypoglykämie Insulin Glukose Zucker",
+        "body": "## Verdacht auf Unterzuckerung\nBei Diabetes können Schwitzen, Zittern, Verwirrtheit oder Schwäche Unterzuckerung bedeuten. Wenn möglich messen und persönlichen Plan beachten. Bei Bewusstsein und sicherem Schlucken die geplante schnelle Zuckerzufuhr geben, etwa Traubenzucker oder ein zuckerhaltiges Getränk; Menge nach Produkt/Plan, keine allgemeine Tablettenzahl.\n\n## Erneut prüfen\nNach **10–15 Minuten** kontrollieren; bei weiter niedrigem Wert schnelle Zuckerzufuhr nach Plan wiederholen. Nach Erholung können länger wirkende Kohlenhydrate oder die fällige Mahlzeit nötig sein.\n\n## Unsicheres Schlucken oder Kollaps\nBei Bewusstseinseintrübung, Krampf oder Schluckunfähigkeit **112** rufen. **Nichts in den Mund geben**, auch kein Gel. Bei normaler Atmung Atemweg freihalten, sonst wiederbeleben. Geschulte Betreuungspersonen können verordnetes Glukagon nach Anweisung geben.\n\n## Bei Versorgungsausfall\nInsulin, Hilfsmittel und Lagerhinweise bereithalten; Dosen nicht improvisieren und verordnetes Insulin nicht ohne ärztlichen Rat absetzen. Hoher Zucker mit Erbrechen, Bauchschmerz oder auffälliger Atmung braucht ebenfalls dringend Hilfe."
+      },
+      "sources": [
+        "https://www.nhs.uk/conditions/low-blood-sugar-hypoglycaemia/",
+        "https://www.nhs.uk/conditions/diabetic-ketoacidosis/"
+      ],
+      "related": [
+        "first-aid",
+        "seizures",
+        "accessibility"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "poisoning",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Poisoning & carbon monoxide",
+        "summary": "Get expert advice immediately; do not induce vomiting or try home antidotes.",
+        "keywords": "poison poisoning overdose carbon monoxide mushroom berry fumes battery",
+        "body": "## Protect yourself\nDo not enter a contaminated room or rescue someone from fumes without safe conditions. For suspected carbon monoxide, leave to fresh air if possible, call **112** from safety and do not re-enter. A normal phone or pulse-oximeter reading does not rule it out.\n\n## Swallowed or unknown substance\nSeek poison-service/medical advice promptly, even without symptoms. Call **112** for collapse, breathing problems, seizures or serious exposure. Do not induce vomiting or give food, drink, charcoal or a homemade antidote unless professionals specifically instruct it.\n\n## Help responders\nKeep packaging, product name, time, likely amount and the person's age/weight available. Save a safe photo/sample of a suspect plant/mushroom; do not taste it. Do not wait for an app identification. Monitor breathing and use CPR if needed.\n\n## Prepare contacts\nWrite your regional poison centre number in the household plan after checking it with an official source. The app does not yet include a verified regional poison-centre directory."
+      },
+      "de": {
+        "title": "Vergiftung & Kohlenmonoxid",
+        "summary": "Sofort Fachrat holen; kein Erbrechen auslösen, keine Hausmittel-Gegengifte.",
+        "keywords": "Vergiftung Gift Überdosis Kohlenmonoxid Pilze Beeren Abgas Knopfzelle",
+        "body": "## Eigenschutz\nKeinen belasteten Raum betreten oder ungeschützt aus Gasen retten. Bei Kohlenmonoxidverdacht möglichst ins Freie, von sicherem Ort **112** rufen und nicht zurückgehen. Ein normaler Handy-/Pulsoximeterwert schließt dies nicht aus.\n\n## Verschluckter oder unbekannter Stoff\nSchnell Giftnotruf/medizinischen Rat einholen, auch ohne Symptome. Bei Kollaps, Atemproblemen, Krämpfen oder schwerer Exposition **112**. Kein Erbrechen auslösen und kein Essen, Trinken, Aktivkohle oder Hausmittel geben, außer Fachleute weisen ausdrücklich dazu an.\n\n## Rettungsdienst unterstützen\nVerpackung, Produktname, Zeitpunkt, wahrscheinliche Menge sowie Alter/Gewicht bereithalten. Sicheres Foto/Probe einer verdächtigen Pflanze/eines Pilzes aufheben; nicht kosten. Nicht auf eine App-Bestimmung warten. Atmung beobachten und nötigenfalls wiederbeleben.\n\n## Kontakte vorbereiten\nRegionale Giftnotrufnummer nach Prüfung an offizieller Stelle im Haushaltsplan notieren. Die App enthält noch kein geprüftes regionales Giftnotrufverzeichnis."
+      },
+      "sources": [
+        "https://www.nhs.uk/conditions/poisoning/",
+        "https://www.cdc.gov/carbon-monoxide/about/index.html",
+        "https://www.cdc.gov/carbon-monoxide/hcp/clinical-guidance/index.html"
+      ],
+      "related": [
+        "adult-cpr",
+        "child-cpr",
+        "power"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "stroke-heart",
+      "group": "urgent",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Stroke & heart-attack warning signs",
+        "summary": "Sudden speech/face/arm changes or concerning chest symptoms: call 112.",
+        "keywords": "stroke heart attack chest pain FAST face arm speech",
+        "body": "## Suspected stroke\nSudden facial droop, one-sided arm weakness or speech difficulty: **112 immediately**, even if symptoms resolve. Sudden loss of vision, balance or a severe unusual headache can also be important. Note when symptoms began or the last time the person was normal. Do not wait for all signs or drive yourself.\n\n## Suspected heart attack\nChest pressure/squeezing, pain spreading to arm/neck/jaw, breathlessness, sweating or nausea may indicate a heart attack. Symptoms vary and severe chest pain is not always present. Call **112**; rest comfortably, stay with the person and follow dispatcher instructions about medication. Do not give someone else's medicine.\n\n## If they deteriorate\nCheck responsiveness and breathing. If unresponsive without normal breathing, start CPR/AED. Do not give aspirin for a suspected stroke; medication for chest pain depends on the situation and contraindications."
+      },
+      "de": {
+        "title": "Warnzeichen: Schlaganfall & Herzinfarkt",
+        "summary": "Plötzliche Sprach-/Gesichts-/Armstörung oder verdächtige Brustbeschwerden: 112.",
+        "keywords": "Schlaganfall Herzinfarkt Brustschmerz FAST Gesicht Arm Sprache",
+        "body": "## Schlaganfallverdacht\nPlötzlich hängender Mundwinkel, einseitige Armschwäche oder Sprachstörung: **sofort 112**, auch nach Rückbildung. Plötzlicher Seh-/Gleichgewichtsverlust oder ungewöhnlich starker Kopfschmerz können ebenfalls wichtig sein. Beginn oder letzten unauffälligen Zeitpunkt notieren. Nicht auf alle Zeichen warten, nicht selbst fahren.\n\n## Herzinfarktverdacht\nDruck/Enge im Brustkorb, Ausstrahlung in Arm/Hals/Kiefer, Atemnot, Schwitzen oder Übelkeit können Herzinfarkt bedeuten. Beschwerden variieren; starker Brustschmerz fehlt manchmal. **112** rufen, bequem ruhen, dabeibleiben und Medikamentenhinweise der Leitstelle beachten. Keine fremden Medikamente geben.\n\n## Bei Verschlechterung\nBewusstsein und Atmung prüfen. Bewusstlos ohne normale Atmung: Wiederbelebung/AED. Bei Schlaganfallverdacht kein Aspirin geben; Medikamente bei Brustschmerz hängen von Situation und Gegenanzeigen ab."
+      },
+      "sources": [
+        "https://www.nhs.uk/conditions/stroke/symptoms/",
+        "https://www.nhs.uk/conditions/heart-attack/"
+      ],
+      "related": [
+        "adult-cpr",
+        "first-aid"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "accessibility",
+      "group": "essentials",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Medical equipment & accessibility",
+        "summary": "Plan backup power, medication continuity and help before supplies fail.",
+        "keywords": "disability wheelchair hearing blind medical oxygen ventilator insulin medicine battery accessibility",
+        "body": "## Write an individual plan\nList medicines, allergies, equipment models, power needs, supplier and care-team numbers. Keep accessible copies and teach trusted helpers your communication and transfer needs. Ask before assisting; do not separate someone from essential aids or a service animal.\n\n## Power and medicine\nAsk the care team/device supplier about tested backup batteries, their actual runtime, charging and when to relocate. A small phone power bank is not automatically suitable for medical equipment. Plan assistance before batteries run low. Follow the medicine's storage instructions; ask a pharmacist about temperature excursions rather than assuming all refrigerated medicine is ruined or safe.\n\n## Evacuation and communication\nPractise an accessible escape plan without lifts; do not improvise an unsafe carry. Include glasses, hearing-aid batteries, mobility aids, care supplies and a written communication card. Arrange more than one trusted helper. Registration for support does not guarantee rescue. If essential treatment or equipment is failing, seek help early; **112** for immediate life danger."
+      },
+      "de": {
+        "title": "Medizintechnik & Barrierefreiheit",
+        "summary": "Ersatzstrom, Medikamente und Unterstützung vor dem Ausfall planen.",
+        "keywords": "Behinderung Rollstuhl Hörgerät blind Medizingerät Sauerstoff Beatmung Insulin Akku Barrierefreiheit",
+        "body": "## Individuellen Plan aufschreiben\nMedikamente, Allergien, Gerätemodelle, Strombedarf und Nummern von Lieferant/Behandlungsteam notieren. Zugängliche Kopien bereithalten; vertraute Helfer über Kommunikation und Transfers informieren. Vor Hilfe fragen; wichtige Hilfsmittel und Assistenztiere bei der Person belassen.\n\n## Strom und Medikamente\nMit Behandlungsteam/Lieferant geprüfte Ersatzakkus, tatsächliche Laufzeit, Laden und rechtzeitigen Ortswechsel klären. Eine Handy-Powerbank eignet sich nicht automatisch für Medizintechnik. Hilfe vor niedrigem Akkustand organisieren. Medikamenten-Lagerhinweise beachten; bei Temperaturabweichungen Apotheke fragen, statt Kühlmedikamente pauschal für verdorben oder sicher zu halten.\n\n## Flucht und Kommunikation\nBarrierearmen Fluchtplan ohne Aufzug üben; keine unsicheren Trageversuche improvisieren. Brille, Hörgerätebatterien, Mobilitätshilfen, Pflegebedarf und Kommunikationskarte einplanen. Mehrere vertraute Helfer vereinbaren. Registrierung garantiert keine Rettung. Bei drohendem Ausfall wichtiger Behandlung/Geräte früh Hilfe holen; bei unmittelbarer Lebensgefahr **112**."
+      },
+      "sources": [
+        "https://www.cdc.gov/disability-emergency-preparedness/people-with-disabilities/index.html",
+        "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html"
+      ],
+      "related": [
+        "prepare",
+        "power",
+        "communications"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "pets",
+      "group": "essentials",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Pets in an emergency",
+        "summary": "Prepare transport, identification, safe water and a place that accepts animals.",
+        "keywords": "pets dog cat animal veterinary carrier evacuation assistance service animal",
+        "body": "## Prepare\nKeep a carrier/leash, identification, veterinary contact, records, prescribed medicines, familiar food and safe water accessible. Maintain microchip/contact details. Agree who can help if you are away; practise transport calmly.\n\n## Leaving home\nInclude animals in the evacuation plan and identify accommodation that accepts them. Ordinary pets and assistance animals may have different admission arrangements; confirm locally. Do not delay escape from immediate danger or send someone into a dangerous building to retrieve an animal.\n\n## During and after\nKeep animals restrained appropriately: frightened animals can run away or bite. Keep them from floodwater, chemicals and unfamiliar wildlife. Use safe drinking water and wash hands after waste handling. Do not give human medicines without veterinary advice. Contact a veterinarian for injury, poisoning or illness. Changed landmarks after a disaster can disorient animals; keep them leashed or contained."
+      },
+      "de": {
+        "title": "Haustiere im Notfall",
+        "summary": "Transport, Kennzeichnung, sicheres Wasser und geeignete Unterkunft vorbereiten.",
+        "keywords": "Haustier Hund Katze Tier Tierarzt Transportbox Evakuierung Assistenzhund",
+        "body": "## Vorbereiten\nTransportbox/Leine, Kennzeichnung, Tierarztkontakt, Unterlagen, verordnete Medikamente, gewohntes Futter und sicheres Wasser bereithalten. Chip-/Kontaktdaten aktuell halten. Hilfe bei eigener Abwesenheit vereinbaren und Transport ruhig üben.\n\n## Wohnung verlassen\nTiere in den Fluchtplan aufnehmen und tiergeeignete Unterkunft ermitteln. Für Haustiere und Assistenztiere können unterschiedliche Aufnahmeregeln gelten; örtlich prüfen. Flucht aus unmittelbarer Gefahr nicht verzögern und niemanden zur Tierrettung in ein gefährliches Gebäude schicken.\n\n## Währenddessen und danach\nTiere angemessen sichern: Angst kann Flucht oder Bisse auslösen. Von Hochwasser, Chemikalien und fremden Wildtieren fernhalten. Sicheres Trinkwasser geben und nach Abfallkontakt Hände waschen. Ohne tierärztlichen Rat keine Humanmedikamente geben. Bei Verletzung, Vergiftung oder Krankheit Tierarzt kontaktieren. Veränderte Orientierungspunkte können Tiere nach Katastrophen verwirren; anleinen oder sicher unterbringen."
+      },
+      "sources": [
+        "https://www.cdc.gov/healthy-pets/emergency-preparedness/index.html"
+      ],
+      "related": [
+        "prepare",
+        "water",
+        "shelter"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "combined-hazards",
+      "group": "essentials",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "When hazards happen together",
+        "summary": "Reassess immediate danger; one protective action can worsen another hazard.",
+        "keywords": "combined hazards compound disaster fallout flood ventilation pandemic power sewage cold earthquake",
+        "body": "## Fire, rising water or collapse\nA fallout shelter is not safe if burning, flooding or collapsing. Escape immediate danger, seek the closest safer substantial shelter and obtain official instructions. Do not cross floodwater to reach a preferred basement. There is no offline route/radiation forecast in this app.\n\n## Infection versus outdoor contamination\nOpening windows can reduce airborne infection risk but bring contaminated outside air in during a radiation/chemical event. Follow hazard-specific official instructions; while sheltering, use separation and suitable masks where feasible. Never use fuel-burning equipment to heat a closed room.\n\n## Flood plus sewage failure\nAvoid floodwater; stop using failed toilets and isolate waste from clean supplies. Boiling is not a solution for chemicals. Use the water-advisory and hygiene guides.\n\n## Earthquake plus cold/power loss\nExpect aftershocks. Do not remain in a damaged building merely for warmth. Take dry layers/blankets when safe and seek a safer warm location.\n\n## Cyberattack or pandemic plus supply failure\nPreserve written contacts, necessary medicines, safe water and no-cook food. Use trusted information; do not assume mobile networks, payments or healthcare remain available. Recheck the plan as conditions change."
+      },
+      "de": {
+        "title": "Wenn Gefahren zusammenkommen",
+        "summary": "Unmittelbare Gefahr neu bewerten; eine Schutzmaßnahme kann andere Risiken erhöhen.",
+        "keywords": "Mehrfachgefahr Kombination Fallout Hochwasser Lüften Pandemie Strom Abwasser Kälte Erdbeben",
+        "body": "## Feuer, steigendes Wasser oder Einsturz\nEin Fallout-Schutzort ist bei Brand, Überflutung oder Einsturz nicht sicher. Unmittelbarer Gefahr entkommen, nächstes sichereres massives Gebäude suchen und amtliche Anweisung einholen. Kein Hochwasser durchqueren, um einen bevorzugten Keller zu erreichen. Die App berechnet weder sichere Routen noch Strahlung.\n\n## Infektion und belastete Außenluft\nLüften kann luftübertragene Infektionen verringern, bei Strahlungs-/Chemieunfällen aber Außenbelastung hereinbringen. Gefahrenspezifische amtliche Anweisungen beachten; während des Schutzaufenthalts möglichst Abstand/Trennung und geeignete Masken nutzen. Geschlossene Räume nie mit Brennstoffgeräten beheizen.\n\n## Hochwasser und Abwasserausfall\nHochwasser meiden; ausgefallene Toiletten nicht weiter nutzen und Abfälle von sauberen Vorräten trennen. Abkochen löst keine Chemikalienprobleme. Wasserwarnungs- und Hygieneseiten beachten.\n\n## Erdbeben und Kälte/Stromausfall\nMit Nachbeben rechnen. Nicht allein wegen Wärme in beschädigten Gebäuden bleiben. Sichere Mitnahme trockener Kleidung/Decken und sichereren warmen Ort organisieren.\n\n## Cyberangriff oder Pandemie und Versorgungsausfall\nPapierkontakte, nötige Medikamente, sicheres Wasser und Lebensmittel ohne Kochbedarf bereithalten. Vertrauenswürdige Informationen nutzen; Mobilfunk, Zahlung und Gesundheitsversorgung können ausfallen. Plan bei Lageänderung neu prüfen."
+      },
+      "sources": [
+        "https://www.cdc.gov/radiation-emergencies/response/stay-inside.html",
+        "https://www.cdc.gov/floods/safety/reentering-your-flooded-home-safety.html",
+        "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html",
+        "https://www.cdc.gov/respiratory-viruses/prevention/index.html"
+      ],
+      "related": [
+        "fallout",
+        "flood",
+        "power",
+        "pandemic",
+        "hygiene"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "water-advisories",
+      "group": "essentials",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Water warnings: which use is safe?",
+        "summary": "Boil-water, do-not-drink and do-not-use instructions are different.",
+        "keywords": "boil water advisory notice chemical do not drink do not use infant formula filter contamination",
+        "body": "## Read the actual warning\nThe water authority specifies which area, uses and contaminants are affected. This saved guide cannot know the current warning or whether it has been lifted.\n\n## Boil-water instruction\nUsually concerns germs: use bottled or correctly boiled water for drinking, cooking and brushing teeth. Domestic filtering does not cancel a boil-water instruction. Handwashing/bathing rules depend on the notice; prevent swallowing, especially in young children. Ready-to-feed infant formula can reduce preparation risks.\n\n## Do not drink\nUse a verified alternative for drinking, cooking, teeth, food preparation and pets. Boiling does not remove many chemicals/toxins. Whether bathing or other uses are allowed depends on the warning.\n\n## Do not use\nContact, swallowing or inhaling water may be hazardous. Do not use the affected tap supply for any purpose until officials say otherwise. Use verified alternatives. Do not treat showering as safe merely because you avoid drinking.\n\n## After clearance\nFollow flushing, filter-replacement and appliance instructions. Refrigerator dispensers/ice connected to the affected supply need attention too. A clear appearance or an app cannot certify safety."
+      },
+      "de": {
+        "title": "Wasserwarnungen: Welche Nutzung ist sicher?",
+        "summary": "Abkochgebot, Trinkverbot und Nutzungsverbot unterscheiden.",
+        "keywords": "Abkochgebot Trinkverbot Nutzungsverbot Wasserwarnung Baby Säuglingsnahrung Filter Chemikalien",
+        "body": "## Tatsächliche Warnung lesen\nDer Wasserversorger nennt Gebiet, betroffene Nutzungen und Schadstoffe. Diese gespeicherte Anleitung kennt weder aktuelle Warnung noch deren Aufhebung.\n\n## Abkochgebot\nMeist geht es um Keime: Flaschenwasser oder korrekt abgekochtes Wasser für Trinken, Kochen und Zähneputzen nutzen. Haushaltsfilter heben das Gebot nicht auf. Regeln für Händewaschen/Baden hängen von der Warnung ab; besonders Kinder dürfen nichts schlucken. Trinkfertige Säuglingsnahrung kann Zubereitungsrisiken reduzieren.\n\n## Nicht trinken\nGeprüfte Alternative für Trinken, Kochen, Zähne, Speisenzubereitung und Tiere nutzen. Abkochen entfernt viele Chemikalien/Giftstoffe nicht. Ob Baden oder andere Nutzungen erlaubt sind, steht in der Warnung.\n\n## Nicht verwenden\nKontakt, Verschlucken oder Einatmen kann gefährlich sein. Betroffenes Leitungswasser bis zur amtlichen Freigabe für keinen Zweck nutzen. Geprüfte Alternativen verwenden. Duschen wird nicht allein durch Nichttrinken sicher.\n\n## Nach Freigabe\nAnweisungen zum Spülen, Filterwechsel und Geräten befolgen. Angeschlossene Kühlschrankspender/Eis ebenfalls beachten. Klares Aussehen oder eine App beweisen keine Sicherheit."
+      },
+      "sources": [
+        "https://www.cdc.gov/water-emergency/about/drinking-water-advisories-an-overview.html",
+        "https://www.cdc.gov/cryptosporidium/prevention/crypto-home-boil-water.html"
+      ],
+      "related": [
+        "water",
+        "hygiene",
+        "food"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    },
+    {
+      "id": "recovery",
+      "group": "essentials",
+      "status": "draft",
+      "professional_review": null,
+      "checked_at": "2026-10-19",
+      "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+      "en": {
+        "title": "Extended disruption & safe recovery",
+        "summary": "Reassess water, shelter, medicines and support each day; restore services cautiously.",
+        "keywords": "recovery prolonged extended days weeks disruption cleanup return home restore power cash",
+        "body": "## Repeat a daily check\nCheck safe shelter/temperature, remaining drinking water, food, sanitation, medicine, batteries and people needing help. Record stock changes rather than trusting memory. Plan resupply or relocation before essentials fail; avoid dangerous travel for replaceable possessions.\n\n## Return and restore\nRe-entry permission does not mean every utility or room is safe. After flooding or structural damage, obtain appropriate building/electrical checks. Never energise wet wiring or equipment yourself. Use daylight/torches, not flames, to inspect. Do not pump a flooded basement without competent advice about structural conditions.\n\n## Cleaning and supplies\nKeep children and vulnerable people away from contaminated clean-up. Use appropriate protection; significant sewage, chemicals or mould may need specialists. Never mix cleaning agents. Discard unsafe food; await water clearance and any flushing instructions. Replace used medical supplies and recharge/test equipment once safely possible.\n\n## Household recovery\nDocument damage only when safe; keep copies of claims and receipts. Use trusted channels to check repair offers and assistance. Restore ordinary routines and social contact gradually; seek support if distress or inability to function persists. Immediate threats still take priority."
+      },
+      "de": {
+        "title": "Längere Ausfälle & sichere Rückkehr",
+        "summary": "Wasser, Schutz, Medikamente und Unterstützung täglich prüfen; Versorgung vorsichtig herstellen.",
+        "keywords": "Wiederaufbau Rückkehr längerer Ausfall Tage Wochen Reinigung Wiederherstellung Bargeld",
+        "body": "## Tägliche Prüfung wiederholen\nSicheren Schutz/Temperatur, Trinkwasser, Essen, Hygiene, Medikamente, Akkus und Hilfsbedürftige prüfen. Bestandsänderungen aufschreiben. Nachschub oder Ortswechsel planen, bevor Wesentliches ausfällt; für ersetzbare Gegenstände keine gefährlichen Wege riskieren.\n\n## Rückkehr und Versorgung\nEine Rückkehrerlaubnis macht nicht jedes Gerät oder jeden Raum sicher. Nach Hochwasser/Gebäudeschaden fachgerechte Gebäude-/Elektroprüfung organisieren. Nasse Leitungen/Geräte nicht selbst einschalten. Bei Tageslicht/Taschenlampe statt Flammen prüfen. Überfluteten Keller nicht ohne fachlichen Rat zu den baulichen Bedingungen abpumpen.\n\n## Reinigung und Vorräte\nKinder und gefährdete Personen von belasteter Reinigung fernhalten. Geeigneten Schutz nutzen; größere Abwasser-, Chemikalien- oder Schimmelbelastung kann Fachhilfe brauchen. Reinigungsmittel nie mischen. Unsichere Lebensmittel entsorgen; Wasserfreigabe und Spülanweisung abwarten. Verbrauchtes Verbandsmaterial ersetzen und Geräte sicher laden/testen.\n\n## Haushalt erholt sich\nSchäden nur sicher dokumentieren, Belege/Anträge kopieren. Reparaturangebote und Hilfe über vertrauenswürdige Kanäle prüfen. Routinen und soziale Kontakte schrittweise aufnehmen; bei anhaltender Belastung/Funktionsverlust Unterstützung suchen. Unmittelbare Gefahren bleiben vorrangig."
+      },
+      "sources": [
+        "https://www.cdc.gov/floods/safety/reentering-your-flooded-home-safety.html",
+        "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/vorsorge_node.html",
+        "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html"
+      ],
+      "related": [
+        "prepare",
+        "water-advisories",
+        "food",
+        "shelter",
+        "communications"
+      ],
+      "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+      "review_due": "2027-04-19",
+      "translation_review": null,
+      "revision_history": [
+        {
+          "date": "2026-10-19",
+          "note": "Original development draft; no qualified review claimed."
+        }
+      ]
+    }
+  ]
+}
