@@ -188,7 +188,7 @@ class EmergencyActivity : BaseActivity() {
             contentDescription = tr("Go back", "Zurückgehen")
             textSize = 14f; layoutParams = LinearLayout.LayoutParams(dp(76), -2)
         })
-        if (handbook.find(route) != null) bar.addView(button(tr("More", "Mehr")) { readerOptions() }.apply {
+        if (handbook.find(route) != null) bar.addView(button(if (resources.configuration.fontScale >= 1.3f) "⋮" else tr("More", "Mehr")) { readerOptions() }.apply {
             contentDescription = tr("Reader options", "Leseoptionen")
             textSize = 14f; layoutParams = LinearLayout.LayoutParams(0, -2, 1f)
         }) else bar.addView(text("OPEN EMERGENCY", 12f, true).apply {
