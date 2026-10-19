@@ -28,12 +28,11 @@ No live alerts, radiation measurement, verified shelter directory or personalise
 
 ## Build
 
-Requires JDK 17 and Android SDK. The 0.2 preview compiles/targets SDK 36, supports system-bar/display-cutout/keyboard insets, and retains Android 5.0 as its declared minimum. CI exercises Android 6 and 16; physical-device/minimum-OS evidence and store requirements remain separate open items.
+Requires JDK 17 and Android SDK. The app compiles/targets SDK 36, supports system-bar/display-cutout/keyboard insets, and retains Android 5.0 as its declared minimum. CI exercises Android 6 and 16; physical-device/minimum-OS evidence and store requirements remain separate open items.
 
 ```sh
 git clone https://github.com/hoyleb/OpenEmergencyHandbook.git
 cd OpenEmergencyHandbook
-git switch feature/offline-emergency-preview
 python3 tools/build_handbook.py
 python3 -m unittest discover -s tools -p 'test_*.py' -v
 ./gradlew :android:assembleDebug :android:lintDebug

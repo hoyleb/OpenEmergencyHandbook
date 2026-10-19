@@ -206,7 +206,7 @@ class EmergencyActivity : BaseActivity() {
             handbook = EmergencyHandbook(assets, language); render()
         }.apply {
             contentDescription = tr("Switch to German", "Zu Englisch wechseln")
-            textSize = 14f; layoutParams = LinearLayout.LayoutParams(dp(52), -2)
+            textSize = 14f; layoutParams = LinearLayout.LayoutParams(dp(if (resources.configuration.fontScale >= 1.3f) 64 else 52), -2)
         })
         root.addView(bar)
         scroll = ScrollView(this).apply { isFillViewport = true }
