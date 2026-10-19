@@ -2,17 +2,19 @@ name: Android preview
 on:
   push:
     branches: [feature/offline-emergency-preview]
+  pull_request:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: android-preview-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: recursive
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -22,8 +24,86 @@ jobs:
           packages: 'platform-tools platforms;android-34 build-tools;34.0.0'
           log-accepted-android-sdk-licenses: false
       - uses: gradle/actions/setup-gradle@v4
-      - run: ./gradlew :android:assembleDebug --console=plain
+      - name: Preserve preview signing identity between builds
+        uses: actions/cache@v4
+        with:
+          path: ~/.android/debug.keystore
+          key: open-emergency-preview-debug-key-v1
+      - name: Validate bundled content and build standalone handbook
+        run: |
+          python3 tools/build_handbook.py --check
+          python3 -m unittest discover -s tools -p 'test_*.py' -v
+      - name: Build and lint Android
+        run: ./gradlew :android:assembleDebug :android:assembleDebugAndroidTest :android:lintDebug --console=plain
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Test app with Wi-Fi and mobile data disabled
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          arch: x86_64
+          api-level: 34
+          disable-animations: true
+          script: |
+            adb shell svc wifi disable
+            adb shell svc data disable
+            ./gradlew :android:connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=org.ligi.survivalmanual.EmergencyPreviewTest --console=plain
+            adb shell am force-stop com.hoyleb.openemergency.preview
+            adb shell am start -W -n com.hoyleb.openemergency.preview/org.ligi.survivalmanual.ui.EmergencyActivity
+            adb exec-out screencap -p > dist/Android-preview.png
+      - name: Package preview downloads
+        run: |
+          cp android/build/outputs/apk/debug/*.apk dist/OpenEmergencyHandbook-preview.apk
+          git archive --format=tar.gz HEAD > dist/OpenEmergencyHandbook-source.tar.gz
+          printf '%s\n' "$GITHUB_SHA" > dist/BUILD_COMMIT.txt
+          cd dist
+          sha256sum OpenEmergencyHandbook-preview.apk OpenEmergencyHandbook-offline.html OpenEmergencyHandbook-source.tar.gz > SHA256SUMS.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: android-preview
-          path: android/build/outputs/apk/debug/*.apk
+          name: OpenEmergencyHandbook-preview
+          path: dist/
+          if-no-files-found: error
+      - name: Upload test and lint results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Android-test-results
+          path: |
+            android/build/reports/
+            android/build/outputs/androidTest-results/
+  publish-test-download:
+    if: github.event_name == 'push'
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: OpenEmergencyHandbook-preview
+          path: downloads
+      - name: Publish free downloadable prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PREVIEW_TAG: preview-0.1.${{ github.run_number }}
+          PREVIEW_COMMIT: ${{ github.sha }}
+        run: |
+          cat > release-notes.md <<'NOTES'
+          Android development preview for installation and usability testing.
+
+          Download OpenEmergencyHandbook-preview.apk on an Android phone (Android 5.0+). Allow installation from the browser/file manager when Android asks, then open **Open Emergency Preview**. This APK is debug-signed for testing, not a Play Store production release. If a later build has a different signing identity, uninstalling the old preview may be necessary; that removes local notes.
+
+          Included: 15 English and 15 German offline guides, all six disaster scenarios, first-aid/safe-water summaries, local search, household checklist, water estimate and notes. No account, subscription, advertising or network permission.
+
+          **All summaries and translations are unreviewed drafts. Coverage is incomplete. Test the app; do not treat this as a complete or professionally approved survival reference.** See About and coverage-report.json for gaps. Follow emergency services and current official instructions.
+
+          Checks: content validation, six Python tests, Android compilation/lint, and three emulator tests with Wi-Fi/mobile data disabled. Scope: bundled EN/DE articles, search, reader/language switching/recreation, checklist persistence and no INTERNET permission. These checks do not establish medical accuracy or real-world disaster readiness.
+
+          Also included: standalone offline HTML handbook, matching source archive, build commit, checksums and emulator screenshot. GPLv3 source and upstream attribution are preserved.
+
+          Please test offline reading, search, language switching, large text and saved household data. Give feedback in pull request #1 without posting personal information.
+          NOTES
+          gh release create "$PREVIEW_TAG" downloads/* --target "$PREVIEW_COMMIT" --title "Open Emergency Handbook — Android preview $PREVIEW_TAG" --notes-file release-notes.md --prerelease

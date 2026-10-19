@@ -13,16 +13,16 @@ android {
     namespace "org.ligi.survivalmanual"
 
     defaultConfig {
-        applicationId "org.ligi.survivalmanual"
+        applicationId "com.hoyleb.openemergency"
         minSdkVersion 21
         targetSdkVersion 34
-        versionCode 500
-        versionName "5.0.0"
+        versionCode 1
+        versionName "0.1.0-preview"
 
         vectorDrawables.useSupportLibrary = true
-        archivesBaseName = "SurvivalManual-$versionName"
+        archivesBaseName = "OpenEmergencyHandbook-$versionName"
 
-	testInstrumentationRunner "org.ligi.survivalmanual.runner.TestButlerJunitRunner"
+	testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildFeatures {
@@ -35,13 +35,16 @@ android {
             minifyEnabled false
         }
         debug {
-            applicationIdSuffix ".debug"
+            applicationIdSuffix ".preview"
             versionNameSuffix "-debug"
         }
     }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        // Only the new, attributed preview content ships. The inherited wiki
+        // remains in Git history but is not silently bundled as reviewed advice.
+        main.assets.srcDirs = ['src/main/offlineAssets']
     }
 
     compileOptions {
@@ -78,5 +81,5 @@ dependencies {
     androidTestImplementation "androidx.test:core:1.6.1"
     androidTestImplementation "androidx.test:rules:1.6.1"
     androidTestImplementation 'com.linkedin.testbutler:test-butler-library:2.2.1'
-    androidTestUtil 'com.linkedin.testbutler:test-butler-app:2.2.1'
+        androidTestUtil 'com.linkedin.testbutler:test-butler-app:2.2.1'
 }
