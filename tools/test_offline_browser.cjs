@@ -28,6 +28,8 @@ const {chromium} = require('playwright');
   await page.setViewportSize({width:320,height:640});
   await page.addStyleTag({content:'body {font-size:36px}'});
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'Large-text horizontal overflow');
+  const urgent = await page.locator('[data-urgent-lang="en"] a').first().boundingBox();
+  assert(urgent && urgent.y >= 0 && urgent.y + urgent.height <= 640, 'First aid is pushed below the large-text first screen');
   await page.screenshot({path:path.resolve(__dirname,'../dist/HTML-large-text.png')});
   const nojs = await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});
   await nojs.route(/^https?:/, route => { external.push(route.request().url()); return route.abort(); });

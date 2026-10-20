@@ -2,7 +2,7 @@
   const data = JSON.parse(document.getElementById('guide-data').textContent);
   const query = document.getElementById('search'), filter = document.getElementById('category');
   const main = document.getElementById('guides'), contents = document.getElementById('contents');
-  let language = 'en';
+  let language = navigator.language.toLowerCase().startsWith('de') ? 'de' : 'en';
   const labels = { en: ['All guides', 'First aid', 'Disasters', 'Preparation'], de: ['Alle Anleitungen', 'Erste Hilfe', 'Katastrophen', 'Vorsorge'] };
   function show() {
     const result = EmergencySearch.search(data, query.value, language, filter.value);
@@ -13,6 +13,7 @@
       const link = document.getElementById('contents-' + language + '-' + article.id);
       link.hidden = false; contents.appendChild(link);
     }
+    document.querySelectorAll('[data-urgent-lang]').forEach(node => { node.hidden = node.dataset.urgentLang !== language; });
     document.documentElement.lang = language;
     document.getElementById('en').setAttribute('aria-pressed', String(language === 'en'));
     document.getElementById('de').setAttribute('aria-pressed', String(language === 'de'));
