@@ -16,7 +16,7 @@ jobs:
       certificate: ${{ steps.identity.outputs.certificate }}
       pinned: ${{ steps.identity.outputs.pinned }}
     env:
-      OPEN_EMERGENCY_PREVIEW_KEYSTORE: ${{ runner.temp }}/open-emergency-preview.keystore
+      OPEN_EMERGENCY_PREVIEW_KEYSTORE: /tmp/open-emergency-preview.keystore
       OPEN_EMERGENCY_PREVIEW_KEYSTORE_BASE64: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_KEYSTORE_BASE64 || '' }}
       OPEN_EMERGENCY_PREVIEW_STORE_PASSWORD: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_STORE_PASSWORD || '' }}
       OPEN_EMERGENCY_PREVIEW_KEY_PASSWORD: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_KEY_PASSWORD || '' }}
@@ -69,7 +69,7 @@ jobs:
         api: [21, 23, 36]
     timeout-minutes: 35
     env:
-      OPEN_EMERGENCY_PREVIEW_KEYSTORE: ${{ runner.temp }}/open-emergency-preview.keystore
+      OPEN_EMERGENCY_PREVIEW_KEYSTORE: /tmp/open-emergency-preview.keystore
       OPEN_EMERGENCY_PREVIEW_KEYSTORE_BASE64: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_KEYSTORE_BASE64 || '' }}
       OPEN_EMERGENCY_PREVIEW_STORE_PASSWORD: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_STORE_PASSWORD || '' }}
       OPEN_EMERGENCY_PREVIEW_KEY_PASSWORD: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_KEY_PASSWORD || '' }}

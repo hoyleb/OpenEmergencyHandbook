@@ -75,7 +75,7 @@ class EmergencyPreviewTest {
         for (index in 0 until cases.length()) {
             val test = cases.getJSONObject(index)
             val result = EmergencyHandbook(context.assets, test.getString("language")).searchResult(test.getString("query"))
-            assertEquals(test.optString("first", ""), result.articles.firstOrNull()?.id.orEmpty())
+            assertEquals(if (test.isNull("first")) "" else test.getString("first"), result.articles.firstOrNull()?.id.orEmpty())
             assertEquals(test.getBoolean("approximate"), result.approximate)
         }
     }
