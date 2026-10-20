@@ -16,8 +16,8 @@ android {
         applicationId "com.hoyleb.openemergency"
         minSdkVersion 21
         targetSdkVersion 36
-        versionCode 6
-        versionName "0.4.0-preview"
+        versionCode 7
+        versionName "0.5.0-preview"
 
         vectorDrawables.useSupportLibrary = true
         archivesBaseName = "OpenEmergencyHandbook-$versionName"
@@ -71,6 +71,9 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    // Lightweight PBKDF2-SHA256 keeps encrypted backups portable on API 21/23,
+    // before Android exposes this SecretKeyFactory algorithm (API 26).
+    implementation 'org.bouncycastle:bcprov-jdk15to18:1.86'
 
 // Android support
     implementation 'androidx.appcompat:appcompat:1.7.0'

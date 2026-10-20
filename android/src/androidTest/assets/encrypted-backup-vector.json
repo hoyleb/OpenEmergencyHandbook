@@ -1,0 +1,6 @@
+{
+  "note": "Public deterministic test vector; never use this password/salt/nonce for real data. Produced independently with Python hashlib and cryptography.",
+  "password": "Test phrase: Ärztin 🧭",
+  "plaintext_utf8": "{\"format\":\"open-emergency-household\",\"version\":1,\"plan\":{\"checks\":{\"water\":false,\"food\":false,\"medicine\":false,\"light\":false,\"radio\":false,\"warmth\":false,\"hygiene\":false,\"documents\":false},\"people\":\"2\",\"days\":\"3\",\"notes\":\"Public test fixture only: Ärztin\\nMeeting point: library\"},\"bookmarks\":[\"water\"]}",
+  "encrypted_base64": "T0VIRU5DMDEACSfAAAECAwQFBgcICQoLDA0OD6ChoqOkpaanqKmqqwAAAUCi9lx1mSzNgat4B9THx7kHIAhyHqWjxoBqXMRNBRtoSCC3J0WC+hWqgJjdv6RoUOnRjwC9zG7qZDho6fPRie7nFciZa8n+JCGCKrSH/fZJP5UyS/ASghshhd4CMbWsfErndNbYpHtohILs/NxVIHFt8iOzJNvwaoMTSBmHx9sryJaYh71qX15IPhT7hCGzrAwoyh8xpnVfyL9BHUKlGXr7yixtFgwD2oNmIgJ47HvuhDOt3GZp43Magpw+Y8bQj1nj+UhIOXVXW2tr4jbx+5fnxrKEIjvLpEhqlfi2lAonOLPutJMn2W0mMZslgF3H2pwHkubPr+HFEWr9qcbbHkkjcLF+FAOj/R1GkkfeTIYE2n4rT+pCRDJUxTukV195Bf4M/BDYpvt4xygYpOCKFW5fxTEHawg7v/RChYJfhewn6Q=="
+}
