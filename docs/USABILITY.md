@@ -34,4 +34,8 @@ Design references (checked 19 October 2026):
 - https://developer.android.com/guide/navigation/principles
 - https://developer.android.com/about/versions/14/features
 
-The 0.4 suite also tests actual landscape orientation, keyboard dismissal on returning home, grouped card/heading roles and source disclosure state. See [USABILITY_TEST_PLAN.md](USABILITY_TEST_PLAN.md) for the uncompleted human/device study and [BACKUP_AND_RECOVERY.md](BACKUP_AND_RECOVERY.md) for backup/failure behaviour.
+The 0.4 suite also tests actual landscape orientation, keyboard dismissal on returning home, grouped card/heading roles and source disclosure state. Restore confirmation keeps its actions outside the scrolling preview, including at 200% text; old feedback is cancelled before a new confirmation or activity transition. All three Android APIs passed 35 tests each in the [verified 0.4 run](VALIDATION_0_4.md).
+
+The standalone HTML edition has shared Android search acceptance cases, responsive urgent actions, category reset and related-guide navigation. Chromium, Firefox and WebKit passed JavaScript and no-JavaScript checks, including 200% CSS text and offline reading of all 60 bilingual guides. These are desktop automation results, not actual Safari or physical-browser evidence.
+
+See [USABILITY_TEST_PLAN.md](USABILITY_TEST_PLAN.md) for the uncompleted human/device study and [BACKUP_AND_RECOVERY.md](BACKUP_AND_RECOVERY.md) for backup/failure behaviour.

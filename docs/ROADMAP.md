@@ -2,6 +2,8 @@
 
 Updated 20 October 2026. `content/coverage.json` maps 47 requirements to drafts and explicitly lists gaps. This is a development preview, not a complete or professionally reviewed survival reference.
 
+Verified 0.4 implementation, release hashes and test results: [VALIDATION_0_4.md](VALIDATION_0_4.md). The remaining unchecked items below distinguish engineering work from owner, device and specialist evidence.
+
 ## Implemented in the 0.2 preview
 
 - 30 guides per language (up from 15), including dedicated adult/child choking, child/infant CPR, bleeding/wounds, burns, anaphylaxis, seizures, diabetes, poisoning/CO, stroke/heart attack, disability/medical equipment, pets, water-advisory distinctions, combined hazards and recovery.
@@ -46,7 +48,7 @@ Validation results are attached to the actual workflow/release. A feature listed
 
 - [ ] Test Ben's physical Xiaomi: install/update while retaining notes, flight mode and force-stop/restart, search/navigation, Android large-font/dark mode, export to local storage, export cancellation, saved plan deletion and keyboard behaviour.
 - [ ] TalkBack, low vision, landscape, one-handed and timed findability sessions; measure rather than infer accessibility from labels.
-- [ ] Minimum Android 5/API 21 is now in the emulator matrix alongside 23/36; attach the current passing run before closing emulator evidence. More OEMs/physical-device evidence remains separate.
+- [x] Minimum Android 5/API 21 emulator evidence alongside 23/36: [run 39387989175](https://github.com/hoyleb/OpenEmergencyHandbook/actions/runs/39387989175), 35 tests on each API, zero failures/errors/skips. More OEMs/physical-device evidence remains separate.
 - [x] Add independently readable/hash-checked per-guide fallback, partial/total catalog failure handling and corruption fixtures.
 - [ ] Complete actual low-storage, interrupted-process/reboot and file-provider fault sessions; current tests simulate selected commit/read failures.
 - [x] Add HTML/Android bilingual ranking and typo-fallback parity, category reset, shared vectors and Chromium/Firefox/WebKit JavaScript/no-JavaScript tests.
