@@ -5,7 +5,7 @@ The 0.5 source adds **Plan → Backup / restore → Save encrypted backup**. Pla
 ## Use and recovery
 
 1. Choose a destination using Android's file picker. A local folder is suitable for offline use; a cloud provider may upload the selected file and expose its name/size under its own policies.
-2. Enter and repeat a unique passphrase of 12–128 UTF-16 code units (ordinary characters count once; most emoji count twice). Spaces, case and Unicode are preserved exactly: nothing is trimmed or normalized. A length limit does not establish password strength; use a long, unpredictable passphrase and keep it separately, for example in a password manager or secure paper record.
+2. Enter and repeat a unique passphrase of 12–128 UTF-16 code units (BMP code points count once; non-BMP code points count twice, and composed emoji may use several units). Spaces, case and Unicode are preserved exactly: nothing is trimmed or normalized. A length limit does not establish password strength; use a long, unpredictable passphrase and keep it separately, for example in a password manager or secure paper record.
 3. Choose **Encrypt** and wait for the saved confirmation. The file uses `.oeh`; only ciphertext is written to the selected destination. Cancelling before encryption can leave a file created by the provider empty. Check the result and retain an older verified backup.
 4. Use **Restore backup** for either JSON or `.oeh`. An encrypted file first asks for its passphrase; authentication must succeed before parsing household data. The normal preview and explicit **Replace plan** confirmation still follow. Cancelling or a failed read/authentication does not replace the plan.
 

@@ -173,10 +173,10 @@ class EmergencyActivity : BaseActivity() {
         val details = ScrollView(this).apply { isFillViewport = true; addView(fields) }
         content.addView(details, LinearLayout.LayoutParams(-1, 0, 1f))
         val explanation = if (protecting) tr(
-            "Use a unique passphrase of 12–128 characters. Keep it separately: there is no password reset. This protects the backup file only; the plan in this app is unchanged. Cancelling may leave an empty selected file.",
-            "Einzigartige Passphrase mit 12–128 Zeichen verwenden. Separat aufbewahren: kein Zurücksetzen möglich. Schützt nur die Sicherungsdatei; der Plan in der App bleibt unverändert. Abbrechen kann eine leere gewählte Datei hinterlassen.")
-        else if ((state as TransferState.Unlock).failed) tr("Wrong passphrase or damaged backup. Try again, or cancel and choose another file. Your plan is unchanged.", "Falsche Passphrase oder beschädigte Sicherung. Erneut versuchen oder abbrechen und andere Datei wählen. Der Plan ist unverändert.")
-        else tr("Enter the exact backup passphrase. Spaces and upper/lower case matter. Unlocking shows a preview before replacing anything. There is no password reset.", "Die genaue Passphrase eingeben. Leerzeichen und Groß-/Kleinschreibung zählen. Vor dem Ersetzen erscheint eine Vorschau. Kein Zurücksetzen möglich.")
+            "Use a unique, long passphrase (12–128 characters) and keep it separately. No password reset. Protects this backup file only. Cancel may leave an empty file.",
+            "Einzigartige lange Passphrase (12–128 Zeichen) separat aufbewahren. Kein Zurücksetzen. Schützt nur diese Sicherungsdatei. Abbrechen kann eine leere Datei hinterlassen.")
+        else if ((state as TransferState.Unlock).failed) tr("Wrong passphrase or damaged backup. Try again or cancel. Your plan is unchanged.", "Falsche Passphrase oder beschädigte Sicherung. Erneut versuchen oder abbrechen und andere Datei wählen. Der Plan ist unverändert.")
+        else tr("Enter the exact passphrase; spaces and case matter. Preview and confirmation follow before replacing your plan. No password reset.", "Die genaue Passphrase eingeben. Leerzeichen und Groß-/Kleinschreibung zählen. Vor dem Ersetzen erscheint eine Vorschau. Kein Zurücksetzen möglich.")
         fields.addView(text(explanation, 15f))
         fun input(label: String, tag: String): EditText {
             val edit = EditText(this).apply {
@@ -191,6 +191,9 @@ class EmergencyActivity : BaseActivity() {
         }
         val first = input(tr("Passphrase", "Passphrase"), "backup-passphrase")
         val confirmation = if (protecting) input(tr("Repeat passphrase", "Passphrase wiederholen"), "backup-passphrase-confirm") else null
+        val keyboardFlags = android.view.inputmethod.EditorInfo.IME_FLAG_NO_EXTRACT_UI or android.view.inputmethod.EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING
+        first.imeOptions = keyboardFlags or (if (protecting) android.view.inputmethod.EditorInfo.IME_ACTION_NEXT else android.view.inputmethod.EditorInfo.IME_ACTION_DONE)
+        confirmation?.imeOptions = keyboardFlags or android.view.inputmethod.EditorInfo.IME_ACTION_DONE
         passwordFields = listOfNotNull(first, confirmation)
         fields.addView(CheckBox(this).apply {
             text = tr("Show passphrase", "Passphrase anzeigen"); setTextColor(textColour); minHeight = dp(52)
