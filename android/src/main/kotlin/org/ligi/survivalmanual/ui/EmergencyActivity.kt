@@ -188,7 +188,7 @@ class EmergencyActivity : BaseActivity() {
             contentDescription = tr("Go back", "Zurückgehen")
             textSize = 14f; layoutParams = LinearLayout.LayoutParams(dp(76), -2)
         })
-        if (handbook.find(route) != null) bar.addView(button(tr("More", "Mehr")) { readerOptions() }.apply {
+        if (handbook.find(route) != null) bar.addView(button(if (resources.configuration.fontScale >= 1.3f) "⋮" else tr("More", "Mehr")) { readerOptions() }.apply {
             contentDescription = tr("Reader options", "Leseoptionen")
             textSize = 14f; layoutParams = LinearLayout.LayoutParams(0, -2, 1f)
         }) else bar.addView(text("OPEN EMERGENCY", 12f, true).apply {
@@ -206,7 +206,7 @@ class EmergencyActivity : BaseActivity() {
             handbook = EmergencyHandbook(assets, language); render()
         }.apply {
             contentDescription = tr("Switch to German", "Zu Englisch wechseln")
-            textSize = 14f; layoutParams = LinearLayout.LayoutParams(dp(52), -2)
+            textSize = 14f; layoutParams = LinearLayout.LayoutParams(dp(if (resources.configuration.fontScale >= 1.3f) 64 else 52), -2)
         })
         root.addView(bar)
         scroll = ScrollView(this).apply { isFillViewport = true }

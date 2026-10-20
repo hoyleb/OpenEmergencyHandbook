@@ -225,6 +225,7 @@ class EmergencyPreviewTest {
                     assertTrue(it.resources.configuration.fontScale >= 1.9f)
                     if (Build.VERSION.SDK_INT < 24) assertEquals(2f, it.resources.displayMetrics.scaledDensity / it.resources.displayMetrics.density, 0.05f)
                 }
+                onView(withContentDescription("Switch to German")).check { view, _ -> assertEquals(1, (view as TextView).lineCount) }
                 capture("large-text-home")
                 onView(withContentDescription("Show first-aid guides")).check(matches(isCompletelyDisplayed()))
                 tab("search").check(matches(isCompletelyDisplayed()))
@@ -237,6 +238,8 @@ class EmergencyPreviewTest {
                 onView(withText("Sicheres Trinkwasser")).check(matches(isDisplayed()))
                 onView(withContentDescription("Leseoptionen")).check(matches(isCompletelyDisplayed()))
                 onView(withContentDescription("Notruf-Wählfeld 112 öffnen")).check(matches(isCompletelyDisplayed()))
+                onView(withContentDescription("Zu Englisch wechseln")).check { view, _ -> assertEquals(1, (view as TextView).lineCount) }
+                onView(withContentDescription("Leseoptionen")).check { view, _ -> assertEquals(1, (view as TextView).lineCount) }
                 capture("large-text-reader-de")
                 tab("home").perform(click())
                 onView(withContentDescription("Erste-Hilfe-Anleitungen anzeigen")).check(matches(isCompletelyDisplayed()))
