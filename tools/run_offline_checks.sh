@@ -44,7 +44,7 @@ done
 adb install -r android/build/outputs/apk/debug/*.apk
 adb shell am force-stop com.hoyleb.openemergency.preview
 adb shell am start -W -n com.hoyleb.openemergency.preview/org.ligi.survivalmanual.ui.EmergencyActivity
-adb shell uiautomator dump /sdcard/emergency-window.xml
-adb pull /sdcard/emergency-window.xml dist/emergency-window.xml
+adb shell uiautomator dump /data/local/tmp/emergency-window.xml
+adb pull /data/local/tmp/emergency-window.xml dist/emergency-window.xml
 grep -q 'OPEN EMERGENCY' dist/emergency-window.xml
 adb exec-out screencap -p > dist/Android-preview.png

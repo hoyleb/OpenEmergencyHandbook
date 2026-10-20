@@ -62,6 +62,7 @@ class EmergencyActivity : BaseActivity() {
     private val roots = setOf("home", "search", "saved", "plan")
     private val readerSections = linkedMapOf<String, View>()
     private var pendingExport: String? = null
+    private var feedback: Toast? = null
     private val transfer by lazy { ViewModelProvider(this).get(HouseholdTransfer::class.java) }
     private var transferStatus: TextView? = null
     private var restoreDialog: androidx.appcompat.app.AlertDialog? = null
@@ -130,7 +131,7 @@ class EmergencyActivity : BaseActivity() {
                 TransferState.Restored -> {
                     transfer.dismiss()
                     if (route == "plan" || route == "saved") { articleScroll = 0; render() }
-                    Toast.makeText(this, tr("Household plan and saved guides restored", "Haushaltsplan und Merkliste wiederhergestellt"), Toast.LENGTH_LONG).show()
+                    showFeedback(tr("Household plan and saved guides restored", "Haushaltsplan und Merkliste wiederhergestellt"), true)
                 }
                 TransferState.ReadFailed -> transferResult(tr("Could not read this backup. Choose a supported JSON backup up to 512 KiB. Current data is unchanged.", "Sicherung nicht lesbar. Unterstützte JSON-Sicherung bis 512 KiB wählen. Bisherige Daten unverändert."))
                 TransferState.WriteFailed -> transferResult(tr("Could not finish saving. Check the selected file and available storage. Your plan is kept in the app.", "Speichern nicht abgeschlossen. Datei und freien Speicher prüfen. Der Plan bleibt in der App."))
@@ -140,10 +141,16 @@ class EmergencyActivity : BaseActivity() {
         }
     }
 
-    private fun transferResult(message: String) { transfer.dismiss(); Toast.makeText(this, message, Toast.LENGTH_LONG).show() }
+    private fun showFeedback(message: String, long: Boolean = true) {
+        feedback?.cancel()
+        feedback = Toast.makeText(this, message, if (long) Toast.LENGTH_LONG else Toast.LENGTH_SHORT).also { it.show() }
+    }
+
+    private fun transferResult(message: String) { transfer.dismiss(); showFeedback(message, true) }
 
     private fun showRestorePreview(state: TransferState.Preview) {
         if (restoreDialog?.isShowing == true) return
+        feedback?.cancel()
         val data = state.snapshot
         val preview = tr("Replace the current household plan and saved guides with this backup? Language, text size and reading history stay unchanged.", "Aktuellen Haushaltsplan und Merkliste durch diese Sicherung ersetzen? Sprache, Schriftgröße und Verlauf bleiben erhalten.") +
             "\n\n" + tr("${data.checks.values.count { it }} of 8 checklist items · ${data.bookmarks.size} saved guides", "${data.checks.values.count { it }} von 8 Punkten · ${data.bookmarks.size} gemerkte Anleitungen") +
@@ -179,7 +186,7 @@ class EmergencyActivity : BaseActivity() {
         dialog.show()
     }
 
-    override fun onDestroy() { restoreDialog?.dismiss(); super.onDestroy() }
+    override fun onDestroy() { feedback?.cancel(); restoreDialog?.dismiss(); super.onDestroy() }
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("language", language)
@@ -192,7 +199,7 @@ class EmergencyActivity : BaseActivity() {
     }
 
     override fun onResume() { super.onResume(); applyScreenOn() }
-    override fun onPause() { window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); super.onPause() }
+    override fun onPause() { feedback?.cancel(); window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); super.onPause() }
 
     private fun applyScreenOn() {
         if (::handbook.isInitialized && keepReadingOn && handbook.find(route) != null)
@@ -513,7 +520,7 @@ class EmergencyActivity : BaseActivity() {
                     val saved = bookmarks().toMutableSet()
                     if (!saved.add(article.id)) saved.remove(article.id)
                     preferences.edit().putStringSet("bookmarks", saved).apply()
-                    Toast.makeText(this, if (article.id in saved) tr("Guide saved", "Anleitung gemerkt") else tr("Bookmark removed", "Eintrag entfernt"), Toast.LENGTH_SHORT).show()
+                    showFeedback(if (article.id in saved) tr("Guide saved", "Anleitung gemerkt") else tr("Bookmark removed", "Eintrag entfernt"), false)
                 }
                 1 -> {
                     val scales = listOf(1f, 1.2f, 1.4f, 1.6f, 1.8f)
@@ -525,7 +532,7 @@ class EmergencyActivity : BaseActivity() {
                 }
                 2 -> {
                     keepReadingOn = !keepReadingOn; applyScreenOn()
-                    Toast.makeText(this, if (keepReadingOn) tr("Screen stays on only while reading here. Uses extra battery.", "Bildschirm bleibt nur hier beim Lesen an. Braucht mehr Akku.") else tr("Normal screen timeout restored", "Normale Bildschirmabschaltung aktiv"), Toast.LENGTH_LONG).show()
+                    showFeedback(if (keepReadingOn) tr("Screen stays on only while reading here. Uses extra battery.", "Bildschirm bleibt nur hier beim Lesen an. Braucht mehr Akku.") else tr("Normal screen timeout restored", "Normale Bildschirmabschaltung aktiv"), true)
                 }
                 3 -> showSections()
             } }.show()
@@ -571,7 +578,7 @@ class EmergencyActivity : BaseActivity() {
         sources.addView(text(tr("Original summary and translation. Sources checked ${article.checkedAt}; no professional review recorded. Links open your browser and require internet. No affiliation with the cited organisations.", "Eigene Zusammenfassung und Übersetzung. Quellenabgleich: ${article.checkedAt}; keine fachliche Prüfung dokumentiert. Links öffnen den Browser und benötigen Internet. Keine Verbindung zu den Quellenorganisationen."), 13f))
         article.sources.forEachIndexed { index, url -> sources.addView(button(tr("Source ${index + 1} · ${Uri.parse(url).host}", "Quelle ${index + 1} · ${Uri.parse(url).host}")) {
             try { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
-            catch (_: ActivityNotFoundException) { Toast.makeText(this, tr("No browser installed", "Kein Browser installiert"), Toast.LENGTH_SHORT).show() }
+            catch (_: ActivityNotFoundException) { showFeedback(tr("No browser installed", "Kein Browser installiert"), false) }
         }) }
         page.addView(sources)
         page.addView(button(tr("Back to previous page", "Zurück zur vorherigen Seite")) { goBack() })
@@ -641,7 +648,7 @@ class EmergencyActivity : BaseActivity() {
                     try { exportPlan.launch("OpenEmergency-Household.txt") }
                     catch (_: ActivityNotFoundException) {
                         pendingExport = null
-                        Toast.makeText(this, tr("No file picker available", "Keine Dateiauswahl verfügbar"), Toast.LENGTH_LONG).show()
+                        showFeedback(tr("No file picker available", "Keine Dateiauswahl verfügbar"), true)
                     }
                 }.show()
         })
@@ -658,7 +665,7 @@ class EmergencyActivity : BaseActivity() {
     private fun householdTransfers() {
         hideKeyboard()
         if (transfer.state.value == TransferState.Busy) {
-            Toast.makeText(this, tr("A file operation is still running", "Eine Datei wird noch verarbeitet"), Toast.LENGTH_SHORT).show(); return
+            showFeedback(tr("A file operation is still running", "Eine Datei wird noch verarbeitet"), false); return
         }
         androidx.appcompat.app.AlertDialog.Builder(this)
             .setTitle(tr("Household backup", "Haushaltssicherung"))
@@ -696,6 +703,6 @@ class EmergencyActivity : BaseActivity() {
 
     private fun dialEmergency() {
         try { startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:112"))) }
-        catch (_: ActivityNotFoundException) { Toast.makeText(this, tr("No dialler available. Ask someone to call 112.", "Kein Wählfeld verfügbar. Jemanden bitten, 112 anzurufen."), Toast.LENGTH_LONG).show() }
+        catch (_: ActivityNotFoundException) { showFeedback(tr("No dialler available. Ask someone to call 112.", "Kein Wählfeld verfügbar. Jemanden bitten, 112 anzurufen."), true) }
     }
 }
