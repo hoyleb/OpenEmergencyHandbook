@@ -14,7 +14,7 @@ collect_evidence() {
     for name in $names; do
       target="android/build/reports/usability/$name.png"
       if [ ! -s "$target" ]; then
-        if adb exec-out run-as com.hoyleb.openemergency.preview cat "cache/usability/$name.png" > "$target.tmp" 2>/dev/null && [ -s "$target.tmp" ]; then
+        if adb exec-out run-as com.hoyleb.openemergency.preview cat "cache/usability/$name.png" > "$target.tmp" 2>/dev/null && [ "$(od -An -tx1 -N8 "$target.tmp" | tr -d ' \n')" = 89504e470d0a1a0a ]; then
           mv "$target.tmp" "$target"
         else
           rm -f "$target.tmp"
