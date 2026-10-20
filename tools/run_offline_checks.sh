@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-adb shell mkdir -p /sdcard/Download
+# Tests and screenshots use app-private cache; do not race external-storage
+# mounting immediately after sys.boot_completed on fresh emulators.
 adb shell svc wifi disable
 adb shell svc data disable
 # Collect atomic app-private captures while tests are running; AGP removes the
