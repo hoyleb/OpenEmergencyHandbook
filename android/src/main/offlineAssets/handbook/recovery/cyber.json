@@ -1,0 +1,39 @@
+{
+  "id": "cyber",
+  "group": "disaster",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Cyberattack & digital outage",
+    "summary": "Separate a hacked device/account from a wider infrastructure failure.",
+    "keywords": "ransomware hacked phishing account bank cyberattack internet Cyberangriff",
+    "body": "## Personal account or device attack\nUse a separate trusted device to contact the affected provider through a known address. For a stolen account: recover access, change compromised/reused passwords, revoke unknown sessions and enable multifactor authentication. Secure the email account used for password resets. Contact your bank promptly if payments or credentials may be compromised.\n\nDisconnect a suspected infected device from networks to limit spread. Preserve messages, timestamps and evidence. Avoid random cleanup tools, paying a supposed support agent, or wiping everything before considering evidence and backups. Recovery steps depend on the incident; use the provider or qualified support.\n\n## Infrastructure failure\nCyberattacks can disrupt power, water, payments, hospitals, deliveries and communications without infecting your own phone. Use the outage, water, food and household guides. Keep written contacts and some accessible cash. Do not assume an unexplained outage proves an attack.\n\n## Prepare and recover\nKeep protected offline backups and recovery codes, test restores, update devices and verify urgent messages through an independent channel. Never enter passwords or recovery codes into an unexpected message link. This app does not scan your device or determine whether infrastructure is operational."
+  },
+  "de": {
+    "title": "Cyberangriff & Digitalausfall",
+    "summary": "Ein gehacktes Gerät/Konto von einer Störung der Infrastruktur unterscheiden.",
+    "keywords": "Ransomware Phishing Konto gehackt Bank Internet Cyberangriff",
+    "body": "## Eigenes Konto oder Gerät betroffen\nAuf einem anderen vertrauenswürdigen Gerät den Anbieter über eine bekannte Adresse kontaktieren. Konto wiederherstellen, kompromittierte/mehrfach verwendete Passwörter ändern, unbekannte Sitzungen beenden und Mehrfaktoranmeldung aktivieren. Das E-Mail-Konto für Passwortzurücksetzungen absichern. Bei möglichen Zahlungs- oder Zugangsdatenverlusten umgehend die Bank kontaktieren.\n\nEin vermutlich infiziertes Gerät vom Netzwerk trennen, um Ausbreitung zu begrenzen. Nachrichten, Zeitpunkte und Beweise sichern. Keine beliebigen Bereinigungstools, angeblichen Supportzahlungen oder vorschnelle Komplettlöschung. Wiederherstellung hängt vom Vorfall ab; Anbieter oder Fachhilfe einbeziehen.\n\n## Infrastruktur ausgefallen\nAngriffe können Strom, Wasser, Zahlungen, Krankenhäuser, Lieferungen und Kommunikation stören, ohne das eigene Handy zu infizieren. Anleitungen zu Strom, Wasser, Essen und Haushaltsvorsorge nutzen. Papierkontakte und etwas verfügbares Bargeld vorhalten. Ein unbekannter Ausfall beweist keinen Angriff.\n\n## Vorsorgen und wiederherstellen\nGeschützte Offline-Backups und Wiederherstellungscodes bereithalten, Rücksicherung testen und Geräte aktualisieren. Dringende Nachrichten unabhängig überprüfen. Passwörter/Codes niemals über unerwartete Nachrichtenlinks eingeben. Die App erkennt keine Infektionen oder funktionierende Infrastruktur."
+  },
+  "sources": [
+    "https://www.bsi.bund.de/DE/IT-Sicherheitsvorfall/Buergerinnen-und-Buerger/buergerinnen-und-buerger.html?pos=4",
+    "https://www.polizei-beratung.de/medienangebot/detail/350-checkliste-gehackter-account/",
+    "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/vorsorge_node.html"
+  ],
+  "related": [
+    "communications",
+    "prepare",
+    "recovery"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

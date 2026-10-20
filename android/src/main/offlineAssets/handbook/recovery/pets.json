@@ -1,0 +1,37 @@
+{
+  "id": "pets",
+  "group": "essentials",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Pets in an emergency",
+    "summary": "Prepare transport, identification, safe water and a place that accepts animals.",
+    "keywords": "pets dog cat animal veterinary carrier evacuation assistance service animal",
+    "body": "## Prepare\nKeep a carrier/leash, identification, veterinary contact, records, prescribed medicines, familiar food and safe water accessible. Maintain microchip/contact details. Agree who can help if you are away; practise transport calmly.\n\n## Leaving home\nInclude animals in the evacuation plan and identify accommodation that accepts them. Ordinary pets and assistance animals may have different admission arrangements; confirm locally. Do not delay escape from immediate danger or send someone into a dangerous building to retrieve an animal.\n\n## During and after\nKeep animals restrained appropriately: frightened animals can run away or bite. Keep them from floodwater, chemicals and unfamiliar wildlife. Use safe drinking water and wash hands after waste handling. Do not give human medicines without veterinary advice. Contact a veterinarian for injury, poisoning or illness. Changed landmarks after a disaster can disorient animals; keep them leashed or contained."
+  },
+  "de": {
+    "title": "Haustiere im Notfall",
+    "summary": "Transport, Kennzeichnung, sicheres Wasser und geeignete Unterkunft vorbereiten.",
+    "keywords": "Haustier Hund Katze Tier Tierarzt Transportbox Evakuierung Assistenzhund",
+    "body": "## Vorbereiten\nTransportbox/Leine, Kennzeichnung, Tierarztkontakt, Unterlagen, verordnete Medikamente, gewohntes Futter und sicheres Wasser bereithalten. Chip-/Kontaktdaten aktuell halten. Hilfe bei eigener Abwesenheit vereinbaren und Transport ruhig üben.\n\n## Wohnung verlassen\nTiere in den Fluchtplan aufnehmen und tiergeeignete Unterkunft ermitteln. Für Haustiere und Assistenztiere können unterschiedliche Aufnahmeregeln gelten; örtlich prüfen. Flucht aus unmittelbarer Gefahr nicht verzögern und niemanden zur Tierrettung in ein gefährliches Gebäude schicken.\n\n## Währenddessen und danach\nTiere angemessen sichern: Angst kann Flucht oder Bisse auslösen. Von Hochwasser, Chemikalien und fremden Wildtieren fernhalten. Sicheres Trinkwasser geben und nach Abfallkontakt Hände waschen. Ohne tierärztlichen Rat keine Humanmedikamente geben. Bei Verletzung, Vergiftung oder Krankheit Tierarzt kontaktieren. Veränderte Orientierungspunkte können Tiere nach Katastrophen verwirren; anleinen oder sicher unterbringen."
+  },
+  "sources": [
+    "https://www.cdc.gov/healthy-pets/emergency-preparedness/index.html"
+  ],
+  "related": [
+    "prepare",
+    "water",
+    "shelter"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

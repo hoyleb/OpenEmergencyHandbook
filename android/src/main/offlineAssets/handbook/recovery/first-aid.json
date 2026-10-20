@@ -1,0 +1,46 @@
+{
+  "id": "first-aid",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "First aid",
+    "summary": "Scene safety, calling for help, severe bleeding and burns.",
+    "keywords": "injury bleeding burn wound unconscious Erste Hilfe Blutung Verbrennung",
+    "body": "## Protect yourself first\nCheck for traffic, electricity, fire, floodwater and unstable structures. Do not become another casualty. Call **112** in Germany/EU for a life-threatening emergency. Give the location, what happened and the number of people affected; follow the dispatcher.\n\n## Unresponsive person\nCheck responsiveness and normal breathing. Gasping is not normal breathing. If breathing is absent or abnormal, use the **Adult CPR & AED** guide and follow the dispatcher. If breathing normally, maintain an open airway, monitor continuously and follow instructions; a suspected spinal injury needs particular care.\n\n## Severe external bleeding\nUse gloves if available. Press firmly and continuously on the wound with a clean dressing. Get emergency help. Do not pull out an embedded object; press around it. Life-threatening bleeding may require a commercial tourniquet when indicated and according to training/instructions. Never loosen one casually.\n\n## Burns\nStop the burning safely. Cool a thermal burn with cool running water, avoid chilling the rest of the person, and cover loosely with a clean non-stick dressing. No ice, butter or creams. Major, chemical, electrical, facial or breathing-related burns need urgent assessment.\n\n## Preview limits\nThis is an introductory summary, not a complete first-aid course. Dedicated child/infant CPR, choking and other drafts are linked below; none has yet received professional review. Do not delay calling for help while searching this app."
+  },
+  "de": {
+    "title": "Erste Hilfe",
+    "summary": "Eigenschutz, Hilfe rufen, starke Blutungen und Verbrennungen.",
+    "keywords": "Verletzung Blutung Brandwunde bewusstlos first aid bleeding",
+    "body": "## Zuerst Eigenschutz\nAuf Verkehr, Strom, Feuer, Hochwasser und instabile Gebäude achten. Nicht selbst zum weiteren Opfer werden. Bei Lebensgefahr in Deutschland/EU **112** anrufen: Ort, Ereignis und Zahl der Betroffenen nennen; der Leitstelle folgen.\n\n## Bewusstlose Person\nReaktion und normale Atmung prüfen. Schnappatmung ist keine normale Atmung. Bei fehlender oder nicht normaler Atmung die Anleitung **Wiederbelebung & AED (Erwachsene)** nutzen und der Leitstelle folgen. Bei normaler Atmung Atemwege freihalten, fortlaufend überwachen und Anweisungen befolgen; bei möglicher Wirbelsäulenverletzung besonders vorsichtig sein.\n\n## Starke äußere Blutung\nWenn vorhanden Handschuhe tragen. Mit sauberem Verband kräftig und anhaltend direkt auf die Wunde drücken. Notruf veranlassen. Eingedrungene Gegenstände nicht herausziehen; daneben Druck ausüben. Bei lebensbedrohlicher Blutung kann ein handelsübliches Tourniquet entsprechend Schulung/Anleitung erforderlich sein. Ein angelegtes Tourniquet nicht eigenmächtig lockern.\n\n## Verbrennungen\nHitzeeinwirkung sicher beenden. Thermische Verbrennung mit kühlem fließendem Wasser kühlen; übrigen Körper vor Auskühlung schützen. Locker mit sauberer, nicht haftender Auflage bedecken. Kein Eis, Butter oder Cremes. Schwere, chemische, elektrische sowie Gesichts- oder Atemwegsverletzungen dringend abklären lassen.\n\n## Grenzen des Entwurfs\nKeine vollständige Erste-Hilfe-Ausbildung. Verlinkte Entwürfe für Säuglinge/Kinder, Verschlucken und weitere Notfälle sind enthalten; eine fachliche Prüfung steht aus. Den Notruf nicht durch die App-Suche verzögern."
+  },
+  "sources": [
+    "https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025",
+    "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/adult-basic-life-support-guidelines"
+  ],
+  "related": [
+    "adult-cpr",
+    "child-cpr",
+    "adult-choking",
+    "child-choking",
+    "bleeding",
+    "burns",
+    "anaphylaxis",
+    "seizures",
+    "diabetes",
+    "poisoning",
+    "stroke-heart"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

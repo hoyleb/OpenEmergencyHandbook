@@ -1,0 +1,40 @@
+{
+  "id": "pandemic",
+  "group": "disaster",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Pandemic & infectious disease",
+    "summary": "Reduce transmission and maintain care; the pathogen determines the details.",
+    "keywords": "pandemic epidemic infection virus flu mask Pandemie Infektion",
+    "body": "## Identify the type of guidance\nNot every outbreak spreads the same way. Respiratory, food/water-borne and contact-transmitted infections require different precautions. Seek current local public-health advice when communications work. This offline edition cannot identify a new pathogen or provide current treatment/vaccination rules.\n\n## Respiratory infections\nReduce close contact when ill. Improve indoor air when safe and consider a well-fitting protective mask, especially around vulnerable people. Cleaner air, hygiene and appropriate vaccination are complementary measures. Outdoor contamination, extreme weather or fallout may make opening windows unsafe: do not apply ventilation advice blindly.\n\n## Care at home\nPlan a separate space where feasible, minimise exposed caregivers, wash hands and clean commonly touched surfaces appropriately. Avoid sharing personal items. Maintain fluids and prescribed medicines; seek early professional advice for people at risk of severe illness. Never mix cleaning chemicals.\n\n## Urgent help\nSevere breathing difficulty, collapse, new confusion, severe dehydration or other rapidly worsening symptoms need urgent medical assessment; call 112 for life-threatening illness.\n\n## Continuity\nStore practical supplies and contact information, arrange support for dependants and medication needs, and verify alarming claims through reliable sources. Do not self-prescribe antibiotics or unproven treatments."
+  },
+  "de": {
+    "title": "Pandemie & Infektionskrankheit",
+    "summary": "Übertragung reduzieren und Versorgung erhalten; Details hängen vom Erreger ab.",
+    "keywords": "Epidemie Virus Grippe Maske Pandemie Infektion pandemic",
+    "body": "## Passende Hinweise wählen\nAusbrüche verbreiten sich unterschiedlich. Atemwegs-, Lebensmittel-/Wasser- und Kontaktinfektionen brauchen unterschiedliche Maßnahmen. Bei Verbindung aktuelle örtliche Gesundheitsinformationen suchen. Diese Offline-Ausgabe erkennt keinen neuen Erreger und kennt keine aktuellen Therapie-/Impfregeln.\n\n## Atemwegsinfektionen\nBei Krankheit enge Kontakte reduzieren. Raumluft verbessern, sofern sicher; besonders bei gefährdeten Personen eine gut sitzende Schutzmaske erwägen. Saubere Luft, Hygiene und passende Impfungen ergänzen sich. Außenluftbelastung, Extremwetter oder Fallout können Fensteröffnen gefährlich machen: Lüftungsregeln nicht blind anwenden.\n\n## Zu Hause versorgen\nWenn möglich getrennten Bereich planen, Zahl exponierter Pflegender begrenzen, Hände waschen und häufig berührte Flächen passend reinigen. Persönliche Gegenstände nicht teilen. Flüssigkeit und verordnete Medikamente sichern; bei erhöhtem Risiko früh ärztlichen Rat suchen. Reinigungsmittel niemals mischen.\n\n## Dringend Hilfe\nSchwere Atemnot, Kollaps, neue Verwirrtheit, starke Austrocknung oder rasche Verschlechterung benötigen dringend medizinische Beurteilung; bei Lebensgefahr 112.\n\n## Versorgung erhalten\nPraktische Vorräte und Kontakte bereithalten; Unterstützung für Angehörige und Medikamente planen. Alarmmeldungen zuverlässig gegenprüfen. Keine selbst verordneten Antibiotika oder unbelegten Therapien."
+  },
+  "sources": [
+    "https://www.cdc.gov/respiratory-viruses/prevention/index.html",
+    "https://www.cdc.gov/respiratory-viruses/prevention/precautions-when-sick.html",
+    "https://www.cdc.gov/respiratory-viruses/prevention/masks.html",
+    "https://www.who.int/emergencies/operations/ipc-wash"
+  ],
+  "related": [
+    "hygiene",
+    "combined-hazards",
+    "accessibility"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

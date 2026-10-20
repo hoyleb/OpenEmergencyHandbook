@@ -13,15 +13,15 @@ import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.view.View
 import android.view.WindowManager
+import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.ViewModelProvider
 import androidx.core.text.HtmlCompat
-import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import org.json.JSONArray
 import org.json.JSONObject
 import org.ligi.survivalmanual.BuildConfig
@@ -29,6 +29,13 @@ import org.ligi.survivalmanual.functions.convertMarkdownToHtml
 import org.ligi.survivalmanual.model.EmergencyArticle
 import org.ligi.survivalmanual.model.EmergencyHandbook
 import org.ligi.survivalmanual.model.HouseholdPlan
+import org.ligi.survivalmanual.model.HouseholdBackup
+import org.ligi.survivalmanual.model.HouseholdTransfer
+import org.ligi.survivalmanual.model.TransferState
+import org.ligi.survivalmanual.model.safeString
+import org.ligi.survivalmanual.model.safeBoolean
+import org.ligi.survivalmanual.model.safeFloat
+import org.ligi.survivalmanual.model.safeStrings
 import java.util.Locale
 
 /** Entire reading, search, navigation and household flow works offline. */
@@ -55,6 +62,10 @@ class EmergencyActivity : BaseActivity() {
     private val roots = setOf("home", "search", "saved", "plan")
     private val readerSections = linkedMapOf<String, View>()
     private var pendingExport: String? = null
+    private var feedback: Toast? = null
+    private val transfer by lazy { ViewModelProvider(this).get(HouseholdTransfer::class.java) }
+    private var transferStatus: TextView? = null
+    private var restoreDialog: androidx.appcompat.app.AlertDialog? = null
 
     private data class Place(val route: String, val query: String, val category: String, val scroll: Int, val tab: String) {
         fun json() = JSONObject().put("route", route).put("query", query).put("category", category).put("scroll", scroll).put("tab", tab)
@@ -65,23 +76,28 @@ class EmergencyActivity : BaseActivity() {
 
     private val exportPlan = registerForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
         val snapshot = pendingExport; pendingExport = null
-        if (uri != null && snapshot != null) {
-            try {
-                val output = contentResolver.openOutputStream(uri) ?: throw java.io.IOException("No output stream")
-                output.bufferedWriter(Charsets.UTF_8).use { it.write(snapshot) }
-                Toast.makeText(this, tr("Plan saved. Keep a printed copy too.", "Plan gespeichert. Auch auf Papier aufbewahren."), Toast.LENGTH_LONG).show()
-            } catch (_: Exception) {
-                Toast.makeText(this, tr("Could not save. Try another local folder.", "Speichern fehlgeschlagen. Anderen lokalen Ordner versuchen."), Toast.LENGTH_LONG).show()
-            }
+        if (uri != null) {
+            if (snapshot != null) transfer.write(applicationContext.contentResolver, uri, snapshot)
+            else transferResult(tr("Export interrupted. The selected file may be empty; save the plan again.", "Export unterbrochen. Gewählte Datei eventuell leer; Plan erneut speichern."))
         }
+    }
+    private val backupPlan = registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
+        val data = transfer.pendingBackup; transfer.pendingBackup = null
+        if (uri != null) {
+            if (data != null) transfer.write(applicationContext.contentResolver, uri, data)
+            else transferResult(tr("Backup interrupted. The selected file may be empty; save a new backup.", "Sicherung unterbrochen. Gewählte Datei eventuell leer; Sicherung erneut speichern."))
+        }
+    }
+    private val importPlan = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri != null) transfer.read(applicationContext.contentResolver, uri, handbook.articles.map { it.id }.toSet().takeIf { it.isNotEmpty() })
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val deviceLanguage = if (Locale.getDefault().language == "de") "de" else "en"
-        language = savedInstanceState?.getString("language") ?: preferences.getString("language", deviceLanguage) ?: deviceLanguage
+        language = savedInstanceState?.getString("language") ?: preferences.safeString("language", deviceLanguage)
         if (language !in setOf("en", "de")) language = "en"
-        readerScale = preferences.getFloat("reader-scale", 1f).coerceIn(1f, 1.8f)
+        readerScale = preferences.safeFloat("reader-scale", 1f).coerceIn(1f, 1.8f)
         keepReadingOn = savedInstanceState?.getBoolean("keep-reading-on") ?: false
         pendingExport = savedInstanceState?.getString("pending-export")
         savedInstanceState?.getString("place")?.let { restore(Place.from(JSONObject(it))) }
@@ -107,7 +123,70 @@ class EmergencyActivity : BaseActivity() {
             }
         })
         render()
+        transfer.state.observe(this) { state ->
+            transferStatus?.text = if (state == TransferState.Busy) tr("Working with the selected file…", "Ausgewählte Datei wird verarbeitet…") else ""
+            when (state) {
+                is TransferState.Preview -> showRestorePreview(state)
+                TransferState.Saved -> transferResult(tr("File saved. Keep the backup private and a printed plan too.", "Datei gespeichert. Sicherung vertraulich und Plan auch auf Papier aufbewahren."))
+                TransferState.Restored -> {
+                    transfer.dismiss()
+                    if (route == "plan" || route == "saved") { articleScroll = 0; render() }
+                    showFeedback(tr("Household plan and saved guides restored", "Haushaltsplan und Merkliste wiederhergestellt"), true)
+                }
+                TransferState.ReadFailed -> transferResult(tr("Could not read this backup. Choose a supported JSON backup up to 512 KiB. Current data is unchanged.", "Sicherung nicht lesbar. Unterstützte JSON-Sicherung bis 512 KiB wählen. Bisherige Daten unverändert."))
+                TransferState.WriteFailed -> transferResult(tr("Could not finish saving. Check the selected file and available storage. Your plan is kept in the app.", "Speichern nicht abgeschlossen. Datei und freien Speicher prüfen. Der Plan bleibt in der App."))
+                TransferState.RestoreFailed -> transferResult(tr("Could not store the restored plan. Previous values were restored in memory. Keep your backup and free storage before retrying.", "Wiederherstellung nicht gespeichert. Vorherige Werte im Arbeitsspeicher wiederhergestellt. Sicherung behalten und Speicher freigeben."))
+                else -> Unit
+            }
+        }
     }
+
+    private fun showFeedback(message: String, long: Boolean = true) {
+        feedback?.cancel()
+        feedback = Toast.makeText(this, message, if (long) Toast.LENGTH_LONG else Toast.LENGTH_SHORT).also { it.show() }
+    }
+
+    private fun transferResult(message: String) { transfer.dismiss(); showFeedback(message, true) }
+
+    private fun showRestorePreview(state: TransferState.Preview) {
+        if (restoreDialog?.isShowing == true) return
+        feedback?.cancel()
+        val data = state.snapshot
+        val preview = tr("Replace the current household plan and saved guides with this backup? Language, text size and reading history stay unchanged.", "Aktuellen Haushaltsplan und Merkliste durch diese Sicherung ersetzen? Sprache, Schriftgröße und Verlauf bleiben erhalten.") +
+            "\n\n" + tr("${data.checks.values.count { it }} of 8 checklist items · ${data.bookmarks.size} saved guides", "${data.checks.values.count { it }} von 8 Punkten · ${data.bookmarks.size} gemerkte Anleitungen") +
+            "\n" + tr("People: ${data.people.ifEmpty { "—" }} · Days: ${data.days.ifEmpty { "—" }}", "Personen: ${data.people.ifEmpty { "—" }} · Tage: ${data.days.ifEmpty { "—" }}") +
+            "\n\n" + tr("Notes preview (${data.notes.length} characters):", "Notizvorschau (${data.notes.length} Zeichen):") + "\n" + data.notes.take(300) + if (data.notes.length > 300) "…" else ""
+        hideKeyboard()
+        val title = tr("Review backup before replacing", "Sicherung vor Ersetzen prüfen")
+        val content = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(dp(16), dp(12), dp(16), dp(12)); setBackgroundColor(surface)
+        }
+        ViewCompat.setAccessibilityPaneTitle(content, title)
+        content.addView(heading(title, 20f))
+        val details = ScrollView(this).apply { addView(text(preview, 16f)) }
+        content.addView(details, LinearLayout.LayoutParams(-1, 0, 1f))
+        val actions = LinearLayout(this).apply {
+            orientation = if (resources.configuration.screenWidthDp >= 480) LinearLayout.HORIZONTAL else LinearLayout.VERTICAL
+        }
+        val dialog = androidx.appcompat.app.AlertDialog.Builder(this).setView(content)
+            .setOnCancelListener { transfer.dismiss() }.create()
+        val replace = button(tr("Replace plan", "Ersetzen")) { transfer.restore(preferences, data); dialog.dismiss() }
+        val cancel = button(getString(android.R.string.cancel)) { transfer.dismiss(); dialog.dismiss() }
+        for (action in listOf(replace, cancel)) actions.addView(action, if (actions.orientation == LinearLayout.HORIZONTAL)
+            LinearLayout.LayoutParams(0, -2, 1f) else LinearLayout.LayoutParams(-1, -2))
+        content.addView(actions)
+        dialog.setOnShowListener {
+            val metrics = resources.displayMetrics
+            val bars = ViewCompat.getRootWindowInsets(window.decorView)?.getInsets(WindowInsetsCompat.Type.systemBars())
+            val height = metrics.heightPixels - (bars?.top ?: 0) - (bars?.bottom ?: 0)
+            dialog.window?.setLayout((metrics.widthPixels * 0.94f).toInt(), (height * 0.9f).toInt())
+        }
+        restoreDialog = dialog
+        dialog.show()
+    }
+
+    override fun onDestroy() { feedback?.cancel(); restoreDialog?.dismiss(); super.onDestroy() }
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("language", language)
@@ -120,7 +199,7 @@ class EmergencyActivity : BaseActivity() {
     }
 
     override fun onResume() { super.onResume(); applyScreenOn() }
-    override fun onPause() { window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); super.onPause() }
+    override fun onPause() { feedback?.cancel(); window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); super.onPause() }
 
     private fun applyScreenOn() {
         if (::handbook.isInitialized && keepReadingOn && handbook.find(route) != null)
@@ -151,13 +230,19 @@ class EmergencyActivity : BaseActivity() {
         layoutParams = LinearLayout.LayoutParams(-1, -2).apply { bottomMargin = dp(6) }
     }
 
+    private fun hideKeyboard() {
+        val token = currentFocus?.windowToken ?: window.decorView.windowToken
+        (getSystemService(INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager).hideSoftInputFromWindow(token, 0)
+    }
     private fun navigate(destination: String) {
+        hideKeyboard()
         if (destination == route) return
         history.add(snapshot()); if (history.size > 30) history.removeAt(0)
         route = destination; articleScroll = 0; render()
     }
 
     private fun switchTab(destination: String) {
+        hideKeyboard()
         if (route in roots) tabPlaces[route] = snapshot()
         else history.lastOrNull { it.route == activeTab }?.let { tabPlaces[activeTab] = it }
         history.clear()
@@ -219,6 +304,9 @@ class EmergencyActivity : BaseActivity() {
             isAppearanceLightStatusBars = light; isAppearanceLightNavigationBars = light
         }
         ViewCompat.requestApplyInsets(root)
+        if (handbook.recoveryMode && handbook.articles.isNotEmpty()) page.addView(text(tr(
+            "Recovery mode: ${handbook.articles.size} guides readable; ${handbook.missingGuideCount} unavailable. Back up your plan before reinstalling.",
+            "Wiederherstellungsmodus: ${handbook.articles.size} Anleitungen lesbar; ${handbook.missingGuideCount} fehlen. Vor Neuinstallation Plan sichern."), 14f).apply { setTextColor(muted) })
         when (route) {
             "home" -> dashboard()
             "search" -> searchPage()
@@ -274,22 +362,29 @@ class EmergencyActivity : BaseActivity() {
     }
 
     private fun dashboard() {
+        if (handbook.articles.isEmpty()) {
+            page.addView(heading(tr("Guides unavailable", "Anleitungen nicht verfügbar")))
+            page.addView(text(tr("The bundled handbook could not be read. Your household plan is still available. Back it up before reinstalling, and keep the printable handbook as a separate copy.", "Das enthaltene Handbuch ist nicht lesbar. Der Haushaltsplan ist weiter verfügbar. Vor Neuinstallation sichern und Druckausgabe getrennt aufbewahren.")))
+            page.addView(button(tr("Open household plan", "Haushaltsplan öffnen")) { switchTab("plan") })
+            page.addView(button(tr("Retry loading guides", "Anleitungen erneut laden")) { handbook = EmergencyHandbook(assets, language); articleScroll = 0; render() })
+            return
+        }
         page.addView(heading(tr("Help now", "Jetzt Hilfe finden")))
         page.addView(text(tr("Offline · Unreviewed development preview", "Offline · Ungeprüfter Entwicklungsentwurf"), 12f).apply { setTextColor(muted) })
         actionGrid(listOf(
             Triple(tr("First aid", "Erste Hilfe"), tr("Show first-aid guides", "Erste-Hilfe-Anleitungen anzeigen")) { navigate("aid") },
             Triple(tr("Safe water", "Sicheres Wasser"), tr("Open safe water guide", "Trinkwasser-Anleitung öffnen")) { navigate("water") }
-        ))
+        ).filterIndexed { index, _ -> if (index == 0) handbook.articles.any { it.group == "urgent" } else handbook.find("water") != null })
         val labels = mapOf(
             "power" to tr("Power outage", "Stromausfall"), "flood" to tr("Flood", "Hochwasser"),
             "earthquake" to tr("Earthquake", "Erdbeben"), "fallout" to tr("Nuclear fallout", "Nuklearer Fallout"),
             "cyber" to tr("Cyberattack", "Cyberangriff"), "pandemic" to tr("Pandemic", "Pandemie")
         )
-        actionGrid(labels.map { (id, label) -> Triple(label, label) { navigate(id) } })
+        actionGrid(labels.filterKeys { handbook.find(it) != null }.map { (id, label) -> Triple(label, label) { navigate(id) } })
         page.addView(button(tr("Prepare & recover", "Vorsorge & Rückkehr")) { navigate("prepare") })
         page.addView(button(tr("All guides & search", "Alle Anleitungen & Suche")) { switchTab("search") })
         page.addView(button(tr("Unreviewed preview · About & sources", "Ungeprüfter Entwurf · Über die App & Quellen")) { navigate("about") }.apply { textSize = 14f })
-        page.addView(text(tr("All 30 guides are on this phone. Incomplete, unreviewed content; follow emergency services. No live alerts. Edition ${handbook.edition} · ${BuildConfig.VERSION_NAME}", "Alle 30 Anleitungen auf diesem Handy. Inhalte unvollständig und ungeprüft; Rettungsdiensten folgen. Keine Live-Warnungen. Ausgabe ${handbook.edition} · ${BuildConfig.VERSION_NAME}"), 13f).apply { setTextColor(muted) })
+        page.addView(text(tr("All ${handbook.articles.size} available guides are on this phone. Incomplete, unreviewed content; follow emergency services. No live alerts. Edition ${handbook.edition} · ${BuildConfig.VERSION_NAME}", "Alle ${handbook.articles.size} verfügbaren Anleitungen auf diesem Handy. Inhalte unvollständig und ungeprüft; Rettungsdiensten folgen. Keine Live-Warnungen. Ausgabe ${handbook.edition} · ${BuildConfig.VERSION_NAME}"), 13f).apply { setTextColor(muted) })
     }
 
     private fun guideList(title: String, articles: List<EmergencyArticle>) {
@@ -304,7 +399,7 @@ class EmergencyActivity : BaseActivity() {
         val search = EditText(this).apply {
             hint = tr("Water, blackout, bleeding…", "Wasser, Stromausfall, Blutung…")
             contentDescription = tr("Search all offline guides", "Alle Offline-Anleitungen durchsuchen")
-            setSingleLine(true); textSize = 17f; setTextColor(textColour); setHintTextColor(muted)
+            setSingleLine(true); filters = arrayOf(android.text.InputFilter.LengthFilter(200)); textSize = 17f; setTextColor(textColour); setHintTextColor(muted)
             minHeight = dp(56); setPadding(dp(12), dp(8), dp(12), dp(8)); background = shape(surface, 10)
             setText(query)
         }
@@ -356,11 +451,11 @@ class EmergencyActivity : BaseActivity() {
         updateResults()
     }
 
-    private fun bookmarks() = preferences.getStringSet("bookmarks", emptySet())?.toSet().orEmpty()
-    private fun recentIds(): List<String> {
-        val list = JSONArray(preferences.getString("recent-guides", "[]"))
-        return (0 until list.length()).map { list.getString(it) }
-    }
+    private fun bookmarks() = preferences.safeStrings("bookmarks")
+    private fun recentIds(): List<String> = try {
+        val list = JSONArray(preferences.safeString("recent-guides", "[]"))
+        (0 until minOf(list.length(), 6)).mapNotNull { list.optString(it).takeIf { id -> handbook.find(id) != null } }
+    } catch (_: Exception) { emptyList() }
 
     private fun savedPage() {
         page.addView(heading(tr("Saved guides", "Merkliste")))
@@ -384,18 +479,18 @@ class EmergencyActivity : BaseActivity() {
     }
 
     private fun card(article: EmergencyArticle): View {
-        val card = LinearLayout(this).apply {
+        val card = object : LinearLayout(this) {
+            override fun onInitializeAccessibilityNodeInfo(info: AccessibilityNodeInfo) {
+                super.onInitializeAccessibilityNodeInfo(info)
+                info.className = Button::class.java.name
+            }
+        }.apply {
             orientation = LinearLayout.VERTICAL; setPadding(dp(14), dp(10), dp(14), dp(10))
             background = shape(surface); isClickable = true; isFocusable = true; minimumHeight = dp(72)
             tag = "guide-${article.id}"; contentDescription = "${article.title}. ${article.summary}"
             layoutParams = LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) }
             setOnClickListener { navigate(article.id) }
             ViewCompat.setScreenReaderFocusable(this, true)
-            ViewCompat.setAccessibilityDelegate(this, object : AccessibilityDelegateCompat() {
-                override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
-                    super.onInitializeAccessibilityNodeInfo(host, info); info.className = Button::class.java.name
-                }
-            })
         }
         card.addView(text(article.title, 19f, true).apply { setTextColor(accent); importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO })
         card.addView(text(article.summary, 14f).apply { setTextColor(muted); importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO })
@@ -425,7 +520,7 @@ class EmergencyActivity : BaseActivity() {
                     val saved = bookmarks().toMutableSet()
                     if (!saved.add(article.id)) saved.remove(article.id)
                     preferences.edit().putStringSet("bookmarks", saved).apply()
-                    Toast.makeText(this, if (article.id in saved) tr("Guide saved", "Anleitung gemerkt") else tr("Bookmark removed", "Eintrag entfernt"), Toast.LENGTH_SHORT).show()
+                    showFeedback(if (article.id in saved) tr("Guide saved", "Anleitung gemerkt") else tr("Bookmark removed", "Eintrag entfernt"), false)
                 }
                 1 -> {
                     val scales = listOf(1f, 1.2f, 1.4f, 1.6f, 1.8f)
@@ -437,7 +532,7 @@ class EmergencyActivity : BaseActivity() {
                 }
                 2 -> {
                     keepReadingOn = !keepReadingOn; applyScreenOn()
-                    Toast.makeText(this, if (keepReadingOn) tr("Screen stays on only while reading here. Uses extra battery.", "Bildschirm bleibt nur hier beim Lesen an. Braucht mehr Akku.") else tr("Normal screen timeout restored", "Normale Bildschirmabschaltung aktiv"), Toast.LENGTH_LONG).show()
+                    showFeedback(if (keepReadingOn) tr("Screen stays on only while reading here. Uses extra battery.", "Bildschirm bleibt nur hier beim Lesen an. Braucht mehr Akku.") else tr("Normal screen timeout restored", "Normale Bildschirmabschaltung aktiv"), true)
                 }
                 3 -> showSections()
             } }.show()
@@ -472,19 +567,29 @@ class EmergencyActivity : BaseActivity() {
             }
         }
         val sources = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; visibility = View.GONE }
-        page.addView(button(tr("Sources & limitations (${article.sources.size})", "Quellen & Grenzen (${article.sources.size})")) {
-            sources.visibility = if (sources.visibility == View.VISIBLE) View.GONE else View.VISIBLE
-        })
+        val sourcesToggle = button(tr("Sources & limitations (${article.sources.size})", "Quellen & Grenzen (${article.sources.size})")) { }
+        ViewCompat.setStateDescription(sourcesToggle, tr("Collapsed", "Eingeklappt"))
+        sourcesToggle.setOnClickListener {
+            val expanded = sources.visibility != View.VISIBLE
+            sources.visibility = if (expanded) View.VISIBLE else View.GONE
+            ViewCompat.setStateDescription(sourcesToggle, if (expanded) tr("Expanded", "Ausgeklappt") else tr("Collapsed", "Eingeklappt"))
+        }
+        page.addView(sourcesToggle)
         sources.addView(text(tr("Original summary and translation. Sources checked ${article.checkedAt}; no professional review recorded. Links open your browser and require internet. No affiliation with the cited organisations.", "Eigene Zusammenfassung und Übersetzung. Quellenabgleich: ${article.checkedAt}; keine fachliche Prüfung dokumentiert. Links öffnen den Browser und benötigen Internet. Keine Verbindung zu den Quellenorganisationen."), 13f))
         article.sources.forEachIndexed { index, url -> sources.addView(button(tr("Source ${index + 1} · ${Uri.parse(url).host}", "Quelle ${index + 1} · ${Uri.parse(url).host}")) {
             try { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
-            catch (_: ActivityNotFoundException) { Toast.makeText(this, tr("No browser installed", "Kein Browser installiert"), Toast.LENGTH_SHORT).show() }
+            catch (_: ActivityNotFoundException) { showFeedback(tr("No browser installed", "Kein Browser installiert"), false) }
         }) }
         page.addView(sources)
         page.addView(button(tr("Back to previous page", "Zurück zur vorherigen Seite")) { goBack() })
     }
     private fun household() {
-        page.addView(text(tr("My household", "Mein Haushalt"), 30f, true))
+        page.addView(heading(tr("My household", "Mein Haushalt"), 30f))
+        page.addView(button(tr("Backup / restore…", "Sichern / wiederherstellen…")) { householdTransfers() })
+        transferStatus = text(if (transfer.state.value == TransferState.Busy) tr("Working with the selected file…", "Ausgewählte Datei wird verarbeitet…") else "", 14f).apply {
+            ViewCompat.setAccessibilityLiveRegion(this, ViewCompat.ACCESSIBILITY_LIVE_REGION_POLITE)
+        }
+        page.addView(transferStatus)
         page.addView(text(tr("Saved only on this device. Do not rely on a phone as your only copy.", "Nur auf diesem Gerät gespeichert. Wichtige Angaben zusätzlich auf Papier aufbewahren."), 15f))
         val items = listOf(
             "water" to tr("Stored drinking water & clean containers", "Trinkwasservorrat & saubere Behälter"),
@@ -499,7 +604,7 @@ class EmergencyActivity : BaseActivity() {
         items.forEach { (key, label) ->
             page.addView(CheckBox(this).apply {
                 text = label; textSize = 17f; setTextColor(textColour); minHeight = dp(56)
-                isChecked = preferences.getBoolean("check-$key", false)
+                isChecked = preferences.safeBoolean("check-$key", false)
                 setOnCheckedChangeListener { _, checked -> preferences.edit().putBoolean("check-$key", checked).apply() }
             })
         }
@@ -524,8 +629,10 @@ class EmergencyActivity : BaseActivity() {
         page.addView(EditText(this).apply {
             id = View.generateViewId(); setTextColor(textColour); setHintTextColor(muted)
             hint = tr("Emergency contact, medicines, meeting point…", "Notfallkontakt, Medikamente, Treffpunkt…")
+            contentDescription = tr("Household notes", "Haushaltsnotizen")
+            inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE
             minLines = 5; gravity = android.view.Gravity.TOP
-            setText(preferences.getString("notes", ""))
+            setText(preferences.safeString("notes", ""))
             addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { preferences.edit().putString("notes", s.toString()).apply() }
@@ -541,7 +648,7 @@ class EmergencyActivity : BaseActivity() {
                     try { exportPlan.launch("OpenEmergency-Household.txt") }
                     catch (_: ActivityNotFoundException) {
                         pendingExport = null
-                        Toast.makeText(this, tr("No file picker available", "Keine Dateiauswahl verfügbar"), Toast.LENGTH_LONG).show()
+                        showFeedback(tr("No file picker available", "Keine Dateiauswahl verfügbar"), true)
                     }
                 }.show()
         })
@@ -555,11 +662,36 @@ class EmergencyActivity : BaseActivity() {
         })
     }
 
+    private fun householdTransfers() {
+        hideKeyboard()
+        if (transfer.state.value == TransferState.Busy) {
+            showFeedback(tr("A file operation is still running", "Eine Datei wird noch verarbeitet"), false); return
+        }
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(tr("Household backup", "Haushaltssicherung"))
+            .setItems(arrayOf(tr("Save JSON backup", "JSON-Sicherung speichern"), tr("Restore JSON backup", "JSON-Sicherung wiederherstellen"))) { _, action ->
+                if (action == 1) {
+                    try { importPlan.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) }
+                    catch (_: ActivityNotFoundException) { transferResult(tr("No file picker available", "Keine Dateiauswahl verfügbar")) }
+                } else androidx.appcompat.app.AlertDialog.Builder(this)
+                    .setMessage(tr("Creates an unencrypted JSON file with your checklist, notes and saved guides. It can restore these after reinstalling. Choose a local folder; cloud providers may upload it. Keep it private. Text exports are for reading and cannot be restored automatically.", "Erstellt eine unverschlüsselte JSON-Datei mit Checkliste, Notizen und Merkliste. Zur Wiederherstellung nach Neuinstallation. Lokalen Ordner wählen; Cloud-Anbieter können hochladen. Vertraulich aufbewahren. Textexporte sind nur zum Lesen und nicht automatisch einlesbar."))
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(tr("Choose file", "Datei wählen")) { _, _ ->
+                        try {
+                            val ids = handbook.articles.map { it.id }.toSet() + preferences.safeStrings("bookmarks")
+                            val encoded = HouseholdBackup.encode(HouseholdBackup.snapshot(preferences))
+                            transfer.pendingBackup = HouseholdBackup.encode(HouseholdBackup.parse(encoded, ids))
+                            backupPlan.launch("OpenEmergency-Household-backup.json")
+                        } catch (_: Exception) { transfer.pendingBackup = null; transferResult(tr("Could not create backup. Check notes length and saved data.", "Sicherung nicht erstellt. Notizlänge und gespeicherte Daten prüfen.")) }
+                    }.show()
+            }.show()
+    }
+
     private fun numberInput(label: String, key: String, fallback: String): EditText {
         page.addView(text(label, 15f, true))
         val input = EditText(this).apply {
             inputType = android.text.InputType.TYPE_CLASS_NUMBER; setTextColor(textColour)
-            contentDescription = label; setText(preferences.getString(key, fallback)); minHeight = dp(52)
+            contentDescription = label; setText(preferences.safeString(key, fallback)); minHeight = dp(52)
             addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { preferences.edit().putString(key, s.toString()).apply() }
@@ -571,6 +703,6 @@ class EmergencyActivity : BaseActivity() {
 
     private fun dialEmergency() {
         try { startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:112"))) }
-        catch (_: ActivityNotFoundException) { Toast.makeText(this, tr("No dialler available. Ask someone to call 112.", "Kein Wählfeld verfügbar. Jemanden bitten, 112 anzurufen."), Toast.LENGTH_LONG).show() }
+        catch (_: ActivityNotFoundException) { showFeedback(tr("No dialler available. Ask someone to call 112.", "Kein Wählfeld verfügbar. Jemanden bitten, 112 anzurufen."), true) }
     }
 }

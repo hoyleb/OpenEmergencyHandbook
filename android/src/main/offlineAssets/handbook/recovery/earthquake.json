@@ -1,0 +1,39 @@
+{
+  "id": "earthquake",
+  "group": "disaster",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Earthquake",
+    "summary": "Protect yourself during shaking; watch for aftershocks and damaged buildings.",
+    "keywords": "earthquake shaking tremor Erdbeben Nachbeben",
+    "body": "## During shaking\nGet down, protect your head/neck and hold onto shelter. Indoors, use a sturdy nearby table; stay away from glass and falling objects. Do not rush outside or use lifts while shaking continues. A doorway is not universal protection.\n\nOutside, stay in an open area away from buildings, trees and power lines. Driving: stop safely away from bridges, cables and structures; stay in the vehicle until shaking stops. If using a wheelchair, lock wheels where possible and protect head/neck.\n\n## Afterwards\nExpect aftershocks and repeat protection. Check injuries and leave an unsafe building cautiously when possible. Avoid damaged structures and fallen cables. If you smell gas, avoid flames and electrical switching; leave and seek help from a safe location. Do not re-enter until competent authorities say it is safe.\n\n## Trapped or near the coast\nUse a whistle or tap to signal; protect against dust. Text if service is available. After strong or prolonged coastal shaking, follow tsunami evacuation guidance toward high ground/inland without waiting for an app alert.\n\n## Prepare\nSecure heavy furniture, identify safer spots and practise with your household. Keep shoes, a torch and essential supplies accessible."
+  },
+  "de": {
+    "title": "Erdbeben",
+    "summary": "Während des Bebens schützen; Nachbeben und Gebäudeschäden beachten.",
+    "keywords": "Beben Nachbeben Erschütterung earthquake",
+    "body": "## Während des Bebens\nHinuntergehen, Kopf/Nacken schützen und am Schutz festhalten. Im Gebäude einen nahen stabilen Tisch nutzen; Abstand zu Glas und fallenden Gegenständen. Während des Bebens nicht nach draußen rennen oder Aufzüge nutzen. Türrahmen bieten keinen universellen Schutz.\n\nDraußen auf freier Fläche von Gebäuden, Bäumen und Stromleitungen fernbleiben. Im Auto sicher entfernt von Brücken, Leitungen und Bauwerken halten; bis zum Ende im Fahrzeug bleiben. Im Rollstuhl möglichst Bremsen feststellen und Kopf/Nacken schützen.\n\n## Danach\nMit Nachbeben rechnen und erneut schützen. Verletzungen prüfen; ein unsicheres Gebäude vorsichtig verlassen, sobald möglich. Beschädigte Bauwerke und Stromleitungen meiden. Bei Gasgeruch keine Flammen oder elektrischen Schalter betätigen; hinausgehen und aus sicherer Entfernung Hilfe holen. Erst nach fachlicher Freigabe zurückkehren.\n\n## Eingeschlossen oder an der Küste\nPfeife oder Klopfzeichen nutzen, vor Staub schützen; bei Netzverfügbarkeit Textnachricht senden. Nach starkem/langem Küstenbeben gemäß Tsunami-Regeln ins Landesinnere/auf höheres Gelände gehen, ohne auf eine App-Warnung zu warten.\n\n## Vorbereitung\nSchwere Möbel sichern, sichere Stellen bestimmen, gemeinsam üben. Schuhe, Lampe und Vorräte griffbereit halten."
+  },
+  "sources": [
+    "https://www.cdc.gov/earthquakes/safety/stay-safe-during-an-earthquake.html",
+    "https://www.cdc.gov/earthquakes/safety/stay-safe-after-an-earthquake.html",
+    "https://www.bbk.bund.de/DE/Themen/Risikomanagement/Baulicher-Bevoelkerungsschutz/Schutz-vor-geologischen-Gefahren/Erdbeben/erdbeben_node.html"
+  ],
+  "related": [
+    "first-aid",
+    "shelter",
+    "combined-hazards"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

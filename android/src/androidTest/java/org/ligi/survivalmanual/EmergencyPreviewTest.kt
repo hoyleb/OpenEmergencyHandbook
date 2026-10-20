@@ -1,6 +1,7 @@
 package org.ligi.survivalmanual
 
 import android.Manifest
+import androidx.core.content.ContextCompat
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Configuration
@@ -41,12 +42,7 @@ class EmergencyPreviewTest {
         onView(withContentDescription("Search all offline guides")).perform(replaceText(value), closeSoftKeyboard())
     }
     private fun shell(command: String): String = ParcelFileDescriptor.AutoCloseInputStream(instrumentation.uiAutomation.executeShellCommand(command)).bufferedReader().use { it.readText().trim() }
-    private fun capture(name: String) {
-        // Toasts are system windows and can outlive the previous test/activity.
-        Thread.sleep(3500)
-        instrumentation.waitForIdleSync()
-        shell("screencap -p /sdcard/Download/open-emergency-$name.png")
-    }
+    private fun capture(name: String) = ScreenshotEvidence.capture(name)
 
     @Before fun resetPlan() { prefs.edit().clear().putString("language", "en").commit() }
 
@@ -66,7 +62,17 @@ class EmergencyPreviewTest {
         assertTrue(en.search("nonsensewordxyz").isEmpty())
         assertTrue(EmergencyHandbook(context.assets, "de").search("uberschwemmung").any { it.id == "flood" })
         assertTrue(EmergencyHandbook(context.assets, "de").search("stromausfal").any { it.id == "power" })
-        assertEquals(PackageManager.PERMISSION_DENIED, context.checkSelfPermission(Manifest.permission.INTERNET))
+        assertEquals(PackageManager.PERMISSION_DENIED, ContextCompat.checkSelfPermission(context, Manifest.permission.INTERNET))
+    }
+
+    @Test fun sharedSearchAcceptanceVectorsMatchPortableEdition() {
+        val cases = org.json.JSONArray(context.assets.open("handbook/search-cases.json").bufferedReader().use { it.readText() })
+        for (index in 0 until cases.length()) {
+            val test = cases.getJSONObject(index)
+            val result = EmergencyHandbook(context.assets, test.getString("language")).searchResult(test.getString("query"))
+            assertEquals(if (test.isNull("first")) "" else test.getString("first"), result.articles.firstOrNull()?.id.orEmpty())
+            assertEquals(test.getBoolean("approximate"), result.approximate)
+        }
     }
 
     @Test fun urgentHomeActionsAreVisibleWithoutScrolling() {
@@ -77,6 +83,54 @@ class EmergencyPreviewTest {
             onView(withContentDescription("Open 112 emergency dialler")).check(matches(isCompletelyDisplayed()))
             onView(withText("Nuclear fallout")).check(matches(isCompletelyDisplayed()))
             tab("search").check(matches(isCompletelyDisplayed()))
+        }
+    }
+
+    @Test fun returningHomeDismissesSearchKeyboard() {
+        ActivityScenario.launch(EmergencyActivity::class.java).use {
+            tab("search").perform(click())
+            onView(withContentDescription("Search all offline guides")).perform(click(), typeText("water"))
+            tab("home").perform(click())
+            onView(withText("Nuclear fallout")).check(matches(isCompletelyDisplayed()))
+        }
+    }
+
+    @Test fun landscapeKeepsEmergencyAndNavigationControlsReachable() {
+        ActivityScenario.launch(EmergencyActivity::class.java).use { scenario ->
+            fun awaitOrientation(expected: Int) {
+                val deadline = System.currentTimeMillis() + 5000
+                var current = 0
+                while (current != expected && System.currentTimeMillis() < deadline) {
+                    scenario.onActivity { current = it.resources.configuration.orientation }
+                    if (current != expected) Thread.sleep(100)
+                }
+                assertEquals(expected, current)
+            }
+            scenario.onActivity { it.requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE }
+            awaitOrientation(Configuration.ORIENTATION_LANDSCAPE)
+            onView(withContentDescription("Open 112 emergency dialler")).check(matches(isCompletelyDisplayed()))
+            tab("plan").check(matches(isCompletelyDisplayed()))
+            onView(withContentDescription("Open safe water guide")).perform(scrollTo(), click())
+            onView(withContentDescription("Reader options")).check(matches(isCompletelyDisplayed()))
+            onView(withContentDescription("Switch to German")).perform(click())
+            capture("landscape")
+            scenario.onActivity { it.requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT }
+            awaitOrientation(Configuration.ORIENTATION_PORTRAIT)
+            onView(withText("Sicheres Trinkwasser")).check(matches(isDisplayed()))
+        }
+    }
+
+    @Test fun guideCardsAndSourceDisclosureExposeAccessibleRolesAndStates() {
+        ActivityScenario.launch(EmergencyActivity::class.java).use {
+            onView(withText("Help now")).check { view, _ -> assertTrue(androidx.core.view.ViewCompat.isAccessibilityHeading(view)) }
+            search("water")
+            guide("water").check { view, _ -> assertEquals("android.widget.Button", view.createAccessibilityNodeInfo().className.toString()) }
+            guide("water").perform(scrollTo(), click())
+            val toggle = onView(withText(org.hamcrest.CoreMatchers.startsWith("Sources & limitations")))
+            toggle.perform(scrollTo(), click())
+            toggle.check { view, _ -> assertEquals("Expanded", androidx.core.view.ViewCompat.getStateDescription(view).toString()) }
+            toggle.perform(click())
+            toggle.check { view, _ -> assertEquals("Collapsed", androidx.core.view.ViewCompat.getStateDescription(view).toString()) }
         }
     }
 

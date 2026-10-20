@@ -109,13 +109,37 @@ def make_html(data):
             label = 'Unreviewed development preview' if language == 'en' else 'Ungeprüfter Entwicklungsentwurf'
             related = ''.join(f'<li><a href="#{language}-{aid}">{html.escape(by_id[aid][language]["title"])}</a></li>' for aid in article.get('related', []))
             blocks.append(f'<article lang="{language}" data-keywords="{html.escape(a["keywords"], quote=True)}" id="{language}-{article["id"]}"><h2>{html.escape(a["title"])}</h2><p class="status">{label}</p><p>{html.escape(a["summary"])}</p>{markdown(a["body"])}<nav aria-label="Related guides"><h3>Related guides / Weitere Anleitungen</h3><ul>{related}</ul></nav><details><summary>Sources / Quellen</summary><ul>{sources}</ul><p>Source check / Quellenabgleich: {article["checked_at"]}. Next review / Nächste Prüfung: {article["review_due"]}. External links require internet. No professional review recorded.</p></details><p><a href="#top">Top / Anfang</a></p></article>')
+    urgent_labels = {
+        'en': [('first-aid', 'First aid'), ('water', 'Safe water'), ('power', 'Power outage'), ('flood', 'Flood'), ('earthquake', 'Earthquake'), ('fallout', 'Nuclear fallout'), ('cyber', 'Cyberattack'), ('pandemic', 'Pandemic')],
+        'de': [('first-aid', 'Erste Hilfe'), ('water', 'Sicheres Wasser'), ('power', 'Stromausfall'), ('flood', 'Hochwasser'), ('earthquake', 'Erdbeben'), ('fallout', 'Nuklearer Fallout'), ('cyber', 'Cyberangriff'), ('pandemic', 'Pandemie')]
+    }
+    urgent = '<nav aria-label="Urgent offline guides / Soforthilfe">' + ''.join(
+        f'<div class="urgent-group" data-urgent-lang="{language}" lang="{language}">' + ''.join(
+            f'<a href="#{language}-{aid}">{html.escape(label)}</a>' for aid, label in urgent_labels[language]) + '</div>'
+        for language in ('en', 'de')) + '</nav>'
+    searchable = [{key: article[key] for key in ('id', 'group', 'en', 'de')} for article in data['articles']]
+    search_data = json.dumps(searchable, ensure_ascii=False).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
+    scripts = (ROOT / 'tools/offline_search.js').read_text() + '\n' + (ROOT / 'tools/offline_controls.js').read_text()
     return '''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark"><title>Open Emergency Handbook — Preview</title>
-<style>body{max-width:850px;margin:auto;padding:24px;font:18px/1.6 system-ui;background:#eff5f2;color:#18372f}h1{line-height:1.15}h2,h3{line-height:1.3}article{background:white;padding:22px;border-radius:18px;margin:20px 0;break-inside:avoid}.status{font-size:.8em;color:#885000}button,input{font:inherit;padding:12px;border:1px solid #55756b;border-radius:8px;margin:4px}input{max-width:90%}a{color:#086850}header{border-bottom:2px solid #9dbcb0;padding-bottom:20px}.banner{background:#fff0c8;padding:14px;border-radius:8px}@media(prefers-color-scheme:dark){body{background:#10221e;color:#eaf7f1}article{background:#1c3730}a{color:#9de5cd}.banner{background:#43391b}.status{color:#ffdf92}}@media print{button,input,.banner{display:none}body{background:white;color:black;font-size:11pt;padding:0}article{padding:0;break-inside:auto}details{display:block}a{color:black}}</style>
-<header id="top"><p>FREE · OPEN SOURCE · OFFLINE</p><h1>Open Emergency Handbook</h1><p class="banner">Development preview. Incomplete coverage; no professional review of summaries or translations. Test the interface; follow emergency services. / Entwicklungsentwurf: unvollständig und ungeprüft.</p>
-<button id="en">English</button><button id="de">Deutsch</button><button id="print">Print / Drucken</button><br><label for="search">Search / Suche: </label><input id="search" type="search" placeholder="water / Wasser"><p id="count" aria-live="polite"></p><p>All guide text is included in this file. Source links need internet. This file has no live alerts. Keep a printed copy.</p></header>
-''' + '<nav aria-label="Contents">' + ''.join(f'<p lang="{lang}" class="contents"><a href="#{lang}-{a["id"]}">{html.escape(a[lang]["title"])}</a></p>' for lang in ('en','de') for a in data['articles']) + '</nav>' + '\n'.join(blocks) + '''<footer>GPLv3 · Fork of ligi/SurvivalManual · <a href="https://github.com/hoyleb/OpenEmergencyHandbook">Source code and feedback</a></footer>
-<script>let lang='en';const q=document.querySelector('#search');const norm=s=>s.toLowerCase().replaceAll('ß','ss').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');function show(){let n=0;const words=norm(q.value).trim().split(/\\s+/).filter(Boolean);document.querySelectorAll('article').forEach(a=>{a.hidden=a.lang!==lang||!words.every(w=>norm(a.textContent+' '+a.dataset.keywords).includes(w));if(!a.hidden)n++});document.querySelectorAll('.contents').forEach(e=>e.hidden=e.lang!==lang);document.documentElement.lang=lang;document.querySelector('#count').textContent=n+(lang==='en'?' guides':' Anleitungen')};function openHash(){const target=document.querySelector(location.hash&&/^#[a-z-]+$/.test(location.hash)?location.hash:'#top');if(target?.tagName==='ARTICLE'){lang=target.lang;q.value='';show();target.scrollIntoView()}}q.addEventListener('input',show);window.addEventListener('hashchange',openHash);document.querySelector('#en').onclick=()=>{lang='en';show()};document.querySelector('#de').onclick=()=>{lang='de';show()};document.querySelector('#print').onclick=()=>{document.querySelectorAll('details').forEach(d=>d.open=true);window.print()};show();openHash();</script></html>'''
+<style>body{overflow-wrap:anywhere;max-width:850px;margin:auto;padding:24px;font:18px/1.6 system-ui;background:#eff5f2;color:#18372f}h1{font-size:1.1em;line-height:1.15;margin:.4em 0}.edition-status{font-size:.85em;line-height:1.35;margin:.4em 0}.urgent-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14ch),1fr));gap:8px;margin:12px 0}.urgent-group a{overflow-wrap:normal;display:flex;align-items:center;justify-content:center;box-sizing:border-box;min-height:52px;padding:10px;text-align:center;border:1px solid #55756b;border-radius:8px;background:white;font-weight:600;text-decoration:none}h2,h3{line-height:1.3}article{background:white;padding:22px;border-radius:18px;margin:20px 0;break-inside:avoid}.status{font-size:.8em;color:#885000}button,input,select{box-sizing:border-box;max-width:100%;min-height:48px;font:inherit;padding:12px;border:1px solid #55756b;border-radius:8px;margin:4px}input{max-width:90%}a{color:#086850}header{border-bottom:2px solid #9dbcb0;padding-bottom:20px}.banner{background:#fff0c8;padding:14px;border-radius:8px}@media(prefers-color-scheme:dark){body{background:#10221e;color:#eaf7f1}article,.urgent-group a{background:#1c3730}a{color:#9de5cd}.banner{background:#43391b}.status{color:#ffdf92}}[hidden]{display:none!important}select{max-width:100%}@media print{button,input,select,.interactive,.banner{display:none!important}body{background:white;color:black;font-size:11pt;padding:0}article{padding:0;break-inside:auto}details{display:block}a{color:black}}</style>
+<header id="top"><h1>Open Emergency Handbook</h1><p class="edition-status" data-ui-lang="en">Offline · Unreviewed drafts</p><p class="edition-status" data-ui-lang="de">Offline · Ungeprüfte Entwürfe</p>
+''' + urgent + '''
+<div class="interactive" hidden><button id="en" type="button" aria-pressed="true">English</button><button id="de" type="button" aria-pressed="false">Deutsch</button><button id="print">Print / Drucken</button><br><label for="search">Search / Suche: </label><input id="search" type="search" maxlength="200" placeholder="water / Wasser"><button id="clear" type="button">Clear / Löschen</button><label for="category">Filter: </label><select id="category"><option value="all">All guides</option><option value="aid">First aid</option><option value="disaster">Disasters</option><option value="prepare">Preparation</option></select><p id="count" role="status" aria-live="polite"></p><p id="empty" hidden>No matches / Keine Treffer. <button id="reset">Reset search / Suche zurücksetzen</button></p></div><noscript><p>JavaScript is disabled: all English and German guides are shown. Use the contents or your browser’s Find command. / Ohne JavaScript: alle Anleitungen in beiden Sprachen; Inhaltsverzeichnis oder Browsersuche verwenden.</p></noscript><details id="limitations"><summary>Limitations / Grenzen</summary><p class="banner">Development preview. Incomplete coverage; no professional review of summaries or translations. Follow emergency services. / Entwicklungsentwurf: unvollständig und ungeprüft; Rettungsdiensten folgen.</p></details><p>All guide text is included in this file. Source links need internet. This file has no live alerts. Keep a printed copy.</p></header>
+''' + '<nav id="contents" aria-label="Contents">' + ''.join(f'<p lang="{lang}" class="contents" id="contents-{lang}-{a["id"]}"><a href="#{lang}-{a["id"]}">{html.escape(a[lang]["title"])}</a></p>' for lang in ('en','de') for a in data['articles']) + '</nav><main id="guides">' + '\n'.join(blocks) + '</main>' + '''<footer>GPLv3 · Fork of ligi/SurvivalManual · <a href="https://github.com/hoyleb/OpenEmergencyHandbook">Source code and feedback</a></footer>
+<script id="guide-data" type="application/json">''' + search_data + '''</script><script>''' + scripts + '''</script></html>'''
+
+
+def recovery_files(data):
+    """Independent per-guide copies; index hashes detect accidental corruption."""
+    files = {}
+    index = {'schema_version': 1, 'edition': data['edition'], 'primary_sha256': hashlib.sha256((ROOT / 'content/handbook.json').read_bytes()).hexdigest(), 'articles': []}
+    for article in data['articles']:
+        payload = json.dumps(article, ensure_ascii=False, indent=2).encode() + b'\n'
+        files[article['id'] + '.json'] = payload
+        index['articles'].append({'id': article['id'], 'sha256': hashlib.sha256(payload).hexdigest()})
+    files['index.json'] = json.dumps(index, indent=2).encode() + b'\n'
+    return files
 
 
 def main():
@@ -136,6 +160,22 @@ def main():
     else:
         asset.parent.mkdir(parents=True, exist_ok=True)
         asset.write_bytes(payload)
+    recovery = asset.parent / 'recovery'
+    expected = recovery_files(data)
+    if args.check:
+        if not recovery.is_dir() or {p.name for p in recovery.glob('*.json')} != set(expected) or any((recovery / name).read_bytes() != payload for name, payload in expected.items()):
+            raise SystemExit('Generated recovery guides are stale. Run tools/build_handbook.py')
+    else:
+        recovery.mkdir(parents=True, exist_ok=True)
+        for old in recovery.glob('*.json'):
+            if old.name not in expected: old.unlink()
+        for name, payload in expected.items(): (recovery / name).write_bytes(payload)
+    cases = ROOT / 'tools/search-cases.json'
+    generated_cases = asset.parent / 'search-cases.json'
+    if args.check:
+        if not generated_cases.is_file() or generated_cases.read_bytes() != cases.read_bytes():
+            raise SystemExit('Generated search vectors are stale. Run tools/build_handbook.py')
+    else: generated_cases.write_bytes(cases.read_bytes())
     out = ROOT / 'dist'
     out.mkdir(exist_ok=True)
     (out / 'OpenEmergencyHandbook-offline.html').write_text(make_html(data))

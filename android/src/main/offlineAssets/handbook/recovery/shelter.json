@@ -1,0 +1,37 @@
+{
+  "id": "shelter",
+  "group": "essentials",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Shelter, cold & heat",
+    "summary": "A safe building matters more than staying put at any cost.",
+    "keywords": "shelter hypothermia heat cold evacuation Schutz Kälte Hitze",
+    "body": "## Choose safety for the actual hazard\nSheltering may reduce radiation exposure, but rising water, fire, structural damage or dangerous indoor temperature may require leaving. Know two exits and a household meeting point. Avoid lifts after damage or power failure.\n\n## Cold without heating\nUse dry layered clothing, hats, blankets and an insulated sleeping surface. Stay together in a suitable room while maintaining safe ventilation. Do not use an oven, grill or outdoor stove for indoor heat. Confusion, severe drowsiness or impaired coordination in the cold may indicate serious hypothermia; seek urgent help and warm gently.\n\n## Heat\nReduce exertion, use a cooler safe location and drink appropriate fluids. Check older adults and people with medical vulnerabilities. Confusion, collapse or severe illness in heat is an emergency: call 112 and begin cooling while following instructions.\n\n## Evacuating\nTake essentials only when doing so does not delay escape: medicines, water, documents, phone, torch and appropriate clothing. Plan help for mobility limitations, children and pets. A map marker is not proof that a shelter is open or a route is safe."
+  },
+  "de": {
+    "title": "Schutz, Kälte & Hitze",
+    "summary": "Ein sicherer Ort ist wichtiger als unter allen Umständen zu bleiben.",
+    "keywords": "Unterkunft Evakuierung Unterkühlung Schutz Kälte Hitze shelter",
+    "body": "## Zur Gefahr passenden Schutz wählen\nDrinnenbleiben kann Strahlung reduzieren; steigendes Wasser, Feuer, Bauschäden oder gefährliche Temperaturen können Weggehen erfordern. Zwei Ausgänge und gemeinsamen Treffpunkt kennen. Nach Schäden/Stromausfall Aufzüge meiden.\n\n## Kälte ohne Heizung\nTrockene Kleidung in Schichten, Mütze, Decken und isolierende Schlafunterlage verwenden. In geeignetem Raum zusammenbleiben, sichere Lüftung erhalten. Kein Backofen, Grill oder Outdoor-Kocher als Innenraumheizung. Verwirrtheit, starke Schläfrigkeit und Koordinationsstörungen können ernste Unterkühlung anzeigen; dringend Hilfe holen und schonend wärmen.\n\n## Hitze\nAnstrengung reduzieren, kühleren sicheren Ort aufsuchen und passend trinken. Ältere und gesundheitlich gefährdete Menschen kontrollieren. Verwirrtheit, Kollaps oder schwere Krankheit bei Hitze sind Notfälle: 112 und gemäß Anleitung kühlen.\n\n## Evakuieren\nNur ohne Fluchtverzögerung Wesentliches mitnehmen: Medikamente, Wasser, Dokumente, Handy, Lampe, passende Kleidung. Mobilitätseinschränkungen, Kinder und Tiere einplanen. Ein Kartensymbol beweist weder geöffnete Unterkunft noch sichere Strecke."
+  },
+  "sources": [
+    "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/vorsorge_node.html",
+    "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html"
+  ],
+  "related": [
+    "combined-hazards",
+    "prepare"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "water",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Safe drinking water",
+    "summary": "Choose a safer source; treatment depends on the contamination.",
+    "keywords": "water purification boil filter clean water Wasser Trinkwasser abkochen",
+    "body": "## Choose the source first\nPrefer a protected supply of drinking water. Clear-looking stream water is not necessarily safe. Do not drink floodwater, heating-system water or water suspected of fuel, toxic chemical or radioactive contamination.\n\n## Germs: boiling\nFor water without suspected chemical/radioactive contamination: settle or prefilter cloudy water, then bring clear water to a rolling boil for **1 minute**; above approximately **2,000 m**, use **3 minutes**. Cool and keep covered in a clean container. Prefiltering through cloth alone does not disinfect it.\n\n## Filters and tablets\nFollow the specific product instructions, including water volume, temperature, contact time and supported organisms. Many hiking filters do not remove viruses. Disinfection methods differ against parasites. Avoid iodine-treated water in pregnancy or with thyroid conditions unless medically advised.\n\n## Chemicals and fallout\n**Boiling or disinfection does not make chemically or radioactively contaminated water safe.** Use a verified alternative supply. Ordinary filters are not universal contaminant removers. Follow the actual local drinking-water advisory.\n\n## Storage\nKeep treated water in clean, food-safe covered containers. Avoid dirty hands/cups touching the contents. Separate drinking water from washing water."
+  },
+  "de": {
+    "title": "Sicheres Trinkwasser",
+    "summary": "Eine sichere Quelle wählen; die Behandlung hängt von der Verunreinigung ab.",
+    "keywords": "Wasser aufbereiten filtern abkochen Trinkwasser sauber water purification",
+    "body": "## Zuerst die Quelle wählen\nGeschütztes Trinkwasser bevorzugen. Klar aussehendes Bachwasser ist nicht automatisch sicher. Kein Hochwasser, Heizungswasser oder vermutlich mit Treibstoff, Giftstoffen oder radioaktivem Material belastetes Wasser trinken.\n\n## Keime: Abkochen\nOhne Verdacht auf chemische/radioaktive Belastung: Trübes Wasser absetzen lassen oder vorfiltern. Klares Wasser **1 Minute sprudelnd kochen**; oberhalb von ungefähr **2.000 m: 3 Minuten**. Abkühlen und sauber verschlossen lagern. Ein Tuch allein desinfiziert nicht.\n\n## Filter und Tabletten\nProduktanleitung beachten: Wassermenge, Temperatur, Einwirkzeit und erfasste Erreger. Viele Outdoorfilter entfernen keine Viren. Verfahren wirken unterschiedlich gegen Parasiten. Bei Schwangerschaft oder Schilddrüsenerkrankung jodbehandeltes Wasser ohne ärztlichen Rat meiden.\n\n## Chemikalien und Fallout\n**Abkochen oder Desinfizieren macht chemisch oder radioaktiv belastetes Wasser nicht sicher.** Eine überprüfte Ersatzversorgung verwenden. Gewöhnliche Filter entfernen nicht beliebige Schadstoffe. Die konkrete örtliche Trinkwasserwarnung beachten.\n\n## Aufbewahrung\nBehandeltes Wasser in sauberen, lebensmittelechten geschlossenen Behältern lagern. Keine verschmutzten Hände/Becher hineintauchen. Trink- und Waschwasser getrennt halten."
+  },
+  "sources": [
+    "https://www.cdc.gov/water-emergency/about/",
+    "https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/environmental-health-in-emergencies/technical-notes-on-wash-in-emergencies",
+    "https://www.cdc.gov/radiation-emergencies/safety/food-drinking-water-medicine-safety.html"
+  ],
+  "related": [
+    "water-advisories",
+    "hygiene"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

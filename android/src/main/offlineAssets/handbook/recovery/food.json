@@ -1,0 +1,38 @@
+{
+  "id": "food",
+  "group": "essentials",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Food safety",
+    "summary": "No-cook supplies, refrigeration failures and contamination.",
+    "keywords": "food fridge freezer eating canned Lebensmittel Kühlschrank Essen",
+    "body": "## Before trouble\nChoose shelf-stable foods you actually eat, including no-cook options and a manual can opener. Account for allergies, infants and medical diets. Rotate supplies and keep clean drinking water for preparation.\n\n## During an outage\nKeep cold appliances closed and use a thermometer. Without power, an unopened refrigerator generally keeps food cold for about **4 hours**; a full freezer about **48 hours**, or **24 hours** if half full. These estimates depend on conditions and door opening. Use current food-safety guidance and temperature history when deciding what to keep.\n\n## Do not taste-test\nSmell or appearance cannot establish safety. Discard unsafe perishables and food touched by floodwater. Do not use damaged, swollen or leaking containers. Wipe contamination off protected packaging before opening it when advised; food from a garden after fallout needs official clearance.\n\n## Cooking\nNever improvise indoor use of an outdoor combustion appliance. Use a verified safe cooking method or foods needing no heat. Keep raw and ready-to-eat foods separate. If electricity returns, do not assume it makes previously spoiled food safe."
+  },
+  "de": {
+    "title": "Lebensmittelsicherheit",
+    "summary": "Essen ohne Kochen, Kühlungsausfall und Verunreinigung.",
+    "keywords": "Essen Kühltruhe Kühlschrank Vorrat Lebensmittel food",
+    "body": "## Vorher\nHaltbare Lebensmittel wählen, die tatsächlich gegessen werden; auch ohne Kochen essbare Produkte und Hand-Dosenöffner. Allergien, Säuglinge und medizinische Ernährung berücksichtigen. Vorräte rotieren und Trinkwasser zur Zubereitung vorhalten.\n\n## Bei Stromausfall\nKühlgeräte geschlossen halten und Thermometer nutzen. Ungeöffnet bleibt ein Kühlschrank meist etwa **4 Stunden** kalt, eine volle Gefriertruhe etwa **48 Stunden**, halbvoll etwa **24 Stunden**. Bedingungen und Türöffnung verändern dies. Temperaturverlauf und aktuelle Lebensmittelregeln berücksichtigen.\n\n## Nicht probieren\nGeruch oder Aussehen beweisen keine Sicherheit. Unsichere verderbliche Lebensmittel und von Hochwasser berührtes Essen entsorgen. Beschädigte, aufgeblähte oder undichte Verpackungen nicht nutzen. Bei entsprechenden Hinweisen geschützte Verpackungen vor Öffnung reinigen. Gartenernte nach Fallout braucht amtliche Freigabe.\n\n## Zubereitung\nKeine improvisierte Innenraumnutzung von Outdoor-Verbrennungsgeräten. Geprüfte sichere Methode oder Essen ohne Erhitzen verwenden. Rohes und verzehrfertiges Essen trennen. Wiederkehrender Strom macht verdorbenes Essen nicht sicher."
+  },
+  "sources": [
+    "https://www.cdc.gov/food-safety/foods/keep-food-safe-after-emergency.html",
+    "https://www.cdc.gov/floods/safety/reentering-your-flooded-home-safety.html",
+    "https://www.cdc.gov/radiation-emergencies/safety/food-drinking-water-medicine-safety.html"
+  ],
+  "related": [
+    "water",
+    "power"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

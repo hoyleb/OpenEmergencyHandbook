@@ -1,0 +1,36 @@
+{
+  "id": "adult-cpr",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Adult CPR & AED",
+    "summary": "For an unresponsive ADULT who is not breathing normally.",
+    "keywords": "CPR AED resuscitation cardiac arrest heart attack Wiederbelebung",
+    "body": "## Adult emergency sequence\nCall **112**, use speakerphone and follow the dispatcher. Send someone for an AED. Gasping is abnormal breathing.\n\nStart compressions in the centre of the chest: **100–120 per minute**, **5–6 cm** deep, with full recoil and minimal pauses. If trained and able, use **30 compressions then 2 breaths**; otherwise give continuous compressions.\n\nSwitch on the AED and follow its spoken instructions. Nobody touches the person during analysis or shock. Resume CPR when instructed.\n\nContinue until professionals take over, normal breathing/signs of life return, you cannot continue, or the scene becomes unsafe.\n\n**Children, infants and drowning need additional guidance.** This page covers adults only; follow the dispatcher."
+  },
+  "de": {
+    "title": "Wiederbelebung & AED (Erwachsene)",
+    "summary": "Für BEWUSSTLOSE ERWACHSENE ohne normale Atmung.",
+    "keywords": "Reanimation Herzdruckmassage Herzstillstand CPR AED",
+    "body": "## Ablauf für Erwachsene\n**112** anrufen, Freisprechen einschalten und der Leitstelle folgen. Jemanden nach einem AED schicken. Schnappatmung ist keine normale Atmung.\n\nIn der Brustkorbmitte drücken: **100–120-mal pro Minute**, **5–6 cm** tief; vollständig entlasten und Pausen minimieren. Wenn geschult und möglich: **30 Kompressionen, dann 2 Beatmungen**. Sonst durchgehend drücken.\n\nAED einschalten und Sprachanweisungen befolgen. Bei Analyse und Schock berührt niemand die Person. Danach gemäß Gerät weiterdrücken.\n\nFortsetzen, bis Fachkräfte übernehmen, normale Atmung/Lebenszeichen zurückkehren, Fortsetzung unmöglich oder der Ort unsicher wird.\n\n**Kinder, Säuglinge und Ertrinken benötigen zusätzliche Anleitung.** Diese Seite betrifft Erwachsene; der Leitstelle folgen."
+  },
+  "sources": [
+    "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/adult-basic-life-support-guidelines"
+  ],
+  "related": [
+    "child-cpr",
+    "adult-choking"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "bleeding",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Bleeding & wound care",
+    "summary": "Firm direct pressure first; uncontrolled bleeding needs 112.",
+    "keywords": "bleeding wound cut blood tourniquet dressing injury",
+    "body": "## Major bleeding\nCall **112**. Use gloves if available; press firmly on the wound with a dressing/clean cloth and keep pressure on. Do not remove embedded objects; press around them. Keep the person warm and monitor breathing. Do not give food or drink during a serious injury.\n\n## Limb bleeding that will not stop\nFor life-threatening limb bleeding uncontrolled by pressure, a commercial tourniquet may be necessary. Follow training, device instructions and dispatcher advice; note the time and leave it visible. Do not loosen it. Do not put a limb tourniquet around the neck or trunk. Improvised devices can fail.\n\n## Small wounds only\nAfter bleeding stops, rinse a minor wound with safe clean water, clean surrounding skin and apply a sterile dressing. Change when wet/dirty. Deep, gaping, puncture or bite wounds, retained material, numbness or impaired movement need medical assessment. Increasing redness, swelling, pus or fever may mean infection. Check tetanus protection with a clinician, especially after contaminated wounds."
+  },
+  "de": {
+    "title": "Blutungen & Wundversorgung",
+    "summary": "Direkt und fest drücken; unstillbare Blutung braucht 112.",
+    "keywords": "Blutung Blut Wunde Schnitt Verletzung Tourniquet Verband",
+    "body": "## Starke Blutung\n**112** rufen. Wenn vorhanden Handschuhe nutzen; mit Verband/sauberem Tuch fest auf die Wunde drücken und Druck halten. Eingedrungene Gegenstände nicht entfernen; darum herum drücken. Warmhalten und Atmung beobachten. Bei schwerer Verletzung nichts essen/trinken lassen.\n\n## Unstillbare Blutung an Arm oder Bein\nBei lebensbedrohlicher, durch Druck nicht beherrschbarer Extremitätenblutung kann ein kommerzielles Tourniquet nötig sein. Schulung, Produktanweisung und Leitstelle beachten; Uhrzeit notieren und sichtbar lassen. Nicht lockern. Ein Extremitäten-Tourniquet gehört nicht um Hals oder Rumpf. Improvisierte Hilfsmittel können versagen.\n\n## Nur kleine Wunden\nNach Blutstillung eine kleine Wunde mit sauberem, sicherem Wasser spülen, Umgebung reinigen und steril abdecken. Nassen/schmutzigen Verband wechseln. Tiefe, klaffende, Stich- und Bisswunden, Fremdkörper, Taubheit oder Bewegungseinschränkung ärztlich beurteilen lassen. Zunehmende Rötung, Schwellung, Eiter oder Fieber können Infektion bedeuten. Besonders nach verschmutzten Wunden Tetanusschutz ärztlich klären."
+  },
+  "sources": [
+    "https://www.sja.org.uk/first-aid-advice/severe-bleeding/",
+    "https://www.nhs.uk/conditions/cuts-and-grazes/",
+    "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/first-aid-guidelines"
+  ],
+  "related": [
+    "first-aid",
+    "burns"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

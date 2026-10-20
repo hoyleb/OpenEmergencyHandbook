@@ -1,0 +1,36 @@
+{
+  "id": "about",
+  "group": "about",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "About, sources & known gaps",
+    "summary": "What this preview does, what remains to be reviewed, and how to report problems.",
+    "keywords": "about licence source review gaps license Quellen Lücken",
+    "body": "## Free and open source\nOpen Emergency Handbook is a fork of ligi/SurvivalManual, under GPLv3. New summaries and translations are provided under the repository licence. Source organisations retain rights to their own publications and do not endorse this app. No agency logos or illustrations have been copied.\n\n## Preview status\nAll included summaries are **drafts without professional review**. English and German are bundled. Search, reading, the checklist and notes work without an account or internet. No advertising, subscription or tracking service is included.\n\n## Known gaps\nThis is not the complete survival library yet. Dedicated medical, accessibility, pets, combined-hazard and recovery drafts are included. Still missing: qualified medical/technical/translation review, reviewed diagrams, detailed fractures/head-injury/temperature-illness protocols, oral rehydration and broader scenario depth. No offline app can supply current evacuation orders, open shelters, radiation measurements, pathogen identification or current medical treatment rules.\n\n## Privacy and testing\nNotes and checklist stay in app-private storage unless you explicitly export an unencrypted text plan; Android backup is disabled. Choose local storage for offline export. Device security still matters. Clearing household data/uninstalling removes the in-app plan, not exported copies. Test offline mode and large text, search for your needs, and report missing or confusing steps.\n\n## Project\nhttps://github.com/hoyleb/OpenEmergencyHandbook\n\nUse the repository pull request/discussion for feedback. Never post personal medical details, passwords or recovery codes publicly. Keep a printed handbook and official alerts as complementary resources."
+  },
+  "de": {
+    "title": "Über die App, Quellen & Lücken",
+    "summary": "Was der Entwurf kann, was ungeprüft ist und wie Probleme gemeldet werden.",
+    "keywords": "Lizenz Quelle Prüfung Lücken Datenschutz about",
+    "body": "## Kostenlos und quelloffen\nOpen Emergency Handbook ist ein GPLv3-Fork von ligi/SurvivalManual. Neue Zusammenfassungen und Übersetzungen stehen unter der Repository-Lizenz. Quellenorganisationen behalten ihre Veröffentlichungsrechte und unterstützen die App nicht offiziell. Keine Behördenlogos oder Abbildungen wurden kopiert.\n\n## Entwicklungsstand\nAlle Zusammenfassungen sind **Entwürfe ohne fachliche Prüfung**. Englisch und Deutsch sind enthalten. Suche, Lesen, Checkliste und Notizen funktionieren ohne Konto/Internet. Keine Werbung, Abos oder Trackingdienste enthalten.\n\n## Bekannte Lücken\nNoch keine vollständige Überlebensbibliothek. Medizinische Entwürfe sowie Seiten zu Barrierefreiheit, Tieren, Mehrfachgefahren und Rückkehr sind enthalten. Weiter offen: Fach-/Übersetzungsprüfung, geprüfte Abbildungen, detaillierte Fraktur-/Kopfverletzungs-/Temperaturprotokolle, orale Rehydratation und vertiefte Szenarien. Keine Offline-App liefert aktuelle Evakuierungsbefehle, offene Schutzräume, Strahlungsmessung, Erregerbestimmung oder aktuelle Therapieregeln.\n\n## Datenschutz und Test\nNotizen/Checkliste liegen im privaten App-Speicher, außer beim ausdrücklich gewählten Export als unverschlüsselte Textdatei; Android-Backup ist deaktiviert. Für Offline-Export lokalen Speicher wählen. Gerätesicherheit bleibt wichtig. Haushaltsdaten löschen/Deinstallation entfernt den App-Plan, nicht exportierte Kopien. Offline-Modus, große Schrift und Suche testen; fehlende oder unklare Schritte melden.\n\n## Projekt\nhttps://github.com/hoyleb/OpenEmergencyHandbook\n\nFeedback im Pull Request/Projekt abgeben. Keine persönlichen Gesundheitsdaten, Passwörter oder Wiederherstellungscodes öffentlich posten. Papierhandbuch und amtliche Warnungen ergänzend bereithalten."
+  },
+  "sources": [
+    "https://github.com/hoyleb/OpenEmergencyHandbook",
+    "https://github.com/ligi/SurvivalManual/blob/master/COPYING"
+  ],
+  "related": [
+    "prepare"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

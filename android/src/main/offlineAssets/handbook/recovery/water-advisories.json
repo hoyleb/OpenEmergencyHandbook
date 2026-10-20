@@ -1,0 +1,38 @@
+{
+  "id": "water-advisories",
+  "group": "essentials",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Water warnings: which use is safe?",
+    "summary": "Boil-water, do-not-drink and do-not-use instructions are different.",
+    "keywords": "boil water advisory notice chemical do not drink do not use infant formula filter contamination",
+    "body": "## Read the actual warning\nThe water authority specifies which area, uses and contaminants are affected. This saved guide cannot know the current warning or whether it has been lifted.\n\n## Boil-water instruction\nUsually concerns germs: use bottled or correctly boiled water for drinking, cooking and brushing teeth. Domestic filtering does not cancel a boil-water instruction. Handwashing/bathing rules depend on the notice; prevent swallowing, especially in young children. Ready-to-feed infant formula can reduce preparation risks.\n\n## Do not drink\nUse a verified alternative for drinking, cooking, teeth, food preparation and pets. Boiling does not remove many chemicals/toxins. Whether bathing or other uses are allowed depends on the warning.\n\n## Do not use\nContact, swallowing or inhaling water may be hazardous. Do not use the affected tap supply for any purpose until officials say otherwise. Use verified alternatives. Do not treat showering as safe merely because you avoid drinking.\n\n## After clearance\nFollow flushing, filter-replacement and appliance instructions. Refrigerator dispensers/ice connected to the affected supply need attention too. A clear appearance or an app cannot certify safety."
+  },
+  "de": {
+    "title": "Wasserwarnungen: Welche Nutzung ist sicher?",
+    "summary": "Abkochgebot, Trinkverbot und Nutzungsverbot unterscheiden.",
+    "keywords": "Abkochgebot Trinkverbot Nutzungsverbot Wasserwarnung Baby Säuglingsnahrung Filter Chemikalien",
+    "body": "## Tatsächliche Warnung lesen\nDer Wasserversorger nennt Gebiet, betroffene Nutzungen und Schadstoffe. Diese gespeicherte Anleitung kennt weder aktuelle Warnung noch deren Aufhebung.\n\n## Abkochgebot\nMeist geht es um Keime: Flaschenwasser oder korrekt abgekochtes Wasser für Trinken, Kochen und Zähneputzen nutzen. Haushaltsfilter heben das Gebot nicht auf. Regeln für Händewaschen/Baden hängen von der Warnung ab; besonders Kinder dürfen nichts schlucken. Trinkfertige Säuglingsnahrung kann Zubereitungsrisiken reduzieren.\n\n## Nicht trinken\nGeprüfte Alternative für Trinken, Kochen, Zähne, Speisenzubereitung und Tiere nutzen. Abkochen entfernt viele Chemikalien/Giftstoffe nicht. Ob Baden oder andere Nutzungen erlaubt sind, steht in der Warnung.\n\n## Nicht verwenden\nKontakt, Verschlucken oder Einatmen kann gefährlich sein. Betroffenes Leitungswasser bis zur amtlichen Freigabe für keinen Zweck nutzen. Geprüfte Alternativen verwenden. Duschen wird nicht allein durch Nichttrinken sicher.\n\n## Nach Freigabe\nAnweisungen zum Spülen, Filterwechsel und Geräten befolgen. Angeschlossene Kühlschrankspender/Eis ebenfalls beachten. Klares Aussehen oder eine App beweisen keine Sicherheit."
+  },
+  "sources": [
+    "https://www.cdc.gov/water-emergency/about/drinking-water-advisories-an-overview.html",
+    "https://www.cdc.gov/cryptosporidium/prevention/crypto-home-boil-water.html"
+  ],
+  "related": [
+    "water",
+    "hygiene",
+    "food"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

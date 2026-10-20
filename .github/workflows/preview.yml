@@ -1,8 +1,10 @@
 name: Android preview
 on:
   push:
-    branches: [master, fix/large-text-controls]
+    branches: [master, feature/resilience-and-portability]
+    paths-ignore: ['docs/**', 'README.md', 'PRIVACY_POLICY.md']
   pull_request:
+    paths-ignore: ['docs/**', 'README.md', 'PRIVACY_POLICY.md']
   workflow_dispatch:
 permissions:
   contents: read
@@ -10,13 +12,69 @@ concurrency:
   group: android-preview-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  prepare-signing:
+    runs-on: ubuntu-latest
+    outputs:
+      certificate: ${{ steps.identity.outputs.certificate }}
+      pinned: ${{ steps.identity.outputs.pinned }}
+    env:
+      OPEN_EMERGENCY_PREVIEW_KEYSTORE: /tmp/open-emergency-preview.keystore
+      OPEN_EMERGENCY_PREVIEW_KEYSTORE_BASE64: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_KEYSTORE_BASE64 || '' }}
+      OPEN_EMERGENCY_PREVIEW_STORE_PASSWORD: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_STORE_PASSWORD || '' }}
+      OPEN_EMERGENCY_PREVIEW_KEY_PASSWORD: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_KEY_PASSWORD || '' }}
+      OPEN_EMERGENCY_PREVIEW_KEY_ALIAS: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_KEY_ALIAS || '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/cache@v4
+        if: env.OPEN_EMERGENCY_PREVIEW_KEYSTORE_BASE64 == ''
+        with:
+          path: ${{ env.OPEN_EMERGENCY_PREVIEW_KEYSTORE }}
+          key: open-emergency-preview-explicit-key-v2
+      - id: identity
+        name: Prepare one preview identity before matrix workers
+        run: python3 tools/prepare_preview_signing.py prepare
+  portable-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate content and portable search
+        run: |
+          python3 tools/build_handbook.py --check > content-check.json
+          python3 -m unittest discover -s tools -p 'test_*.py' -v
+          node tools/test_offline_search.cjs
+      - name: Test HTML with and without JavaScript
+        run: |
+          npm install --prefix .ci --no-save --package-lock=false playwright@1.62.1
+          .ci/node_modules/.bin/playwright install --with-deps chromium firefox webkit
+          NODE_PATH="$PWD/.ci/node_modules" node tools/test_offline_browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Portable-handbook-validation
+          path: |
+            dist/HTML-*.png
+            dist/HTML-TESTS.json
   build-and-test:
+    needs: prepare-signing
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        api: [23, 36]
+        api: [21, 23, 36]
     timeout-minutes: 35
+    env:
+      OPEN_EMERGENCY_PREVIEW_KEYSTORE: /tmp/open-emergency-preview.keystore
+      OPEN_EMERGENCY_PREVIEW_KEYSTORE_BASE64: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_KEYSTORE_BASE64 || '' }}
+      OPEN_EMERGENCY_PREVIEW_STORE_PASSWORD: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_STORE_PASSWORD || '' }}
+      OPEN_EMERGENCY_PREVIEW_KEY_PASSWORD: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_KEY_PASSWORD || '' }}
+      OPEN_EMERGENCY_PREVIEW_KEY_ALIAS: ${{ github.event_name != 'pull_request' && secrets.OPEN_EMERGENCY_PREVIEW_KEY_ALIAS || '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -30,15 +88,20 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           cache-read-only: ${{ github.event_name == 'pull_request' }}
-      - name: Preserve preview signing identity between builds
-        uses: actions/cache@v4
+      - name: Restore the workflow-prepared preview key
+        uses: actions/cache/restore@v4
+        if: env.OPEN_EMERGENCY_PREVIEW_KEYSTORE_BASE64 == ''
         with:
-          path: ~/.android/debug.keystore
-          key: open-emergency-preview-debug-key-v1
+          path: ${{ env.OPEN_EMERGENCY_PREVIEW_KEYSTORE }}
+          key: open-emergency-preview-explicit-key-v2
+          fail-on-cache-miss: true
+      - name: Load prepared identity without generating a replacement
+        run: python3 tools/prepare_preview_signing.py matrix
       - name: Validate bundled content and build standalone handbook
         run: |
           python3 tools/build_handbook.py --check
           python3 -m unittest discover -s tools -p 'test_*.py' -v
+          node tools/test_offline_search.cjs
       - name: Generate printable bilingual handbooks
         run: |
           sudo apt-get update -qq
@@ -47,6 +110,9 @@ jobs:
           python3 tools/build_pdf.py
       - name: Build and lint Android
         run: ./gradlew :android:assembleDebug :android:assembleDebugAndroidTest :android:lintDebug --console=plain
+      - name: Prepare unsigned app bundle for distribution review
+        if: matrix.api == 36
+        run: ./gradlew :android:bundleRelease --console=plain
       - name: Enable emulator acceleration
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -60,22 +126,35 @@ jobs:
           disable-animations: true
           script: bash tools/run_offline_checks.sh
       - name: Record APK identity and dependency inventory
+        env:
+          EXPECTED_PREVIEW_CERTIFICATE: ${{ needs.prepare-signing.outputs.certificate }}
         run: |
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs android/build/outputs/apk/debug/*.apk > dist/APK-SIGNATURE.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging android/build/outputs/apk/debug/*.apk > dist/APK-MANIFEST.txt
+          python3 tools/verify_preview_signature.py dist/APK-SIGNATURE.txt "$EXPECTED_PREVIEW_CERTIFICATE" dist/PREVIEW-SIGNING.json dist/APK-MANIFEST.txt
+          python3 tools/summarize_android_tests.py --api ${{ matrix.api }} --output dist/TEST-SUMMARY-api-${{ matrix.api }}.json
           ./gradlew :android:dependencies --configuration debugRuntimeClasspath --console=plain > dist/dependency-tree.txt
       - name: Package preview downloads
         run: |
           cp android/build/outputs/apk/debug/*.apk dist/OpenEmergencyHandbook-preview.apk
+          if [ "${{ matrix.api }}" = 36 ]; then
+            find android/build/outputs/bundle/release -name '*.aab' -exec cp {} dist/OpenEmergencyHandbook-unsigned.aab \;
+            test -s dist/OpenEmergencyHandbook-unsigned.aab
+          fi
           git archive --format=tar.gz HEAD > dist/OpenEmergencyHandbook-source.tar.gz
           printf '%s\n' "$GITHUB_SHA" > dist/BUILD_COMMIT.txt
           cd dist
-          sha256sum OpenEmergencyHandbook-preview.apk OpenEmergencyHandbook-en.pdf OpenEmergencyHandbook-de.pdf OpenEmergencyHandbook-offline.html OpenEmergencyHandbook-source.tar.gz Android-preview.png Usability-*.png coverage-report.json BUILD_COMMIT.txt APK-SIGNATURE.txt APK-MANIFEST.txt dependency-tree.txt > SHA256SUMS.txt
           rm emergency-window.xml
+          sha256sum OpenEmergencyHandbook-preview.apk OpenEmergencyHandbook-en.pdf OpenEmergencyHandbook-de.pdf OpenEmergencyHandbook-offline.html OpenEmergencyHandbook-source.tar.gz Android-preview.png Usability-*.png coverage-report.json BUILD_COMMIT.txt APK-SIGNATURE.txt APK-MANIFEST.txt PREVIEW-SIGNING.json TEST-SUMMARY*.json dependency-tree.txt > SHA256SUMS.txt
       - uses: actions/upload-artifact@v4
         with:
           name: OpenEmergencyHandbook-preview-api-${{ matrix.api }}
           path: dist/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Android-validation-api-${{ matrix.api }}
+          path: dist/TEST-SUMMARY-api-${{ matrix.api }}.json
           if-no-files-found: error
       - name: Upload test and lint results
         if: always()
@@ -87,34 +166,60 @@ jobs:
             android/build/outputs/androidTest-results/
   publish-test-download:
     if: github.event_name == 'push'
-    needs: build-and-test
+    needs: [build-and-test, portable-checks, prepare-signing]
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+      - name: Refuse publication under an unrecognised certificate
+        env:
+          PINNED: ${{ needs.prepare-signing.outputs.pinned }}
+        run: |
+          if [ "$PINNED" != true ]; then
+            echo "::error::Preview certificate is not pinned. Tests can run, but publishing a new signing identity is blocked. See docs/SIGNING.md."
+            exit 1
+          fi
       - uses: actions/download-artifact@v4
         with:
           name: OpenEmergencyHandbook-preview-api-36
           path: downloads
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: Android-validation-api-*
+          merge-multiple: true
+          path: downloads
+      - uses: actions/download-artifact@v4
+        with:
+          name: Portable-handbook-validation
+          path: downloads
+      - name: Recompute checksums for the complete download set
+        run: |
+          python3 - <<'PYTHON'
+          import hashlib
+          from pathlib import Path
+          root = Path('downloads')
+          files = sorted(p for p in root.iterdir() if p.is_file() and p.name != 'SHA256SUMS.txt')
+          (root / 'SHA256SUMS.txt').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest() + '  ' + p.name + '\n' for p in files))
+          PYTHON
       - name: Publish free downloadable prerelease
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-          PREVIEW_TAG: preview-0.3.${{ github.run_number }}
+          PREVIEW_TAG: preview-0.4.${{ github.run_number }}
           PREVIEW_COMMIT: ${{ github.sha }}
         run: |
           cat > release-notes.md <<'NOTES'
           Android development preview for installation and usability testing.
 
-          Download OpenEmergencyHandbook-preview.apk on an Android phone (Android 5.0+). Allow installation from the browser/file manager when Android asks, then open **Open Emergency Preview**. This APK is debug-signed for testing, not a Play Store production release. If a later build has a different signing identity, uninstalling the old preview may be necessary; that removes local notes.
+          Download OpenEmergencyHandbook-preview.apk on an Android phone (Android 5.0+). Allow installation from the browser/file manager when Android asks, then open **Open Emergency Preview**. This APK is debug-signed for testing, not a Play Store production release. This 0.4 series starts a pinned development identity. Older previews used changing test keys and may require uninstalling; export your old household plan first. Use JSON backups from 0.4 onward for automatic restore; older text exports need manual copying. Uninstall removes local data. CI now blocks unpinned signing changes. Protected production signing is still outstanding.
 
-          Included: 30 English and 30 German offline guides, all six disaster scenarios, first-aid/safe-water summaries, direct help actions, persistent Help/Search/Saved/Plan navigation, reader section jumps/bookmarks, adjustable text, optional screen-on mode, related guides and ranked bilingual search with labelled typo fallback, household checklist, water estimate, notes and explicit text export. No account, subscription, advertising or network permission.
+          Included: 30 English and 30 German offline guides, all six disaster scenarios, first-aid/safe-water summaries, direct help actions, persistent Help/Search/Saved/Plan navigation, reader section jumps/bookmarks, adjustable text, optional screen-on mode, related guides and ranked bilingual search with labelled typo fallback, household checklist, water estimate, notes, explicit text export and versioned JSON backup/confirmed restore. Separate hash-checked recovery copies keep undamaged guides readable if the primary index fails. No account, subscription, advertising or network permission.
 
           **All summaries and translations are unreviewed drafts. Coverage is incomplete. Test the app; do not treat this as a complete or professionally approved survival reference.** See About and coverage-report.json for gaps. Follow emergency services and current official instructions.
 
-          Checks: content validation, 13 Python tests, Android compilation/lint, and 14 emulator tests on Android 6/API 23 and Android 16/API 36 with Wi-Fi/mobile data disabled. Scope: bundled EN/DE articles, visible urgent home actions, bilingual ranked/approximate search, Back-stack restoration, section jumps, bookmarks, reader/language recreation, 200% system text, dark palette, opt-in screen-on, household persistence/export and no INTERNET permission. These checks do not establish medical accuracy or real-world disaster readiness.
+          Checks: content/backup contracts, shared Android/HTML search vectors, browser checks with and without JavaScript, Android compilation/lint and emulator tests on Android 5/API 21, Android 6/API 23 and Android 16/API 36 with Wi-Fi/mobile data disabled. Exact test names/counts are in TEST-SUMMARY-api-*.json and HTML-TESTS.json. Scope: bundled EN/DE articles, visible urgent home actions, bilingual ranked/approximate search, Back-stack restoration, section jumps, bookmarks, reader/language recreation, 200% system text, dark palette, opt-in screen-on, household backup/restore/cancellation/write failures, damaged-content recovery, landscape, keyboard dismissal, accessibility roles/states and no INTERNET permission. These checks do not establish medical accuracy or real-world disaster readiness.
 
-          Also included: standalone offline HTML handbook, printable English/German PDF handbooks, matching source archive, build commit, checksums, APK identity/signature, dependency tree and emulator screenshot. GPLv3 source and upstream attribution are preserved.
+          Also included: an unsigned AAB for packaging review (not store-ready), standalone offline HTML handbook, printable English/German PDF handbooks, matching source archive, build commit, checksums, APK identity/signature, dependency tree and emulator screenshot. GPLv3 source and upstream attribution are preserved.
 
           Please test offline reading, search, language switching, large text and saved household data. Give feedback in pull request #1 without posting personal information.
           NOTES

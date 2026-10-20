@@ -1,0 +1,38 @@
+{
+  "id": "diabetes",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Diabetes & low blood sugar",
+    "summary": "Only give oral sugar if awake and able to swallow safely.",
+    "keywords": "diabetes hypo hypoglycaemia hypoglycemia sugar insulin glucose",
+    "body": "## Suspected low blood sugar\nIn someone with diabetes, sweating, shaking, confusion or weakness may indicate a hypo. Check glucose if possible and follow their care plan. If awake and swallowing safely, give their planned rapid sugar treatment, such as glucose tablets or a sugary drink; use the product/plan quantity, not a universal tablet count.\n\n## Recheck\nCheck again after **10–15 minutes**; repeat rapid sugar if still low according to the plan. Once recovered, a longer-acting carbohydrate snack or due meal may be needed.\n\n## Unsafe swallowing or collapse\nCall **112** for reduced consciousness, seizures or inability to swallow safely. Give **nothing by mouth**, including gel. If breathing normally maintain the airway; otherwise start CPR. A trained carer can give prescribed glucagon per instructions.\n\n## During disruption\nKeep insulin, supplies and storage instructions accessible; do not improvise doses or stop prescribed insulin without clinical advice. High glucose with vomiting, abdominal pain or abnormal breathing also needs urgent help."
+  },
+  "de": {
+    "title": "Diabetes & Unterzuckerung",
+    "summary": "Zucker über den Mund nur bei Bewusstsein und sicherem Schlucken.",
+    "keywords": "Diabetes Unterzuckerung Hypoglykämie Insulin Glukose Zucker",
+    "body": "## Verdacht auf Unterzuckerung\nBei Diabetes können Schwitzen, Zittern, Verwirrtheit oder Schwäche Unterzuckerung bedeuten. Wenn möglich messen und persönlichen Plan beachten. Bei Bewusstsein und sicherem Schlucken die geplante schnelle Zuckerzufuhr geben, etwa Traubenzucker oder ein zuckerhaltiges Getränk; Menge nach Produkt/Plan, keine allgemeine Tablettenzahl.\n\n## Erneut prüfen\nNach **10–15 Minuten** kontrollieren; bei weiter niedrigem Wert schnelle Zuckerzufuhr nach Plan wiederholen. Nach Erholung können länger wirkende Kohlenhydrate oder die fällige Mahlzeit nötig sein.\n\n## Unsicheres Schlucken oder Kollaps\nBei Bewusstseinseintrübung, Krampf oder Schluckunfähigkeit **112** rufen. **Nichts in den Mund geben**, auch kein Gel. Bei normaler Atmung Atemweg freihalten, sonst wiederbeleben. Geschulte Betreuungspersonen können verordnetes Glukagon nach Anweisung geben.\n\n## Bei Versorgungsausfall\nInsulin, Hilfsmittel und Lagerhinweise bereithalten; Dosen nicht improvisieren und verordnetes Insulin nicht ohne ärztlichen Rat absetzen. Hoher Zucker mit Erbrechen, Bauchschmerz oder auffälliger Atmung braucht ebenfalls dringend Hilfe."
+  },
+  "sources": [
+    "https://www.nhs.uk/conditions/low-blood-sugar-hypoglycaemia/",
+    "https://www.nhs.uk/conditions/diabetic-ketoacidosis/"
+  ],
+  "related": [
+    "first-aid",
+    "seizures",
+    "accessibility"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

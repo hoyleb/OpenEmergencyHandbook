@@ -1,0 +1,14 @@
+[
+  {"query":"bleeding","language":"de","first":"bleeding","approximate":false},
+  {"query":"bleeding","language":"en","first":"bleeding","approximate":false},
+  {"query":"Stromausfall","language":"en","first":"power","approximate":false},
+  {"query":"blackout","language":"de","first":"power","approximate":false},
+  {"query":"blackot","language":"en","first":"power","approximate":true},
+  {"query":"stromausfal","language":"de","first":"power","approximate":false},
+  {"query":"uberschwemmung","language":"de","first":"flood","approximate":false},
+  {"query":"ÜBERSCHWEMMUNG","language":"en","first":"flood","approximate":false},
+  {"query":"nuclear","language":"en","first":"fallout","approximate":false},
+  {"query":"CPR babies","language":"en","first":"child-cpr","approximate":false},
+  {"query":"nonsensewordxyz","language":"en","first":null,"approximate":false},
+  {"query":"  ","language":"de","first":"first-aid","approximate":false}
+]
