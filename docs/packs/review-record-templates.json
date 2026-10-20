@@ -1,0 +1,606 @@
+{
+  "articles": [
+    {
+      "article_id": "first-aid",
+      "expected_content_sha256": "37004369567d5b66e0fed88eb647554c705c3dcf5c6d06352e9f9f28ae3bb779",
+      "professional_review": {
+        "content_sha256": "37004369567d5b66e0fed88eb647554c705c3dcf5c6d06352e9f9f28ae3bb779",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "37004369567d5b66e0fed88eb647554c705c3dcf5c6d06352e9f9f28ae3bb779",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "adult-cpr",
+      "expected_content_sha256": "8dccc8994994983716b37f3156c92a0bab8d410dbcdec67ed7add6e52b56cd97",
+      "professional_review": {
+        "content_sha256": "8dccc8994994983716b37f3156c92a0bab8d410dbcdec67ed7add6e52b56cd97",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "8dccc8994994983716b37f3156c92a0bab8d410dbcdec67ed7add6e52b56cd97",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "water",
+      "expected_content_sha256": "d3d3e79e4885b4ecc3c46c2fd81bba65250c837637390b4e61383f7711bed594",
+      "professional_review": {
+        "content_sha256": "d3d3e79e4885b4ecc3c46c2fd81bba65250c837637390b4e61383f7711bed594",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "d3d3e79e4885b4ecc3c46c2fd81bba65250c837637390b4e61383f7711bed594",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "power",
+      "expected_content_sha256": "d05d54a9cca6c7799a5dd2c6cd189b53bb314a057014bc0ca6fb6737e85e0162",
+      "professional_review": {
+        "content_sha256": "d05d54a9cca6c7799a5dd2c6cd189b53bb314a057014bc0ca6fb6737e85e0162",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "d05d54a9cca6c7799a5dd2c6cd189b53bb314a057014bc0ca6fb6737e85e0162",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "cyber",
+      "expected_content_sha256": "f550712b3b74034b896cbe486caf33360a5715ff4995e9749f7df9eeb9840bb7",
+      "professional_review": {
+        "content_sha256": "f550712b3b74034b896cbe486caf33360a5715ff4995e9749f7df9eeb9840bb7",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "f550712b3b74034b896cbe486caf33360a5715ff4995e9749f7df9eeb9840bb7",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "earthquake",
+      "expected_content_sha256": "70137c1625e5df2f27aaa3f32ca55ac89388f1daf025651dbebb939f98c95cff",
+      "professional_review": {
+        "content_sha256": "70137c1625e5df2f27aaa3f32ca55ac89388f1daf025651dbebb939f98c95cff",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "70137c1625e5df2f27aaa3f32ca55ac89388f1daf025651dbebb939f98c95cff",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "fallout",
+      "expected_content_sha256": "56b324772392fec1008f660a4c7a90a58f61d4b62ec5aa9f29282925050d3518",
+      "professional_review": {
+        "content_sha256": "56b324772392fec1008f660a4c7a90a58f61d4b62ec5aa9f29282925050d3518",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "56b324772392fec1008f660a4c7a90a58f61d4b62ec5aa9f29282925050d3518",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "flood",
+      "expected_content_sha256": "ea8681c05de7c744fb8699813ca7acff394028975202ac645332a0fd8bbafb14",
+      "professional_review": {
+        "content_sha256": "ea8681c05de7c744fb8699813ca7acff394028975202ac645332a0fd8bbafb14",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "ea8681c05de7c744fb8699813ca7acff394028975202ac645332a0fd8bbafb14",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "pandemic",
+      "expected_content_sha256": "b8de4d7a7349bf9f1d11c29bdd39051164b384dbe16bc26a14952db469d9e544",
+      "professional_review": {
+        "content_sha256": "b8de4d7a7349bf9f1d11c29bdd39051164b384dbe16bc26a14952db469d9e544",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "b8de4d7a7349bf9f1d11c29bdd39051164b384dbe16bc26a14952db469d9e544",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "food",
+      "expected_content_sha256": "6e180490a01b5632a18dc26eb473c5b396e1000bc88a160498ec660b65774149",
+      "professional_review": {
+        "content_sha256": "6e180490a01b5632a18dc26eb473c5b396e1000bc88a160498ec660b65774149",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "6e180490a01b5632a18dc26eb473c5b396e1000bc88a160498ec660b65774149",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "hygiene",
+      "expected_content_sha256": "a99dd621acf0cd1437a7c82e1d647601dda73097882fa0052612a638bf01bc53",
+      "professional_review": {
+        "content_sha256": "a99dd621acf0cd1437a7c82e1d647601dda73097882fa0052612a638bf01bc53",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "a99dd621acf0cd1437a7c82e1d647601dda73097882fa0052612a638bf01bc53",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "shelter",
+      "expected_content_sha256": "d42ac36da5625e7c812369501af876542bcf8d8b6a4c9f2e603abdc59c3c0a70",
+      "professional_review": {
+        "content_sha256": "d42ac36da5625e7c812369501af876542bcf8d8b6a4c9f2e603abdc59c3c0a70",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "d42ac36da5625e7c812369501af876542bcf8d8b6a4c9f2e603abdc59c3c0a70",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "prepare",
+      "expected_content_sha256": "7a899a9a830c15fdf1a588fc974853d5bc20d0fb9de21748cd50eb5429092dfa",
+      "professional_review": {
+        "content_sha256": "7a899a9a830c15fdf1a588fc974853d5bc20d0fb9de21748cd50eb5429092dfa",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "7a899a9a830c15fdf1a588fc974853d5bc20d0fb9de21748cd50eb5429092dfa",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "communications",
+      "expected_content_sha256": "c539e3a6f255e8141670a571ce92ebe6915473e3b082b4806cbb12f9a83d3362",
+      "professional_review": {
+        "content_sha256": "c539e3a6f255e8141670a571ce92ebe6915473e3b082b4806cbb12f9a83d3362",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "c539e3a6f255e8141670a571ce92ebe6915473e3b082b4806cbb12f9a83d3362",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "about",
+      "expected_content_sha256": "63c06021d3f7f58eeaf25e0859a94f78f1b7298bf38442befd1e45575e066af6",
+      "professional_review": {
+        "content_sha256": "63c06021d3f7f58eeaf25e0859a94f78f1b7298bf38442befd1e45575e066af6",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "63c06021d3f7f58eeaf25e0859a94f78f1b7298bf38442befd1e45575e066af6",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "adult-choking",
+      "expected_content_sha256": "ee1fde1dba2d3f8ca8845c276e2042aeab2fc7ef62cf1cf9e9d637f23027f08a",
+      "professional_review": {
+        "content_sha256": "ee1fde1dba2d3f8ca8845c276e2042aeab2fc7ef62cf1cf9e9d637f23027f08a",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "ee1fde1dba2d3f8ca8845c276e2042aeab2fc7ef62cf1cf9e9d637f23027f08a",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "child-choking",
+      "expected_content_sha256": "d0bc76bd4da7f9f277f7ab2c76492ad5a07c2f87299ae4b94179a55c030329af",
+      "professional_review": {
+        "content_sha256": "d0bc76bd4da7f9f277f7ab2c76492ad5a07c2f87299ae4b94179a55c030329af",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "d0bc76bd4da7f9f277f7ab2c76492ad5a07c2f87299ae4b94179a55c030329af",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "child-cpr",
+      "expected_content_sha256": "c1bc703a0ed1e2eb6c5d4eb3d48182531ff01e42c918d3d447dd776e53338964",
+      "professional_review": {
+        "content_sha256": "c1bc703a0ed1e2eb6c5d4eb3d48182531ff01e42c918d3d447dd776e53338964",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "c1bc703a0ed1e2eb6c5d4eb3d48182531ff01e42c918d3d447dd776e53338964",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "bleeding",
+      "expected_content_sha256": "9e7d359db9f965f4bd30e91f5477e90903d86032a799bd7d59896b523d9563d2",
+      "professional_review": {
+        "content_sha256": "9e7d359db9f965f4bd30e91f5477e90903d86032a799bd7d59896b523d9563d2",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "9e7d359db9f965f4bd30e91f5477e90903d86032a799bd7d59896b523d9563d2",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "burns",
+      "expected_content_sha256": "bf0cd93b8d12534f8fad4258ea294ab36bae098c90d3d5b92c869412ae488d46",
+      "professional_review": {
+        "content_sha256": "bf0cd93b8d12534f8fad4258ea294ab36bae098c90d3d5b92c869412ae488d46",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "bf0cd93b8d12534f8fad4258ea294ab36bae098c90d3d5b92c869412ae488d46",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "anaphylaxis",
+      "expected_content_sha256": "79da7a019020cabaa2a915d03576304372d6a1f4a51c5adfec390f72d9536f0b",
+      "professional_review": {
+        "content_sha256": "79da7a019020cabaa2a915d03576304372d6a1f4a51c5adfec390f72d9536f0b",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "79da7a019020cabaa2a915d03576304372d6a1f4a51c5adfec390f72d9536f0b",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "seizures",
+      "expected_content_sha256": "e6c7fc4a3e3d1bfb7acc64ac91e13bfa7b2489618f74dd263d39210f64d4ab99",
+      "professional_review": {
+        "content_sha256": "e6c7fc4a3e3d1bfb7acc64ac91e13bfa7b2489618f74dd263d39210f64d4ab99",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "e6c7fc4a3e3d1bfb7acc64ac91e13bfa7b2489618f74dd263d39210f64d4ab99",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "diabetes",
+      "expected_content_sha256": "74da4e7b0c8c9013c3db83bb8b1e66c5140df09c03519492070d47eb9d174a8b",
+      "professional_review": {
+        "content_sha256": "74da4e7b0c8c9013c3db83bb8b1e66c5140df09c03519492070d47eb9d174a8b",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "74da4e7b0c8c9013c3db83bb8b1e66c5140df09c03519492070d47eb9d174a8b",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "poisoning",
+      "expected_content_sha256": "f86eb50e303724b1e9e5485b43e5468490702d4fe55b0ea12b44bcaf65c02e5c",
+      "professional_review": {
+        "content_sha256": "f86eb50e303724b1e9e5485b43e5468490702d4fe55b0ea12b44bcaf65c02e5c",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "f86eb50e303724b1e9e5485b43e5468490702d4fe55b0ea12b44bcaf65c02e5c",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "stroke-heart",
+      "expected_content_sha256": "d730f71338f285853bc8d841ebdf13665dd66da2ffbc7c305e34ce30ba187cf1",
+      "professional_review": {
+        "content_sha256": "d730f71338f285853bc8d841ebdf13665dd66da2ffbc7c305e34ce30ba187cf1",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "d730f71338f285853bc8d841ebdf13665dd66da2ffbc7c305e34ce30ba187cf1",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "accessibility",
+      "expected_content_sha256": "4d9bb5dd5ff975b269f33574229af89de5d1145da7f94d01cefbbac40c55a95f",
+      "professional_review": {
+        "content_sha256": "4d9bb5dd5ff975b269f33574229af89de5d1145da7f94d01cefbbac40c55a95f",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "4d9bb5dd5ff975b269f33574229af89de5d1145da7f94d01cefbbac40c55a95f",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "pets",
+      "expected_content_sha256": "ebf83069afe369e7f710ffd3b35ca4598e5406fb01fd7f23dad4479de3d30b2a",
+      "professional_review": {
+        "content_sha256": "ebf83069afe369e7f710ffd3b35ca4598e5406fb01fd7f23dad4479de3d30b2a",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "ebf83069afe369e7f710ffd3b35ca4598e5406fb01fd7f23dad4479de3d30b2a",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "combined-hazards",
+      "expected_content_sha256": "2989c58d4514c7c8a2fb28dce2b5d56bac273cc5a94c835f62184f5311455257",
+      "professional_review": {
+        "content_sha256": "2989c58d4514c7c8a2fb28dce2b5d56bac273cc5a94c835f62184f5311455257",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "2989c58d4514c7c8a2fb28dce2b5d56bac273cc5a94c835f62184f5311455257",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "water-advisories",
+      "expected_content_sha256": "c53399b61ab7bc2033def1f84a3bef6c49146bbd48543b77a936972a200a7a58",
+      "professional_review": {
+        "content_sha256": "c53399b61ab7bc2033def1f84a3bef6c49146bbd48543b77a936972a200a7a58",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "c53399b61ab7bc2033def1f84a3bef6c49146bbd48543b77a936972a200a7a58",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    },
+    {
+      "article_id": "recovery",
+      "expected_content_sha256": "78d95e456a43d5619404d6ac17bcdbd04e22c9965bce77647fb1e265610f79fc",
+      "professional_review": {
+        "content_sha256": "78d95e456a43d5619404d6ac17bcdbd04e22c9965bce77647fb1e265610f79fc",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      },
+      "translation_review": {
+        "content_sha256": "78d95e456a43d5619404d6ac17bcdbd04e22c9965bce77647fb1e265610f79fc",
+        "date": "",
+        "evidence": "",
+        "reviewer": "",
+        "role": "",
+        "scope": ""
+      }
+    }
+  ],
+  "note": "Blank work templates only; do not import as sign-off. Complete actual qualified and translation reviews first.",
+  "schema_version": 1
+}

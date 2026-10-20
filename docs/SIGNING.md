@@ -21,6 +21,8 @@ When these secrets are present on a trusted push/manual run, the workflow loads 
 
 Actions caches are scoped to refs and may expire. After merging a cache-backed branch, a default-branch run may not have that branch's key; the guard will block a different identity. Provision the matching key through protected secrets, or plan a deliberate identity migration with backup/restore and an explicit public pin change. A certificate fingerprint or APK cannot recover its private key. Do not publish a private key in an artifact, log, issue or source commit to work around cache scope.
 
+Observed after merging PR #3: [master run 39399691702](https://github.com/hoyleb/OpenEmergencyHandbook/actions/runs/39399691702) passed the three Android matrix jobs and portable checks but stopped at the pinned-certificate publication guard. The existing `preview-0.4.51` APK remains the verified published identity. Do not interpret that run's failure as a failed Android test or bypass the pin to publish an incompatible update. The separate paper/reviewer workflow needs no signing key.
+
 The 0.4 preview starts a new development identity. Export an old household plan before uninstalling; older text exports require manual copying, while 0.4 JSON backups can be restored. Uninstall deletes local app data. Retain and verify the backup before removing a working installation.
 
 ## Production distribution remains separate

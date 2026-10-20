@@ -54,7 +54,7 @@ Validation results are attached to the actual workflow/release. A feature listed
 - [x] Add HTML/Android bilingual ranking and typo-fallback parity, category reset, shared vectors and Chromium/Firefox/WebKit JavaScript/no-JavaScript tests.
 - [ ] Repeat portable checks on actual Safari and physical Android browsers; Linux WebKit automation is not actual Safari/device evidence.
 - [x] Produce and visually inspect printable English/German PDFs from the same content (33 pages each).
-- [ ] Produce compact printed quick cards for loss of phone power.
+- [x] Produce English/German A5 quick cards for loss of phone power: 14 full guide cards plus two blank household/support cards, eight A4 sheets per language. [Paper and reviewer packs](PAPER_AND_REVIEW_PACKS.md). Actual printer/readability and household tests remain open.
 - [x] Structured JSON plan/bookmark backup and explicit preview/confirmed restore, preserving unrelated settings.
 - [ ] Optional encrypted portable backups and a security review of their key/password recovery design. Current text/JSON exports are unencrypted; no account is needed.
 
@@ -67,6 +67,11 @@ Validation results are attached to the actual workflow/release. A feature listed
 - [ ] Confirm ownership/access for store accounts and upload credentials outside Git. Submit only after review/testing/signing requirements are met.
 - [ ] Assign correction triage, review cadence, withdrawal/replacement and source-link maintenance. Optional content updating requires authentication, schema validation, atomic install and a retained known-good edition; it must never lock out offline reading.
 - [ ] Reproducibility check before claiming reproducible APKs. Source archive/checksum/signature do not by themselves prove reproducibility.
+
+## Review handoff tooling
+
+- [x] Generate a full bilingual reviewer HTML, 430-row title/summary/keyword/paragraph source-mapping worksheet, 55-URL maintenance inventory, exact content snapshot and hash-bound blank review templates. No source availability, qualified approval or claim-level mapping is inferred from generation. See [PAPER_AND_REVIEW_PACKS.md](PAPER_AND_REVIEW_PACKS.md).
+- [ ] Have qualified reviewers complete the mappings/findings and sign-off, then regenerate and validate the content gate. The tooling does not close any P0 review requirement above.
 
 ## Separate workstream
 

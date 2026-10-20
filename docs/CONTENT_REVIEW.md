@@ -4,6 +4,8 @@ The 0.2 preview contains 30 English and 30 German **drafts**. Source comparison 
 
 ## Review before public reliance
 
+An offline [reviewer handoff pack](PAPER_AND_REVIEW_PACKS.md) now provides full English/German text, exact-block CSV source-mapping fields, source/due-date inventory and blank review records bound to the existing content hashes. Candidate source lists and generated templates are not review evidence. Use them to carry out the process below; do not import blank templates as sign-off.
+
 1. Assign a qualified reviewer appropriate to the topic: first-aid/medical; water/sanitation; electrical/CO; radiation; structural/flood; infection; cyber incident response. Assign a competent German/English translation reviewer separately.
 2. Check each action, exception, age group, escalation trigger, quantity and unit against the cited edition. Add section/claim-level source mappings. Check source redirects and conflicting editions; links alone do not establish accuracy or redistribution rights.
 3. Review combined hazards explicitly: fallout with a damaged/flooded shelter, infection with unsafe outside air, sewage with water loss, cold with earthquake damage, communications loss with cyberattack.

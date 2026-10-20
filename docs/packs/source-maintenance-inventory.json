@@ -1,0 +1,567 @@
+{
+  "as_of": "2026-10-20",
+  "note": "Inventory only. URLs were not fetched; availability, editions, rights and claims are not verified.",
+  "reviews": [
+    {
+      "article_id": "first-aid",
+      "content_sha256": "37004369567d5b66e0fed88eb647554c705c3dcf5c6d06352e9f9f28ae3bb779",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "adult-cpr",
+      "content_sha256": "8dccc8994994983716b37f3156c92a0bab8d410dbcdec67ed7add6e52b56cd97",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "water",
+      "content_sha256": "d3d3e79e4885b4ecc3c46c2fd81bba65250c837637390b4e61383f7711bed594",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "power",
+      "content_sha256": "d05d54a9cca6c7799a5dd2c6cd189b53bb314a057014bc0ca6fb6737e85e0162",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "cyber",
+      "content_sha256": "f550712b3b74034b896cbe486caf33360a5715ff4995e9749f7df9eeb9840bb7",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "earthquake",
+      "content_sha256": "70137c1625e5df2f27aaa3f32ca55ac89388f1daf025651dbebb939f98c95cff",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "fallout",
+      "content_sha256": "56b324772392fec1008f660a4c7a90a58f61d4b62ec5aa9f29282925050d3518",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "flood",
+      "content_sha256": "ea8681c05de7c744fb8699813ca7acff394028975202ac645332a0fd8bbafb14",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "pandemic",
+      "content_sha256": "b8de4d7a7349bf9f1d11c29bdd39051164b384dbe16bc26a14952db469d9e544",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "food",
+      "content_sha256": "6e180490a01b5632a18dc26eb473c5b396e1000bc88a160498ec660b65774149",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "hygiene",
+      "content_sha256": "a99dd621acf0cd1437a7c82e1d647601dda73097882fa0052612a638bf01bc53",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "shelter",
+      "content_sha256": "d42ac36da5625e7c812369501af876542bcf8d8b6a4c9f2e603abdc59c3c0a70",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "prepare",
+      "content_sha256": "7a899a9a830c15fdf1a588fc974853d5bc20d0fb9de21748cd50eb5429092dfa",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "communications",
+      "content_sha256": "c539e3a6f255e8141670a571ce92ebe6915473e3b082b4806cbb12f9a83d3362",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "about",
+      "content_sha256": "63c06021d3f7f58eeaf25e0859a94f78f1b7298bf38442befd1e45575e066af6",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "adult-choking",
+      "content_sha256": "ee1fde1dba2d3f8ca8845c276e2042aeab2fc7ef62cf1cf9e9d637f23027f08a",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "child-choking",
+      "content_sha256": "d0bc76bd4da7f9f277f7ab2c76492ad5a07c2f87299ae4b94179a55c030329af",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "child-cpr",
+      "content_sha256": "c1bc703a0ed1e2eb6c5d4eb3d48182531ff01e42c918d3d447dd776e53338964",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "bleeding",
+      "content_sha256": "9e7d359db9f965f4bd30e91f5477e90903d86032a799bd7d59896b523d9563d2",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "burns",
+      "content_sha256": "bf0cd93b8d12534f8fad4258ea294ab36bae098c90d3d5b92c869412ae488d46",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "anaphylaxis",
+      "content_sha256": "79da7a019020cabaa2a915d03576304372d6a1f4a51c5adfec390f72d9536f0b",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "seizures",
+      "content_sha256": "e6c7fc4a3e3d1bfb7acc64ac91e13bfa7b2489618f74dd263d39210f64d4ab99",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "diabetes",
+      "content_sha256": "74da4e7b0c8c9013c3db83bb8b1e66c5140df09c03519492070d47eb9d174a8b",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "poisoning",
+      "content_sha256": "f86eb50e303724b1e9e5485b43e5468490702d4fe55b0ea12b44bcaf65c02e5c",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "stroke-heart",
+      "content_sha256": "d730f71338f285853bc8d841ebdf13665dd66da2ffbc7c305e34ce30ba187cf1",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "accessibility",
+      "content_sha256": "4d9bb5dd5ff975b269f33574229af89de5d1145da7f94d01cefbbac40c55a95f",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "pets",
+      "content_sha256": "ebf83069afe369e7f710ffd3b35ca4598e5406fb01fd7f23dad4479de3d30b2a",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "combined-hazards",
+      "content_sha256": "2989c58d4514c7c8a2fb28dce2b5d56bac273cc5a94c835f62184f5311455257",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "water-advisories",
+      "content_sha256": "c53399b61ab7bc2033def1f84a3bef6c49146bbd48543b77a936972a200a7a58",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    },
+    {
+      "article_id": "recovery",
+      "content_sha256": "78d95e456a43d5619404d6ac17bcdbd04e22c9965bce77647fb1e265610f79fc",
+      "due_on_or_before_as_of": false,
+      "review_due": "2027-04-19",
+      "status": "draft"
+    }
+  ],
+  "schema_version": 1,
+  "sources": [
+    {
+      "article_ids": [
+        "about"
+      ],
+      "url": "https://github.com/hoyleb/OpenEmergencyHandbook"
+    },
+    {
+      "article_ids": [
+        "about"
+      ],
+      "url": "https://github.com/ligi/SurvivalManual/blob/master/COPYING"
+    },
+    {
+      "article_ids": [
+        "communications"
+      ],
+      "url": "https://www.116117.de/de/index.php"
+    },
+    {
+      "article_ids": [
+        "earthquake"
+      ],
+      "url": "https://www.bbk.bund.de/DE/Themen/Risikomanagement/Baulicher-Bevoelkerungsschutz/Schutz-vor-geologischen-Gefahren/Erdbeben/erdbeben_node.html"
+    },
+    {
+      "article_ids": [
+        "hygiene"
+      ],
+      "url": "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Hygiene/hygiene.html"
+    },
+    {
+      "article_ids": [
+        "communications"
+      ],
+      "url": "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/In-der-Krise-informiert-sein/Warnungen-erhalten-verstehen/warnungen-erhalten-und-verstehen_node.html"
+    },
+    {
+      "article_ids": [
+        "flood"
+      ],
+      "url": "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Mit-Naturgefahren-umgehen/mit-naturgefahren-umgehen_node.html"
+    },
+    {
+      "article_ids": [
+        "power"
+      ],
+      "url": "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Stromausfall/stromausfall_node.html"
+    },
+    {
+      "article_ids": [
+        "cyber",
+        "recovery",
+        "shelter"
+      ],
+      "url": "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/vorsorge_node.html"
+    },
+    {
+      "article_ids": [
+        "prepare"
+      ],
+      "url": "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/Buergerinformationen/Ratgeber/BBK-Vorsorgen-fuer-Krisen-und-Katastrophen.pdf?__blob=publicationFile&v=42"
+    },
+    {
+      "article_ids": [
+        "cyber"
+      ],
+      "url": "https://www.bsi.bund.de/DE/IT-Sicherheitsvorfall/Buergerinnen-und-Buerger/buergerinnen-und-buerger.html?pos=4"
+    },
+    {
+      "article_ids": [
+        "poisoning"
+      ],
+      "url": "https://www.cdc.gov/carbon-monoxide/about/index.html"
+    },
+    {
+      "article_ids": [
+        "poisoning"
+      ],
+      "url": "https://www.cdc.gov/carbon-monoxide/hcp/clinical-guidance/index.html"
+    },
+    {
+      "article_ids": [
+        "water-advisories"
+      ],
+      "url": "https://www.cdc.gov/cryptosporidium/prevention/crypto-home-boil-water.html"
+    },
+    {
+      "article_ids": [
+        "accessibility"
+      ],
+      "url": "https://www.cdc.gov/disability-emergency-preparedness/people-with-disabilities/index.html"
+    },
+    {
+      "article_ids": [
+        "earthquake"
+      ],
+      "url": "https://www.cdc.gov/earthquakes/safety/stay-safe-after-an-earthquake.html"
+    },
+    {
+      "article_ids": [
+        "earthquake"
+      ],
+      "url": "https://www.cdc.gov/earthquakes/safety/stay-safe-during-an-earthquake.html"
+    },
+    {
+      "article_ids": [
+        "combined-hazards",
+        "flood",
+        "food",
+        "recovery"
+      ],
+      "url": "https://www.cdc.gov/floods/safety/reentering-your-flooded-home-safety.html"
+    },
+    {
+      "article_ids": [
+        "food"
+      ],
+      "url": "https://www.cdc.gov/food-safety/foods/keep-food-safe-after-emergency.html"
+    },
+    {
+      "article_ids": [
+        "pets"
+      ],
+      "url": "https://www.cdc.gov/healthy-pets/emergency-preparedness/index.html"
+    },
+    {
+      "article_ids": [
+        "power"
+      ],
+      "url": "https://www.cdc.gov/natural-disasters/psa-toolkit/use-a-generator-safely.html"
+    },
+    {
+      "article_ids": [
+        "accessibility",
+        "combined-hazards",
+        "power",
+        "recovery",
+        "shelter"
+      ],
+      "url": "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html"
+    },
+    {
+      "article_ids": [
+        "fallout"
+      ],
+      "url": "https://www.cdc.gov/radiation-emergencies/about/what-to-do.html"
+    },
+    {
+      "article_ids": [
+        "fallout"
+      ],
+      "url": "https://www.cdc.gov/radiation-emergencies/prevention/self-decontaminate.html"
+    },
+    {
+      "article_ids": [
+        "combined-hazards",
+        "fallout"
+      ],
+      "url": "https://www.cdc.gov/radiation-emergencies/response/stay-inside.html"
+    },
+    {
+      "article_ids": [
+        "fallout",
+        "food",
+        "water"
+      ],
+      "url": "https://www.cdc.gov/radiation-emergencies/safety/food-drinking-water-medicine-safety.html"
+    },
+    {
+      "article_ids": [
+        "combined-hazards",
+        "pandemic"
+      ],
+      "url": "https://www.cdc.gov/respiratory-viruses/prevention/index.html"
+    },
+    {
+      "article_ids": [
+        "pandemic"
+      ],
+      "url": "https://www.cdc.gov/respiratory-viruses/prevention/masks.html"
+    },
+    {
+      "article_ids": [
+        "pandemic"
+      ],
+      "url": "https://www.cdc.gov/respiratory-viruses/prevention/precautions-when-sick.html"
+    },
+    {
+      "article_ids": [
+        "water"
+      ],
+      "url": "https://www.cdc.gov/water-emergency/about/"
+    },
+    {
+      "article_ids": [
+        "water-advisories"
+      ],
+      "url": "https://www.cdc.gov/water-emergency/about/drinking-water-advisories-an-overview.html"
+    },
+    {
+      "article_ids": [
+        "first-aid"
+      ],
+      "url": "https://www.ifrc.org/document/ifrc-international-first-aid-resuscitation-and-education-guidelines-2025"
+    },
+    {
+      "article_ids": [
+        "child-choking"
+      ],
+      "url": "https://www.nhs.uk/baby/first-aid-and-safety/first-aid/how-to-stop-a-child-from-choking/"
+    },
+    {
+      "article_ids": [
+        "burns"
+      ],
+      "url": "https://www.nhs.uk/conditions/acid-and-chemical-burns/"
+    },
+    {
+      "article_ids": [
+        "anaphylaxis"
+      ],
+      "url": "https://www.nhs.uk/conditions/anaphylaxis/"
+    },
+    {
+      "article_ids": [
+        "burns"
+      ],
+      "url": "https://www.nhs.uk/conditions/burns-and-scalds/"
+    },
+    {
+      "article_ids": [
+        "bleeding"
+      ],
+      "url": "https://www.nhs.uk/conditions/cuts-and-grazes/"
+    },
+    {
+      "article_ids": [
+        "diabetes"
+      ],
+      "url": "https://www.nhs.uk/conditions/diabetic-ketoacidosis/"
+    },
+    {
+      "article_ids": [
+        "stroke-heart"
+      ],
+      "url": "https://www.nhs.uk/conditions/heart-attack/"
+    },
+    {
+      "article_ids": [
+        "diabetes"
+      ],
+      "url": "https://www.nhs.uk/conditions/low-blood-sugar-hypoglycaemia/"
+    },
+    {
+      "article_ids": [
+        "poisoning"
+      ],
+      "url": "https://www.nhs.uk/conditions/poisoning/"
+    },
+    {
+      "article_ids": [
+        "stroke-heart"
+      ],
+      "url": "https://www.nhs.uk/conditions/stroke/symptoms/"
+    },
+    {
+      "article_ids": [
+        "seizures"
+      ],
+      "url": "https://www.nhs.uk/symptoms/what-to-do-if-someone-has-a-seizure-fit/"
+    },
+    {
+      "article_ids": [
+        "cyber"
+      ],
+      "url": "https://www.polizei-beratung.de/medienangebot/detail/350-checkliste-gehackter-account/"
+    },
+    {
+      "article_ids": [
+        "adult-cpr",
+        "first-aid"
+      ],
+      "url": "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/adult-basic-life-support-guidelines"
+    },
+    {
+      "article_ids": [
+        "adult-choking",
+        "anaphylaxis",
+        "bleeding"
+      ],
+      "url": "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/first-aid-guidelines"
+    },
+    {
+      "article_ids": [
+        "child-choking",
+        "child-cpr"
+      ],
+      "url": "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/paediatric-basic-life-support-guidelines"
+    },
+    {
+      "article_ids": [
+        "child-choking"
+      ],
+      "url": "https://www.sja.org.uk/first-aid-advice/baby-choking/"
+    },
+    {
+      "article_ids": [
+        "child-cpr"
+      ],
+      "url": "https://www.sja.org.uk/first-aid-advice/baby-cpr/"
+    },
+    {
+      "article_ids": [
+        "child-cpr"
+      ],
+      "url": "https://www.sja.org.uk/first-aid-advice/child-cpr/"
+    },
+    {
+      "article_ids": [
+        "adult-choking"
+      ],
+      "url": "https://www.sja.org.uk/first-aid-advice/choking/"
+    },
+    {
+      "article_ids": [
+        "bleeding"
+      ],
+      "url": "https://www.sja.org.uk/first-aid-advice/severe-bleeding/"
+    },
+    {
+      "article_ids": [
+        "pandemic"
+      ],
+      "url": "https://www.who.int/emergencies/operations/ipc-wash"
+    },
+    {
+      "article_ids": [
+        "hygiene",
+        "water"
+      ],
+      "url": "https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/environmental-health-in-emergencies/technical-notes-on-wash-in-emergencies"
+    },
+    {
+      "article_ids": [
+        "flood"
+      ],
+      "url": "https://wwwnc.cdc.gov/travel/page/natural-disasters"
+    }
+  ]
+}
