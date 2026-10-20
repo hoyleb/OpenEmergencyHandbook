@@ -14,6 +14,10 @@
       "bytes": 128044,
       "sha256": "530eae0d36bdad1951be7f1c3ba6a9807e43a1e8d4d78abf76e11f77903b7d34"
     },
+    "READ_ME_FIRST.txt": {
+      "bytes": 2779,
+      "sha256": "a235310ff2e5167c1fca6cc77fe916cf049dc15d1f9408e127405c3c7a98b514"
+    },
     "coverage-report.json": {
       "bytes": 10874,
       "sha256": "48ba709e5370b8ab2622e4e4a8bbd005e5e13660f1696cf9a4091c93a28f3199"
