@@ -40,9 +40,13 @@ const assert = require('node:assert/strict');
       // addStyleTag waits for page load events that can stall with scripts disabled.
       // A direct harness evaluation changes only the existing body's style.
       await page.evaluate(() => { document.body.style.fontSize='36px'; });
+      assert.equal(await page.evaluate(() => getComputedStyle(document.body).fontSize),'36px');
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth+1));
-      const sections = await page.locator('#first-aid .parallel > section').first().boundingBox();
-      assert(sections.width <= 312);
+      const english = await page.locator('#first-aid section[lang="en"]').boundingBox();
+      const german = await page.locator('#first-aid section[lang="de"]').boundingBox();
+      assert(english.width <= 312 && german.width <= 312);
+      assert(german.y >= english.y+english.height-1,'Translations must stack at narrow widths');
+      await page.evaluate(() => document.querySelector('#first-aid section[lang="en"]').scrollIntoView({block:'start'}));
       await page.screenshot({path:path.join(output,`review-${name}-mobile-large-text.png`)});
       await page.locator('#first-aid details summary').click();
       assert(await page.locator('#first-aid details').getAttribute('open') !== null);
