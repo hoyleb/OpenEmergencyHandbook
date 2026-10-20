@@ -21,7 +21,9 @@ from build_print_pack import (ROOT, CARD_IDS, CARD_COUNT, SHEET_COUNT, LABELS,
 
 
 def normalized(text):
-    return ''.join(c for c in text if c.isalnum())
+    # Keep punctuation and numeric separators: "5:2" and "52" must differ.
+    text = re.sub(r'(^|\n)## ', r'\1', text).replace('**', '')
+    return re.sub(r'\s+', '', text)
 
 
 class PrintPackTest(unittest.TestCase):
