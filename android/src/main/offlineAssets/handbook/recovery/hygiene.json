@@ -1,0 +1,37 @@
+{
+  "id": "hygiene",
+  "group": "essentials",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Hygiene & sanitation",
+    "summary": "Handwashing, waste and toilets when water or sewage systems fail.",
+    "keywords": "toilet sewage waste hygiene hand wash Toilette Abwasser Hygiene",
+    "body": "## Keep clean and dirty separate\nProtect drinking-water containers and food preparation areas. Wash hands using safe water and soap, especially after toilet use and before handling food. Alcohol hand sanitiser is a fallback where suitable, but is less effective for some pathogens and visibly dirty hands.\n\n## If toilets or sewers fail\nStop flushing when the system is not functioning or authorities advise against it. Prepare a stable temporary toilet with appropriate liners and absorbent material; keep waste securely contained away from food, water and children. Follow local waste-collection instructions. Do not empty human waste into streams or storm drains.\n\n## Limited water\nPrioritise drinking, essential food preparation and hygiene. Use a controlled-flow container for handwashing and collect wastewater safely. Include menstrual products, nappies, rubbish bags and gloves in supplies. Clean high-touch surfaces appropriately without mixing products.\n\n## Illness and floodwater\nProtect wounds and avoid unnecessary contact with contaminated water. Persistent vomiting/diarrhoea, inability to keep fluids down or signs of dehydration need medical advice, urgently for severe symptoms or vulnerable people. Sanitation needs change with the outbreak and setting; seek local public-health guidance."
+  },
+  "de": {
+    "title": "Hygiene & Abwasser",
+    "summary": "Hände, Abfall und Toiletten bei Ausfall von Wasser oder Kanalisation.",
+    "keywords": "Toilette Abwasser Abfall Hände waschen Hygiene sanitation",
+    "body": "## Sauber und verschmutzt trennen\nTrinkwasserbehälter und Küchenflächen schützen. Hände mit sicherem Wasser und Seife waschen, besonders nach Toilettennutzung und vor Essen. Geeignetes Händedesinfektionsmittel ist eine Ausweichmöglichkeit, wirkt aber gegen manche Erreger und auf sichtbar schmutzigen Händen schlechter.\n\n## Toilette/Kanalisation ausgefallen\nBei Funktionsausfall oder entsprechender Anweisung nicht weiter spülen. Stabile Nottoilette mit passenden Beuteln und saugendem Material vorbereiten; Abfälle sicher von Essen, Wasser und Kindern getrennt aufbewahren. Örtliche Entsorgungshinweise beachten. Keine Fäkalien in Bäche oder Regenwasserabläufe geben.\n\n## Wenig Wasser\nTrinken, notwendige Zubereitung und Hygiene priorisieren. Behälter mit kontrolliertem Auslauf zum Händewaschen nutzen; Abwasser sicher auffangen. Menstruationsprodukte, Windeln, Müllbeutel und Handschuhe bevorraten. Häufig berührte Flächen passend reinigen, keine Produkte mischen.\n\n## Krankheit und Hochwasser\nWunden schützen und Kontakt mit belastetem Wasser vermeiden. Anhaltendes Erbrechen/Durchfall, fehlende Flüssigkeitsaufnahme oder Austrocknung medizinisch abklären; bei schweren Beschwerden und gefährdeten Personen dringend. Maßnahmen hängen von Erreger und Umgebung ab."
+  },
+  "sources": [
+    "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Hygiene/hygiene.html",
+    "https://www.who.int/teams/environment-climate-change-and-health/water-sanitation-and-health/environmental-health-in-emergencies/technical-notes-on-wash-in-emergencies"
+  ],
+  "related": [
+    "water-advisories",
+    "flood"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

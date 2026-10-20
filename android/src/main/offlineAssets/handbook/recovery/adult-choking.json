@@ -1,0 +1,37 @@
+{
+  "id": "adult-choking",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Choking: adults",
+    "summary": "Effective cough: encourage coughing. Unable to breathe or speak: act immediately.",
+    "keywords": "choking choke obstruction airway Heimlich strangling",
+    "body": "## Coughing or silent obstruction?\nIf the person coughs effectively, encourage coughing and stay nearby. If they cannot speak, breathe or cough effectively, call **112** on speakerphone or send a helper.\n\n## While conscious\nLean them forward, support their chest and give up to **5 sharp blows between the shoulder blades**, checking after each. If unsuccessful, stand behind them, place a fist between navel and breastbone, grasp it and pull sharply inward/upward up to **5 times**. Alternate these sets until cleared. Stop as soon as the obstruction clears.\n\n## Important exceptions\nFor pregnancy or when you cannot encircle the abdomen, use chest thrusts instead and follow the dispatcher. Never sweep blindly inside the mouth.\n\n## If they collapse\nLower them safely; if unresponsive and not breathing normally, start adult CPR/AED. Have medical assessment after abdominal/chest thrusts or if coughing, pain or swallowing difficulty persists."
+  },
+  "de": {
+    "title": "Verschlucken: Erwachsene",
+    "summary": "Wirksam husten lassen. Bei fehlender Atmung oder Sprache sofort handeln.",
+    "keywords": "Verschlucken Ersticken Fremdkörper Atemweg Heimlich",
+    "body": "## Husten oder stummer Verschluss?\nBei wirksamem Husten zum Weiterhusten ermuntern und dabeibleiben. Bei fehlender Sprache, Atmung oder wirksamem Husten **112** über Lautsprecher rufen oder jemanden beauftragen.\n\n## Bei Bewusstsein\nNach vorn beugen, Brustkorb stützen und bis zu **5 kräftige Schläge zwischen die Schulterblätter** geben. Nach jedem prüfen. Ohne Erfolg: von hinten eine Faust zwischen Nabel und Brustbein platzieren, umfassen und bis zu **5-mal kräftig nach innen/oben ziehen**. Beide Serien abwechseln, bis der Atemweg frei ist. Bei Erfolg sofort aufhören.\n\n## Wichtige Ausnahmen\nBei Schwangerschaft oder wenn der Bauch nicht umfasst werden kann, stattdessen Brustkorbstöße geben und der Leitstelle folgen. Niemals blind im Mund suchen.\n\n## Bei Kollaps\nSicher ablegen; bei Bewusstlosigkeit ohne normale Atmung Erwachsenen-Wiederbelebung/AED beginnen. Nach Bauch-/Brustkorbstößen oder bei weiterem Husten, Schmerz oder Schluckproblemen ärztlich untersuchen lassen."
+  },
+  "sources": [
+    "https://www.sja.org.uk/first-aid-advice/choking/",
+    "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/first-aid-guidelines"
+  ],
+  "related": [
+    "adult-cpr",
+    "child-choking"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

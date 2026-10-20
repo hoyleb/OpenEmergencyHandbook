@@ -1,0 +1,38 @@
+{
+  "id": "burns",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Burns & scalds",
+    "summary": "Cool thermal burns; protect the rest of the person from chilling.",
+    "keywords": "burn burns scald fire hot chemical electrical",
+    "body": "## Thermal burn\nStop the heat source safely. Cool the affected area under cool running water for **20 minutes**. Remove nearby jewellery/clothing unless stuck. Keep the rest of the person warm, especially children. Once cooled, cover loosely with a clean non-stick dressing or lay clean cling film over it; never wrap tightly around a limb or put film on the face.\n\n## Avoid\nNo ice, butter, oil or creams on a fresh burn. Do not pop blisters or pull off stuck fabric.\n\n## Escalate\nCall **112** for breathing problems, collapse or severe burns. Large/deep burns, electrical/chemical burns, and burns affecting the face/genitals need urgent assessment. Seek advice early for children or uncertainty.\n\n## Chemical and electrical hazards\nDo not touch someone still connected to electricity. Avoid exposing yourself to chemicals; remove contaminated clothing when safe, brush off dry powder before irrigating, and follow emergency/product instructions. Do not try to neutralise a chemical with another chemical."
+  },
+  "de": {
+    "title": "Verbrennungen & Verbrühungen",
+    "summary": "Hitzeverbrennungen kühlen; übrigen Körper vor Auskühlung schützen.",
+    "keywords": "Verbrennung Verbrühung Feuer Hitze Chemikalie Strom",
+    "body": "## Hitzeverbrennung\nHitzequelle sicher stoppen. Betroffene Stelle **20 Minuten** unter kühlem fließendem Wasser kühlen. Nahe Kleidung/Schmuck entfernen, soweit nicht festgeklebt. Übrigen Körper warmhalten, besonders Kinder. Danach locker mit sauberer, nicht haftender Auflage abdecken oder saubere Frischhaltefolie auflegen; nie eng um Gliedmaßen wickeln oder aufs Gesicht legen.\n\n## Vermeiden\nKein Eis, Butter, Öl oder Creme auf frische Verbrennungen. Blasen nicht öffnen, festgeklebten Stoff nicht abziehen.\n\n## Hilfe holen\nBei Atemproblemen, Kollaps oder schweren Verbrennungen **112**. Große/tiefe, elektrische/chemische Verletzungen sowie Verbrennungen an Gesicht/Genitalien dringend beurteilen lassen. Bei Kindern oder Unsicherheit früh Rat einholen.\n\n## Chemikalien und Strom\nNiemanden berühren, der noch mit Strom verbunden ist. Eigenen Chemikalienkontakt vermeiden; belastete Kleidung sicher entfernen, trockenes Pulver vor dem Spülen abbürsten und Notfall-/Produktanweisung beachten. Nicht mit einer anderen Chemikalie neutralisieren."
+  },
+  "sources": [
+    "https://www.nhs.uk/conditions/burns-and-scalds/",
+    "https://www.nhs.uk/conditions/acid-and-chemical-burns/"
+  ],
+  "related": [
+    "first-aid",
+    "bleeding",
+    "poisoning"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

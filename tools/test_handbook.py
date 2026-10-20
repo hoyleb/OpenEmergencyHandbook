@@ -2,7 +2,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
-from build_handbook import ROOT, validate, make_html, coverage_report, content_digest
+from build_handbook import ROOT, validate, make_html, coverage_report, content_digest, recovery_files
 
 
 class ContentContractTest(unittest.TestCase):
@@ -45,6 +45,16 @@ class ContentContractTest(unittest.TestCase):
         self.content['articles'][0]['related'] = ['made-up-protocol']
         with self.assertRaisesRegex(ValueError, 'Invalid related guide'):
             validate(self.content)
+
+    def test_recovery_files_include_every_canonical_guide_with_matching_hash(self):
+        import hashlib
+        files = recovery_files(self.content)
+        manifest = json.loads(files['index.json'])
+        self.assertEqual(len(self.content['articles']), len(manifest['articles']))
+        for part in manifest['articles']:
+            payload = files[part['id'] + '.json']
+            self.assertEqual(part['sha256'], hashlib.sha256(payload).hexdigest())
+            self.assertEqual(next(a for a in self.content['articles'] if a['id'] == part['id']), json.loads(payload))
 
     def test_duplicate_article_id_is_rejected(self):
         self.content['articles'].append(self.content['articles'][0])

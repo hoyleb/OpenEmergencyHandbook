@@ -1,0 +1,40 @@
+{
+  "id": "power",
+  "group": "disaster",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Power outage",
+    "summary": "Light, warmth, medical needs, food and communication without mains power.",
+    "keywords": "blackout electricity Stromausfall Heizung Strom power outage",
+    "body": "## First actions\nUse a torch. Check for fire, damaged wiring, floodwater or a gas smell before investigating the outage. Avoid fallen cables. Check whether neighbours are affected and contact the utility when communications work. Keep one light on to notice restoration; disconnect sensitive equipment if safe.\n\n## Prevent a second emergency\nNever use charcoal grills, outdoor camping stoves or petrol engines indoors or in garages. Portable generators belong outside, at least approximately **6 m** from openings, with exhaust directed away. Use CO alarms. Never feed power into a wall socket; a building connection requires suitable equipment and a qualified electrician.\n\n## Prioritise\nArrange help early for powered medical equipment and refrigerated medicines. Keep fridge/freezer doors closed; see Food safety. Use warm layers and one suitable room rather than improvised indoor combustion. Move to safe help if indoor conditions become dangerous.\n\n## Information and supplies\nUse a battery radio, preserve phone charge and check neighbours who may need assistance. Water, sewage, ATMs and mobile service may also fail. Your offline notes and supplies remain useful when banking and internet stop."
+  },
+  "de": {
+    "title": "Stromausfall",
+    "summary": "Licht, Wärme, medizinische Bedürfnisse, Essen und Kommunikation ohne Netzstrom.",
+    "keywords": "Blackout Strom Heizung Ausfall electricity power outage",
+    "body": "## Erste Schritte\nTaschenlampe verwenden. Vor der Fehlersuche auf Feuer, beschädigte Kabel, Wasser und Gasgeruch achten. Herabgefallenen Leitungen fernbleiben. Prüfen, ob Nachbarn betroffen sind; Netzbetreiber kontaktieren, sofern möglich. Eine Lampe eingeschaltet lassen; empfindliche Geräte sicher vom Netz trennen.\n\n## Weitere Notfälle vermeiden\nKeine Holzkohlegrills, Outdoor-Campingkocher oder Benzinmotoren in Innenräumen oder Garagen betreiben. Mobile Generatoren gehören nach draußen, ungefähr **6 m** oder weiter von Öffnungen entfernt, Abgas wegführen. CO-Melder nutzen. Niemals über eine Steckdose einspeisen: Hausanschlüsse erfordern geeignete Technik und eine Elektrofachkraft.\n\n## Prioritäten\nFrühzeitig Unterstützung für stromabhängige Medizingeräte und kühlpflichtige Medikamente organisieren. Kühlgeräte geschlossen halten; Lebensmittelsicherheit beachten. Warme Kleidung und einen geeigneten Raum nutzen statt improvisierter Verbrennung im Haus. Bei gefährlichen Temperaturen sichere Hilfe aufsuchen.\n\n## Informationen und Vorräte\nBatterieradio verwenden, Handyakku schonen, hilfsbedürftige Nachbarn beachten. Auch Wasser, Abwasser, Geldautomaten und Mobilfunk können ausfallen. Offline-Notizen und Vorräte helfen ohne Banking und Internet."
+  },
+  "sources": [
+    "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html",
+    "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Stromausfall/stromausfall_node.html",
+    "https://www.cdc.gov/natural-disasters/psa-toolkit/use-a-generator-safely.html"
+  ],
+  "related": [
+    "food",
+    "poisoning",
+    "accessibility",
+    "recovery"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

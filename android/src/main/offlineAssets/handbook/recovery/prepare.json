@@ -1,0 +1,38 @@
+{
+  "id": "prepare",
+  "group": "essentials",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Prepare your household",
+    "summary": "Supplies, medicines, dependants and a plan you can use without a phone.",
+    "keywords": "prepare kit checklist supplies Vorrat Vorsorge Notgepäck",
+    "body": "## Build practical reserves\nAim toward the BBK household recommendation of **10 days**; even **3 days** is a useful start. Its drinking/cooking-water starting point is **2 L per person per day**, including 0.5 L for cooking. This is not total water for every need: add hygiene, heat, exertion, illness and pets.\n\n## Essential categories\nStore suitable food, required medicines and prescription details, a first-aid kit, torch/batteries, charged power banks, battery radio, warm layers, hygiene supplies and accessible cash. Rotate supplies and respect storage requirements. Discuss medicine continuity and powered medical equipment with your care provider before an outage.\n\n## Make the plan\nWrite contacts and a meeting point on paper. Agree how to assist dependants and neighbours and where to go if home is unsafe. Keep key documents accessible and backed up securely. Prepare a manageable evacuation bag.\n\n## Test it\nOpen the app in airplane mode with Wi-Fi off, then restart it. Check every guide and practise finding first aid and water. Keep printed information: no app works when its device has no power. The household screen stores a simple checklist and notes locally."
+  },
+  "de": {
+    "title": "Haushalt vorbereiten",
+    "summary": "Vorräte, Medikamente, Angehörige und ein Plan ohne Handy.",
+    "keywords": "Notvorrat Checkliste Vorsorge Notgepäck Vorbereitung prepare",
+    "body": "## Sinnvolle Vorräte\nMöglichst **10 Tage** gemäß BBK anstreben; schon **3 Tage** helfen. Ausgangspunkt für Trinken/Kochen: **2 L pro Person und Tag**, davon 0,5 L zum Kochen. Kein Gesamtbedarf für alle Zwecke: Hygiene, Hitze, Anstrengung, Krankheit und Tiere zusätzlich einplanen.\n\n## Wesentliche Bereiche\nPassendes Essen, nötige Medikamente und Verordnungsdetails, Verbandkasten, Taschenlampe/Batterien, geladene Powerbanks, Batterieradio, warme Kleidung, Hygieneartikel und verfügbares Bargeld lagern. Vorräte rotieren, Lagerbedingungen beachten. Medikamentenversorgung und stromabhängige Medizingeräte vorher mit Behandelnden planen.\n\n## Plan festhalten\nKontakte und Treffpunkt auf Papier notieren. Hilfe für Angehörige/Nachbarn und Ausweichort vereinbaren. Wichtige Dokumente zugänglich halten und geschützt sichern. Tragbares Notgepäck vorbereiten.\n\n## Ausprobieren\nApp im Flugmodus mit ausgeschaltetem WLAN öffnen und neu starten. Jede Anleitung und das Finden von Erster Hilfe/Wasser testen. Papierkopien vorhalten: Ohne Geräteakku funktioniert keine App. Der Haushaltsbereich speichert einfache Checkliste und Notizen lokal."
+  },
+  "sources": [
+    "https://www.bbk.bund.de/SharedDocs/Downloads/DE/Mediathek/Publikationen/Buergerinformationen/Ratgeber/BBK-Vorsorgen-fuer-Krisen-und-Katastrophen.pdf?__blob=publicationFile&v=42"
+  ],
+  "related": [
+    "accessibility",
+    "pets",
+    "communications",
+    "recovery"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

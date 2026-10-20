@@ -1,0 +1,39 @@
+{
+  "id": "child-cpr",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "CPR: babies & children",
+    "summary": "Unresponsive and not breathing normally: 112, five initial breaths, CPR.",
+    "keywords": "baby infant child resuscitation CPR AED breathing",
+    "body": "## Check and call\nEnsure safety. If unresponsive, call **112** on speakerphone/send a helper. Open the airway and check breathing for no longer than **10 seconds**. Gasping is not normal. This is not a newborn-at-birth protocol.\n\n## Breaths and compressions\nIf not breathing normally, give **5 initial rescue breaths**, each about 1 second, enough for visible chest rise. Infant: head nearly neutral, seal over mouth and nose. Older child: tilt head/lift chin, pinch nose, seal over mouth. If no rise, reposition; do not repeatedly delay compressions.\n\nCompress the lower half of the breastbone at **100–120/min**, at least one third of chest depth, never beyond 6 cm; adolescents: 5–6 cm. Allow full recoil. Infant: encircle chest with fingers supporting the back and press with both thumbs. Older child: one or two hands according to size. Continue **30 compressions:2 breaths**; those specifically trained in paediatric basic life support use **15:2**. If breaths are impossible, give compressions.\n\n## AED and help\nUse an AED promptly, follow its instructions; select child mode if indicated. Do not let pads touch; follow its placement diagram. Continue until normal breathing/signs of life, professionals take over or danger/exhaustion prevents you. Alone without a phone: give about 1 minute of CPR before seeking help."
+  },
+  "de": {
+    "title": "Wiederbelebung: Säuglinge & Kinder",
+    "summary": "Bewusstlos ohne normale Atmung: 112, fünf Beatmungen, Wiederbelebung.",
+    "keywords": "Baby Kind Säugling Wiederbelebung Reanimation Beatmung AED",
+    "body": "## Prüfen und rufen\nSicherheit prüfen. Bei Bewusstlosigkeit **112** über Lautsprecher rufen/jemanden beauftragen. Atemweg öffnen, Atmung höchstens **10 Sekunden** prüfen. Schnappatmung ist nicht normal. Dies gilt nicht für die Versorgung direkt nach der Geburt.\n\n## Beatmen und drücken\nOhne normale Atmung **5 anfängliche Beatmungen**, jeweils etwa 1 Sekunde bis sich die Brust sichtbar hebt. Säugling: Kopf nahezu neutral, Mund und Nase umschließen. Größeres Kind: Kopf neigen/Kinn heben, Nase zuhalten, Mund umschließen. Hebt sich die Brust nicht, Position verbessern; Herzdruckmassage nicht wiederholt verzögern.\n\nUntere Brustbeinhälfte mit **100–120/min** mindestens ein Drittel der Brustkorbtiefe eindrücken, nie über 6 cm; Jugendliche: 5–6 cm. Vollständig entlasten. Säugling: Brustkorb umfassen, Rücken mit Fingern stützen und mit beiden Daumen drücken. Größeres Kind: je nach Größe eine oder zwei Hände. **30-mal drücken:2-mal beatmen**; speziell in Kinder-Basisreanimation Geschulte nutzen **15:2**. Ist Beatmen unmöglich, drücken.\n\n## AED und Hilfe\nAED früh einsetzen, Anweisungen befolgen; bei entsprechender Anzeige Kindermodus wählen. Elektroden dürfen sich nicht berühren; Platzierungsbild beachten. Bis zu normaler Atmung/Lebenszeichen, Übernahme durch Fachkräfte oder Gefahr/Erschöpfung fortsetzen. Allein ohne Telefon: vor der Hilfesuche etwa 1 Minute wiederbeleben."
+  },
+  "sources": [
+    "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/paediatric-basic-life-support-guidelines",
+    "https://www.sja.org.uk/first-aid-advice/child-cpr/",
+    "https://www.sja.org.uk/first-aid-advice/baby-cpr/"
+  ],
+  "related": [
+    "child-choking",
+    "adult-cpr",
+    "first-aid"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

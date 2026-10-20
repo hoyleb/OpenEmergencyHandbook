@@ -1,0 +1,39 @@
+{
+  "id": "flood",
+  "group": "disaster",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Flood & flash flooding",
+    "summary": "Move away from rising water; electricity and contaminated water are major hazards.",
+    "keywords": "flood flash flood water rising Hochwasser Sturzflut Überschwemmung",
+    "body": "## Move to safety early\nFollow evacuation instructions. If water rises quickly, reach higher safe ground; do not go down into a basement to rescue belongings. Do not walk, swim or drive through floodwater. A road may be washed out beneath it. Never bypass a road barrier.\n\n## Electricity and entrapment\nDo not touch electrical equipment or enter water that may be energised. Switch off utilities only from a safe dry place if you know how; otherwise leave it to professionals. Avoid lifts. Call for help if trapped; move upward to a place from which you can signal, avoiding a closed attic without an exit.\n\n## Water and health\nFloodwater can contain sewage, chemicals, debris and other hazards. Keep children away, protect wounds and use a verified drinking-water supply. Discard food touched by floodwater; clean containers and avoid cross-contamination.\n\n## Return cautiously\nWait for permission; structural, electrical and gas hazards may remain. Photograph damage when safe. Use appropriate protective equipment, ventilate when safe, and obtain help for significant contamination/mould. Have damaged electrical systems checked before restoring power.\n\n## Prepare\nKnow local escape routes, move essential documents and medicines above expected water levels, and plan for those needing assistance."
+  },
+  "de": {
+    "title": "Hochwasser & Sturzflut",
+    "summary": "Früh vor steigendem Wasser fliehen; Strom und Verunreinigung sind große Gefahren.",
+    "keywords": "Überflutung Flut Keller Hochwasser Sturzflut flood Überschwemmung",
+    "body": "## Früh in Sicherheit\nEvakuierungsanweisungen folgen. Bei rasch steigendem Wasser höheres sicheres Gelände erreichen; keine Gegenstände aus dem Keller retten. Nicht durch Hochwasser gehen, schwimmen oder fahren. Straßen können darunter weggespült sein. Absperrungen niemals umgehen.\n\n## Strom und Einschluss\nKeine elektrischen Geräte berühren oder möglicherweise unter Spannung stehendes Wasser betreten. Versorgung nur von einem trockenen sicheren Ort abschalten, wenn bekannt wie; sonst Fachkräften überlassen. Aufzüge meiden. Bei Einschluss Hilfe rufen und nach oben zu einer Stelle mit Signalmöglichkeit gehen; keinen geschlossenen Dachraum ohne Ausgang wählen.\n\n## Wasser und Gesundheit\nFlutwasser kann Abwasser, Chemikalien und Trümmer enthalten. Kinder fernhalten, Wunden schützen und überprüftes Trinkwasser verwenden. Von Hochwasser berührtes Essen entsorgen. Behälter sauber halten und Verschleppung vermeiden.\n\n## Vorsichtig zurückkehren\nFreigabe abwarten; Bau-, Strom- und Gasgefahren können bleiben. Schäden nur gefahrlos dokumentieren. Geeignete Schutzausrüstung nutzen, sicher lüften und bei starker Verschmutzung/Schimmel Hilfe holen. Beschädigte Elektrik vor Wiedereinschalten prüfen lassen.\n\n## Vorsorgen\nÖrtliche Fluchtwege kennen, wichtige Dokumente/Medikamente erhöht lagern und Unterstützung für Hilfsbedürftige planen."
+  },
+  "sources": [
+    "https://www.cdc.gov/floods/safety/reentering-your-flooded-home-safety.html",
+    "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/Mit-Naturgefahren-umgehen/mit-naturgefahren-umgehen_node.html",
+    "https://wwwnc.cdc.gov/travel/page/natural-disasters"
+  ],
+  "related": [
+    "water-advisories",
+    "hygiene",
+    "recovery"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

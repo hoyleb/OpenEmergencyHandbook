@@ -1,0 +1,42 @@
+{
+  "id": "combined-hazards",
+  "group": "essentials",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "When hazards happen together",
+    "summary": "Reassess immediate danger; one protective action can worsen another hazard.",
+    "keywords": "combined hazards compound disaster fallout flood ventilation pandemic power sewage cold earthquake",
+    "body": "## Fire, rising water or collapse\nA fallout shelter is not safe if burning, flooding or collapsing. Escape immediate danger, seek the closest safer substantial shelter and obtain official instructions. Do not cross floodwater to reach a preferred basement. There is no offline route/radiation forecast in this app.\n\n## Infection versus outdoor contamination\nOpening windows can reduce airborne infection risk but bring contaminated outside air in during a radiation/chemical event. Follow hazard-specific official instructions; while sheltering, use separation and suitable masks where feasible. Never use fuel-burning equipment to heat a closed room.\n\n## Flood plus sewage failure\nAvoid floodwater; stop using failed toilets and isolate waste from clean supplies. Boiling is not a solution for chemicals. Use the water-advisory and hygiene guides.\n\n## Earthquake plus cold/power loss\nExpect aftershocks. Do not remain in a damaged building merely for warmth. Take dry layers/blankets when safe and seek a safer warm location.\n\n## Cyberattack or pandemic plus supply failure\nPreserve written contacts, necessary medicines, safe water and no-cook food. Use trusted information; do not assume mobile networks, payments or healthcare remain available. Recheck the plan as conditions change."
+  },
+  "de": {
+    "title": "Wenn Gefahren zusammenkommen",
+    "summary": "Unmittelbare Gefahr neu bewerten; eine Schutzmaßnahme kann andere Risiken erhöhen.",
+    "keywords": "Mehrfachgefahr Kombination Fallout Hochwasser Lüften Pandemie Strom Abwasser Kälte Erdbeben",
+    "body": "## Feuer, steigendes Wasser oder Einsturz\nEin Fallout-Schutzort ist bei Brand, Überflutung oder Einsturz nicht sicher. Unmittelbarer Gefahr entkommen, nächstes sichereres massives Gebäude suchen und amtliche Anweisung einholen. Kein Hochwasser durchqueren, um einen bevorzugten Keller zu erreichen. Die App berechnet weder sichere Routen noch Strahlung.\n\n## Infektion und belastete Außenluft\nLüften kann luftübertragene Infektionen verringern, bei Strahlungs-/Chemieunfällen aber Außenbelastung hereinbringen. Gefahrenspezifische amtliche Anweisungen beachten; während des Schutzaufenthalts möglichst Abstand/Trennung und geeignete Masken nutzen. Geschlossene Räume nie mit Brennstoffgeräten beheizen.\n\n## Hochwasser und Abwasserausfall\nHochwasser meiden; ausgefallene Toiletten nicht weiter nutzen und Abfälle von sauberen Vorräten trennen. Abkochen löst keine Chemikalienprobleme. Wasserwarnungs- und Hygieneseiten beachten.\n\n## Erdbeben und Kälte/Stromausfall\nMit Nachbeben rechnen. Nicht allein wegen Wärme in beschädigten Gebäuden bleiben. Sichere Mitnahme trockener Kleidung/Decken und sichereren warmen Ort organisieren.\n\n## Cyberangriff oder Pandemie und Versorgungsausfall\nPapierkontakte, nötige Medikamente, sicheres Wasser und Lebensmittel ohne Kochbedarf bereithalten. Vertrauenswürdige Informationen nutzen; Mobilfunk, Zahlung und Gesundheitsversorgung können ausfallen. Plan bei Lageänderung neu prüfen."
+  },
+  "sources": [
+    "https://www.cdc.gov/radiation-emergencies/response/stay-inside.html",
+    "https://www.cdc.gov/floods/safety/reentering-your-flooded-home-safety.html",
+    "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html",
+    "https://www.cdc.gov/respiratory-viruses/prevention/index.html"
+  ],
+  "related": [
+    "fallout",
+    "flood",
+    "power",
+    "pandemic",
+    "hygiene"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

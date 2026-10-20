@@ -1,0 +1,39 @@
+{
+  "id": "poisoning",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Poisoning & carbon monoxide",
+    "summary": "Get expert advice immediately; do not induce vomiting or try home antidotes.",
+    "keywords": "poison poisoning overdose carbon monoxide mushroom berry fumes battery",
+    "body": "## Protect yourself\nDo not enter a contaminated room or rescue someone from fumes without safe conditions. For suspected carbon monoxide, leave to fresh air if possible, call **112** from safety and do not re-enter. A normal phone or pulse-oximeter reading does not rule it out.\n\n## Swallowed or unknown substance\nSeek poison-service/medical advice promptly, even without symptoms. Call **112** for collapse, breathing problems, seizures or serious exposure. Do not induce vomiting or give food, drink, charcoal or a homemade antidote unless professionals specifically instruct it.\n\n## Help responders\nKeep packaging, product name, time, likely amount and the person's age/weight available. Save a safe photo/sample of a suspect plant/mushroom; do not taste it. Do not wait for an app identification. Monitor breathing and use CPR if needed.\n\n## Prepare contacts\nWrite your regional poison centre number in the household plan after checking it with an official source. The app does not yet include a verified regional poison-centre directory."
+  },
+  "de": {
+    "title": "Vergiftung & Kohlenmonoxid",
+    "summary": "Sofort Fachrat holen; kein Erbrechen auslösen, keine Hausmittel-Gegengifte.",
+    "keywords": "Vergiftung Gift Überdosis Kohlenmonoxid Pilze Beeren Abgas Knopfzelle",
+    "body": "## Eigenschutz\nKeinen belasteten Raum betreten oder ungeschützt aus Gasen retten. Bei Kohlenmonoxidverdacht möglichst ins Freie, von sicherem Ort **112** rufen und nicht zurückgehen. Ein normaler Handy-/Pulsoximeterwert schließt dies nicht aus.\n\n## Verschluckter oder unbekannter Stoff\nSchnell Giftnotruf/medizinischen Rat einholen, auch ohne Symptome. Bei Kollaps, Atemproblemen, Krämpfen oder schwerer Exposition **112**. Kein Erbrechen auslösen und kein Essen, Trinken, Aktivkohle oder Hausmittel geben, außer Fachleute weisen ausdrücklich dazu an.\n\n## Rettungsdienst unterstützen\nVerpackung, Produktname, Zeitpunkt, wahrscheinliche Menge sowie Alter/Gewicht bereithalten. Sicheres Foto/Probe einer verdächtigen Pflanze/eines Pilzes aufheben; nicht kosten. Nicht auf eine App-Bestimmung warten. Atmung beobachten und nötigenfalls wiederbeleben.\n\n## Kontakte vorbereiten\nRegionale Giftnotrufnummer nach Prüfung an offizieller Stelle im Haushaltsplan notieren. Die App enthält noch kein geprüftes regionales Giftnotrufverzeichnis."
+  },
+  "sources": [
+    "https://www.nhs.uk/conditions/poisoning/",
+    "https://www.cdc.gov/carbon-monoxide/about/index.html",
+    "https://www.cdc.gov/carbon-monoxide/hcp/clinical-guidance/index.html"
+  ],
+  "related": [
+    "adult-cpr",
+    "child-cpr",
+    "power"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

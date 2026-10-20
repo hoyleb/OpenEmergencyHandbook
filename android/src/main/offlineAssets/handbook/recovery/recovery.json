@@ -1,0 +1,41 @@
+{
+  "id": "recovery",
+  "group": "essentials",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Extended disruption & safe recovery",
+    "summary": "Reassess water, shelter, medicines and support each day; restore services cautiously.",
+    "keywords": "recovery prolonged extended days weeks disruption cleanup return home restore power cash",
+    "body": "## Repeat a daily check\nCheck safe shelter/temperature, remaining drinking water, food, sanitation, medicine, batteries and people needing help. Record stock changes rather than trusting memory. Plan resupply or relocation before essentials fail; avoid dangerous travel for replaceable possessions.\n\n## Return and restore\nRe-entry permission does not mean every utility or room is safe. After flooding or structural damage, obtain appropriate building/electrical checks. Never energise wet wiring or equipment yourself. Use daylight/torches, not flames, to inspect. Do not pump a flooded basement without competent advice about structural conditions.\n\n## Cleaning and supplies\nKeep children and vulnerable people away from contaminated clean-up. Use appropriate protection; significant sewage, chemicals or mould may need specialists. Never mix cleaning agents. Discard unsafe food; await water clearance and any flushing instructions. Replace used medical supplies and recharge/test equipment once safely possible.\n\n## Household recovery\nDocument damage only when safe; keep copies of claims and receipts. Use trusted channels to check repair offers and assistance. Restore ordinary routines and social contact gradually; seek support if distress or inability to function persists. Immediate threats still take priority."
+  },
+  "de": {
+    "title": "Längere Ausfälle & sichere Rückkehr",
+    "summary": "Wasser, Schutz, Medikamente und Unterstützung täglich prüfen; Versorgung vorsichtig herstellen.",
+    "keywords": "Wiederaufbau Rückkehr längerer Ausfall Tage Wochen Reinigung Wiederherstellung Bargeld",
+    "body": "## Tägliche Prüfung wiederholen\nSicheren Schutz/Temperatur, Trinkwasser, Essen, Hygiene, Medikamente, Akkus und Hilfsbedürftige prüfen. Bestandsänderungen aufschreiben. Nachschub oder Ortswechsel planen, bevor Wesentliches ausfällt; für ersetzbare Gegenstände keine gefährlichen Wege riskieren.\n\n## Rückkehr und Versorgung\nEine Rückkehrerlaubnis macht nicht jedes Gerät oder jeden Raum sicher. Nach Hochwasser/Gebäudeschaden fachgerechte Gebäude-/Elektroprüfung organisieren. Nasse Leitungen/Geräte nicht selbst einschalten. Bei Tageslicht/Taschenlampe statt Flammen prüfen. Überfluteten Keller nicht ohne fachlichen Rat zu den baulichen Bedingungen abpumpen.\n\n## Reinigung und Vorräte\nKinder und gefährdete Personen von belasteter Reinigung fernhalten. Geeigneten Schutz nutzen; größere Abwasser-, Chemikalien- oder Schimmelbelastung kann Fachhilfe brauchen. Reinigungsmittel nie mischen. Unsichere Lebensmittel entsorgen; Wasserfreigabe und Spülanweisung abwarten. Verbrauchtes Verbandsmaterial ersetzen und Geräte sicher laden/testen.\n\n## Haushalt erholt sich\nSchäden nur sicher dokumentieren, Belege/Anträge kopieren. Reparaturangebote und Hilfe über vertrauenswürdige Kanäle prüfen. Routinen und soziale Kontakte schrittweise aufnehmen; bei anhaltender Belastung/Funktionsverlust Unterstützung suchen. Unmittelbare Gefahren bleiben vorrangig."
+  },
+  "sources": [
+    "https://www.cdc.gov/floods/safety/reentering-your-flooded-home-safety.html",
+    "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/vorsorge_node.html",
+    "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html"
+  ],
+  "related": [
+    "prepare",
+    "water-advisories",
+    "food",
+    "shelter",
+    "communications"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

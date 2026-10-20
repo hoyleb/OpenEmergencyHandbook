@@ -1,0 +1,37 @@
+{
+  "id": "seizures",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Seizures",
+    "summary": "Protect from injury, time the seizure, keep the mouth clear of objects.",
+    "keywords": "seizure fit epilepsy convulsion shaking",
+    "body": "## During a seizure\nMove hazards away, cushion the head and time the event. Do not restrain movements or put anything in the mouth. Move the person only to escape immediate danger. In a wheelchair, apply brakes, keep the harness in place and support gently.\n\n## After shaking stops\nCheck breathing. If breathing normally, place on the side when appropriate and keep watching; trauma needs special care. If not breathing normally, call **112** and start CPR. Do not give food/drink until fully recovered.\n\n## Call 112\nFor a first seizure, one lasting **5 minutes or longer** or longer than usual, repeated seizures without recovery, serious injury, breathing difficulty or failure to recover. A known epilepsy care plan may guide trained carers; use rescue medicine only according to that plan and training. Stay with the person, reassure them and tell responders the duration."
+  },
+  "de": {
+    "title": "Krampfanfälle",
+    "summary": "Vor Verletzung schützen, Zeit messen, nichts in den Mund stecken.",
+    "keywords": "Krampfanfall Epilepsie Anfall Krämpfe Zucken",
+    "body": "## Während des Anfalls\nGefahren entfernen, Kopf weich polstern, Zeit messen. Bewegungen nicht festhalten und nichts in den Mund stecken. Nur aus unmittelbarer Gefahr bewegen. Im Rollstuhl Bremsen feststellen, Gurt belassen und sanft stützen.\n\n## Wenn das Krampfen endet\nAtmung prüfen. Bei normaler Atmung gegebenenfalls auf die Seite lagern und beobachten; bei Trauma besonders vorsichtig. Ohne normale Atmung **112** rufen und wiederbeleben. Erst nach vollständiger Erholung essen/trinken lassen.\n\n## 112 rufen\nBeim ersten Anfall, **5 Minuten oder länger** beziehungsweise länger als üblich, mehreren Anfällen ohne Erholung, schwerer Verletzung, Atemproblemen oder fehlender Erholung. Ein bekannter Epilepsie-Notfallplan kann geschulte Betreuungspersonen anleiten; Notfallmedikamente nur gemäß Plan und Schulung. Dabeibleiben, beruhigen und Dauer an den Rettungsdienst weitergeben."
+  },
+  "sources": [
+    "https://www.nhs.uk/symptoms/what-to-do-if-someone-has-a-seizure-fit/"
+  ],
+  "related": [
+    "first-aid",
+    "adult-cpr",
+    "diabetes"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

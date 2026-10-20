@@ -1,0 +1,37 @@
+{
+  "id": "anaphylaxis",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Severe allergy: anaphylaxis",
+    "summary": "Sudden throat swelling, breathing difficulty or collapse: use the prescribed injector and call 112.",
+    "keywords": "allergy allergic anaphylaxis adrenaline epinephrine EpiPen sting",
+    "body": "## Recognise and act\nSudden throat/tongue swelling, severe breathing difficulty or collapse after an allergen may be anaphylaxis. A rash may be absent. Use the person's prescribed adrenaline auto-injector promptly according to its instructions; call **112** and say suspected anaphylaxis.\n\n## Position and second injector\nLie them down; do not let them stand or walk, even if better. If breathing is difficult, allow a supported sitting position with legs outstretched; pregnancy: left side. If symptoms have not improved after **5 minutes**, use a second prescribed auto-injector if available, following instructions.\n\n## Keep watching\nAntihistamines do not replace adrenaline for life-threatening reactions. If unresponsive and not breathing normally, start CPR/AED. Medical assessment is needed even after improvement. Learn the exact device before an emergency; storage and use differ between brands."
+  },
+  "de": {
+    "title": "Schwere Allergie: Anaphylaxie",
+    "summary": "Plötzliche Halsschwellung, Atemnot oder Kollaps: verordneten Pen nutzen und 112 rufen.",
+    "keywords": "Allergie Anaphylaxie Adrenalin Autoinjektor EpiPen Insektenstich",
+    "body": "## Erkennen und handeln\nPlötzliche Zungen-/Halsschwellung, schwere Atemnot oder Kollaps nach Allergenkontakt können Anaphylaxie bedeuten. Ausschlag kann fehlen. Den verordneten Adrenalin-Autoinjektor unverzüglich nach Produktanweisung nutzen; **112** rufen und Verdacht auf Anaphylaxie nennen.\n\n## Lagerung und zweiter Pen\nHinlegen; auch bei Besserung nicht aufstehen oder gehen lassen. Bei Atemnot gestütztes Sitzen mit ausgestreckten Beinen ermöglichen; Schwangere auf die linke Seite legen. Nach **5 Minuten** ohne Besserung einen zweiten verordneten Pen nach Anweisung einsetzen, falls vorhanden.\n\n## Weiter beobachten\nAntihistaminika ersetzen bei lebensbedrohlichen Reaktionen kein Adrenalin. Bei Bewusstlosigkeit ohne normale Atmung Wiederbelebung/AED beginnen. Auch nach Besserung ärztliche Versorgung nötig. Das eigene Gerät vorher kennenlernen; Lagerung und Anwendung unterscheiden sich je nach Marke."
+  },
+  "sources": [
+    "https://www.nhs.uk/conditions/anaphylaxis/",
+    "https://www.resus.org.uk/professional-library/2025-resuscitation-guidelines/first-aid-guidelines"
+  ],
+  "related": [
+    "adult-cpr",
+    "child-cpr"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

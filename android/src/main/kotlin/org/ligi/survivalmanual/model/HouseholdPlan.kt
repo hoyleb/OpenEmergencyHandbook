@@ -16,15 +16,15 @@ object HouseholdPlan {
 
     fun export(prefs: SharedPreferences, language: String, edition: String): String {
         val de = language == "de"
-        val p = prefs.getString("people", "1")?.toIntOrNull()
-        val d = prefs.getString("days", "3")?.toIntOrNull()
+        val p = prefs.safeString("people", "1")?.toIntOrNull()
+        val d = prefs.safeString("days", "3")?.toIntOrNull()
         return buildString {
             appendLine(if (de) "OPEN EMERGENCY — MEIN HAUSHALT" else "OPEN EMERGENCY — MY HOUSEHOLD")
             appendLine(if (de) "Handbuchausgabe: $edition. Persönlicher Plan — vertraulich." else "Handbook edition: $edition. Personal plan — private.")
             appendLine(if (de) "112: Notruf in Deutschland/EU. Keine Live-Warnungen." else "112: emergency number in Germany/EU. No live alerts.")
             appendLine()
             keys.forEachIndexed { i, key ->
-                appendLine("[${if (prefs.getBoolean("check-$key", false)) "x" else " "}] ${(if (de) german else english)[i]}")
+                appendLine("[${if (prefs.safeBoolean("check-$key", false)) "x" else " "}] ${(if (de) german else english)[i]}")
             }
             appendLine()
             if (p != null && d != null && p in 1..50 && d in 1..90) {
@@ -33,7 +33,7 @@ object HouseholdPlan {
             appendLine(if (de) "Zusätzlich Wasser für Hygiene, Hitze, Gesundheit und Tiere. Keine Garantie des Gesamtbedarfs." else "Add water for hygiene, heat, health needs and pets. Not a guarantee of total needs.")
             appendLine()
             appendLine(if (de) "KONTAKTE, TREFFPUNKT UND BEDÜRFNISSE" else "CONTACTS, MEETING POINT AND NEEDS")
-            appendLine(prefs.getString("notes", ""))
+            appendLine(prefs.safeString("notes", ""))
             appendLine()
             appendLine(if (de) "Auch auf Papier aufbewahren. App-Löschung entfernt keine exportierten Kopien." else "Keep a printed copy. Clearing the app does not delete exported copies.")
         }

@@ -1,0 +1,38 @@
+{
+  "id": "accessibility",
+  "group": "essentials",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Medical equipment & accessibility",
+    "summary": "Plan backup power, medication continuity and help before supplies fail.",
+    "keywords": "disability wheelchair hearing blind medical oxygen ventilator insulin medicine battery accessibility",
+    "body": "## Write an individual plan\nList medicines, allergies, equipment models, power needs, supplier and care-team numbers. Keep accessible copies and teach trusted helpers your communication and transfer needs. Ask before assisting; do not separate someone from essential aids or a service animal.\n\n## Power and medicine\nAsk the care team/device supplier about tested backup batteries, their actual runtime, charging and when to relocate. A small phone power bank is not automatically suitable for medical equipment. Plan assistance before batteries run low. Follow the medicine's storage instructions; ask a pharmacist about temperature excursions rather than assuming all refrigerated medicine is ruined or safe.\n\n## Evacuation and communication\nPractise an accessible escape plan without lifts; do not improvise an unsafe carry. Include glasses, hearing-aid batteries, mobility aids, care supplies and a written communication card. Arrange more than one trusted helper. Registration for support does not guarantee rescue. If essential treatment or equipment is failing, seek help early; **112** for immediate life danger."
+  },
+  "de": {
+    "title": "Medizintechnik & Barrierefreiheit",
+    "summary": "Ersatzstrom, Medikamente und Unterstützung vor dem Ausfall planen.",
+    "keywords": "Behinderung Rollstuhl Hörgerät blind Medizingerät Sauerstoff Beatmung Insulin Akku Barrierefreiheit",
+    "body": "## Individuellen Plan aufschreiben\nMedikamente, Allergien, Gerätemodelle, Strombedarf und Nummern von Lieferant/Behandlungsteam notieren. Zugängliche Kopien bereithalten; vertraute Helfer über Kommunikation und Transfers informieren. Vor Hilfe fragen; wichtige Hilfsmittel und Assistenztiere bei der Person belassen.\n\n## Strom und Medikamente\nMit Behandlungsteam/Lieferant geprüfte Ersatzakkus, tatsächliche Laufzeit, Laden und rechtzeitigen Ortswechsel klären. Eine Handy-Powerbank eignet sich nicht automatisch für Medizintechnik. Hilfe vor niedrigem Akkustand organisieren. Medikamenten-Lagerhinweise beachten; bei Temperaturabweichungen Apotheke fragen, statt Kühlmedikamente pauschal für verdorben oder sicher zu halten.\n\n## Flucht und Kommunikation\nBarrierearmen Fluchtplan ohne Aufzug üben; keine unsicheren Trageversuche improvisieren. Brille, Hörgerätebatterien, Mobilitätshilfen, Pflegebedarf und Kommunikationskarte einplanen. Mehrere vertraute Helfer vereinbaren. Registrierung garantiert keine Rettung. Bei drohendem Ausfall wichtiger Behandlung/Geräte früh Hilfe holen; bei unmittelbarer Lebensgefahr **112**."
+  },
+  "sources": [
+    "https://www.cdc.gov/disability-emergency-preparedness/people-with-disabilities/index.html",
+    "https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-during-a-power-outage.html"
+  ],
+  "related": [
+    "prepare",
+    "power",
+    "communications"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

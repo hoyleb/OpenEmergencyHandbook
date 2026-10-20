@@ -33,6 +33,10 @@ import org.ligi.survivalmanual.model.HouseholdPlan
 import org.ligi.survivalmanual.model.HouseholdBackup
 import org.ligi.survivalmanual.model.HouseholdTransfer
 import org.ligi.survivalmanual.model.TransferState
+import org.ligi.survivalmanual.model.safeString
+import org.ligi.survivalmanual.model.safeBoolean
+import org.ligi.survivalmanual.model.safeFloat
+import org.ligi.survivalmanual.model.safeStrings
 import java.util.Locale
 
 /** Entire reading, search, navigation and household flow works offline. */
@@ -79,15 +83,15 @@ class EmergencyActivity : BaseActivity() {
         if (uri != null && data != null) transfer.write(applicationContext.contentResolver, uri, data)
     }
     private val importPlan = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
-        if (uri != null) transfer.read(applicationContext.contentResolver, uri, handbook.articles.map { it.id }.toSet())
+        if (uri != null) transfer.read(applicationContext.contentResolver, uri, handbook.articles.map { it.id }.toSet().takeIf { it.isNotEmpty() })
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val deviceLanguage = if (Locale.getDefault().language == "de") "de" else "en"
-        language = savedInstanceState?.getString("language") ?: preferences.getString("language", deviceLanguage) ?: deviceLanguage
+        language = savedInstanceState?.getString("language") ?: preferences.safeString("language", deviceLanguage)
         if (language !in setOf("en", "de")) language = "en"
-        readerScale = preferences.getFloat("reader-scale", 1f).coerceIn(1f, 1.8f)
+        readerScale = preferences.safeFloat("reader-scale", 1f).coerceIn(1f, 1.8f)
         keepReadingOn = savedInstanceState?.getBoolean("keep-reading-on") ?: false
         pendingExport = savedInstanceState?.getString("pending-export")
         savedInstanceState?.getString("place")?.let { restore(Place.from(JSONObject(it))) }
@@ -259,6 +263,9 @@ class EmergencyActivity : BaseActivity() {
             isAppearanceLightStatusBars = light; isAppearanceLightNavigationBars = light
         }
         ViewCompat.requestApplyInsets(root)
+        if (handbook.recoveryMode && handbook.articles.isNotEmpty()) page.addView(text(tr(
+            "Recovery mode: ${handbook.articles.size} guides readable; ${handbook.missingGuideCount} unavailable. Back up your plan before reinstalling.",
+            "Wiederherstellungsmodus: ${handbook.articles.size} Anleitungen lesbar; ${handbook.missingGuideCount} fehlen. Vor Neuinstallation Plan sichern."), 14f).apply { setTextColor(muted) })
         when (route) {
             "home" -> dashboard()
             "search" -> searchPage()
@@ -314,22 +321,29 @@ class EmergencyActivity : BaseActivity() {
     }
 
     private fun dashboard() {
+        if (handbook.articles.isEmpty()) {
+            page.addView(heading(tr("Guides unavailable", "Anleitungen nicht verfügbar")))
+            page.addView(text(tr("The bundled handbook could not be read. Your household plan is still available. Back it up before reinstalling, and keep the printable handbook as a separate copy.", "Das enthaltene Handbuch ist nicht lesbar. Der Haushaltsplan ist weiter verfügbar. Vor Neuinstallation sichern und Druckausgabe getrennt aufbewahren.")))
+            page.addView(button(tr("Open household plan", "Haushaltsplan öffnen")) { switchTab("plan") })
+            page.addView(button(tr("Retry loading guides", "Anleitungen erneut laden")) { handbook = EmergencyHandbook(assets, language); articleScroll = 0; render() })
+            return
+        }
         page.addView(heading(tr("Help now", "Jetzt Hilfe finden")))
         page.addView(text(tr("Offline · Unreviewed development preview", "Offline · Ungeprüfter Entwicklungsentwurf"), 12f).apply { setTextColor(muted) })
         actionGrid(listOf(
             Triple(tr("First aid", "Erste Hilfe"), tr("Show first-aid guides", "Erste-Hilfe-Anleitungen anzeigen")) { navigate("aid") },
             Triple(tr("Safe water", "Sicheres Wasser"), tr("Open safe water guide", "Trinkwasser-Anleitung öffnen")) { navigate("water") }
-        ))
+        ).filterIndexed { index, _ -> if (index == 0) handbook.articles.any { it.group == "urgent" } else handbook.find("water") != null })
         val labels = mapOf(
             "power" to tr("Power outage", "Stromausfall"), "flood" to tr("Flood", "Hochwasser"),
             "earthquake" to tr("Earthquake", "Erdbeben"), "fallout" to tr("Nuclear fallout", "Nuklearer Fallout"),
             "cyber" to tr("Cyberattack", "Cyberangriff"), "pandemic" to tr("Pandemic", "Pandemie")
         )
-        actionGrid(labels.map { (id, label) -> Triple(label, label) { navigate(id) } })
+        actionGrid(labels.filterKeys { handbook.find(it) != null }.map { (id, label) -> Triple(label, label) { navigate(id) } })
         page.addView(button(tr("Prepare & recover", "Vorsorge & Rückkehr")) { navigate("prepare") })
         page.addView(button(tr("All guides & search", "Alle Anleitungen & Suche")) { switchTab("search") })
         page.addView(button(tr("Unreviewed preview · About & sources", "Ungeprüfter Entwurf · Über die App & Quellen")) { navigate("about") }.apply { textSize = 14f })
-        page.addView(text(tr("All 30 guides are on this phone. Incomplete, unreviewed content; follow emergency services. No live alerts. Edition ${handbook.edition} · ${BuildConfig.VERSION_NAME}", "Alle 30 Anleitungen auf diesem Handy. Inhalte unvollständig und ungeprüft; Rettungsdiensten folgen. Keine Live-Warnungen. Ausgabe ${handbook.edition} · ${BuildConfig.VERSION_NAME}"), 13f).apply { setTextColor(muted) })
+        page.addView(text(tr("All ${handbook.articles.size} available guides are on this phone. Incomplete, unreviewed content; follow emergency services. No live alerts. Edition ${handbook.edition} · ${BuildConfig.VERSION_NAME}", "Alle ${handbook.articles.size} verfügbaren Anleitungen auf diesem Handy. Inhalte unvollständig und ungeprüft; Rettungsdiensten folgen. Keine Live-Warnungen. Ausgabe ${handbook.edition} · ${BuildConfig.VERSION_NAME}"), 13f).apply { setTextColor(muted) })
     }
 
     private fun guideList(title: String, articles: List<EmergencyArticle>) {
@@ -396,11 +410,11 @@ class EmergencyActivity : BaseActivity() {
         updateResults()
     }
 
-    private fun bookmarks() = preferences.getStringSet("bookmarks", emptySet())?.toSet().orEmpty()
-    private fun recentIds(): List<String> {
-        val list = JSONArray(preferences.getString("recent-guides", "[]"))
-        return (0 until list.length()).map { list.getString(it) }
-    }
+    private fun bookmarks() = preferences.safeStrings("bookmarks")
+    private fun recentIds(): List<String> = try {
+        val list = JSONArray(preferences.safeString("recent-guides", "[]"))
+        (0 until minOf(list.length(), 6)).mapNotNull { list.optString(it).takeIf { id -> handbook.find(id) != null } }
+    } catch (_: Exception) { emptyList() }
 
     private fun savedPage() {
         page.addView(heading(tr("Saved guides", "Merkliste")))
@@ -544,7 +558,7 @@ class EmergencyActivity : BaseActivity() {
         items.forEach { (key, label) ->
             page.addView(CheckBox(this).apply {
                 text = label; textSize = 17f; setTextColor(textColour); minHeight = dp(56)
-                isChecked = preferences.getBoolean("check-$key", false)
+                isChecked = preferences.safeBoolean("check-$key", false)
                 setOnCheckedChangeListener { _, checked -> preferences.edit().putBoolean("check-$key", checked).apply() }
             })
         }
@@ -570,7 +584,7 @@ class EmergencyActivity : BaseActivity() {
             id = View.generateViewId(); setTextColor(textColour); setHintTextColor(muted)
             hint = tr("Emergency contact, medicines, meeting point…", "Notfallkontakt, Medikamente, Treffpunkt…")
             minLines = 5; gravity = android.view.Gravity.TOP
-            setText(preferences.getString("notes", ""))
+            setText(preferences.safeString("notes", ""))
             addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { preferences.edit().putString("notes", s.toString()).apply() }
@@ -615,7 +629,7 @@ class EmergencyActivity : BaseActivity() {
                     .setNegativeButton(android.R.string.cancel, null)
                     .setPositiveButton(tr("Choose file", "Datei wählen")) { _, _ ->
                         try {
-                            val ids = handbook.articles.map { it.id }.toSet()
+                            val ids = handbook.articles.map { it.id }.toSet() + preferences.safeStrings("bookmarks")
                             val encoded = HouseholdBackup.encode(HouseholdBackup.snapshot(preferences))
                             transfer.pendingBackup = HouseholdBackup.encode(HouseholdBackup.parse(encoded, ids))
                             backupPlan.launch("OpenEmergency-Household-backup.json")
@@ -628,7 +642,7 @@ class EmergencyActivity : BaseActivity() {
         page.addView(text(label, 15f, true))
         val input = EditText(this).apply {
             inputType = android.text.InputType.TYPE_CLASS_NUMBER; setTextColor(textColour)
-            contentDescription = label; setText(preferences.getString(key, fallback)); minHeight = dp(52)
+            contentDescription = label; setText(preferences.safeString(key, fallback)); minHeight = dp(52)
             addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { preferences.edit().putString(key, s.toString()).apply() }

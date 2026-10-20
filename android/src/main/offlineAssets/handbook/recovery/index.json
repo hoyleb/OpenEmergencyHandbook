@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "edition": "2026-10-19",
+  "primary_sha256": "80f74d1a81026ce147d9cc5f2e196355b10db6fe4eeddee72270e2a4db2ad122",
+  "articles": [
+    {
+      "id": "first-aid",
+      "sha256": "94d087d7444be82e3d3b335a948eefaeecc5f0e6def22ab338491d0f84b0ee19"
+    },
+    {
+      "id": "adult-cpr",
+      "sha256": "4f7d76ec3e2f4a7141070cb47cd40855505446b6fcbdb63c6e3a1be83d566fc7"
+    },
+    {
+      "id": "water",
+      "sha256": "e8907c11ea831ff3490af3c9fad9f9172b23550c503ec864390315f9277c8586"
+    },
+    {
+      "id": "power",
+      "sha256": "4132c6e70e97be5c836b12cf85158c7eda9f1b2f0c7a9988cfaa1aaa2dd3cb0f"
+    },
+    {
+      "id": "cyber",
+      "sha256": "d75bc681f61c05bff3b29f4d148c5c05beb789857877740defdb8f9cc1d14949"
+    },
+    {
+      "id": "earthquake",
+      "sha256": "c069ce0c9b809e9a72b946b4aefd982862a252d4280e42c15de97b9af567febb"
+    },
+    {
+      "id": "fallout",
+      "sha256": "f2aaa867a4f2322fe0920ab71353f3fdac5d405b8df25937963fcf9209a33e42"
+    },
+    {
+      "id": "flood",
+      "sha256": "27c80a7b71ab4cc10db56d793a0b7526f6bbd8ff2d7eaea127df8540c7fbdab6"
+    },
+    {
+      "id": "pandemic",
+      "sha256": "279b8d35eaac34996bc3318b492a20c5205cb410fed127eb9df3886f1251c8ac"
+    },
+    {
+      "id": "food",
+      "sha256": "bece9ae2af85531183e9df35d9a06632851e4b4910c724773c77734d9374b4ec"
+    },
+    {
+      "id": "hygiene",
+      "sha256": "c11f14fa7f9186ae967cbf88cd400883fc53aa486ffd3568de28b32d4499a33a"
+    },
+    {
+      "id": "shelter",
+      "sha256": "a7940dc26ede0f767f87154ae7d60622de0f5212aff9b79e295c25eab3822efa"
+    },
+    {
+      "id": "prepare",
+      "sha256": "f3878b57cbc20daca63d4ab35628a64942fed237e5be5bccde7d32e1b9f6eaa6"
+    },
+    {
+      "id": "communications",
+      "sha256": "c7115886cccce840b9677f8bdf3787b510b6f865ec03077be0153d5a7427559e"
+    },
+    {
+      "id": "about",
+      "sha256": "09238de485911c978a0d054f3b00353071658a223f69dd341b720d7799ec0e30"
+    },
+    {
+      "id": "adult-choking",
+      "sha256": "2664ebc4943465a9f530d0a904018e940b362ac56994e1a4a10afc47978cfe27"
+    },
+    {
+      "id": "child-choking",
+      "sha256": "21cd37127a13fa27d718bf2a8e7d289d934955c30b4c1adb7cdf84c6f28fbcd2"
+    },
+    {
+      "id": "child-cpr",
+      "sha256": "2e1e04acb9ebc64f257eb3b705cd439d67f8b3e44e6239dcf4fb39516e177c5f"
+    },
+    {
+      "id": "bleeding",
+      "sha256": "5bb9903f03756ff1dc7d43d36de0437c4c473b4d41c8c2943fb84ad16be69730"
+    },
+    {
+      "id": "burns",
+      "sha256": "3f3999e272893adddad78592438326d25153d45b2aff5e8b0d106b2c7a653502"
+    },
+    {
+      "id": "anaphylaxis",
+      "sha256": "e97f49d513230c251362713efe38db042bd2bd8738eb3e711f2bbb020141ff23"
+    },
+    {
+      "id": "seizures",
+      "sha256": "a59f0c48c695f16b66ccc78fab613dfa9e582b0a8d7f5cbbad05e1da61f03171"
+    },
+    {
+      "id": "diabetes",
+      "sha256": "c18848f6420d81944ef3add4fb70c1812866067b473c422108b161e3c7bfa27d"
+    },
+    {
+      "id": "poisoning",
+      "sha256": "f16b17978a756dec909f0753eceb4c7339173e2de977402dd8de40e8ac7868a9"
+    },
+    {
+      "id": "stroke-heart",
+      "sha256": "35b466e846a5205ccaeae305e6a351a57fdb27cc3d694e3a89fa7dc77f457fdb"
+    },
+    {
+      "id": "accessibility",
+      "sha256": "06828aac47e2d64b6188062dc870cc808cf37a2e8d5758e4a4b908572958d82d"
+    },
+    {
+      "id": "pets",
+      "sha256": "60d3887e12363def4e657388086d75abc0330af2aaa24f005e146fc1686f4390"
+    },
+    {
+      "id": "combined-hazards",
+      "sha256": "85a681ec922b21aa134a6eb5a9942a97bd4246f70ad13b6469d50673a192722c"
+    },
+    {
+      "id": "water-advisories",
+      "sha256": "0da9366172a239010e0a8e4c675e2c38f5f80fc4c05e3a314dd4b4ce14a917d0"
+    },
+    {
+      "id": "recovery",
+      "sha256": "d8a69ebe1f3269a99cc77c45d2a4185d353846ef2816d9bb55daf84f2457b019"
+    }
+  ]
+}

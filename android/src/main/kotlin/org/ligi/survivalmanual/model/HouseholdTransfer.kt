@@ -28,7 +28,7 @@ class HouseholdTransfer : ViewModel() {
     var pendingBackup: String? = null
 
     fun dismiss() { current.value = TransferState.Idle }
-    fun read(resolver: ContentResolver, uri: Uri, ids: Set<String>) {
+    fun read(resolver: ContentResolver, uri: Uri, ids: Set<String>?) {
         if (current.value == TransferState.Busy) return
         current.value = TransferState.Busy
         executor.execute {

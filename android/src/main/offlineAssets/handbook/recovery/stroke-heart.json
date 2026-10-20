@@ -1,0 +1,37 @@
+{
+  "id": "stroke-heart",
+  "group": "urgent",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Stroke & heart-attack warning signs",
+    "summary": "Sudden speech/face/arm changes or concerning chest symptoms: call 112.",
+    "keywords": "stroke heart attack chest pain FAST face arm speech",
+    "body": "## Suspected stroke\nSudden facial droop, one-sided arm weakness or speech difficulty: **112 immediately**, even if symptoms resolve. Sudden loss of vision, balance or a severe unusual headache can also be important. Note when symptoms began or the last time the person was normal. Do not wait for all signs or drive yourself.\n\n## Suspected heart attack\nChest pressure/squeezing, pain spreading to arm/neck/jaw, breathlessness, sweating or nausea may indicate a heart attack. Symptoms vary and severe chest pain is not always present. Call **112**; rest comfortably, stay with the person and follow dispatcher instructions about medication. Do not give someone else's medicine.\n\n## If they deteriorate\nCheck responsiveness and breathing. If unresponsive without normal breathing, start CPR/AED. Do not give aspirin for a suspected stroke; medication for chest pain depends on the situation and contraindications."
+  },
+  "de": {
+    "title": "Warnzeichen: Schlaganfall & Herzinfarkt",
+    "summary": "Plötzliche Sprach-/Gesichts-/Armstörung oder verdächtige Brustbeschwerden: 112.",
+    "keywords": "Schlaganfall Herzinfarkt Brustschmerz FAST Gesicht Arm Sprache",
+    "body": "## Schlaganfallverdacht\nPlötzlich hängender Mundwinkel, einseitige Armschwäche oder Sprachstörung: **sofort 112**, auch nach Rückbildung. Plötzlicher Seh-/Gleichgewichtsverlust oder ungewöhnlich starker Kopfschmerz können ebenfalls wichtig sein. Beginn oder letzten unauffälligen Zeitpunkt notieren. Nicht auf alle Zeichen warten, nicht selbst fahren.\n\n## Herzinfarktverdacht\nDruck/Enge im Brustkorb, Ausstrahlung in Arm/Hals/Kiefer, Atemnot, Schwitzen oder Übelkeit können Herzinfarkt bedeuten. Beschwerden variieren; starker Brustschmerz fehlt manchmal. **112** rufen, bequem ruhen, dabeibleiben und Medikamentenhinweise der Leitstelle beachten. Keine fremden Medikamente geben.\n\n## Bei Verschlechterung\nBewusstsein und Atmung prüfen. Bewusstlos ohne normale Atmung: Wiederbelebung/AED. Bei Schlaganfallverdacht kein Aspirin geben; Medikamente bei Brustschmerz hängen von Situation und Gegenanzeigen ab."
+  },
+  "sources": [
+    "https://www.nhs.uk/conditions/stroke/symptoms/",
+    "https://www.nhs.uk/conditions/heart-attack/"
+  ],
+  "related": [
+    "adult-cpr",
+    "first-aid"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

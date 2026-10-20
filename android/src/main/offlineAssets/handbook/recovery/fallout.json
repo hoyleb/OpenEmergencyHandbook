@@ -1,0 +1,39 @@
+{
+  "id": "fallout",
+  "group": "disaster",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Nuclear fallout & radiation",
+    "summary": "Shelter, reduce contamination, use protected supplies and seek official instructions.",
+    "keywords": "nuclear fallout radiation bomb atom radioaktiv Strahlung",
+    "body": "## Immediate protection\nAn explosion can cause blast, heat and falling debris before fallout arrives. Take immediate cover; do not look toward a flash. Once able to move safely, get inside a substantial building. Prefer a basement or central interior area away from windows and exterior walls, provided it is not threatened by collapse, fire or flooding.\n\n## Reduce exposure\nStay inside and obtain official instructions by radio or other working channels. Close windows/doors and stop systems bringing in outside air when instructed/appropriate. Do not run combustion equipment in a sealed space. There is no universal timer that proves it is safe to leave.\n\n## If contaminated outside\nRemove outer clothing carefully without shaking it, bag it and keep it away from people/pets. Gently wash exposed skin and hair with soap and water; avoid scrubbing or damaging skin. Attend to life-threatening injuries first.\n\n## Food, water and medicine\nUse protected packaged supplies. Boiling does not remove radioactive contamination. Potassium iodide protects only the thyroid against radioactive iodine, not general radiation; use only when authorities instruct, with appropriate medical guidance.\n\n## Limits\nA phone cannot measure radiation. The app has no live plume model or verified shelter locations. Leaving an immediately unsafe building may be necessary even when sheltering is otherwise advised."
+  },
+  "de": {
+    "title": "Nuklearer Fallout & Strahlung",
+    "summary": "Schutz suchen, Kontamination verringern und amtliche Informationen beachten.",
+    "keywords": "Atombombe radioaktiv Fallout Strahlung Kernunfall nuclear",
+    "body": "## Sofort schützen\nEine Explosion kann Druck, Hitze und Trümmer verursachen, bevor Fallout eintrifft. Sofort Deckung suchen; nicht in einen Lichtblitz schauen. Sobald sichere Bewegung möglich ist, in ein massives Gebäude gehen. Keller oder innenliegende Bereiche fern von Fenstern/Außenwänden bevorzugen, sofern kein Einsturz, Brand oder Hochwasser droht.\n\n## Belastung verringern\nDrinnen bleiben und amtliche Hinweise über Radio oder andere funktionierende Kanäle verfolgen. Fenster/Türen schließen und Außenluftzufuhr situationsgerecht/auf Anweisung stoppen. Keine Verbrennungsgeräte in abgedichteten Räumen betreiben. Kein allgemeiner Zeitablauf beweist, dass Verlassen sicher ist.\n\n## Nach Aufenthalt draußen\nOberkleidung vorsichtig ohne Ausschütteln ausziehen, eintüten und von Menschen/Tieren fernhalten. Freie Haut und Haare sanft mit Wasser und Seife waschen; nicht scheuern oder Haut verletzen. Lebensbedrohliche Verletzungen zuerst versorgen.\n\n## Versorgung\nGeschützt verpackte Vorräte nutzen. Abkochen entfernt keine radioaktive Belastung. Kaliumjodid schützt nur die Schilddrüse vor radioaktivem Jod, nicht allgemein vor Strahlung; nur auf behördliche Anweisung mit geeigneter medizinischer Beratung einnehmen.\n\n## Grenzen\nHandys messen keine Strahlung. Keine Live-Ausbreitungsberechnung oder geprüften Schutzräume enthalten. Ein unmittelbar gefährliches Gebäude muss gegebenenfalls trotz allgemeiner Schutzempfehlung verlassen werden."
+  },
+  "sources": [
+    "https://www.cdc.gov/radiation-emergencies/about/what-to-do.html",
+    "https://www.cdc.gov/radiation-emergencies/response/stay-inside.html",
+    "https://www.cdc.gov/radiation-emergencies/prevention/self-decontaminate.html",
+    "https://www.cdc.gov/radiation-emergencies/safety/food-drinking-water-medicine-safety.html"
+  ],
+  "related": [
+    "water",
+    "combined-hazards"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "communications",
+  "group": "essentials",
+  "status": "draft",
+  "professional_review": null,
+  "checked_at": "2026-10-19",
+  "reuse": "Original factual summary and translation; GPL-3.0 under repository COPYING. Linked source materials retain their own rights; no source illustrations or logos copied.",
+  "en": {
+    "title": "Communication & getting help",
+    "summary": "Emergency numbers, radio, meeting plans and battery conservation.",
+    "keywords": "radio emergency call phone 112 contact Funk Notruf Kommunikation",
+    "body": "## Immediate help in Germany\n**112**: fire/rescue and life-threatening medical emergencies. **110**: police emergencies. **116117**: urgent non-life-threatening medical advice when normal services are unavailable. Do not use emergency numbers just to ask why power is out. Outside Germany, confirm the local numbers in advance.\n\n## When networks fail\nTry another available phone/network, but do not assume a failed call proves every network is down. Use official radio broadcasts and known local assistance points when safe. Agree on an out-of-area contact and meeting places before trouble. Written addresses and paper maps do not need batteries.\n\n## Preserve power\nDim the screen, reduce nonessential use and keep a charged power bank. Airplane mode saves searching for a missing signal but prevents normal calls/messages and alerts; deliberately check connectivity when needed. Check on vulnerable neighbours safely.\n\n## Verify information\nUse official warnings and more than one reliable channel. Cached information may be stale. This app provides no live warnings, emergency messaging or verified shelter directory. The 112 button opens the phone dialler; it does not place a call automatically or guarantee service."
+  },
+  "de": {
+    "title": "Kommunikation & Hilfe",
+    "summary": "Notruf, Radio, Treffpunkte und Akkuschonung.",
+    "keywords": "Radio Handy Telefon Notruf Kontakt Kommunikation 112",
+    "body": "## Schnelle Hilfe in Deutschland\n**112**: Feuerwehr/Rettungsdienst und lebensbedrohliche medizinische Notfälle. **110**: Polizeinotfälle. **116117**: dringende, nicht lebensbedrohliche medizinische Hilfe außerhalb normaler Versorgung. Notrufnummern nicht für Fragen zum Stromausfall nutzen. Im Ausland vorher örtliche Nummern prüfen.\n\n## Bei Netzausfall\nAnderes verfügbares Telefon/Netz versuchen; ein fehlgeschlagener Anruf beweist keinen vollständigen Ausfall. Amtliches Radio und bekannte örtliche Anlaufstellen nutzen, wenn gefahrlos. Vorher Kontakt außerhalb der Region und Treffpunkte vereinbaren. Papieradressen und Karten brauchen keinen Akku.\n\n## Strom sparen\nDisplay dimmen, unnötige Nutzung reduzieren und Powerbank laden. Flugmodus spart Netzsuche, verhindert aber normale Anrufe/Nachrichten und Warnungen; Verbindung bei Bedarf gezielt prüfen. Hilfsbedürftige Nachbarn sicher unterstützen.\n\n## Angaben prüfen\nAmtliche Warnungen und mehrere zuverlässige Kanäle nutzen. Gespeicherte Hinweise können veraltet sein. Die App bietet keine Live-Warnung, Notfallnachrichten oder geprüfte Schutzraumliste. Der 112-Knopf öffnet nur das Wählfeld; er ruft nicht automatisch an und garantiert keine Verbindung."
+  },
+  "sources": [
+    "https://www.bbk.bund.de/DE/Warnung-Vorsorge/Vorsorge/In-der-Krise-informiert-sein/Warnungen-erhalten-verstehen/warnungen-erhalten-und-verstehen_node.html",
+    "https://www.116117.de/de/index.php"
+  ],
+  "related": [
+    "prepare",
+    "cyber"
+  ],
+  "region": "Germany/EU emergency calling; source guidance may originate elsewhere",
+  "review_due": "2027-04-19",
+  "translation_review": null,
+  "revision_history": [
+    {
+      "date": "2026-10-19",
+      "note": "Original development draft; no qualified review claimed."
+    }
+  ]
+}

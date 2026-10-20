@@ -35,7 +35,7 @@ object HouseholdBackup {
             .put("days", data.days).put("notes", data.notes))
         .put("bookmarks", JSONArray(data.bookmarks.sorted())).toString(2)
 
-    fun read(input: InputStream, validGuideIds: Set<String>): HouseholdSnapshot {
+    fun read(input: InputStream, validGuideIds: Set<String>?): HouseholdSnapshot {
         val out = ByteArrayOutputStream()
         val chunk = ByteArray(8192)
         while (true) {
@@ -48,7 +48,7 @@ object HouseholdBackup {
         return parse(decoder.decode(ByteBuffer.wrap(out.toByteArray())).toString(), validGuideIds)
     }
 
-    fun parse(encoded: String, validGuideIds: Set<String>): HouseholdSnapshot {
+    fun parse(encoded: String, validGuideIds: Set<String>?): HouseholdSnapshot {
         require(encoded.toByteArray(Charsets.UTF_8).size <= MAX_BYTES) { "Backup too large" }
         val root = JSONObject(encoded)
         fun fields(obj: JSONObject, expected: Set<String>) {
@@ -72,7 +72,7 @@ object HouseholdBackup {
         require(ids.toSet().size == ids.size && ids.all { it.matches(Regex("[a-z0-9-]{1,80}")) }) { "Invalid bookmarks" }
         // A valid backup from another edition remains usable; retired guide IDs
         // are ignored, never interpreted as routes, URLs or file paths.
-        return HouseholdSnapshot(checked, people, days, notes, ids.filter { it in validGuideIds }.toSet())
+        return HouseholdSnapshot(checked, people, days, notes, ids.filter { validGuideIds == null || it in validGuideIds }.toSet())
     }
 
     /** Validation precedes this call. Replace only the enumerated fields in one

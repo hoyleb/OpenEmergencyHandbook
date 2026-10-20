@@ -118,6 +118,18 @@ def make_html(data):
 <script>let lang='en';const q=document.querySelector('#search');const norm=s=>s.toLowerCase().replaceAll('ß','ss').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'');function show(){let n=0;const words=norm(q.value).trim().split(/\\s+/).filter(Boolean);document.querySelectorAll('article').forEach(a=>{a.hidden=a.lang!==lang||!words.every(w=>norm(a.textContent+' '+a.dataset.keywords).includes(w));if(!a.hidden)n++});document.querySelectorAll('.contents').forEach(e=>e.hidden=e.lang!==lang);document.documentElement.lang=lang;document.querySelector('#count').textContent=n+(lang==='en'?' guides':' Anleitungen')};function openHash(){const target=document.querySelector(location.hash&&/^#[a-z-]+$/.test(location.hash)?location.hash:'#top');if(target?.tagName==='ARTICLE'){lang=target.lang;q.value='';show();target.scrollIntoView()}}q.addEventListener('input',show);window.addEventListener('hashchange',openHash);document.querySelector('#en').onclick=()=>{lang='en';show()};document.querySelector('#de').onclick=()=>{lang='de';show()};document.querySelector('#print').onclick=()=>{document.querySelectorAll('details').forEach(d=>d.open=true);window.print()};show();openHash();</script></html>'''
 
 
+def recovery_files(data):
+    """Independent per-guide copies; index hashes detect accidental corruption."""
+    files = {}
+    index = {'schema_version': 1, 'edition': data['edition'], 'primary_sha256': hashlib.sha256((ROOT / 'content/handbook.json').read_bytes()).hexdigest(), 'articles': []}
+    for article in data['articles']:
+        payload = json.dumps(article, ensure_ascii=False, indent=2).encode() + b'\n'
+        files[article['id'] + '.json'] = payload
+        index['articles'].append({'id': article['id'], 'sha256': hashlib.sha256(payload).hexdigest()})
+    files['index.json'] = json.dumps(index, indent=2).encode() + b'\n'
+    return files
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--check', action='store_true', help='Fail if generated Android assets are stale')
@@ -136,6 +148,16 @@ def main():
     else:
         asset.parent.mkdir(parents=True, exist_ok=True)
         asset.write_bytes(payload)
+    recovery = asset.parent / 'recovery'
+    expected = recovery_files(data)
+    if args.check:
+        if not recovery.is_dir() or {p.name for p in recovery.glob('*.json')} != set(expected) or any((recovery / name).read_bytes() != payload for name, payload in expected.items()):
+            raise SystemExit('Generated recovery guides are stale. Run tools/build_handbook.py')
+    else:
+        recovery.mkdir(parents=True, exist_ok=True)
+        for old in recovery.glob('*.json'):
+            if old.name not in expected: old.unlink()
+        for name, payload in expected.items(): (recovery / name).write_bytes(payload)
     out = ROOT / 'dist'
     out.mkdir(exist_ok=True)
     (out / 'OpenEmergencyHandbook-offline.html').write_text(make_html(data))
