@@ -49,8 +49,8 @@ Validation results are attached to the actual workflow/release. A feature listed
 - [ ] Minimum Android 5/API 21 is now in the emulator matrix alongside 23/36; attach the current passing run before closing emulator evidence. More OEMs/physical-device evidence remains separate.
 - [x] Add independently readable/hash-checked per-guide fallback, partial/total catalog failure handling and corruption fixtures.
 - [ ] Complete actual low-storage, interrupted-process/reboot and file-provider fault sessions; current tests simulate selected commit/read failures.
-- [x] Add HTML/Android bilingual ranking and typo-fallback parity, category reset, shared vectors and Chromium JavaScript/no-JavaScript tests.
-- [ ] Repeat portable checks on Safari, Firefox and physical Android browsers; Chromium is not evidence for every browser.
+- [x] Add HTML/Android bilingual ranking and typo-fallback parity, category reset, shared vectors and Chromium/Firefox/WebKit JavaScript/no-JavaScript tests.
+- [ ] Repeat portable checks on actual Safari and physical Android browsers; Linux WebKit automation is not actual Safari/device evidence.
 - [x] Produce and visually inspect printable English/German PDFs from the same content (33 pages each).
 - [ ] Produce compact printed quick cards for loss of phone power.
 - [x] Structured JSON plan/bookmark backup and explicit preview/confirmed restore, preserving unrelated settings.
