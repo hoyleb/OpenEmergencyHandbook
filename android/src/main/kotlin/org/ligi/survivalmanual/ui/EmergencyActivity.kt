@@ -13,16 +13,15 @@ import android.text.TextWatcher
 import android.text.method.LinkMovementMethod
 import android.view.View
 import android.view.WindowManager
+import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.core.text.HtmlCompat
-import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import org.json.JSONArray
 import org.json.JSONObject
 import org.ligi.survivalmanual.BuildConfig
@@ -450,18 +449,18 @@ class EmergencyActivity : BaseActivity() {
     }
 
     private fun card(article: EmergencyArticle): View {
-        val card = LinearLayout(this).apply {
+        val card = object : LinearLayout(this) {
+            override fun onInitializeAccessibilityNodeInfo(info: AccessibilityNodeInfo) {
+                super.onInitializeAccessibilityNodeInfo(info)
+                info.className = Button::class.java.name
+            }
+        }.apply {
             orientation = LinearLayout.VERTICAL; setPadding(dp(14), dp(10), dp(14), dp(10))
             background = shape(surface); isClickable = true; isFocusable = true; minimumHeight = dp(72)
             tag = "guide-${article.id}"; contentDescription = "${article.title}. ${article.summary}"
             layoutParams = LinearLayout.LayoutParams(-1, -2).apply { topMargin = dp(8) }
             setOnClickListener { navigate(article.id) }
             ViewCompat.setScreenReaderFocusable(this, true)
-            ViewCompat.setAccessibilityDelegate(this, object : AccessibilityDelegateCompat() {
-                override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
-                    super.onInitializeAccessibilityNodeInfo(host, info); info.className = Button::class.java.name
-                }
-            })
         }
         card.addView(text(article.title, 19f, true).apply { setTextColor(accent); importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO })
         card.addView(text(article.summary, 14f).apply { setTextColor(muted); importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO })
