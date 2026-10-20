@@ -44,7 +44,7 @@ Coverage mapping: `content/coverage.json`. Run `python3 tools/build_handbook.py 
 
 ## Contribute and licence
 
-Feedback: [pull request #1](https://github.com/hoyleb/OpenEmergencyHandbook/pull/1). See [roadmap](docs/ROADMAP.md). Do not post private medical details, contacts or credentials. Preserve sources and real review status.
+Feedback: [repository pull requests](https://github.com/hoyleb/OpenEmergencyHandbook/pulls). See [roadmap](docs/ROADMAP.md). Do not post private medical details, contacts or credentials. Preserve sources and real review status.
 
 Application and newly authored summaries/translations use GPLv3 under [COPYING](COPYING). Third-party libraries retain their licences. Linked publications retain their own rights. No agency endorsement, logos or copied illustrations are claimed. Preserve upstream attribution/history.
 
@@ -53,3 +53,9 @@ Application and newly authored summaries/translations use GPLv3 under [COPYING](
 `python3 -m pip install -r tools/requirements-pdf.txt` and install `fonts-dejavu-core`, then run `python3 tools/build_pdf.py`. This creates one English and one German PDF in `dist/` from the same canonical source. The current editions contain 33 pages each, clickable contents, bookmarks, related guides and source URLs. They carry the same unreviewed-preview status as the app.
 
 Portable checks: `node tools/test_offline_search.cjs`. Browser checks: install Playwright 1.62.1 and Chromium/Firefox/WebKit, then run `node tools/test_offline_browser.cjs` (with its module path available). CI publishes exact API test summaries, HTML checks and screenshots, APK signature/permissions, and an unsigned AAB for packaging review. The AAB is not store-ready.
+
+## Paper quick cards and reviewer handoff
+
+Download the [English quick cards](docs/packs/OpenEmergencyHandbook-quick-cards-en.pdf) or [German quick cards](docs/packs/OpenEmergencyHandbook-quick-cards-de.pdf): eight A4 landscape sheets per language, cut into fourteen full-guide A5 cards and two blank household/support cards. Print single-sided at 100% / actual size. All guide text retains its unreviewed status; this selection is not the complete handbook.
+
+The [paper and reviewer pack instructions](docs/PAPER_AND_REVIEW_PACKS.md) include a standalone bilingual HTML review copy, exact-block source-mapping worksheet, source-maintenance inventory and hash-bound blank sign-off templates. These tools support real review; no professional approval or verified claim mapping is inferred. Generated files and hashes are checked by a separate workflow without Android signing credentials.
