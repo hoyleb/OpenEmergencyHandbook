@@ -26,4 +26,4 @@ These copies detect accidental corruption and reduce dependence on one JSON file
 
 The instrumentation suite exercises UTF-8 round trips, strict schema/type/range/size rejection, retired guides, simulated commit failure, file-picker contracts, confirmation/cancellation, rotation during confirmation, corrupt primary/individual/all content, and malformed preference types. The current run's exact test results are published in `TEST-SUMMARY-api-*.json`.
 
-Encrypted portable backups, interrupted-process/reboot stress testing and actual low-storage/provider fault sessions remain open. Android cloud/device-transfer backup is disabled in the manifest and extraction rules; explicit exports remain under the chosen file provider's policies.
+The 0.5 source adds optional [passphrase-encrypted portable backups and offline desktop recovery](ENCRYPTED_BACKUPS.md). Independent security review, interrupted-process/reboot stress testing and actual low-storage/provider fault sessions remain open. Android cloud/device-transfer backup is disabled in the manifest and extraction rules; explicit exports remain under the chosen file provider's policies.

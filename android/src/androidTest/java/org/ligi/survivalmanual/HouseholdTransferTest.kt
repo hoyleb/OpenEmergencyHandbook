@@ -14,6 +14,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intending
@@ -29,6 +30,9 @@ import org.junit.runner.RunWith
 import org.ligi.survivalmanual.model.HouseholdBackup
 import org.ligi.survivalmanual.model.HouseholdTransfer
 import org.ligi.survivalmanual.model.TransferState
+import org.ligi.survivalmanual.model.EncryptedHouseholdBackup
+import org.json.JSONObject
+import android.util.Base64
 import org.ligi.survivalmanual.ui.EmergencyActivity
 import java.io.File
 
@@ -43,10 +47,10 @@ class HouseholdTransferTest {
     private fun chooseRestore() {
         onView(withTagValue(equalTo("tab-plan"))).perform(click())
         onView(withText("Backup / restore…")).perform(click())
-        onView(withText("Restore JSON backup")).perform(click())
+        onView(withText("Restore backup")).perform(click())
     }
     private fun settle(scenario: ActivityScenario<EmergencyActivity>) {
-        val deadline = System.currentTimeMillis() + 8000
+        val deadline = System.currentTimeMillis() + 120000
         var busy = true
         while (busy && System.currentTimeMillis() < deadline) {
             scenario.onActivity { busy = ViewModelProvider(it).get(HouseholdTransfer::class.java).state.value == TransferState.Busy }
@@ -99,6 +103,25 @@ class HouseholdTransferTest {
                 onView(withText(android.R.string.cancel)).check(matches(isCompletelyDisplayed()))
                 onView(withText(android.R.string.cancel)).perform(click())
                 assertEquals("Existing plan", prefs.getString("notes", ""))
+                intending(hasAction(Intent.ACTION_CREATE_DOCUMENT)).respondWith(ActivityResult(Activity.RESULT_OK, Intent().setData(Uri.fromFile(fixture))))
+                onView(withText("Backup / restore…")).perform(click())
+                onView(withText("Save encrypted backup")).perform(click())
+                onView(withText("Encrypt")).check(matches(isCompletelyDisplayed()))
+                onView(withText("Encrypt")).check { view,_ -> ScreenshotEvidence.captureEmptyForm("encrypted-backup-large-text",view.rootView) }
+                onView(withText(android.R.string.cancel)).check(matches(isCompletelyDisplayed()))
+                onView(withTagValue(equalTo("backup-passphrase"))).perform(scrollTo(),click())
+                onView(withText("Encrypt")).check(matches(isCompletelyDisplayed()))
+                onView(withText(android.R.string.cancel)).check(matches(isCompletelyDisplayed()))
+                onView(withText(android.R.string.cancel)).perform(click())
+                onView(withTagValue(equalTo("backup-passphrase"))).check(doesNotExist())
+                onView(withText("DE")).perform(click())
+                onView(withText("Sichern / wiederherstellen…")).perform(click())
+                onView(withText("Verschlüsselt sichern")).perform(click())
+                onView(withText("Verschlüsseln")).check(matches(isCompletelyDisplayed()))
+                onView(withText("Verschlüsseln")).check { view,_ -> ScreenshotEvidence.captureEmptyForm("encrypted-backup-large-text-de",view.rootView) }
+                onView(withTagValue(equalTo("backup-passphrase"))).perform(scrollTo(),click())
+                onView(withText(android.R.string.cancel)).check(matches(isCompletelyDisplayed())).perform(click())
+                onView(withTagValue(equalTo("backup-passphrase"))).check(doesNotExist())
             }
         } finally {
             if (Build.VERSION.SDK_INT < 24) legacy(previousScale)
@@ -136,6 +159,58 @@ class HouseholdTransferTest {
             val restored = fixture.inputStream().use { HouseholdBackup.read(it, setOf("water")) }
             assertEquals("Existing plan", restored.notes)
             assertEquals("Existing plan", prefs.getString("notes", ""))
+        }
+    }
+    @Test fun encryptedExportWritesOnlyCiphertextAndCanBeRestored() {
+        intending(hasAction(Intent.ACTION_CREATE_DOCUMENT)).respondWith(ActivityResult(Activity.RESULT_OK, Intent().setData(Uri.fromFile(fixture))))
+        ActivityScenario.launch(EmergencyActivity::class.java).use { scenario ->
+            onView(withTagValue(equalTo("tab-plan"))).perform(click())
+            onView(withText("Backup / restore…")).perform(click())
+            onView(withText("Save encrypted backup")).perform(click())
+            onView(withText("Encrypt")).check { view,_ -> ScreenshotEvidence.captureEmptyForm("encrypted-backup-prompt",view.rootView) }
+            onView(withTagValue(equalTo("backup-passphrase"))).perform(scrollTo(),replaceText("public fixture river forest"))
+            onView(withTagValue(equalTo("backup-passphrase-confirm"))).perform(scrollTo(),replaceText("different fixture password"),closeSoftKeyboard())
+            onView(withText("Encrypt")).perform(click())
+            assertFalse("Mismatched passwords must not write",fixture.exists())
+            onView(withTagValue(equalTo("backup-passphrase-confirm"))).perform(scrollTo(),replaceText("public fixture river forest"),closeSoftKeyboard())
+            onView(withText("Encrypt")).perform(click()); settle(scenario)
+            val encrypted=fixture.readBytes(); assertTrue(EncryptedHouseholdBackup.isEncrypted(encrypted))
+            val plain=EncryptedHouseholdBackup.decrypt(encrypted,"public fixture river forest".toCharArray())
+            assertEquals("Existing plan",HouseholdBackup.read(plain.inputStream(),setOf("water")).notes)
+            assertEquals("Existing plan",prefs.getString("notes",""))
+        }
+    }
+    @Test fun encryptedRestoreRetriesWrongPasswordAndStillRequiresReplacementConfirmation() {
+        val vector=JSONObject(instrumentation.context.assets.open("encrypted-backup-vector.json").bufferedReader().use { it.readText() })
+        fixture.writeBytes(Base64.decode(vector.getString("encrypted_base64"),Base64.DEFAULT))
+        intending(hasAction(Intent.ACTION_OPEN_DOCUMENT)).respondWith(ActivityResult(Activity.RESULT_OK,Intent().setData(Uri.fromFile(fixture))))
+        ActivityScenario.launch(EmergencyActivity::class.java).use { scenario ->
+            chooseRestore(); settle(scenario)
+            onView(withText("Unlock backup")).check(matches(isDisplayed()))
+            onView(withTagValue(equalTo("backup-passphrase"))).perform(scrollTo(),replaceText("wrong fixture password"),closeSoftKeyboard())
+            onView(withText("Unlock")).perform(click()); settle(scenario)
+            assertEquals("Existing plan",prefs.getString("notes",""))
+            onView(withTagValue(equalTo("backup-passphrase"))).perform(scrollTo(),replaceText(vector.getString("password")),closeSoftKeyboard())
+            onView(withText("Unlock")).perform(click()); settle(scenario)
+            onView(withText("Review backup before replacing")).check(matches(isDisplayed()))
+            assertEquals("Existing plan",prefs.getString("notes",""))
+            onView(withText("Replace plan")).perform(click()); settle(scenario)
+            assertTrue(prefs.getString("notes","")!!.contains("Ärztin"))
+            assertEquals("en",prefs.getString("language",""))
+        }
+    }
+    @Test fun passwordFieldsAreClearedOnRotationAndCancelKeepsThePlan() {
+        intending(hasAction(Intent.ACTION_CREATE_DOCUMENT)).respondWith(ActivityResult(Activity.RESULT_OK,Intent().setData(Uri.fromFile(fixture))))
+        ActivityScenario.launch(EmergencyActivity::class.java).use { scenario ->
+            onView(withTagValue(equalTo("tab-plan"))).perform(click())
+            onView(withText("Backup / restore…")).perform(click())
+            onView(withText("Save encrypted backup")).perform(click())
+            onView(withTagValue(equalTo("backup-passphrase"))).perform(scrollTo(),replaceText("public fixture should vanish"),closeSoftKeyboard())
+            scenario.recreate()
+            onView(withTagValue(equalTo("backup-passphrase"))).check(matches(withText("")))
+            onView(withTagValue(equalTo("backup-passphrase-confirm"))).check(matches(withText("")))
+            onView(withText(android.R.string.cancel)).perform(click())
+            assertEquals("Existing plan",prefs.getString("notes","")); assertFalse(fixture.exists())
         }
     }
 }
