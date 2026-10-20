@@ -164,11 +164,12 @@ class EmergencyActivity : BaseActivity() {
         feedback?.cancel()
         val protecting = state is TransferState.Protect
         val title = if (protecting) tr("Protect backup", "Sicherung schützen") else tr("Unlock backup", "Sicherung öffnen")
+        val visibleTitle = if (resources.configuration.fontScale >= 1.3f) tr("Backup", "Sicherung") else title
         val content = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL; setPadding(dp(16), dp(12), dp(16), dp(12)); setBackgroundColor(surface)
         }
         ViewCompat.setAccessibilityPaneTitle(content, title)
-        content.addView(heading(title, 20f))
+        content.addView(heading(visibleTitle, 20f))
         val fields = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
         val details = ScrollView(this).apply { isFillViewport = true; addView(fields) }
         content.addView(details, LinearLayout.LayoutParams(-1, 0, 1f))
@@ -177,7 +178,10 @@ class EmergencyActivity : BaseActivity() {
             "Einzigartige lange Passphrase (12–128 Zeichen) separat aufbewahren. Kein Zurücksetzen. Schützt nur diese Sicherungsdatei. Abbrechen kann eine leere Datei hinterlassen.")
         else if ((state as TransferState.Unlock).failed) tr("Wrong passphrase or damaged backup. Try again or cancel. Your plan is unchanged.", "Falsche Passphrase oder beschädigte Sicherung. Erneut versuchen oder abbrechen und andere Datei wählen. Der Plan ist unverändert.")
         else tr("Enter the exact passphrase; spaces and case matter. Preview and confirmation follow before replacing your plan. No password reset.", "Die genaue Passphrase eingeben. Leerzeichen und Groß-/Kleinschreibung zählen. Vor dem Ersetzen erscheint eine Vorschau. Kein Zurücksetzen möglich.")
-        fields.addView(text(explanation, 15f))
+        val introduction = if (protecting) tr("No reset. Keep this passphrase separately.", "Kein Zurücksetzen. Separat aufbewahren.")
+            else if ((state as TransferState.Unlock).failed) tr("Wrong passphrase or damaged backup.", "Falsche Passphrase oder beschädigte Sicherung.")
+            else tr("Enter your backup passphrase.", "Passphrase der Sicherung eingeben.")
+        fields.addView(text(introduction, 15f))
         fun input(label: String, tag: String): EditText {
             val edit = EditText(this).apply {
                 id = View.generateViewId(); this.tag = tag; isSaveEnabled = false; minHeight = dp(52)
@@ -202,6 +206,7 @@ class EmergencyActivity : BaseActivity() {
                 edit.setSelection(edit.length())
             } }
         })
+        fields.addView(text(explanation, 15f))
         val dialog = androidx.appcompat.app.AlertDialog.Builder(this).setView(content)
             .setOnCancelListener { transfer.dismiss() }.create()
         val actions = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
@@ -226,13 +231,32 @@ class EmergencyActivity : BaseActivity() {
         }, LinearLayout.LayoutParams(-1, -2))
         actions.addView(button(getString(android.R.string.cancel)) { transfer.dismiss(); dialog.dismiss() }, LinearLayout.LayoutParams(-1, -2))
         content.addView(actions)
-        dialog.setOnDismissListener { passwordFields.forEach { it.text?.clear() }; passwordFields = emptyList() }
+        var resizeListener: android.view.ViewTreeObserver.OnGlobalLayoutListener? = null
+        dialog.setOnDismissListener {
+            val observer=dialog.window?.decorView?.viewTreeObserver
+            resizeListener?.let { if (observer?.isAlive == true) observer.removeOnGlobalLayoutListener(it) }
+            passwordFields.forEach { it.text?.clear() }; passwordFields = emptyList()
+        }
         dialog.setOnShowListener {
             val metrics = resources.displayMetrics
-            val bars = ViewCompat.getRootWindowInsets(window.decorView)?.getInsets(WindowInsetsCompat.Type.systemBars())
             dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
             dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
-            dialog.window?.setLayout((metrics.widthPixels * 0.94f).toInt(), ((metrics.heightPixels - (bars?.top ?: 0) - (bars?.bottom ?: 0)) * 0.9f).toInt())
+            val decor=dialog.window?.decorView ?: return@setOnShowListener
+            var previousHeight=0
+            val listener=android.view.ViewTreeObserver.OnGlobalLayoutListener {
+                // Floating dialogs on API 21/23 can keep their old height over
+                // the IME despite ADJUST_RESIZE. Respect the visible display
+                // frame explicitly; never hide actions behind the keyboard.
+                val frame=android.graphics.Rect();decor.getWindowVisibleDisplayFrame(frame)
+                val available=frame.height().takeIf { it > 0 } ?: metrics.heightPixels
+                val keyboardVisible=metrics.heightPixels-available > dp(150)
+                val height=if (keyboardVisible) (available-dp(8)).coerceAtLeast(dp(120)) else (available*0.9f).toInt()
+                if (height!=previousHeight) {
+                    previousHeight=height
+                    dialog.window?.setLayout((metrics.widthPixels*0.94f).toInt(),height)
+                }
+            }
+            resizeListener=listener;decor.viewTreeObserver.addOnGlobalLayoutListener(listener);listener.onGlobalLayout()
         }
         passwordDialog = dialog; dialog.show()
     }
@@ -767,7 +791,7 @@ class EmergencyActivity : BaseActivity() {
         }
         androidx.appcompat.app.AlertDialog.Builder(this)
             .setTitle(tr("Household backup", "Haushaltssicherung"))
-            .setItems(arrayOf(tr("Save encrypted backup", "Verschlüsselte Sicherung speichern"), tr("Save JSON backup", "JSON-Sicherung speichern"), tr("Restore backup", "Sicherung wiederherstellen"))) { _, action ->
+            .setItems(arrayOf(tr("Save encrypted backup", "Verschlüsselt sichern"), tr("Save JSON backup", "JSON-Sicherung speichern"), tr("Restore backup", "Sicherung wiederherstellen"))) { _, action ->
                 if (action == 2) {
                     try { importPlan.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) }
                     catch (_: ActivityNotFoundException) { transferResult(tr("No file picker available", "Keine Dateiauswahl verfügbar")) }

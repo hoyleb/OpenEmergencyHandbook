@@ -3,6 +3,8 @@ import json
 from pathlib import Path
 import struct
 import tempfile
+import os
+import stat
 import unittest
 from cryptography.exceptions import InvalidTag
 from decrypt_backup import decrypt,save_new,MAX_BYTES
@@ -37,6 +39,7 @@ class EncryptedFormatTest(unittest.TestCase):
     def test_new_output_never_overwrites_an_existing_backup_or_follows_a_symlink(self):
         with tempfile.TemporaryDirectory() as folder:
             output=Path(folder)/'private.json';save_new(output,b'original')
+            if os.name=='posix':self.assertEqual(0o600,stat.S_IMODE(output.stat().st_mode))
             with self.assertRaises(FileExistsError):save_new(output,b'replace')
             self.assertEqual(b'original',output.read_bytes())
             link=Path(folder)/'link.json';link.symlink_to(output)

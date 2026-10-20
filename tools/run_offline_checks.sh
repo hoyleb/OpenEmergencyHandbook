@@ -8,7 +8,7 @@ adb shell svc data disable
 # fixture APK/data on completion. This works on API 21 without adding storage
 # permissions to the distributed app or depending on UiAutomation shell UIDs.
 mkdir -p android/build/reports/usability
-names="home reader-section large-text-home large-text-reader large-text-home-de large-text-reader-de dark-home landscape backup-preview backup-large-text recovery-unavailable encrypted-backup-large-text encrypted-backup-prompt"
+names="home reader-section large-text-home large-text-reader large-text-home-de large-text-reader-de dark-home landscape backup-preview backup-large-text recovery-unavailable encrypted-backup-large-text encrypted-backup-large-text-de encrypted-backup-prompt"
 collect_evidence() {
   while true; do
     for name in $names; do

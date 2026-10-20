@@ -14,6 +14,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intending
@@ -112,6 +113,15 @@ class HouseholdTransferTest {
                 onView(withText("Encrypt")).check(matches(isCompletelyDisplayed()))
                 onView(withText(android.R.string.cancel)).check(matches(isCompletelyDisplayed()))
                 onView(withText(android.R.string.cancel)).perform(click())
+                onView(withTagValue(equalTo("backup-passphrase"))).check(doesNotExist())
+                onView(withText("DE")).perform(click())
+                onView(withText("Sichern / wiederherstellen…")).perform(click())
+                onView(withText("Verschlüsselt sichern")).perform(click())
+                onView(withText("Verschlüsseln")).check(matches(isCompletelyDisplayed()))
+                onView(withText("Verschlüsseln")).check { view,_ -> ScreenshotEvidence.captureEmptyForm("encrypted-backup-large-text-de",view.rootView) }
+                onView(withTagValue(equalTo("backup-passphrase"))).perform(scrollTo(),click())
+                onView(withText(android.R.string.cancel)).check(matches(isCompletelyDisplayed())).perform(click())
+                onView(withTagValue(equalTo("backup-passphrase"))).check(doesNotExist())
             }
         } finally {
             if (Build.VERSION.SDK_INT < 24) legacy(previousScale)
