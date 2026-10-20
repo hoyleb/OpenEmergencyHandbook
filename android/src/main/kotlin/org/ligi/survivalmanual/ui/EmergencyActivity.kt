@@ -152,7 +152,7 @@ class EmergencyActivity : BaseActivity() {
         restoreDialog = androidx.appcompat.app.AlertDialog.Builder(this)
             .setTitle(tr("Review backup before replacing", "Sicherung vor Ersetzen prüfen"))
             .setMessage(preview).setNegativeButton(android.R.string.cancel) { _, _ -> transfer.dismiss() }
-            .setPositiveButton(tr("Replace plan & saved guides", "Plan und Merkliste ersetzen")) { _, _ -> transfer.restore(preferences, data) }
+            .setPositiveButton(tr("Replace plan", "Ersetzen")) { _, _ -> transfer.restore(preferences, data) }
             .setOnCancelListener { transfer.dismiss() }.show()
     }
 

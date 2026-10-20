@@ -5,6 +5,10 @@ import android.app.Instrumentation.ActivityResult
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+import android.os.ParcelFileDescriptor
+import android.content.res.Configuration
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
@@ -50,6 +54,8 @@ class HouseholdTransferTest {
         }
         instrumentation.waitForIdleSync(); assertFalse("File operation did not finish", busy)
     }
+    private fun shell(command: String) = ParcelFileDescriptor.AutoCloseInputStream(instrumentation.uiAutomation.executeShellCommand(command)).bufferedReader().use { it.readText().trim() }
+    private fun capture(name: String) { Thread.sleep(3500); instrumentation.waitForIdleSync(); shell("screencap -p /sdcard/Download/open-emergency-$name.png") }
     private fun validFixture() {
         val source = HouseholdBackup.snapshot(prefs).copy(notes = "Restored note: Ärztin\nMeeting point: library", bookmarks = setOf("water"))
         fixture.writeText(HouseholdBackup.encode(source))
@@ -61,14 +67,48 @@ class HouseholdTransferTest {
             chooseRestore(); settle(scenario)
             onView(withText("Review backup before replacing")).check(matches(isDisplayed()))
             assertEquals("Existing plan", prefs.getString("notes", ""))
+            capture("backup-preview")
             scenario.recreate()
             onView(withText("Review backup before replacing")).check(matches(isDisplayed()))
-            onView(withText("Replace plan & saved guides")).perform(click()); settle(scenario)
+            onView(withText("Replace plan")).perform(click()); settle(scenario)
             assertTrue(prefs.getString("notes", "")!!.contains("Ärztin"))
             assertEquals(setOf("water"), prefs.getStringSet("bookmarks", emptySet()))
             assertEquals("en", prefs.getString("language", ""))
         }
     }
+    @Suppress("DEPRECATION")
+    @Test fun largeTextRestoreConfirmationKeepsActionsReadable() {
+        validFixture()
+        val previous = shell("settings get system font_scale")
+        val previousScale = context.resources.configuration.fontScale
+        fun legacy(scale: Float) { instrumentation.runOnMainSync {
+            context.resources.updateConfiguration(Configuration(context.resources.configuration).apply { fontScale = scale }, context.resources.displayMetrics)
+        } }
+        try {
+            if (Build.VERSION.SDK_INT < 24) legacy(2f) else shell("settings put system font_scale 2.0")
+            val deadline = System.currentTimeMillis() + 5000
+            while (context.resources.configuration.fontScale < 1.9f && System.currentTimeMillis() < deadline) Thread.sleep(100)
+            ActivityScenario.launch(EmergencyActivity::class.java).use { scenario ->
+                scenario.onActivity { assertTrue(it.resources.configuration.fontScale >= 1.9f) }
+                chooseRestore(); settle(scenario)
+                onView(withText("Replace plan")).check(matches(isCompletelyDisplayed())).check { view, _ ->
+                    val text = view as TextView
+                    for (line in 0 until text.layout.lineCount) assertEquals(0, text.layout.getEllipsisCount(line))
+                }
+                onView(withText(android.R.string.cancel)).check(matches(isCompletelyDisplayed()))
+                capture("backup-large-text")
+                onView(withText(android.R.string.cancel)).perform(click())
+                assertEquals("Existing plan", prefs.getString("notes", ""))
+            }
+        } finally {
+            if (Build.VERSION.SDK_INT < 24) legacy(previousScale)
+            else if (previous == "null" || previous.isBlank()) shell("settings delete system font_scale")
+            else shell("settings put system font_scale $previous")
+            val deadline = System.currentTimeMillis() + 5000
+            while (context.resources.configuration.fontScale >= 1.9f && System.currentTimeMillis() < deadline) Thread.sleep(100)
+        }
+    }
+
     @Test fun cancellingRestoreKeepsCurrentData() {
         validFixture()
         ActivityScenario.launch(EmergencyActivity::class.java).use { scenario ->
