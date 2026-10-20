@@ -1,4 +1,5 @@
 [
+  {"query":"bleeding","language":"de","first":"bleeding","approximate":false},
   {"query":"bleeding","language":"en","first":"bleeding","approximate":false},
   {"query":"Stromausfall","language":"en","first":"power","approximate":false},
   {"query":"blackout","language":"de","first":"power","approximate":false},

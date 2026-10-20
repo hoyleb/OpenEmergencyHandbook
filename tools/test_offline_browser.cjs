@@ -10,6 +10,7 @@ const {chromium} = require('playwright');
   const page = await context.newPage(); page.on('pageerror', error => errors.push(error.message));
   await page.goto(file);
   assert.equal(await page.locator('article:visible').count(),30);
+  await page.screenshot({path:path.resolve(__dirname,'../dist/HTML-preview.png')});
   await page.locator('#search').fill('blackot');
   assert.match(await page.locator('#count').innerText(), /possible matches/);
   assert.equal(await page.locator('article:visible').first().getAttribute('id'),'en-power');

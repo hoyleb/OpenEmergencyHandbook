@@ -76,11 +76,17 @@ class EmergencyActivity : BaseActivity() {
 
     private val exportPlan = registerForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
         val snapshot = pendingExport; pendingExport = null
-        if (uri != null && snapshot != null) transfer.write(applicationContext.contentResolver, uri, snapshot)
+        if (uri != null) {
+            if (snapshot != null) transfer.write(applicationContext.contentResolver, uri, snapshot)
+            else transferResult(tr("Export interrupted. The selected file may be empty; save the plan again.", "Export unterbrochen. Gewählte Datei eventuell leer; Plan erneut speichern."))
+        }
     }
     private val backupPlan = registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
         val data = transfer.pendingBackup; transfer.pendingBackup = null
-        if (uri != null && data != null) transfer.write(applicationContext.contentResolver, uri, data)
+        if (uri != null) {
+            if (data != null) transfer.write(applicationContext.contentResolver, uri, data)
+            else transferResult(tr("Backup interrupted. The selected file may be empty; save a new backup.", "Sicherung unterbrochen. Gewählte Datei eventuell leer; Sicherung erneut speichern."))
+        }
     }
     private val importPlan = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri != null) transfer.read(applicationContext.contentResolver, uri, handbook.articles.map { it.id }.toSet().takeIf { it.isNotEmpty() })

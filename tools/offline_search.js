@@ -17,8 +17,9 @@ const EmergencySearch = (() => {
     const entries = articles.map((article, index) => {
       const text = article[language];
       const aliases = ['en', 'de'].map(lang => article[lang].title + ' ' + article[lang].keywords).join(' ');
+      const titleAliases = normalise(['en', 'de'].map(lang => article[lang].title).join(' '));
       const title = normalise(text.title), keywords = normalise(text.keywords + ' ' + aliases);
-      const score = words.reduce((sum, word) => sum + (title.includes(word) ? 100 : keywords.includes(word) ? 30 : normalise(text.summary).includes(word) ? 10 : 1), 0) + (words.length && title.includes(normalise(query)) ? 100 : 0);
+      const score = words.reduce((sum, word) => sum + (title.includes(word) ? 100 : titleAliases.includes(word) ? 90 : keywords.includes(word) ? 30 : normalise(text.summary).includes(word) ? 10 : 1), 0) + (words.length ? title.includes(normalise(query)) ? 100 : titleAliases.includes(normalise(query)) ? 90 : 0 : 0);
       return { article, index, score, haystack: normalise(text.title + ' ' + text.summary + ' ' + text.keywords + ' ' + text.body + ' ' + aliases), terms: normalise(text.title + ' ' + text.keywords + ' ' + aliases).split(/[^\p{L}\p{N}]+/u) };
     });
     let matches = entries.filter(entry => words.every(word => entry.haystack.includes(word)));

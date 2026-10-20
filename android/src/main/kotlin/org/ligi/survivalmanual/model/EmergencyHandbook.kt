@@ -37,6 +37,12 @@ class EmergencyHandbook(private val source: (String) -> String, val language: St
             }
         }
     }
+    private val titleAliases: Map<String, String> = root.getJSONArray("articles").let { list ->
+        (0 until list.length()).associate { index ->
+            val entry = list.getJSONObject(index)
+            entry.getString("id") to listOf("en", "de").joinToString(" ") { entry.getJSONObject(it).getString("title") }
+        }
+    }
     val articles: List<EmergencyArticle> = root.getJSONArray("articles").let { list ->
         (0 until list.length()).map { index ->
             val entry = list.getJSONObject(index)
@@ -63,10 +69,15 @@ class EmergencyHandbook(private val source: (String) -> String, val language: St
             val keywords = normalise(article.keywords + " " + aliases[article.id].orEmpty())
             return words.fold(0) { total, word -> total + when {
                 title.contains(word) -> 100
+                normalise(titleAliases[article.id].orEmpty()).contains(word) -> 90
                 keywords.contains(word) -> 30
                 normalise(article.summary).contains(word) -> 10
                 else -> 1
-            } } + if (title.contains(normalise(query))) 100 else 0
+            } } + when {
+                title.contains(normalise(query)) -> 100
+                normalise(titleAliases[article.id].orEmpty()).contains(normalise(query)) -> 90
+                else -> 0
+            }
         }
         val exact = articles.filter { article ->
             val haystack = normalise("${article.title} ${article.summary} ${article.keywords} ${article.body} ${aliases[article.id].orEmpty()}")
