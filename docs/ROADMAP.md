@@ -1,6 +1,6 @@
 # Open items and evidence
 
-Updated 19 October 2026. `content/coverage.json` maps 47 requirements to drafts and explicitly lists gaps. This is a development preview, not a complete or professionally reviewed survival reference.
+Updated 20 October 2026. `content/coverage.json` maps 47 requirements to drafts and explicitly lists gaps. This is a development preview, not a complete or professionally reviewed survival reference.
 
 ## Implemented in the 0.2 preview
 
@@ -22,6 +22,16 @@ Validation results are attached to the actual workflow/release. A feature listed
 - Accessible headings/card roles and responsive layouts for larger system fonts. CI includes 200% font/dark-mode scenarios and screenshots.
 - See [USABILITY.md](USABILITY.md) for exact flows, automated coverage and the user/device/TalkBack evidence still needed.
 
+## Implemented in the 0.4 resilience preview
+
+- Versioned JSON backup/confirmed restore of household fields and bookmarks, bounded validation, cancellation and failed-commit rollback. File I/O runs off the UI thread; confirmation survives rotation. Plain-text export remains separate. See [BACKUP_AND_RECOVERY.md](BACKUP_AND_RECOVERY.md).
+- Main-catalog recovery through independently stored/hash-checked guide files, partial recovery with repaired links, and a total-failure page that retains access to the plan/backup. Malformed preference types/history no longer block reading.
+- HTML/Android ranked bilingual search parity, including foreign-language title priority and labelled one-edit suggestions; shared acceptance vectors. Portable browser checks cover filters, anchors, 200% CSS text, no external requests and reading all 60 guides with JavaScript disabled.
+- CI matrix expanded to APIs 21/23/36; keyboard dismissal, landscape, card/heading roles, source expanded/collapsed state, backup and corruption tests. Exact run results are in `TEST-SUMMARY-api-*.json` and `HTML-TESTS.json`; configuration is not by itself a passing result.
+- Explicit preview keystore path, one preparation job, matrix certificate checks and a pinned-certificate publication guard. A missing/different identity blocks release; protected owner key provisioning remains open. See [SIGNING.md](SIGNING.md).
+- Unsigned AAB packaging for review; Android cloud/device-transfer extraction exclusions. Neither establishes store/content approval.
+- Repeatable [hands-on test plan](USABILITY_TEST_PLAN.md), including proposed pilot targets and evidence fields. No user sessions are claimed.
+
 ## P0 — Content needed before public reliance
 
 - [ ] Qualified medical/first-aid review of every procedure, age distinction and escalation trigger; qualified water, electrical, radiation, structural and infection review. Process: [CONTENT_REVIEW.md](CONTENT_REVIEW.md).
@@ -36,18 +46,22 @@ Validation results are attached to the actual workflow/release. A feature listed
 
 - [ ] Test Ben's physical Xiaomi: install/update while retaining notes, flight mode and force-stop/restart, search/navigation, Android large-font/dark mode, export to local storage, export cancellation, saved plan deletion and keyboard behaviour.
 - [ ] TalkBack, low vision, landscape, one-handed and timed findability sessions; measure rather than infer accessibility from labels.
-- [ ] Test declared minimum Android 5/API 21 and more OEMs. CI API 23/36 is useful but does not establish all supported versions.
-- [ ] Test low storage, corrupt bundled data and failure paths; introduce an independently readable fallback if the main content file is damaged.
-- [ ] Improve HTML/Android search parity (HTML lacks Android's fuzzy fallback); test the HTML interactively and without JavaScript on supported browsers.
+- [ ] Minimum Android 5/API 21 is now in the emulator matrix alongside 23/36; attach the current passing run before closing emulator evidence. More OEMs/physical-device evidence remains separate.
+- [x] Add independently readable/hash-checked per-guide fallback, partial/total catalog failure handling and corruption fixtures.
+- [ ] Complete actual low-storage, interrupted-process/reboot and file-provider fault sessions; current tests simulate selected commit/read failures.
+- [x] Add HTML/Android bilingual ranking and typo-fallback parity, category reset, shared vectors and Chromium JavaScript/no-JavaScript tests.
+- [ ] Repeat portable checks on Safari, Firefox and physical Android browsers; Chromium is not evidence for every browser.
 - [x] Produce and visually inspect printable English/German PDFs from the same content (33 pages each).
 - [ ] Produce compact printed quick cards for loss of phone power.
-- [ ] Optional encrypted/structured plan backup and restore. Plain-text export is implemented; restore is not. No cloud account should become necessary.
+- [x] Structured JSON plan/bookmark backup and explicit preview/confirmed restore, preserving unrelated settings.
+- [ ] Optional encrypted portable backups and a security review of their key/password recovery design. Current text/JSON exports are unencrypted; no account is needed.
 
 ## P1 — Distribution and maintenance
 
 - [ ] Complete transitive licence/security audit using the CI dependency inventory. The inventory is evidence of dependencies, not a completed audit.
 - [ ] Protected production signing with backup/key-continuity plan. Cached development signing remains for previews; losing the cache can require reinstall and lose local notes.
-- [ ] Generate production AAB, privacy/health/data-safety declarations, store screenshots/listing and applicable Play testing. Verify policy/target requirements again at submission. SDK 36 migration alone is not store readiness.
+- [x] Generate an unsigned AAB as packaging evidence.
+- [ ] Complete production signing, privacy/health/data-safety declarations, store screenshots/listing and applicable Play testing. Verify policy/target requirements again at submission. SDK 36 migration alone is not store readiness.
 - [ ] Confirm ownership/access for store accounts and upload credentials outside Git. Submit only after review/testing/signing requirements are met.
 - [ ] Assign correction triage, review cadence, withdrawal/replacement and source-link maintenance. Optional content updating requires authentication, schema validation, atomic install and a retained known-good edition; it must never lock out offline reading.
 - [ ] Reproducibility check before claiming reproducible APKs. Source archive/checksum/signature do not by themselves prove reproducibility.

@@ -2,7 +2,9 @@ name: Android preview
 on:
   push:
     branches: [master, feature/resilience-and-portability]
+    paths-ignore: ['docs/**', 'README.md', 'PRIVACY_POLICY.md']
   pull_request:
+    paths-ignore: ['docs/**', 'README.md', 'PRIVACY_POLICY.md']
   workflow_dispatch:
 permissions:
   contents: read
@@ -129,7 +131,7 @@ jobs:
         run: |
           "$ANDROID_HOME/build-tools/36.0.0/apksigner" verify --verbose --print-certs android/build/outputs/apk/debug/*.apk > dist/APK-SIGNATURE.txt
           "$ANDROID_HOME/build-tools/36.0.0/aapt" dump badging android/build/outputs/apk/debug/*.apk > dist/APK-MANIFEST.txt
-          python3 tools/verify_preview_signature.py dist/APK-SIGNATURE.txt "$EXPECTED_PREVIEW_CERTIFICATE" dist/PREVIEW-SIGNING.json
+          python3 tools/verify_preview_signature.py dist/APK-SIGNATURE.txt "$EXPECTED_PREVIEW_CERTIFICATE" dist/PREVIEW-SIGNING.json dist/APK-MANIFEST.txt
           python3 tools/summarize_android_tests.py --api ${{ matrix.api }} --output dist/TEST-SUMMARY-api-${{ matrix.api }}.json
           ./gradlew :android:dependencies --configuration debugRuntimeClasspath --console=plain > dist/dependency-tree.txt
       - name: Package preview downloads

@@ -1,6 +1,6 @@
 # Usability goals and remaining evidence
 
-The 0.3 preview prioritises finding the right guide and reading the first action under stress. No new clinical instructions were added in this usability pass.
+The 0.3/0.4 previews prioritise finding the right guide and reading the first action under stress. No new clinical instructions were added in this usability pass.
 
 ## Implemented flows
 
@@ -17,7 +17,7 @@ The 0.3 preview prioritises finding the right guide and reading the first action
 
 The Android test suite covers first-screen urgent-action visibility, required bundled guides, bilingual ranked/approximate search, first-aid findability, related-guide Back restoration after recreation, bookmarks, section jumps, reader text/language persistence, screen-on opt-in/clearing, 200% system font navigation, dark palette, household persistence/export/cancellation and no internet permission.
 
-CI tests offline on APIs 23 and 36 and publishes screenshots of normal home, a reader section, 200% English/German home/reader and dark home. The 200% test changes the system setting on API 36 and uses an in-process resource-configuration fixture on API 23, where the settings shell command does not notify the running app. It asserts the effective activity font scale on both, plus scaled density on API 23. This tests the actual large-text layout without claiming the old OS settings integration was exercised. Screenshots and passing assertions establish these specific conditions; they are not a substitute for real user sessions or TalkBack testing. See the linked workflow/release for the actual pass/fail result.
+CI tests offline on APIs 21, 23 and 36 and publishes screenshots of normal home, a reader section, 200% English/German home/reader dark home and landscape. The 200% test changes the system setting on API 36 and uses an in-process resource-configuration fixture on APIs 21/23, where the settings shell command does not notify the running app. It asserts the effective activity font scale on both, plus scaled density on APIs 21/23. This tests the actual large-text layout without claiming the old OS settings integration was exercised. Screenshots and passing assertions establish these specific conditions; they are not a substitute for real user sessions or TalkBack testing. See the linked workflow/release for the actual pass/fail result.
 
 ## Still needed before claiming high usability
 
@@ -25,7 +25,7 @@ CI tests offline on APIs 23 and 36 and publishes screenshots of normal home, a r
 - Physical phones, including the user's device: portrait/landscape, one hand, gloves where relevant, very bright/dim conditions, update without data loss, no SIM/network, force-stop and restart.
 - Actual TalkBack/switch-access sessions, focus order, keyboard navigation and source-panel announcements; contrast/accessibility-scanner assessment for all interactive states.
 - Validate the entire 200% reading flow, not just the initial screens. Check very long titles, German terms, selection, dialogs and the keyboard on several OEMs.
-- Household backup/restore, corrupted-data fallback, low-storage/export-failure usability and authenticated content updating.
+- Hands-on validation of the implemented household backup/restore and corrupted-data fallback; real low-storage/export-failure sessions and authenticated content updating.
 - Reviewed action diagrams and language comprehension work with qualified reviewers. Better navigation does not establish medical accuracy.
 
 Design references (checked 19 October 2026):
@@ -33,3 +33,5 @@ Design references (checked 19 October 2026):
 - https://developer.android.com/guide/topics/ui/accessibility/views/principles-views
 - https://developer.android.com/guide/navigation/principles
 - https://developer.android.com/about/versions/14/features
+
+The 0.4 suite also tests actual landscape orientation, keyboard dismissal on returning home, grouped card/heading roles and source disclosure state. See [USABILITY_TEST_PLAN.md](USABILITY_TEST_PLAN.md) for the uncompleted human/device study and [BACKUP_AND_RECOVERY.md](BACKUP_AND_RECOVERY.md) for backup/failure behaviour.

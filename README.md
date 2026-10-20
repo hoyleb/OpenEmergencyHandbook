@@ -12,23 +12,23 @@ Separate package: `com.hoyleb.openemergency.preview`. No account, subscription, 
 
 Test airplane mode with Wi-Fi off and restart the app. Check search in both languages, language switching while reading, large text, and saving/reopening the household plan. Keep paper emergency contacts too.
 
-Preview builds normally reuse a cached development signing key. If that cache is lost, uninstall/reinstall may be needed, removing local notes. Production signing is still outstanding.
+The 0.4 series uses an explicit development keystore and pinned-certificate publication guard. Older previews used changing keys and may require uninstalling; export the old plan first. JSON backups from 0.4 can be restored; older text exports need manual copying. Production/protected signing remains outstanding. See [signing and key continuity](docs/SIGNING.md) and [backup/recovery](docs/BACKUP_AND_RECOVERY.md).
 
-## Usability in the 0.3 preview
+## Usability and resilience in the 0.4 preview
 
-Urgent actions are on the home screen; Help, Search, Saved and Plan stay available. Back restores the previous guide or search position. Search ranks bilingual terms and labels typo suggestions. Reader sections support jumping; More holds bookmarks, text size and an explicit screen-on option. Bookmarks and recent reading stay local. See [usability goals and evidence](docs/USABILITY.md).
+Urgent actions are on the home screen; Help, Search, Saved and Plan stay available. Back restores the previous guide or search position. Search ranks bilingual terms and labels typo suggestions. Reader sections support jumping; More holds bookmarks, text size and an explicit screen-on option. Bookmarks and recent reading stay local. Plan adds versioned JSON backup and confirmed restore; independent guide copies recover from a damaged main catalog. The HTML edition now has matching bilingual/typo search and works as an unfiltered handbook without JavaScript. See [usability goals and evidence](docs/USABILITY.md).
 
 ## Included
 
 - All six disaster scenarios, first-aid overview, adult CPR/AED, safe water, food, sanitation, shelter, preparedness and communications.
-- Native category navigation/reader with adjustable text and related guides, bilingual offline search with one-edit fallback, local checklist/notes, local text export and water estimate with assumptions.
+- Native category navigation/reader with adjustable text and related guides, bilingual offline search with one-edit fallback, local checklist/notes, local text export, structured backup/restore and water estimate with assumptions.
 - Source dates and explicit draft status; offline HTML, printable English/German PDFs, source archive, coverage report and checksums in successful releases.
 
 No live alerts, radiation measurement, verified shelter directory or personalised diagnosis. Dedicated child/infant CPR, choking and other first-aid drafts are included, alongside accessibility, pets, combined-hazard and recovery pages. Reviewed diagrams, further detailed protocols and professional/translation review remain outstanding. The inherited wiki is excluded from preview assets pending its own review.
 
 ## Build
 
-Requires JDK 17 and Android SDK. The app compiles/targets SDK 36, supports system-bar/display-cutout/keyboard insets, and retains Android 5.0 as its declared minimum. CI exercises Android 6 and 16; physical-device/minimum-OS evidence and store requirements remain separate open items.
+Requires JDK 17 and Android SDK. The app compiles/targets SDK 36, supports system-bar/display-cutout/keyboard insets, and retains Android 5.0 as its declared minimum. CI exercises Android 5, 6 and 16; physical-device/minimum-OS evidence and store requirements remain separate open items.
 
 ```sh
 git clone https://github.com/hoyleb/OpenEmergencyHandbook.git
@@ -51,3 +51,5 @@ Application and newly authored summaries/translations use GPLv3 under [COPYING](
 ## Printable editions
 
 `python3 -m pip install -r tools/requirements-pdf.txt` and install `fonts-dejavu-core`, then run `python3 tools/build_pdf.py`. This creates one English and one German PDF in `dist/` from the same canonical source. The current editions contain 33 pages each, clickable contents, bookmarks, related guides and source URLs. They carry the same unreviewed-preview status as the app.
+
+Portable checks: `node tools/test_offline_search.cjs`. Browser checks: install Playwright 1.62.1 and Chromium, then run `node tools/test_offline_browser.cjs` (with its module path available). CI publishes exact API test summaries, HTML checks and screenshots, APK signature/permissions, and an unsigned AAB for packaging review. The AAB is not store-ready.
