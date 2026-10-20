@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+adb shell mkdir -p /sdcard/Download
 adb shell svc wifi disable
 adb shell svc data disable
 check_result=0
@@ -12,14 +13,14 @@ check_result=0
 # fixtures, not user household data. The shell owns Download; no app storage
 # permission is added just to collect test evidence.
 mkdir -p android/build/reports/usability
-for name in home reader-section large-text-home large-text-reader large-text-home-de large-text-reader-de dark-home; do
+for name in home reader-section large-text-home large-text-reader large-text-home-de large-text-reader-de dark-home landscape; do
   adb pull "/sdcard/Download/open-emergency-$name.png" "android/build/reports/usability/$name.png" >/dev/null || true
 done
 adb shell settings put system font_scale 1.0
 if [ "$check_result" -ne 0 ]; then
   exit "$check_result"
 fi
-for name in home reader-section large-text-home large-text-reader large-text-home-de large-text-reader-de dark-home; do
+for name in home reader-section large-text-home large-text-reader large-text-home-de large-text-reader-de dark-home landscape; do
   cp "android/build/reports/usability/$name.png" "dist/Usability-$name.png"
 done
 adb install -r android/build/outputs/apk/debug/*.apk

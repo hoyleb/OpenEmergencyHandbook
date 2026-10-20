@@ -16,8 +16,8 @@ android {
         applicationId "com.hoyleb.openemergency"
         minSdkVersion 21
         targetSdkVersion 36
-        versionCode 5
-        versionName "0.3.1-preview"
+        versionCode 6
+        versionName "0.4.0-preview"
 
         vectorDrawables.useSupportLibrary = true
         archivesBaseName = "OpenEmergencyHandbook-$versionName"
@@ -28,6 +28,17 @@ android {
     buildFeatures {
         buildConfig true
         viewBinding true
+    }
+
+    signingConfigs {
+        debug {
+            if (System.getenv('OPEN_EMERGENCY_PREVIEW_KEYSTORE')) {
+                storeFile file(System.getenv('OPEN_EMERGENCY_PREVIEW_KEYSTORE'))
+                storePassword System.getenv('OPEN_EMERGENCY_PREVIEW_STORE_PASSWORD') ?: 'android'
+                keyAlias System.getenv('OPEN_EMERGENCY_PREVIEW_KEY_ALIAS') ?: 'androiddebugkey'
+                keyPassword System.getenv('OPEN_EMERGENCY_PREVIEW_KEY_PASSWORD') ?: 'android'
+            }
+        }
     }
 
     buildTypes {

@@ -195,13 +195,19 @@ class EmergencyActivity : BaseActivity() {
         layoutParams = LinearLayout.LayoutParams(-1, -2).apply { bottomMargin = dp(6) }
     }
 
+    private fun hideKeyboard() {
+        val token = currentFocus?.windowToken ?: window.decorView.windowToken
+        (getSystemService(INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager).hideSoftInputFromWindow(token, 0)
+    }
     private fun navigate(destination: String) {
+        hideKeyboard()
         if (destination == route) return
         history.add(snapshot()); if (history.size > 30) history.removeAt(0)
         route = destination; articleScroll = 0; render()
     }
 
     private fun switchTab(destination: String) {
+        hideKeyboard()
         if (route in roots) tabPlaces[route] = snapshot()
         else history.lastOrNull { it.route == activeTab }?.let { tabPlaces[activeTab] = it }
         history.clear()
@@ -358,7 +364,7 @@ class EmergencyActivity : BaseActivity() {
         val search = EditText(this).apply {
             hint = tr("Water, blackout, bleeding…", "Wasser, Stromausfall, Blutung…")
             contentDescription = tr("Search all offline guides", "Alle Offline-Anleitungen durchsuchen")
-            setSingleLine(true); textSize = 17f; setTextColor(textColour); setHintTextColor(muted)
+            setSingleLine(true); filters = arrayOf(android.text.InputFilter.LengthFilter(200)); textSize = 17f; setTextColor(textColour); setHintTextColor(muted)
             minHeight = dp(56); setPadding(dp(12), dp(8), dp(12), dp(8)); background = shape(surface, 10)
             setText(query)
         }
@@ -526,9 +532,14 @@ class EmergencyActivity : BaseActivity() {
             }
         }
         val sources = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; visibility = View.GONE }
-        page.addView(button(tr("Sources & limitations (${article.sources.size})", "Quellen & Grenzen (${article.sources.size})")) {
-            sources.visibility = if (sources.visibility == View.VISIBLE) View.GONE else View.VISIBLE
-        })
+        val sourcesToggle = button(tr("Sources & limitations (${article.sources.size})", "Quellen & Grenzen (${article.sources.size})")) { }
+        ViewCompat.setStateDescription(sourcesToggle, tr("Collapsed", "Eingeklappt"))
+        sourcesToggle.setOnClickListener {
+            val expanded = sources.visibility != View.VISIBLE
+            sources.visibility = if (expanded) View.VISIBLE else View.GONE
+            ViewCompat.setStateDescription(sourcesToggle, if (expanded) tr("Expanded", "Ausgeklappt") else tr("Collapsed", "Eingeklappt"))
+        }
+        page.addView(sourcesToggle)
         sources.addView(text(tr("Original summary and translation. Sources checked ${article.checkedAt}; no professional review recorded. Links open your browser and require internet. No affiliation with the cited organisations.", "Eigene Zusammenfassung und Übersetzung. Quellenabgleich: ${article.checkedAt}; keine fachliche Prüfung dokumentiert. Links öffnen den Browser und benötigen Internet. Keine Verbindung zu den Quellenorganisationen."), 13f))
         article.sources.forEachIndexed { index, url -> sources.addView(button(tr("Source ${index + 1} · ${Uri.parse(url).host}", "Quelle ${index + 1} · ${Uri.parse(url).host}")) {
             try { startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url))) }
@@ -583,6 +594,8 @@ class EmergencyActivity : BaseActivity() {
         page.addView(EditText(this).apply {
             id = View.generateViewId(); setTextColor(textColour); setHintTextColor(muted)
             hint = tr("Emergency contact, medicines, meeting point…", "Notfallkontakt, Medikamente, Treffpunkt…")
+            contentDescription = tr("Household notes", "Haushaltsnotizen")
+            inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE
             minLines = 5; gravity = android.view.Gravity.TOP
             setText(preferences.safeString("notes", ""))
             addTextChangedListener(object : TextWatcher {
