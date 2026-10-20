@@ -14,6 +14,7 @@
       link.hidden = false; contents.appendChild(link);
     }
     document.querySelectorAll('[data-urgent-lang]').forEach(node => { node.hidden = node.dataset.urgentLang !== language; });
+    document.querySelectorAll('[data-ui-lang]').forEach(node => { node.hidden = node.dataset.uiLang !== language; });
     document.documentElement.lang = language;
     document.getElementById('en').setAttribute('aria-pressed', String(language === 'en'));
     document.getElementById('de').setAttribute('aria-pressed', String(language === 'de'));
