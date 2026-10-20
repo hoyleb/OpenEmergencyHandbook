@@ -5,7 +5,7 @@ adb shell svc wifi disable
 adb shell svc data disable
 check_result=0
 ./gradlew :android:connectedDebugAndroidTest \
-  -Pandroid.testInstrumentationRunnerArguments.class=org.ligi.survivalmanual.EmergencyPreviewTest \
+  -Pandroid.testInstrumentationRunnerArguments.class=org.ligi.survivalmanual.EmergencyPreviewTest,org.ligi.survivalmanual.HouseholdBackupTest,org.ligi.survivalmanual.HouseholdTransferTest \
   --console=plain || check_result=$?
 
 # Preserve diagnostic screenshots even if a later test fails. These are emulator

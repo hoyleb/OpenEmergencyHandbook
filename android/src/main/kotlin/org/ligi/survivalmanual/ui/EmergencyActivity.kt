@@ -16,6 +16,7 @@ import android.view.WindowManager
 import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.ViewModelProvider
 import androidx.core.text.HtmlCompat
 import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
@@ -29,6 +30,9 @@ import org.ligi.survivalmanual.functions.convertMarkdownToHtml
 import org.ligi.survivalmanual.model.EmergencyArticle
 import org.ligi.survivalmanual.model.EmergencyHandbook
 import org.ligi.survivalmanual.model.HouseholdPlan
+import org.ligi.survivalmanual.model.HouseholdBackup
+import org.ligi.survivalmanual.model.HouseholdTransfer
+import org.ligi.survivalmanual.model.TransferState
 import java.util.Locale
 
 /** Entire reading, search, navigation and household flow works offline. */
@@ -55,6 +59,9 @@ class EmergencyActivity : BaseActivity() {
     private val roots = setOf("home", "search", "saved", "plan")
     private val readerSections = linkedMapOf<String, View>()
     private var pendingExport: String? = null
+    private val transfer by lazy { ViewModelProvider(this).get(HouseholdTransfer::class.java) }
+    private var transferStatus: TextView? = null
+    private var restoreDialog: androidx.appcompat.app.AlertDialog? = null
 
     private data class Place(val route: String, val query: String, val category: String, val scroll: Int, val tab: String) {
         fun json() = JSONObject().put("route", route).put("query", query).put("category", category).put("scroll", scroll).put("tab", tab)
@@ -65,15 +72,14 @@ class EmergencyActivity : BaseActivity() {
 
     private val exportPlan = registerForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { uri ->
         val snapshot = pendingExport; pendingExport = null
-        if (uri != null && snapshot != null) {
-            try {
-                val output = contentResolver.openOutputStream(uri) ?: throw java.io.IOException("No output stream")
-                output.bufferedWriter(Charsets.UTF_8).use { it.write(snapshot) }
-                Toast.makeText(this, tr("Plan saved. Keep a printed copy too.", "Plan gespeichert. Auch auf Papier aufbewahren."), Toast.LENGTH_LONG).show()
-            } catch (_: Exception) {
-                Toast.makeText(this, tr("Could not save. Try another local folder.", "Speichern fehlgeschlagen. Anderen lokalen Ordner versuchen."), Toast.LENGTH_LONG).show()
-            }
-        }
+        if (uri != null && snapshot != null) transfer.write(applicationContext.contentResolver, uri, snapshot)
+    }
+    private val backupPlan = registerForActivityResult(ActivityResultContracts.CreateDocument("application/json")) { uri ->
+        val data = transfer.pendingBackup; transfer.pendingBackup = null
+        if (uri != null && data != null) transfer.write(applicationContext.contentResolver, uri, data)
+    }
+    private val importPlan = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        if (uri != null) transfer.read(applicationContext.contentResolver, uri, handbook.articles.map { it.id }.toSet())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -107,7 +113,41 @@ class EmergencyActivity : BaseActivity() {
             }
         })
         render()
+        transfer.state.observe(this) { state ->
+            transferStatus?.text = if (state == TransferState.Busy) tr("Working with the selected file…", "Ausgewählte Datei wird verarbeitet…") else ""
+            when (state) {
+                is TransferState.Preview -> showRestorePreview(state)
+                TransferState.Saved -> transferResult(tr("File saved. Keep the backup private and a printed plan too.", "Datei gespeichert. Sicherung vertraulich und Plan auch auf Papier aufbewahren."))
+                TransferState.Restored -> {
+                    transfer.dismiss()
+                    if (route == "plan" || route == "saved") { articleScroll = 0; render() }
+                    Toast.makeText(this, tr("Household plan and saved guides restored", "Haushaltsplan und Merkliste wiederhergestellt"), Toast.LENGTH_LONG).show()
+                }
+                TransferState.ReadFailed -> transferResult(tr("Could not read this backup. Choose a supported JSON backup up to 512 KiB. Current data is unchanged.", "Sicherung nicht lesbar. Unterstützte JSON-Sicherung bis 512 KiB wählen. Bisherige Daten unverändert."))
+                TransferState.WriteFailed -> transferResult(tr("Could not finish saving. Check the selected file and available storage. Your plan is kept in the app.", "Speichern nicht abgeschlossen. Datei und freien Speicher prüfen. Der Plan bleibt in der App."))
+                TransferState.RestoreFailed -> transferResult(tr("Could not store the restored plan. Previous values were restored in memory. Keep your backup and free storage before retrying.", "Wiederherstellung nicht gespeichert. Vorherige Werte im Arbeitsspeicher wiederhergestellt. Sicherung behalten und Speicher freigeben."))
+                else -> Unit
+            }
+        }
     }
+
+    private fun transferResult(message: String) { transfer.dismiss(); Toast.makeText(this, message, Toast.LENGTH_LONG).show() }
+
+    private fun showRestorePreview(state: TransferState.Preview) {
+        if (restoreDialog?.isShowing == true) return
+        val data = state.snapshot
+        val preview = tr("Replace the current household plan and saved guides with this backup? Language, text size and reading history stay unchanged.", "Aktuellen Haushaltsplan und Merkliste durch diese Sicherung ersetzen? Sprache, Schriftgröße und Verlauf bleiben erhalten.") +
+            "\n\n" + tr("${data.checks.values.count { it }} of 8 checklist items · ${data.bookmarks.size} saved guides", "${data.checks.values.count { it }} von 8 Punkten · ${data.bookmarks.size} gemerkte Anleitungen") +
+            "\n" + tr("People: ${data.people.ifEmpty { "—" }} · Days: ${data.days.ifEmpty { "—" }}", "Personen: ${data.people.ifEmpty { "—" }} · Tage: ${data.days.ifEmpty { "—" }}") +
+            "\n\n" + tr("Notes preview (${data.notes.length} characters):", "Notizvorschau (${data.notes.length} Zeichen):") + "\n" + data.notes.take(300) + if (data.notes.length > 300) "…" else ""
+        restoreDialog = androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(tr("Review backup before replacing", "Sicherung vor Ersetzen prüfen"))
+            .setMessage(preview).setNegativeButton(android.R.string.cancel) { _, _ -> transfer.dismiss() }
+            .setPositiveButton(tr("Replace plan & saved guides", "Plan und Merkliste ersetzen")) { _, _ -> transfer.restore(preferences, data) }
+            .setOnCancelListener { transfer.dismiss() }.show()
+    }
+
+    override fun onDestroy() { restoreDialog?.dismiss(); super.onDestroy() }
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("language", language)
@@ -484,7 +524,12 @@ class EmergencyActivity : BaseActivity() {
         page.addView(button(tr("Back to previous page", "Zurück zur vorherigen Seite")) { goBack() })
     }
     private fun household() {
-        page.addView(text(tr("My household", "Mein Haushalt"), 30f, true))
+        page.addView(heading(tr("My household", "Mein Haushalt"), 30f))
+        page.addView(button(tr("Backup / restore…", "Sichern / wiederherstellen…")) { householdTransfers() })
+        transferStatus = text(if (transfer.state.value == TransferState.Busy) tr("Working with the selected file…", "Ausgewählte Datei wird verarbeitet…") else "", 14f).apply {
+            ViewCompat.setAccessibilityLiveRegion(this, ViewCompat.ACCESSIBILITY_LIVE_REGION_POLITE)
+        }
+        page.addView(transferStatus)
         page.addView(text(tr("Saved only on this device. Do not rely on a phone as your only copy.", "Nur auf diesem Gerät gespeichert. Wichtige Angaben zusätzlich auf Papier aufbewahren."), 15f))
         val items = listOf(
             "water" to tr("Stored drinking water & clean containers", "Trinkwasservorrat & saubere Behälter"),
@@ -553,6 +598,30 @@ class EmergencyActivity : BaseActivity() {
                     HouseholdPlan.clear(preferences); articleScroll = 0; render()
                 }.show()
         })
+    }
+
+    private fun householdTransfers() {
+        if (transfer.state.value == TransferState.Busy) {
+            Toast.makeText(this, tr("A file operation is still running", "Eine Datei wird noch verarbeitet"), Toast.LENGTH_SHORT).show(); return
+        }
+        androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle(tr("Household backup", "Haushaltssicherung"))
+            .setItems(arrayOf(tr("Save JSON backup", "JSON-Sicherung speichern"), tr("Restore JSON backup", "JSON-Sicherung wiederherstellen"))) { _, action ->
+                if (action == 1) {
+                    try { importPlan.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) }
+                    catch (_: ActivityNotFoundException) { transferResult(tr("No file picker available", "Keine Dateiauswahl verfügbar")) }
+                } else androidx.appcompat.app.AlertDialog.Builder(this)
+                    .setMessage(tr("Creates an unencrypted JSON file with your checklist, notes and saved guides. It can restore these after reinstalling. Choose a local folder; cloud providers may upload it. Keep it private. Text exports are for reading and cannot be restored automatically.", "Erstellt eine unverschlüsselte JSON-Datei mit Checkliste, Notizen und Merkliste. Zur Wiederherstellung nach Neuinstallation. Lokalen Ordner wählen; Cloud-Anbieter können hochladen. Vertraulich aufbewahren. Textexporte sind nur zum Lesen und nicht automatisch einlesbar."))
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .setPositiveButton(tr("Choose file", "Datei wählen")) { _, _ ->
+                        try {
+                            val ids = handbook.articles.map { it.id }.toSet()
+                            val encoded = HouseholdBackup.encode(HouseholdBackup.snapshot(preferences))
+                            transfer.pendingBackup = HouseholdBackup.encode(HouseholdBackup.parse(encoded, ids))
+                            backupPlan.launch("OpenEmergency-Household-backup.json")
+                        } catch (_: Exception) { transfer.pendingBackup = null; transferResult(tr("Could not create backup. Check notes length and saved data.", "Sicherung nicht erstellt. Notizlänge und gespeicherte Daten prüfen.")) }
+                    }.show()
+            }.show()
     }
 
     private fun numberInput(label: String, key: String, fallback: String): EditText {

@@ -79,15 +79,27 @@ object HouseholdBackup {
      * preferences transaction; on a disk failure restore the previous in-memory
      * values too and report failure. Never clear unrelated settings/history. */
     fun restore(prefs: SharedPreferences, data: HouseholdSnapshot): Boolean {
-        val before = snapshot(prefs)
+        val fields = checklistKeys.map { "check-$it" } + listOf("people", "days", "notes", "bookmarks")
+        val before = prefs.all.filterKeys { it in fields }
         fun write(snapshot: HouseholdSnapshot): Boolean {
-            val edit = prefs.edit().putString("people", snapshot.people).putString("days", snapshot.days)
+            val edit = prefs.edit()
+            edit.putString("people", snapshot.people).putString("days", snapshot.days)
                 .putString("notes", snapshot.notes).putStringSet("bookmarks", snapshot.bookmarks)
             snapshot.checks.forEach { (key, value) -> edit.putBoolean("check-$key", value) }
             return edit.commit()
         }
         if (write(data)) return true
-        write(before)
+        val rollback = prefs.edit()
+        fields.forEach { rollback.remove(it) }
+        before.forEach { (key, value) -> when (value) {
+            is String -> rollback.putString(key, value)
+            is Boolean -> rollback.putBoolean(key, value)
+            is Int -> rollback.putInt(key, value)
+            is Long -> rollback.putLong(key, value)
+            is Float -> rollback.putFloat(key, value)
+            is Set<*> -> rollback.putStringSet(key, value.filterIsInstance<String>().toSet())
+        } }
+        rollback.commit()
         return false
     }
 }
