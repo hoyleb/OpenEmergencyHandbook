@@ -252,6 +252,7 @@ def card_pdf(data, language):
 def outputs(data, matrix, as_of):
     validate(data)
     result = review_outputs(data, matrix, as_of)
+    result['COPYING.txt'] = (ROOT/'COPYING').read_bytes()
     result['READ_ME_FIRST.txt'] = (f'''OPEN EMERGENCY HANDBOOK - PAPER AND REVIEW PACK
 Content edition / Inhaltsausgabe: {data['edition']}
 Inventory date / Inventardatum: {as_of.isoformat()}
@@ -296,7 +297,7 @@ No household data or private keys are included / Keine Haushaltsdaten oder Schlu
 Full companion handbook PDFs, project source and review process:
 https://github.com/hoyleb/OpenEmergencyHandbook
 docs/PAPER_AND_REVIEW_PACKS.md and docs/CONTENT_REVIEW.md
-GPLv3. Fork of ligi/SurvivalManual. Source organisations do not endorse this pack.
+GPLv3; see COPYING.txt. Fork of ligi/SurvivalManual. No source-organisation endorsement.
 ''').encode('utf-8')
     for lang in ('en', 'de'):
         result[f'OpenEmergencyHandbook-quick-cards-{lang}.pdf'] = card_pdf(data, lang)

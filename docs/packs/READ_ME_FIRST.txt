@@ -42,4 +42,4 @@ No household data or private keys are included / Keine Haushaltsdaten oder Schlu
 Full companion handbook PDFs, project source and review process:
 https://github.com/hoyleb/OpenEmergencyHandbook
 docs/PAPER_AND_REVIEW_PACKS.md and docs/CONTENT_REVIEW.md
-GPLv3. Fork of ligi/SurvivalManual. Source organisations do not endorse this pack.
+GPLv3; see COPYING.txt. Fork of ligi/SurvivalManual. No source-organisation endorsement.

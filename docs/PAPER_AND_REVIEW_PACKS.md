@@ -2,7 +2,7 @@
 
 The generated files in [packs](packs/) use the same canonical bilingual content as the app. They are development drafts with no new clinical instructions or claimed professional approval. Print them for evaluation alongside the full handbook and current official information.
 
-[Download the complete paper and reviewer pack](packs/OpenEmergencyHandbook-paper-review-pack.zip) as one ZIP, or use the individual files below. The ZIP contains both PDFs, offline bilingual instructions and all eight review/checksum files, with no personal information. Its internal checksum manifest covers the contents rather than the ZIP container itself.
+[Download the complete paper and reviewer pack](packs/OpenEmergencyHandbook-paper-review-pack.zip) as one ZIP, or use the individual files below. The ZIP contains both PDFs, offline bilingual instructions, the GPL licence and all eight review/checksum files, with no personal information. Its internal checksum manifest covers the contents rather than the ZIP container itself.
 
 ## Print for a flat battery
 

@@ -2,6 +2,10 @@
   "canonical_content_sha256": "80b878724b73edd1dd22aea80cfbff63f9b2481e0e4410b0d16f87b1a2b907c4",
   "content_edition": "2026-10-19",
   "files": {
+    "COPYING.txt": {
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
     "OpenEmergencyHandbook-quick-cards-de.pdf": {
       "bytes": 67895,
       "sha256": "06fb70c5cb12c286c54d00e88e20333ba71ed98453c4d021284abc504c4f2f19"
@@ -15,8 +19,8 @@
       "sha256": "530eae0d36bdad1951be7f1c3ba6a9807e43a1e8d4d78abf76e11f77903b7d34"
     },
     "READ_ME_FIRST.txt": {
-      "bytes": 2779,
-      "sha256": "a235310ff2e5167c1fca6cc77fe916cf049dc15d1f9408e127405c3c7a98b514"
+      "bytes": 2785,
+      "sha256": "2a25e4dab76eda5c3ba7ac2f1194ffc9f166e28cc2d6fe0e4483926e7f5440ef"
     },
     "coverage-report.json": {
       "bytes": 10874,
