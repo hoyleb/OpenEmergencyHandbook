@@ -55,7 +55,7 @@ class HouseholdTransferTest {
         instrumentation.waitForIdleSync(); assertFalse("File operation did not finish", busy)
     }
     private fun shell(command: String) = ParcelFileDescriptor.AutoCloseInputStream(instrumentation.uiAutomation.executeShellCommand(command)).bufferedReader().use { it.readText().trim() }
-    private fun capture(name: String) { Thread.sleep(3500); instrumentation.waitForIdleSync(); shell("screencap -p /sdcard/Download/open-emergency-$name.png") }
+    private fun capture(name: String) = ScreenshotEvidence.capture(name)
     private fun validFixture() {
         val source = HouseholdBackup.snapshot(prefs).copy(notes = "Restored note: Ärztin\nMeeting point: library", bookmarks = setOf("water"))
         fixture.writeText(HouseholdBackup.encode(source))
@@ -91,12 +91,12 @@ class HouseholdTransferTest {
             ActivityScenario.launch(EmergencyActivity::class.java).use { scenario ->
                 scenario.onActivity { assertTrue(it.resources.configuration.fontScale >= 1.9f) }
                 chooseRestore(); settle(scenario)
+                capture("backup-large-text")
                 onView(withText("Replace plan")).check(matches(isCompletelyDisplayed())).check { view, _ ->
                     val text = view as TextView
                     for (line in 0 until text.layout.lineCount) assertEquals(0, text.layout.getEllipsisCount(line))
                 }
                 onView(withText(android.R.string.cancel)).check(matches(isCompletelyDisplayed()))
-                capture("backup-large-text")
                 onView(withText(android.R.string.cancel)).perform(click())
                 assertEquals("Existing plan", prefs.getString("notes", ""))
             }

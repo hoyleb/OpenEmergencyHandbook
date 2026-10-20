@@ -4,23 +4,41 @@ set -euo pipefail
 adb shell mkdir -p /sdcard/Download
 adb shell svc wifi disable
 adb shell svc data disable
+# Collect atomic app-private captures while tests are running; AGP removes the
+# fixture APK/data on completion. This works on API 21 without adding storage
+# permissions to the distributed app or depending on UiAutomation shell UIDs.
+mkdir -p android/build/reports/usability
+names="home reader-section large-text-home large-text-reader large-text-home-de large-text-reader-de dark-home landscape backup-preview backup-large-text recovery-unavailable"
+collect_evidence() {
+  while true; do
+    for name in $names; do
+      target="android/build/reports/usability/$name.png"
+      if [ ! -s "$target" ]; then
+        if adb exec-out run-as com.hoyleb.openemergency.preview cat "cache/usability/$name.png" > "$target.tmp" 2>/dev/null && [ -s "$target.tmp" ]; then
+          mv "$target.tmp" "$target"
+        else
+          rm -f "$target.tmp"
+        fi
+      fi
+    done
+    sleep 0.2
+  done
+}
+collect_evidence &
+evidence_collector_pid=$!
+trap 'kill "$evidence_collector_pid" 2>/dev/null || true' EXIT
 check_result=0
 ./gradlew :android:connectedDebugAndroidTest \
   -Pandroid.testInstrumentationRunnerArguments.class=org.ligi.survivalmanual.EmergencyPreviewTest,org.ligi.survivalmanual.HouseholdBackupTest,org.ligi.survivalmanual.HouseholdTransferTest,org.ligi.survivalmanual.RecoveryTest \
   --console=plain || check_result=$?
-
-# Preserve diagnostic screenshots even if a later test fails. These are emulator
-# fixtures, not user household data. The shell owns Download; no app storage
-# permission is added just to collect test evidence.
-mkdir -p android/build/reports/usability
-for name in home reader-section large-text-home large-text-reader large-text-home-de large-text-reader-de dark-home landscape backup-preview backup-large-text recovery-unavailable; do
-  adb pull "/sdcard/Download/open-emergency-$name.png" "android/build/reports/usability/$name.png" >/dev/null || true
-done
+kill "$evidence_collector_pid" 2>/dev/null || true
+wait "$evidence_collector_pid" 2>/dev/null || true
+trap - EXIT
 adb shell settings put system font_scale 1.0
 if [ "$check_result" -ne 0 ]; then
   exit "$check_result"
 fi
-for name in home reader-section large-text-home large-text-reader large-text-home-de large-text-reader-de dark-home landscape backup-preview backup-large-text recovery-unavailable; do
+for name in $names; do
   cp "android/build/reports/usability/$name.png" "dist/Usability-$name.png"
 done
 adb install -r android/build/outputs/apk/debug/*.apk

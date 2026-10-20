@@ -42,12 +42,7 @@ class EmergencyPreviewTest {
         onView(withContentDescription("Search all offline guides")).perform(replaceText(value), closeSoftKeyboard())
     }
     private fun shell(command: String): String = ParcelFileDescriptor.AutoCloseInputStream(instrumentation.uiAutomation.executeShellCommand(command)).bufferedReader().use { it.readText().trim() }
-    private fun capture(name: String) {
-        // Toasts are system windows and can outlive the previous test/activity.
-        Thread.sleep(3500)
-        instrumentation.waitForIdleSync()
-        shell("screencap -p /sdcard/Download/open-emergency-$name.png")
-    }
+    private fun capture(name: String) = ScreenshotEvidence.capture(name)
 
     @Before fun resetPlan() { prefs.edit().clear().putString("language", "en").commit() }
 

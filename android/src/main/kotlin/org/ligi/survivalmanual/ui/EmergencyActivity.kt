@@ -149,11 +149,34 @@ class EmergencyActivity : BaseActivity() {
             "\n\n" + tr("${data.checks.values.count { it }} of 8 checklist items · ${data.bookmarks.size} saved guides", "${data.checks.values.count { it }} von 8 Punkten · ${data.bookmarks.size} gemerkte Anleitungen") +
             "\n" + tr("People: ${data.people.ifEmpty { "—" }} · Days: ${data.days.ifEmpty { "—" }}", "Personen: ${data.people.ifEmpty { "—" }} · Tage: ${data.days.ifEmpty { "—" }}") +
             "\n\n" + tr("Notes preview (${data.notes.length} characters):", "Notizvorschau (${data.notes.length} Zeichen):") + "\n" + data.notes.take(300) + if (data.notes.length > 300) "…" else ""
-        restoreDialog = androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle(tr("Review backup before replacing", "Sicherung vor Ersetzen prüfen"))
-            .setMessage(preview).setNegativeButton(android.R.string.cancel) { _, _ -> transfer.dismiss() }
-            .setPositiveButton(tr("Replace plan", "Ersetzen")) { _, _ -> transfer.restore(preferences, data) }
-            .setOnCancelListener { transfer.dismiss() }.show()
+        hideKeyboard()
+        val title = tr("Review backup before replacing", "Sicherung vor Ersetzen prüfen")
+        val content = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(dp(16), dp(12), dp(16), dp(12)); setBackgroundColor(surface)
+        }
+        ViewCompat.setAccessibilityPaneTitle(content, title)
+        content.addView(heading(title, 20f))
+        val details = ScrollView(this).apply { addView(text(preview, 16f)) }
+        content.addView(details, LinearLayout.LayoutParams(-1, 0, 1f))
+        val actions = LinearLayout(this).apply {
+            orientation = if (resources.configuration.screenWidthDp >= 480) LinearLayout.HORIZONTAL else LinearLayout.VERTICAL
+        }
+        val dialog = androidx.appcompat.app.AlertDialog.Builder(this).setView(content)
+            .setOnCancelListener { transfer.dismiss() }.create()
+        val replace = button(tr("Replace plan", "Ersetzen")) { transfer.restore(preferences, data); dialog.dismiss() }
+        val cancel = button(getString(android.R.string.cancel)) { transfer.dismiss(); dialog.dismiss() }
+        for (action in listOf(replace, cancel)) actions.addView(action, if (actions.orientation == LinearLayout.HORIZONTAL)
+            LinearLayout.LayoutParams(0, -2, 1f) else LinearLayout.LayoutParams(-1, -2))
+        content.addView(actions)
+        dialog.setOnShowListener {
+            val metrics = resources.displayMetrics
+            val bars = ViewCompat.getRootWindowInsets(window.decorView)?.getInsets(WindowInsetsCompat.Type.systemBars())
+            val height = metrics.heightPixels - (bars?.top ?: 0) - (bars?.bottom ?: 0)
+            dialog.window?.setLayout((metrics.widthPixels * 0.94f).toInt(), (height * 0.9f).toInt())
+        }
+        restoreDialog = dialog
+        dialog.show()
     }
 
     override fun onDestroy() { restoreDialog?.dismiss(); super.onDestroy() }
@@ -633,6 +656,7 @@ class EmergencyActivity : BaseActivity() {
     }
 
     private fun householdTransfers() {
+        hideKeyboard()
         if (transfer.state.value == TransferState.Busy) {
             Toast.makeText(this, tr("A file operation is still running", "Eine Datei wird noch verarbeitet"), Toast.LENGTH_SHORT).show(); return
         }

@@ -51,9 +51,7 @@ class RecoveryTest {
                 EmergencyActivity::class.java.getDeclaredMethod("render").apply { isAccessible = true }.invoke(activity)
             }
             onView(withText("Guides unavailable")).check(matches(isDisplayed()))
-            Thread.sleep(3500)
-            val descriptor = InstrumentationRegistry.getInstrumentation().uiAutomation.executeShellCommand("screencap -p /sdcard/Download/open-emergency-recovery-unavailable.png")
-            android.os.ParcelFileDescriptor.AutoCloseInputStream(descriptor).use { it.readBytes() }
+            ScreenshotEvidence.capture("recovery-unavailable")
             onView(withTagValue(equalTo("tab-plan"))).perform(click())
             onView(withText("Backup / restore…")).check(matches(isDisplayed()))
         }
