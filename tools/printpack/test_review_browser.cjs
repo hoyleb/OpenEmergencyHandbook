@@ -15,6 +15,7 @@ const assert = require('node:assert/strict');
     const browser = await engine.launch({headless:true});
     try {
       const context = await browser.newContext({javaScriptEnabled:false});
+      context.setDefaultTimeout(15000);
       const page = await context.newPage();
       const external = [], errors = [];
       await page.route(/^https?:/, route => {external.push(route.request().url()); return route.abort();});
@@ -33,9 +34,12 @@ const assert = require('node:assert/strict');
       await page.locator('nav a[href="#first-aid"]').click();
       assert(page.url().endsWith('#first-aid'));
       await page.screenshot({path:path.join(output,`review-${name}-desktop.png`)});
+      console.log(`${name}: all bilingual text and desktop anchor checks passed`);
       await page.setViewportSize({width:360,height:800});
       // JavaScript stays disabled in the artifact; temporary test CSS is injected by the harness.
-      await page.addStyleTag({content:'body{font-size:36px}'});
+      // addStyleTag waits for page load events that can stall with scripts disabled.
+      // A direct harness evaluation changes only the existing body's style.
+      await page.evaluate(() => { document.body.style.fontSize='36px'; });
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth+1));
       const sections = await page.locator('#first-aid .parallel > section').first().boundingBox();
       assert(sections.width <= 312);
@@ -43,6 +47,7 @@ const assert = require('node:assert/strict');
       await page.locator('#first-aid details summary').click();
       assert(await page.locator('#first-aid details').getAttribute('open') !== null);
       assert.equal(external.length,0); assert.equal(errors.length,0);
+      console.log(`${name}: mobile 200% text, source disclosure and offline checks passed`);
       evidence.engines.push({engine:name,guides:source.articles.length,languages:2,javascript:false,
                             desktop:true,mobile_200_percent_css_text:true,external_requests:0,page_errors:0});
       await context.close();
