@@ -56,7 +56,8 @@ Validation results are attached to the actual workflow/release. A feature listed
 - [x] Produce and visually inspect printable English/German PDFs from the same content (33 pages each).
 - [ ] Produce compact printed quick cards for loss of phone power.
 - [x] Structured JSON plan/bookmark backup and explicit preview/confirmed restore, preserving unrelated settings.
-- [ ] Optional encrypted portable backups and a security review of their key/password recovery design. Current text/JSON exports are unencrypted; no account is needed.
+- [x] Optional passphrase-encrypted household backups, confirmed restore and offline desktop recovery helper; existing plain JSON/text exports remain unencrypted. See [ENCRYPTED_BACKUPS.md](ENCRYPTED_BACKUPS.md) for format, tests and recovery limits.
+- [ ] Independent security/cryptography review of encrypted backup, key/password-loss design, physical older-device performance and recovery comprehension. Implementation/tests are not a completed security review.
 
 ## P1 — Distribution and maintenance
 

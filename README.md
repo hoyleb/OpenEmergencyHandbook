@@ -20,6 +20,8 @@ Urgent actions are on the home screen; Help, Search, Saved and Plan stay availab
 
 ## Included
 
+The 0.5 source also adds optional passphrase-encrypted household backups, confirmed restore and an offline desktop recovery helper. Plain JSON/text exports remain available. See [encrypted backup and password-loss limits](docs/ENCRYPTED_BACKUPS.md). Independent security review and physical-phone testing remain open; publication still requires the pinned signing identity to be provisioned correctly.
+
 - All six disaster scenarios, first-aid overview, adult CPR/AED, safe water, food, sanitation, shelter, preparedness and communications.
 - Native category navigation/reader with adjustable text and related guides, bilingual offline search with one-edit fallback, local checklist/notes, local text export, structured backup/restore and water estimate with assumptions.
 - Source dates and explicit draft status; offline HTML, printable English/German PDFs, source archive, coverage report and checksums in successful releases.
