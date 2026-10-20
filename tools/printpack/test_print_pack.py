@@ -10,6 +10,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 
 from pypdf import PdfReader
 import pdfplumber
@@ -86,6 +87,15 @@ class PrintPackTest(unittest.TestCase):
         for line in self.generated['SHA256SUMS.txt'].decode().splitlines():
             expected,name=line.split('  ')
             self.assertEqual(expected,hashlib.sha256(self.generated[name]).hexdigest())
+
+    def test_single_download_contains_every_inner_file_without_unsafe_paths(self):
+        name='OpenEmergencyHandbook-paper-review-pack.zip'
+        with zipfile.ZipFile(io.BytesIO(self.generated[name])) as archive:
+            self.assertIsNone(archive.testzip())
+            self.assertEqual(set(self.generated)-{name},set(archive.namelist()))
+            for entry in archive.namelist():
+                self.assertNotIn('/',entry)
+                self.assertEqual(self.generated[entry],archive.read(entry))
 
     def test_source_worksheet_has_all_exact_bilingual_blocks_and_no_fake_findings(self):
         rows=list(csv.DictReader(io.StringIO(self.generated['source-mapping-worksheet.csv'].decode('utf-8-sig'))))

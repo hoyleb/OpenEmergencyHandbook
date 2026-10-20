@@ -15,6 +15,7 @@ from pathlib import Path
 import re
 import sys
 from urllib.parse import urlparse
+import zipfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from build_handbook import ROOT, content_digest, coverage_report, validate
@@ -264,6 +265,16 @@ def outputs(data, matrix, as_of):
     }
     result['PACK-MANIFEST.json'] = json_bytes(manifest)
     result['SHA256SUMS.txt'] = ''.join(digest(payload)+'  '+name+'\n' for name,payload in sorted(result.items())).encode('ascii')
+    # A transport container cannot include its own checksum. Inner files carry
+    # the complete manifest; fixed ZIP metadata keeps the download reproducible.
+    bundle = io.BytesIO()
+    with zipfile.ZipFile(bundle, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        for name,payload in sorted(result.items()):
+            info = zipfile.ZipInfo(name, date_time=(2000,1,1,0,0,0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o100644 << 16
+            archive.writestr(info, payload, compresslevel=9)
+    result['OpenEmergencyHandbook-paper-review-pack.zip'] = bundle.getvalue()
     return result
 
 
