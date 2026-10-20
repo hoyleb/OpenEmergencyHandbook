@@ -1,6 +1,7 @@
 package org.ligi.survivalmanual
 
 import android.Manifest
+import androidx.core.content.ContextCompat
 import android.content.Context
 import android.content.pm.PackageManager
 import android.content.res.Configuration
@@ -66,7 +67,17 @@ class EmergencyPreviewTest {
         assertTrue(en.search("nonsensewordxyz").isEmpty())
         assertTrue(EmergencyHandbook(context.assets, "de").search("uberschwemmung").any { it.id == "flood" })
         assertTrue(EmergencyHandbook(context.assets, "de").search("stromausfal").any { it.id == "power" })
-        assertEquals(PackageManager.PERMISSION_DENIED, context.checkSelfPermission(Manifest.permission.INTERNET))
+        assertEquals(PackageManager.PERMISSION_DENIED, ContextCompat.checkSelfPermission(context, Manifest.permission.INTERNET))
+    }
+
+    @Test fun sharedSearchAcceptanceVectorsMatchPortableEdition() {
+        val cases = org.json.JSONArray(context.assets.open("handbook/search-cases.json").bufferedReader().use { it.readText() })
+        for (index in 0 until cases.length()) {
+            val test = cases.getJSONObject(index)
+            val result = EmergencyHandbook(context.assets, test.getString("language")).searchResult(test.getString("query"))
+            assertEquals(test.optString("first", ""), result.articles.firstOrNull()?.id.orEmpty())
+            assertEquals(test.getBoolean("approximate"), result.approximate)
+        }
     }
 
     @Test fun urgentHomeActionsAreVisibleWithoutScrolling() {

@@ -36,6 +36,14 @@ class ContentContractTest(unittest.TestCase):
         self.assertIn('en-fallout', rendered)
         self.assertIn('de-fallout', rendered)
 
+    def test_search_data_cannot_close_its_script_element(self):
+        self.content['articles'][0]['en']['title'] = '</script><img src=x onerror=alert(1)>'
+        rendered = make_html(self.content)
+        self.assertNotIn('</script><img', rendered)
+        self.assertIn('\\u003c/script\\u003e', rendered)
+        self.assertIn('<noscript>', rendered)
+        self.assertIn('class="interactive" hidden', rendered)
+
     def test_app_requests_no_network_or_location_permissions(self):
         manifest = (ROOT / 'android/src/main/AndroidManifest.xml').read_text()
         self.assertNotIn('uses-permission', manifest)
