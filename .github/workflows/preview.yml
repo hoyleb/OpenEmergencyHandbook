@@ -46,6 +46,8 @@ jobs:
           node-version: '24'
       - name: Validate content and portable search
         run: |
+          python3 -m pip install -r tools/backup/requirements-test.txt
+          python3 -m unittest discover -s tools/backup -p 'test_*.py' -v
           python3 tools/build_handbook.py --check > content-check.json
           python3 -m unittest discover -s tools -p 'test_*.py' -v
           node tools/test_offline_search.cjs
@@ -106,7 +108,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq fonts-dejavu-core
-          python3 -m pip install -r tools/requirements-pdf.txt
+          python3 -m pip install -r tools/requirements-pdf.txt -r tools/backup/requirements-test.txt
           python3 tools/build_pdf.py
       - name: Build and lint Android
         run: ./gradlew :android:assembleDebug :android:assembleDebugAndroidTest :android:lintDebug --console=plain
@@ -205,15 +207,15 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
-          PREVIEW_TAG: preview-0.4.${{ github.run_number }}
+          PREVIEW_TAG: preview-0.5.${{ github.run_number }}
           PREVIEW_COMMIT: ${{ github.sha }}
         run: |
           cat > release-notes.md <<'NOTES'
           Android development preview for installation and usability testing.
 
-          Download OpenEmergencyHandbook-preview.apk on an Android phone (Android 5.0+). Allow installation from the browser/file manager when Android asks, then open **Open Emergency Preview**. This APK is debug-signed for testing, not a Play Store production release. This 0.4 series starts a pinned development identity. Older previews used changing test keys and may require uninstalling; export your old household plan first. Use JSON backups from 0.4 onward for automatic restore; older text exports need manual copying. Uninstall removes local data. CI now blocks unpinned signing changes. Protected production signing is still outstanding.
+          Download OpenEmergencyHandbook-preview.apk on an Android phone (Android 5.0+). Allow installation from the browser/file manager when Android asks, then open **Open Emergency Preview**. This APK is debug-signed for testing, not a Play Store production release. The 0.4/0.5 series uses a pinned development identity. Older previews used changing test keys and may require uninstalling; export your old household plan first. Use JSON backups from 0.4 onward for automatic restore; older text exports need manual copying. Uninstall removes local data. CI now blocks unpinned signing changes. Protected production signing is still outstanding.
 
-          Included: 30 English and 30 German offline guides, all six disaster scenarios, first-aid/safe-water summaries, direct help actions, persistent Help/Search/Saved/Plan navigation, reader section jumps/bookmarks, adjustable text, optional screen-on mode, related guides and ranked bilingual search with labelled typo fallback, household checklist, water estimate, notes, explicit text export and versioned JSON backup/confirmed restore. Separate hash-checked recovery copies keep undamaged guides readable if the primary index fails. No account, subscription, advertising or network permission.
+          Included: 30 English and 30 German offline guides, all six disaster scenarios, first-aid/safe-water summaries, direct help actions, persistent Help/Search/Saved/Plan navigation, reader section jumps/bookmarks, adjustable text, optional screen-on mode, related guides and ranked bilingual search with labelled typo fallback, household checklist, water estimate, notes, explicit text export and versioned JSON backup/confirmed restore. The 0.5 source also adds optional passphrase-encrypted .oeh backups with AES-256-GCM, wrong-passphrase retry and offline desktop recovery; plain JSON/text exports remain unencrypted. There is no passphrase reset. Independent security review remains open. Separate hash-checked recovery copies keep undamaged guides readable if the primary index fails. No account, subscription, advertising or network permission.
 
           **All summaries and translations are unreviewed drafts. Coverage is incomplete. Test the app; do not treat this as a complete or professionally approved survival reference.** See About and coverage-report.json for gaps. Follow emergency services and current official instructions.
 
