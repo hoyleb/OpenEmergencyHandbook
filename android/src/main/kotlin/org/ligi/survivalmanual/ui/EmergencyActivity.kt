@@ -31,6 +31,7 @@ import org.ligi.survivalmanual.model.EmergencyHandbook
 import org.ligi.survivalmanual.model.HouseholdPlan
 import org.ligi.survivalmanual.model.HouseholdBackup
 import org.ligi.survivalmanual.model.HouseholdTransfer
+import org.ligi.survivalmanual.model.EncryptedHouseholdBackup
 import org.ligi.survivalmanual.model.TransferState
 import org.ligi.survivalmanual.model.safeString
 import org.ligi.survivalmanual.model.safeBoolean
@@ -66,6 +67,8 @@ class EmergencyActivity : BaseActivity() {
     private val transfer by lazy { ViewModelProvider(this).get(HouseholdTransfer::class.java) }
     private var transferStatus: TextView? = null
     private var restoreDialog: androidx.appcompat.app.AlertDialog? = null
+    private var passwordDialog: androidx.appcompat.app.AlertDialog? = null
+    private var passwordFields = emptyList<EditText>()
 
     private data class Place(val route: String, val query: String, val category: String, val scroll: Int, val tab: String) {
         fun json() = JSONObject().put("route", route).put("query", query).put("category", category).put("scroll", scroll).put("tab", tab)
@@ -85,6 +88,13 @@ class EmergencyActivity : BaseActivity() {
         val data = transfer.pendingBackup; transfer.pendingBackup = null
         if (uri != null) {
             if (data != null) transfer.write(applicationContext.contentResolver, uri, data)
+            else transferResult(tr("Backup interrupted. The selected file may be empty; save a new backup.", "Sicherung unterbrochen. Gewählte Datei eventuell leer; Sicherung erneut speichern."))
+        }
+    }
+    private val encryptedBackupPlan = registerForActivityResult(ActivityResultContracts.CreateDocument("application/octet-stream")) { uri ->
+        val data = transfer.pendingBackup; transfer.pendingBackup = null
+        if (uri != null) {
+            if (data != null) transfer.protect(uri, data)
             else transferResult(tr("Backup interrupted. The selected file may be empty; save a new backup.", "Sicherung unterbrochen. Gewählte Datei eventuell leer; Sicherung erneut speichern."))
         }
     }
@@ -127,13 +137,14 @@ class EmergencyActivity : BaseActivity() {
             transferStatus?.text = if (state == TransferState.Busy) tr("Working with the selected file…", "Ausgewählte Datei wird verarbeitet…") else ""
             when (state) {
                 is TransferState.Preview -> showRestorePreview(state)
+                is TransferState.Protect, is TransferState.Unlock -> showPasswordPrompt(state)
                 TransferState.Saved -> transferResult(tr("File saved. Keep the backup private and a printed plan too.", "Datei gespeichert. Sicherung vertraulich und Plan auch auf Papier aufbewahren."))
                 TransferState.Restored -> {
                     transfer.dismiss()
                     if (route == "plan" || route == "saved") { articleScroll = 0; render() }
                     showFeedback(tr("Household plan and saved guides restored", "Haushaltsplan und Merkliste wiederhergestellt"), true)
                 }
-                TransferState.ReadFailed -> transferResult(tr("Could not read this backup. Choose a supported JSON backup up to 512 KiB. Current data is unchanged.", "Sicherung nicht lesbar. Unterstützte JSON-Sicherung bis 512 KiB wählen. Bisherige Daten unverändert."))
+                TransferState.ReadFailed -> transferResult(tr("Could not read this backup. Choose this app's JSON or encrypted backup (up to 512 KiB of plan data). Current data is unchanged.", "Sicherung nicht lesbar. JSON- oder verschlüsselte Sicherung dieser App wählen (bis 512 KiB Plandaten). Bisherige Daten unverändert."))
                 TransferState.WriteFailed -> transferResult(tr("Could not finish saving. Check the selected file and available storage. Your plan is kept in the app.", "Speichern nicht abgeschlossen. Datei und freien Speicher prüfen. Der Plan bleibt in der App."))
                 TransferState.RestoreFailed -> transferResult(tr("Could not store the restored plan. Previous values were restored in memory. Keep your backup and free storage before retrying.", "Wiederherstellung nicht gespeichert. Vorherige Werte im Arbeitsspeicher wiederhergestellt. Sicherung behalten und Speicher freigeben."))
                 else -> Unit
@@ -147,6 +158,81 @@ class EmergencyActivity : BaseActivity() {
     }
 
     private fun transferResult(message: String) { transfer.dismiss(); showFeedback(message, true) }
+
+    private fun showPasswordPrompt(state: TransferState) {
+        if (passwordDialog?.isShowing == true) return
+        feedback?.cancel()
+        val protecting = state is TransferState.Protect
+        val title = if (protecting) tr("Protect backup", "Sicherung schützen") else tr("Unlock backup", "Sicherung öffnen")
+        val content = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL; setPadding(dp(16), dp(12), dp(16), dp(12)); setBackgroundColor(surface)
+        }
+        ViewCompat.setAccessibilityPaneTitle(content, title)
+        content.addView(heading(title, 20f))
+        val fields = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
+        val details = ScrollView(this).apply { isFillViewport = true; addView(fields) }
+        content.addView(details, LinearLayout.LayoutParams(-1, 0, 1f))
+        val explanation = if (protecting) tr(
+            "Use a unique passphrase of 12–128 characters. Keep it separately: there is no password reset. This protects the backup file only; the plan in this app is unchanged. Cancelling may leave an empty selected file.",
+            "Einzigartige Passphrase mit 12–128 Zeichen verwenden. Separat aufbewahren: kein Zurücksetzen möglich. Schützt nur die Sicherungsdatei; der Plan in der App bleibt unverändert. Abbrechen kann eine leere gewählte Datei hinterlassen.")
+        else if ((state as TransferState.Unlock).failed) tr("Wrong passphrase or damaged backup. Try again, or cancel and choose another file. Your plan is unchanged.", "Falsche Passphrase oder beschädigte Sicherung. Erneut versuchen oder abbrechen und andere Datei wählen. Der Plan ist unverändert.")
+        else tr("Enter the exact backup passphrase. Spaces and upper/lower case matter. Unlocking shows a preview before replacing anything. There is no password reset.", "Die genaue Passphrase eingeben. Leerzeichen und Groß-/Kleinschreibung zählen. Vor dem Ersetzen erscheint eine Vorschau. Kein Zurücksetzen möglich.")
+        fields.addView(text(explanation, 15f))
+        fun input(label: String, tag: String): EditText {
+            val edit = EditText(this).apply {
+                id = View.generateViewId(); this.tag = tag; isSaveEnabled = false; minHeight = dp(52)
+                inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD or android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
+                imeOptions = android.view.inputmethod.EditorInfo.IME_FLAG_NO_EXTRACT_UI or android.view.inputmethod.EditorInfo.IME_FLAG_NO_PERSONALIZED_LEARNING
+                setTextColor(textColour); contentDescription = label
+                if (android.os.Build.VERSION.SDK_INT >= 26) importantForAutofill = View.IMPORTANT_FOR_AUTOFILL_NO
+            }
+            fields.addView(text(label, 15f, true).apply { labelFor = edit.id })
+            fields.addView(edit); return edit
+        }
+        val first = input(tr("Passphrase", "Passphrase"), "backup-passphrase")
+        val confirmation = if (protecting) input(tr("Repeat passphrase", "Passphrase wiederholen"), "backup-passphrase-confirm") else null
+        passwordFields = listOfNotNull(first, confirmation)
+        fields.addView(CheckBox(this).apply {
+            text = tr("Show passphrase", "Passphrase anzeigen"); setTextColor(textColour); minHeight = dp(52)
+            setOnCheckedChangeListener { _, show -> passwordFields.forEach { edit ->
+                edit.transformationMethod = if (show) null else android.text.method.PasswordTransformationMethod.getInstance()
+                edit.setSelection(edit.length())
+            } }
+        })
+        val dialog = androidx.appcompat.app.AlertDialog.Builder(this).setView(content)
+            .setOnCancelListener { transfer.dismiss() }.create()
+        val actions = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
+        actions.addView(button(if (protecting) tr("Encrypt", "Verschlüsseln") else tr("Unlock", "Öffnen")) {
+            val validLength = if (protecting) first.length() in EncryptedHouseholdBackup.MIN_PASSPHRASE..EncryptedHouseholdBackup.MAX_PASSPHRASE else first.length() in 1..EncryptedHouseholdBackup.MAX_PASSPHRASE
+            if (!validLength) { first.error = if (protecting) tr("Use 12–128 characters", "12–128 Zeichen verwenden") else tr("Use 1–128 characters", "1–128 Zeichen verwenden"); first.requestFocus() }
+            else {
+                val password = CharArray(first.length()).also { android.text.TextUtils.getChars(first.text, 0, first.length(), it, 0) }
+                val repeated = confirmation?.let { edit ->
+                    if (edit.length() <= EncryptedHouseholdBackup.MAX_PASSPHRASE) CharArray(edit.length()).also { android.text.TextUtils.getChars(edit.text, 0, edit.length(), it, 0) } else charArrayOf()
+                }
+                val valid = (!protecting || password.any { !it.isWhitespace() }) && (repeated == null || password.contentEquals(repeated))
+                repeated?.fill('\u0000')
+                if (!valid) {
+                    password.fill('\u0000'); confirmation?.error = tr("Passphrases must match and cannot be blank", "Passphrasen müssen übereinstimmen und dürfen nicht leer sein")
+                } else {
+                    passwordFields.forEach { it.text?.clear() }
+                    if (protecting) transfer.encryptAndWrite(applicationContext.contentResolver, password) else transfer.unlock(password)
+                    dialog.dismiss()
+                }
+            }
+        }, LinearLayout.LayoutParams(-1, -2))
+        actions.addView(button(getString(android.R.string.cancel)) { transfer.dismiss(); dialog.dismiss() }, LinearLayout.LayoutParams(-1, -2))
+        content.addView(actions)
+        dialog.setOnDismissListener { passwordFields.forEach { it.text?.clear() }; passwordFields = emptyList() }
+        dialog.setOnShowListener {
+            val metrics = resources.displayMetrics
+            val bars = ViewCompat.getRootWindowInsets(window.decorView)?.getInsets(WindowInsetsCompat.Type.systemBars())
+            dialog.window?.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
+            dialog.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+            dialog.window?.setLayout((metrics.widthPixels * 0.94f).toInt(), ((metrics.heightPixels - (bars?.top ?: 0) - (bars?.bottom ?: 0)) * 0.9f).toInt())
+        }
+        passwordDialog = dialog; dialog.show()
+    }
 
     private fun showRestorePreview(state: TransferState.Preview) {
         if (restoreDialog?.isShowing == true) return
@@ -186,7 +272,7 @@ class EmergencyActivity : BaseActivity() {
         dialog.show()
     }
 
-    override fun onDestroy() { feedback?.cancel(); restoreDialog?.dismiss(); super.onDestroy() }
+    override fun onDestroy() { feedback?.cancel(); passwordDialog?.dismiss(); restoreDialog?.dismiss(); super.onDestroy() }
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString("language", language)
@@ -199,7 +285,7 @@ class EmergencyActivity : BaseActivity() {
     }
 
     override fun onResume() { super.onResume(); applyScreenOn() }
-    override fun onPause() { feedback?.cancel(); window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); super.onPause() }
+    override fun onPause() { feedback?.cancel(); passwordFields.forEach { it.text?.clear() }; window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); super.onPause() }
 
     private fun applyScreenOn() {
         if (::handbook.isInitialized && keepReadingOn && handbook.find(route) != null)
@@ -546,6 +632,15 @@ class EmergencyActivity : BaseActivity() {
         page.addView(text(article.summary, 18f * readerScale))
         readerSections.clear()
         page.addView(button(tr("Jump to section", "Zum Abschnitt")) { showSections() }.apply { textSize = 14f })
+        if (article.id == "about") {
+            page.addView(heading(tr("Backup privacy in this build", "Sicherungsdatenschutz dieser Version"), 21f))
+            page.addView(text(tr("Plan offers optional passphrase-encrypted backup files alongside plain JSON/text exports. This does not encrypt the plan stored inside the app. There is no passphrase reset; keep it separately. File providers may upload selected files under their own policies.", "Der Haushaltsplan bietet passphrasenverschlüsselte Sicherungen neben unverschlüsselten JSON-/Textexporten. Der in der App gespeicherte Plan wird dadurch nicht verschlüsselt. Kein Zurücksetzen der Passphrase; separat aufbewahren. Dateianbieter können gewählte Dateien nach eigenen Regeln hochladen."), 16f))
+            page.addView(button(tr("Bouncy Castle licence · offline", "Bouncy-Castle-Lizenz · offline")) {
+                val licence = assets.open("licenses/bouncycastle.html").bufferedReader().use { it.readText() }
+                val body = ScrollView(this).apply { addView(text("").apply { text = HtmlCompat.fromHtml(licence, HtmlCompat.FROM_HTML_MODE_LEGACY) }) }
+                androidx.appcompat.app.AlertDialog.Builder(this).setTitle("Bouncy Castle 1.86").setView(body).setPositiveButton(android.R.string.ok, null).show()
+            })
+        }
         article.body.split(Regex("(?m)(?=^## )")).filter { it.isNotBlank() }.forEach { block ->
             val trimmed = block.trim()
             val body: String
@@ -669,10 +764,17 @@ class EmergencyActivity : BaseActivity() {
         }
         androidx.appcompat.app.AlertDialog.Builder(this)
             .setTitle(tr("Household backup", "Haushaltssicherung"))
-            .setItems(arrayOf(tr("Save JSON backup", "JSON-Sicherung speichern"), tr("Restore JSON backup", "JSON-Sicherung wiederherstellen"))) { _, action ->
-                if (action == 1) {
+            .setItems(arrayOf(tr("Save encrypted backup", "Verschlüsselte Sicherung speichern"), tr("Save JSON backup", "JSON-Sicherung speichern"), tr("Restore backup", "Sicherung wiederherstellen"))) { _, action ->
+                if (action == 2) {
                     try { importPlan.launch(arrayOf("application/json", "text/plain", "application/octet-stream")) }
                     catch (_: ActivityNotFoundException) { transferResult(tr("No file picker available", "Keine Dateiauswahl verfügbar")) }
+                } else if (action == 0) {
+                    try {
+                        val ids = handbook.articles.map { it.id }.toSet() + preferences.safeStrings("bookmarks")
+                        val encoded = HouseholdBackup.encode(HouseholdBackup.snapshot(preferences))
+                        transfer.pendingBackup = HouseholdBackup.encode(HouseholdBackup.parse(encoded, ids))
+                        encryptedBackupPlan.launch("OpenEmergency-Household-backup.oeh")
+                    } catch (_: Exception) { transfer.pendingBackup = null; transferResult(tr("Could not start backup. Check saved data and file-picker availability.", "Sicherung nicht gestartet. Gespeicherte Daten und Dateiauswahl prüfen.")) }
                 } else androidx.appcompat.app.AlertDialog.Builder(this)
                     .setMessage(tr("Creates an unencrypted JSON file with your checklist, notes and saved guides. It can restore these after reinstalling. Choose a local folder; cloud providers may upload it. Keep it private. Text exports are for reading and cannot be restored automatically.", "Erstellt eine unverschlüsselte JSON-Datei mit Checkliste, Notizen und Merkliste. Zur Wiederherstellung nach Neuinstallation. Lokalen Ordner wählen; Cloud-Anbieter können hochladen. Vertraulich aufbewahren. Textexporte sind nur zum Lesen und nicht automatisch einlesbar."))
                     .setNegativeButton(android.R.string.cancel, null)
