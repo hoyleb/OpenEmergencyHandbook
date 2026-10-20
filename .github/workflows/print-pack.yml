@@ -1,0 +1,66 @@
+name: Paper and review pack
+on:
+  push:
+    branches: [master, feature/paper-and-review-packs]
+    paths:
+      - 'tools/printpack/**'
+      - 'tools/build_handbook.py'
+      - 'tools/requirements-pdf.txt'
+      - 'content/**'
+      - 'docs/packs/**'
+      - '.github/workflows/print-pack.yml'
+  pull_request:
+    paths:
+      - 'tools/printpack/**'
+      - 'tools/build_handbook.py'
+      - 'tools/requirements-pdf.txt'
+      - 'content/**'
+      - 'docs/packs/**'
+      - '.github/workflows/print-pack.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: print-pack-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate-paper-and-review-pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install pinned PDF test tools and rendering dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-dejavu-core poppler-utils
+          python3 -m pip install -r tools/printpack/requirements-test.txt
+      - name: Check canonical assets and generated pack freshness
+        run: |
+          python3 tools/build_handbook.py --check
+          PACK_DATE=$(python3 -c 'import json; print(json.load(open("docs/packs/PACK-MANIFEST.json"))["inventory_as_of"])')
+          python3 tools/printpack/build_print_pack.py --output docs/packs --as-of "$PACK_DATE" --check
+          python3 -m unittest discover -s tools -p 'test_*.py' -v
+          python3 -m unittest discover -s tools/printpack -p 'test_*.py' -v
+          node tools/test_offline_search.cjs
+      - name: Render every sheet for visual review
+        run: |
+          mkdir -p print-pack-evidence
+          pdftoppm -scale-to 1400 -png docs/packs/OpenEmergencyHandbook-quick-cards-en.pdf print-pack-evidence/en
+          pdftoppm -scale-to 1400 -png docs/packs/OpenEmergencyHandbook-quick-cards-de.pdf print-pack-evidence/de
+      - name: Check reviewer layout in all browser engines
+        run: |
+          npm install --prefix .ci --no-save --package-lock=false playwright@1.62.1
+          .ci/node_modules/.bin/playwright install --with-deps chromium firefox webkit
+          NODE_PATH="$PWD/.ci/node_modules" node tools/printpack/test_review_browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Paper-and-review-pack
+          path: |
+            docs/packs/
+            print-pack-evidence/
